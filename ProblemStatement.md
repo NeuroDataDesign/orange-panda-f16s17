@@ -25,7 +25,7 @@
       1. What are the key challenges? 
          1. Can we measure different intensities of an emotional state?
       1. Has anyone made a concerted effort to solve the problem? Give examples. 
-         1. Emotiv has apps on their online store to determine a userís mood. However, it has no application other than entertainment, and focus training.
+         1. Emotiv has apps on their online store to determine a user‚Äôs mood. However, it has no application other than entertainment, and focus training.
       1. If so, what progress did they make, and why have they not succeeded?
          1. No one has tried this particular application yet, and if they have, it is not widely publicised.
    1. Gap
@@ -70,17 +70,15 @@
          1. EEG headset that we already have access to has both Bluetooth and phone connection capabilities. Look into designing and external app that collects specific data after the Bluetooth has been paired.
          2. Once becoming an official part of treatment, is more likely to be pushed to be accepted by insurance companies.
    1. What are each of the parts of the approach?
-
-
-1. Scientifically
-        i. A wide sample size, both clinically depressed or considered ìnormalî and check for baseline for each and see if theyíre different
-                ii. To figure out the maximum ìsafeî emotional distress level
-                2. Technologically
-                        I. Lower manufacture costs (making something in China)
-                        Ii. Emerging companies to help with solar technology
-                3. Organizational/Financially
-                        I. Designing apps as mentioned above
-                        Ii. Marketing it to be widely accepted such that insurance companies have to accept it as a treatment
+      1. Scientifically
+         2. A wide sample size, both clinically depressed or considered ‚Äúnormal‚Äù and check for baseline for each and see if they‚Äôre different
+         3. To figure out the maximum ‚Äúsafe‚Äù emotional distress level
+      4. Technologically
+         5. Lower manufacture costs (making something in China)
+         6. Emerging companies to help with solar technology
+      3. Organizational/Financially
+         4. Designing apps as mentioned above
+         5. Marketing it to be widely accepted such that insurance companies have to accept it as a treatment
    1. How will each of these disparate parts be coordinated to bridge these gaps and then solve the larger problem? 
         Eventually, these parts will be coordinated to set a floor and a ceiling to ensure human safety in their emotions  and hopefully cause a lower suicide rate
    1. How is this approach different from the status quo?
@@ -90,4 +88,4 @@
    1. What does success look like at defined points along the roadmap?
         A certain milestone would be a certain number of people using this gadget. Or actual effect on suicide rate in a small region.
    1. After 10 years, what does moderate success look like? What about huge success?
-                Moderate success would be a slight drop in suicide rate and a huge success would be an item thatís not uncommon to see for the household along with a great drop in suicide rates.
+                Moderate success would be a slight drop in suicide rate and a huge success would be an item that‚Äôs not uncommon to see for the household along with a great drop in suicide rates.
