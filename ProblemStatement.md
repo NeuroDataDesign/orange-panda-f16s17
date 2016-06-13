@@ -25,14 +25,14 @@ d. What deliverable will we provide to the global citizens?
 i. What are the key challenges? 
 1. Can we measure different intensities of an emotional state?
 ii. Has anyone made a concerted effort to solve the problem? Give examples. 
-1. Emotiv has apps on their online store to determine a user’s mood. However, it has no application other than entertainment, and focus training.
+1. Emotiv has apps on their online store to determine a userâ€™s mood. However, it has no application other than entertainment, and focus training.
 iii. If so, what progress did they make, and why have they not succeeded?
 1. No one has tried this particular application yet, and if they have, it is not widely publicised.
 a. Gap
  . What gaps in scientific understanding must be bridged in order to solve this problem? 
 1. Can we determine the difference in intensities of different emotional states?
 2. How do we determine what a baseline normal reading is?
-i. What gaps in technological  capabilities must be bridged in order to solve this problem? 
+i. What gaps in technological Â capabilities must be bridged in order to solve this problem? 
 1. How can we make EEG headsets stylish, small, comfortable, reliable, stable, and dry (electrodes)?
 2. How can we make its battery last all day?
 ii. What organizational, financial, and/or technological challenges must be addressed in order to bridge these gaps?
@@ -61,11 +61,11 @@ a. Which citizens of the world will be affected?
  . Those suffering from mental health issues.
 4. Approach
  . What is the approach for filling these gaps and solving the larger problem?
-        I. Extensive trials via EEG 
+Â Â Â Â Â Â Â Â I. Extensive trials via EEG 
 b. What are each of the parts of the approach?
 c. How will each of these disparate parts be coordinated to bridge these gaps and then solve the larger problem? 
 d. How is this approach different from the status quo?
-e. How and when will success be measured/quantified?  Be as specific as possible.
+e. How and when will success be measured/quantified? Â Be as specific as possible.
 f. What does success look like at defined points along the roadmap?
 g. After 10 years, what does moderate success look like? What about huge success?
 
