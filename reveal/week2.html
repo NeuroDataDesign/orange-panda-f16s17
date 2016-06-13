@@ -675,6 +675,336 @@
 	</li>
 </ul>
 </div></div></section></section>
+<section data-id="6d10b315847ebf26fb8d97371e5dd12d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 250px; height: auto;" data-block-id="6102c32e9f8056f6e0c1f3063d964db3"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Independent Component Analysis</h1>
+</div></div></section><section data-id="a7f1058883b19d5e8787aa3437298527"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="9ea6d7333507ed0275e183bd7a0bf540"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Why?</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="5e06839751fb0204a4f16083b593aeb1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Principal component analysis: decorrelates inputs</li>
+	<li>However, resulting function may still have higher order statistical dependencies</li>
+</ul>
+</div></div></section><section data-id="626d320537cc385f6775d84ee611f2b1"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="2e2afe6640bac33f58cd9f02af22f9b9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Formulaic Representation</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="d428f3de08147379f325e96da7ac46b8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<p>x = My</p>
+
+<p>M = mixing matrix</p>
+
+<p>y = vector of independent sources</p>
+
+<p>x = input vector of measured results</p>
+</div></div></section><section class="stack" data-id="34b4328f726e66c51f648b2ba91e3ce5"><section data-id="d38188b05a06112bcc1ca035e101cb84"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="f8acb175c046cb5476cf7c948cb949a2"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Finding Source Matrix</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="f3390adffcadc57829a76a317345be19"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Recover the hidden sources by finding</li>
+</ul>
+
+<p>a = Wx</p>
+
+<p>a = maximally statistically independent vector</p>
+
+<p>W = "unmixing" matrix</p>
+
+<p>x = input from measurements</p>
+</div></div></section><section data-id="e28dd9c8f23a5f720e349a40e0090ce4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="fd90157e07d07d683e98f4226345b908"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Bell-Sejnowski</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="bdd361636e2b94dbdbdd72f7bab8f7c3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Estimate W by minimizing similarities between different components of the "a" matrix</li>
+	<li>Also maximizing direct relationships between "a" and the measured input "x"
+	<ul>
+		<li>This type of algorithm is called an "infomax" algorithm</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="e395c7caeddaafa31c106b3791f5ae36"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="d9bd944192085e6d4409fbf3a601bf39"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Gaussian Estimations</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="66cbc4b99ce7482612eb75c993977cf1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Linear mixtures of independent sources tend to be Gaussian</li>
+	<li>Thus, assuming the mixing matrix is Gaussian, assume sources are non-Gaussian</li>
+	<li>Find suitable non-Gaussian representations for the independent sources</li>
+	<li>Then estimate Gaussian relation mixing matrix based on result</li>
+</ul>
+</div></div></section></section><section data-id="16f1ef5125547964b32b5978717f733e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="fb082e02c45efc84030c6ef7f3e08ee8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Dimension Reduction (i.e. no Reduction)</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 88px; top: 338px; height: auto;" data-block-id="ab58b77d7a28b045da335a0071ede025"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>PCA causes dimension reduction, as reducing decorrelated variables</li>
+	<li>However, as ICA simply focuses on finding potential independent sources, may have more, less, or equal dimensions</li>
+</ul>
+</div></div></section><section data-id="a70b8e1bab365d2cfc2b615e4de992a5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="05bc656047f3c22448c25cdf2747740a"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Common Spatial Patterns (CSP)</h1>
+</div></div></section><section data-id="428b3e4e7cf3d5ada0bcfaf7f0dc82f8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="5ddf7df4cdd3a9bde6e3786e65fc74c9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Component Analysis vs Patterns</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="84a285db7387ab2406d39d1f6bc0576f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>In PCA and ICA, tried to discern specific related components</li>
+	<li>CSP takes a number of known outputs (i.e. movement of an arm and movement of a leg)</li>
+	<li>Sees how different already known spatial filters reflect from these specific movements</li>
+	<li>Try and find filters that have maximum variance with one set of outputs minimum with the others</li>
+</ul>
+</div></div></section><section class="stack" data-id="9628c42bb176e77d3c2e78f5225d2c28"><section data-id="ad6ccd73d4d9dc2f7a8f7e6303b4c40b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="4d13a0d38588510de5016c18bc6bec15"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Method for Solving (Higher Level)</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 338px; height: auto;" data-block-id="1a37a7ecedf8f11e045d61010229fcd6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>N = # of channels (i.e. number of locations receiving inputs)</li>
+	<li>T = # of samples in time per channel</li>
+	<li>Input data in form of centered and scaled N x T matrices (one for each tria</li>
+</ul>
+</div></div></section><section data-id="ca5b59ee8c9ad114fa039cce26d1da54"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="28b398af460148c74c62fe46e576c790"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Method for Solving</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="b9db7c3e4ab40bf2676549145bbd0aab"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>Find M spatial filters, given by an N x M matrix W</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="547ba8f4a76c095d3e41a8872691f4c6" style="min-width: 30px; min-height: 30px; width: 260px; height: 81.7526px; left: 350px; top: 327px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="194" data-natural-height="61" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2742578/CSPEq.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="c08c8bf4d670fb62b3481c944d2685be" style="height: auto; min-width: 30px; min-height: 30px; width: 744px; left: 126px; top: 435px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<ul>
+	<li>W is determined via finding the covariances and relating the 2 matrices</li>
+</ul>
+</div></div></section></section><section data-id="5ed1efb678c3a87df3d5bc8ad8fedcbb"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="030a7446eb8ba69c2031990f1eb845c7"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Artifact Reduction</h1>
+</div></div></section><section data-id="deeb49121718a891dfd30e7712874fa7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 97px; height: auto;" data-block-id="0c72daae4cd8dad393debe2e93d71786"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui">
+<h2>Excess Noise</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 171px; height: auto;" data-block-id="898bb96a190842a831ba85c7d1fcaae8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Eliminate outside factors influencing signal</li>
+	<li>External:
+	<ul>
+		<li>Out of body 50-60 Hz power-line noise reduced by Faraday cage</li>
+	</ul>
+	</li>
+	<li>Internal:
+	<ul>
+		<li>Rhythmic artifacts due to respiration and heartbeat (EHG)</li>
+		<li>Skin conductance changes- causes noise</li>
+		<li>Eye-movement + blinking (EOG) - high amplitude, 3-4 Hz</li>
+		<li>Muscle Movement (EMG) - 30 Hz and higher</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="602bcfa38849e876fd8172cdc316a13d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="ca6228bcb9b650d4a44df5b48ba53e59"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Thresholding</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="7f48c7c49f040ee63423d5baec489e0e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Find any contaminated data</li>
+	<li>Automatically reject it</li>
+	<li>Method:
+	<ul>
+		<li>See if magnitude does not exceed specific threshold</li>
+	</ul>
+	</li>
+	<li>Calibrate beforehand by causing said artifacts</li>
+	<li>Alternative: detect artifacts and then clean them out</li>
+</ul>
+</div></div></section><section class="stack" data-id="fbead02868c0e6a6f1d3377ceadd6489"><section data-id="f2bef75dfbf351737a7162cdbf65ab10"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="9bc7453967518d914477463d4bd07e12"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Band-Stop and Notch Filtering</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="d6af724ca3f38c1b14bc7098997d919b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Clean specific components of signals from certain frequency bands</li>
+	<li>Method:
+	<ul>
+		<li>Transform to frequency domain</li>
+		<li>Filter out desired band</li>
+		<li>Use inverse FFT for back to time to domain</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="5eee591cdb6b9326941221b04c27da36"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="517e111e2ef79e0695cfcc216401aa08"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Examples</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="b7d19ee766cd563f74fcde5259aa785d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>59 - 61 Hz band used to filter 60Hz power-line noise</li>
+	<li>1 - 4 Hz for reducing EOG</li>
+	<li>Low-pass filtering sometimes used to remove EMG, but can sometimes remove relevant data</li>
+</ul>
+</div></div></section></section><section data-id="31c434400911b0ef1b8c122b40695bdd"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="eaee3030e2c02eff678c6e7b4e0bca99"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Linear Modelling</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="abeb225c427133a9250fdf56599dfacc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui"><ul>
+<li>Assume effect is additive</li>
+<li>i = electrode, t = time, K = constant estimated via least-squares approach</li>
+<li>EOG and other noise signals can be measured directly</li>
+<li>Issues:<ul>
+<li>Multiple signals influencing EOG, etc., increase complexity</li>
+<li>The signals being removed may not be wholly independent from what's being measured</li>
+</ul>
+</li>
+</ul></div></div></section><section data-id="3368032b089be9279953f442579278be"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="991dfe80580f7ea89cf51277d22c9b46"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Principal Component Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="bf75922cbe16bfe3eec9b6cec0b1df6c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Because PCA finds spots of maximum variance, may automatically remove artifacts as it reduces variables</li>
+	<li>Components that are left that are artifacts may now be completely dissociated (represented orthogonally) to the rest of the data</li>
+	<li>Issue: artifacts not completely discernable if not completely uncorrelated</li>
+</ul>
+</div></div></section><section data-id="f725ccf9fda0f2b654fa3c497bfb4ce4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="3cf0206932283aefc1a2d8b75f745cb7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Independent Component Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="396b37d622e7a00ba148f7cf07217e0e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Unlike PCA, ICA looks for individual unrelated components and separates them</li>
+	<li>After this separation, all that must be done is look for the noise</li>
+	<li>This can be done via visual inspection or learning algorithms</li>
+</ul>
+</div></div></section><section data-id="8320b65d8ddd4fae051338ec6b738c44"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="6bdb56f775a18b2d5a4dd8dd7f97cf11"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Machine Learning</h1>
+</div></div></section><section data-id="674abbdd78237a8dee3756f45cdac569"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="0d01d94bee5675440c58c243ca9106c9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>2 Classes of Machine Learning</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="5827298486553bbd26977700b023daac"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Supervised
+	<ul>
+		<li>Training data has inputs and outputs</li>
+		<li>Discrete = classification</li>
+		<li>Continuous = regression</li>
+		<li>Function approximation</li>
+	</ul>
+	</li>
+	<li>Unsupervised
+	<ul>
+		<li>Discovery of hidden statistical structure in unlabeled/uncorrelated data</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="4c81701fb790016506a70302b4decd46"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="84065915220152d838d9d6f99df12cee"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Classification (Discrete Supervised) Techniques</h1>
+</div></div></section><section data-id="802029fd2470fcd57de2267e818e1ca7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="7d1fd231cfb198f6d9e826e443616859"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Binary Classification</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="dc753f7303ba638a204ca661434443c8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Classify into class 1 or 2</li>
+	<li>Find boundary between the 2 classes of data</li>
+</ul>
+</div></div></section><section class="stack" data-id="890bc32ac9e0babf72c2abbe73a666e1"><section data-id="56097353c9728acb5edfe86d846d9baa"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="9fa5d17ae7a631a4e3357f6ff35f6f9d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Linear Discriminant Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="7c823cef4f5ab70b46f12650c091679c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Linear binary classifier, project input onto hyperplane with space divided into 2</li>
+	<li>w is the hyperplane's normal vector</li>
+	<li>w0 represents the threshold (i.e. the divider)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="cecc7c22658053b0149890a847894777" style="min-width: 30px; min-height: 30px; width: 238.815px; height: 62px; left: 361px; top: 529px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="208" data-natural-height="54" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2742693/LDAEq.jpg"></div></div></section><section data-id="1add5aeb2d30eb8422e06688d7cef906"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="c986f83e8242e84d463fa7b4f8496c89"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Representing</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 700px; height: 468.67px; left: 129px; top: 147px;" data-block-id="7e943a5b370b4ad722bb6401c788919d"><div class="sl-block-content"><img data-natural-width="699" data-natural-height="468" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2742724/LDADiagram.jpg"></div></div></section></section><section data-id="d14fe5ec40e80d57d0e8afb3dbfbc1fc"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="ad47092191b27d241f91834fa0323330"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Regularized Linear Discriminant Activity</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 218px; height: auto;" data-block-id="d78d8b0b3680183da5f64cf48dd299ab"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Issue with LDA: doesn't account for outliers and non-Gaussian representations</li>
+	<li>RDA deals with outliers and overfitting</li>
+	<li>Alter covariance slightly to account for more generalized cases than represented by data</li>
+	<li>Lambda = regularization coefficient</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="348b2995cbe9864234bafa002e435667" style="min-width: 30px; min-height: 30px; width: 342.809px; height: 76px; left: 309px; top: 530px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="212" data-natural-height="47" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2742759/RDAEq.jpg"></div></div></section><section data-id="754b80021fb00c72b7017c83605904a0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="d46220c6ef15806b5ce29149b0ccb3e7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Quadratic Discriminant Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="7395e98a7299617e32db861223d6377b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Still assumes Gaussian</li>
+	<li>With linear, assume covariance for 2 sets is same</li>
+	<li>With quadratic, added variability of covariance, which gives larger variables to shift to optimize</li>
+</ul>
+</div></div></section><section class="stack" data-id="ead686580b4634fe18b9607362a9c2ed"><section data-id="e9e74c0bfaf84f987bb2ee3cd550748a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="237bfb5189bcf5e448f23009c315fe87"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Neural Networks</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="90428e90a586355ec6ee6763208f3cb6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Simulate brain's adaptive capabilities</li>
+	<li>Reduced into layers called perceptrons</li>
+	<li>Prone to overfitting</li>
+</ul>
+</div></div></section><section data-id="8d7a5cff2fe7925b51f1bdcdc90174e3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="c482f2696f87f5a8470064b7cf8ae919"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Diagram</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 700px; height: 358.408px; left: 129px; top: 202.5px;" data-block-id="0968767de30f28d82595d8756fc346db"><div class="sl-block-content"><img data-natural-width="666" data-natural-height="341" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2742800/NeuralNetworkDiag.jpg"></div></div></section><section data-id="4db52b7eea5e79ab6de328cdd2295a7b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="27853dd1069211c9cc6e3060a3a8f439"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Correction Coefficient Basis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="476bdcc4f4970aff11bb4de469b683c1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Unlike LDA, rather than finding and setting models, neural network will gradually correct itself</li>
+	<li>Method:
+	<ul>
+		<li>Training data is entered</li>
+		<li>Goes through process</li>
+		<li>Based on difference between output and expected output, will slightly modify weights</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="0e248b93f74909f961be3e8a0eec9315"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="3ad27ecafe1a80306a980b4675fa4641"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Multilayer Perceptrons</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="f86c1a00d56f6aec858bd9d9cbb0d824"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Use sigmoid functions rather than thresholds
+	<ul>
+		<li>Sigmoid advantage: more minute changes and differentiable for backpropogation</li>
+	</ul>
+	</li>
+	<li>Spread sigmoids throughout layers </li>
+</ul>
+</div></div></section></section><section data-id="6926b9f790170f82f2b93c7fa6d315ae"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 78px; height: auto;" data-block-id="44e3d5553967941edde55f265c148d9a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Support Vector Machine</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 152px; height: auto;" data-block-id="110eedad1e7d5e78f0bb05a910a6320e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>LDA picks a hyperplane dividing data points in half</li>
+	<li>SVM finds separating hyperplane with maximum margin between data points</li>
+	<li>The hyperplane is corrected based on slack variables to account for outliers</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="795b9c49b4b317c481cc5cabb1a118fb" style="min-width: 30px; min-height: 30px; width: 360px; height: 111.429px; left: 80px; top: 449px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="294" data-natural-height="91" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2742850/SVMEq.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="49338aa44a31924e0e3b0fc387e000ab" style="min-width: 30px; min-height: 30px; width: 360px; height: 249.485px; left: 508px; top: 381px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="544" data-natural-height="377" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2742854/SVMDiag.jpg"></div></div></section><section data-id="11fbbea7abc7de6b3ae5659380b00b61"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="fc3a84c0f0e47034e2c18103394daeaa"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Ensemble Classification Techniques</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="b2fc8f16817c45cf6d29f59b21d401ba"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Combine several classifier outputs into 1</li>
+</ul>
+</div></div></section><section data-id="83013c04c76da53cd102a693eb902dd5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="e0653b38111f0951464a8e81cbf16a12"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Bagging</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="68ffe2e8bec5a7648211241cf892dd06"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Generate m new training datasets</li>
+	<li>Train m classifiers</li>
+	<li>Classify a new input through all the classifiers, choose classification based on which class receives the most votes</li>
+	<li>Random forests: Bagging based on decision trees that has grown more popular in recent years</li>
+</ul>
+</div></div></section><section data-id="78983090d2d51674ffbba49ebbaee577"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="5e1f0b20e4883bb9b5e7ea24cac8fd7b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Boosting</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="4b696ea2695ce9abfa15385c7f56fb96"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Based on success of outputs, different classifiers are given different weights</li>
+	<li>These weights are used on the outputs of each classifier, and are used to sum together and compute a final decision</li>
+	<li>Like a higher level neural network</li>
+</ul>
+</div></div></section>
 							<section data-id="48559176d2b1136d77b9d20de4f0315b"><div class="sl-block" data-block-type="text" style="width: 885px; left: 39px; top: 70px; height: auto;" data-block-id="6e3ba2c2e2f2a1f11ffea886bc9a9cfe"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
 <h1><span style="font-size:0.9em">Multi-Class Classification</span></h1>
 </div></div>
