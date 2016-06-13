@@ -678,6 +678,266 @@
 				</div>
 				<div class="dimmer"></div>
 			</div>
+			<div class="slides">
+							<section data-id="48559176d2b1136d77b9d20de4f0315b"><div class="sl-block" data-block-type="text" style="width: 885px; left: 39px; top: 70px; height: auto;" data-block-id="6e3ba2c2e2f2a1f11ffea886bc9a9cfe"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.9em">Multi-Class Classification</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="5ba244d66d7e8a5c7ecc3bdabccd1a55" style="height: auto; min-width: 30px; min-height: 30px; width: 724px; left: 60px; top: 222px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>needed when there are more than two output signals</li>
+	<li>we can use <strong>majority voting</strong>, which does this:<br>
+	If we have N<span style="font-size:0.5em">Y </span><span style="text-align:left">classes, N</span><span style="font-size:0.5em; text-align:left">Y</span><span style="text-align:left">(N</span><span style="font-size:0.5em; text-align:left">Y</span><span style="text-align:left">-1) / 2 binary classifiers trained<br>
+	<span style="text-align:left">disadvantage: lots of classifiers needed</span><span style="font-size:0.5em; text-align:left"> </span></span>
+</li>
+	<li>we can also use <strong>one-versus the rest</strong>, which is:<br>
+	individual classifier separates out the unique one from the rest, highest value wins</li>
+</ul>
+</div></div></section><section class="stack" data-id="3db035232dca90616c97966b4b3bc0d7"><section data-id="db2e6d7904068081987ffdd3143163dc"><div class="sl-block" data-block-type="text" style="width: 885px; left: 38px; top: 22px; height: auto;" data-block-id="5500259826e82d728b9c307490e0e0c5"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1><span style="font-size:0.7em">More classification techniques</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 523px; left: 23px; top: 119px;" data-block-id="86e996afa121e15f4abb8570f7c3926c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><span style="font-size:1.2em"><strong>Nearest Neighbor (NN) </strong></span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="64cc78ae6031f4fd9e96a147e74effe1" style="height: auto; min-width: 30px; min-height: 30px; width: 720px; left: 80px; top: 172px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" dir="ui">
+<ul>
+	<li>input is assigned to class of nearest neighbor</li>
+	<li>distance calculated by <em>Euclidean distance</em> between vector (or Pythagorean theorem), with the equation below:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="ddb67216feea72c1d0dc3fb4ec190eb7" style="min-width: 30px; min-height: 30px; width: 510.4px; height: 116px; left: 115px; top: 341px;"><div class="sl-block-content" style="z-index: 14;" data-inline-svg="false"><img data-natural-width="66" data-natural-height="15" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2740128/eucledian.svg"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="cdca535985490fee735cbbb0fec01e1a" style="height: auto; min-width: 30px; min-height: 30px; width: 346px; left: 481px; top: 410px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:0.5em">https://en.wikipedia.org/wiki/Euclidean_distance</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="8b07c8164b8e2580918fb0b3c9d2ee29" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 100px; top: 465px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<ul>
+	<li>this leads to discontinuity and only piecewise linear boundaries because it draws boundaries based on the perpendicular bisector of two data pts</li>
+</ul>
+</div></div></section><section data-id="bf3c52f2c6fa29337bc93eee85ad6c28"><div class="sl-block" data-block-type="text" style="width: 885px; left: 38px; top: 22px; height: auto;" data-block-id="fc91858d305b09d179d2751623156041"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1><span style="font-size:0.7em">More classification techniques</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 523px; left: 23px; top: 119px;" data-block-id="2aa7462a7443917729d42408c6f64f6d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><span style="font-size:1.2em"><strong>k-Nearest Neighbors</strong></span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 720px; left: 80px; top: 172px;" data-block-id="71fc312d8846309d61ca0d25474f674d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" dir="ui">
+<ul>
+	<li>Advantage: less sensitive to outliers</li>
+	<li>Disadvantage: doesn't take in account the difference in distance</li>
+	<li>input assigned to class most common among its k nearest neighbors, where k is a small integer</li>
+	<li>ex: there are white and black points, grey point is closest to one black point, but the next closest points are all white. k-NN will be more accurate</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="6a5c04d58145016cc93a40b46080affd" style="min-width: 30px; min-height: 30px; width: 360px; height: 167.671px; left: 105px; top: 484px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="438" data-natural-height="204" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2740154/Screen_Shot_2016-06-13_at_5.42.33_AM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="7f6cabcef3f93066868334ac7f9c1a72" style="height: auto; min-width: 30px; min-height: 30px; width: 369px; left: 474px; top: 529px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:0.5em">Brain-Computer Interfacing by Rajesh P. N. Rao</span></p>
+</div></div></section></section><section class="stack" data-id="2b39dcd125c8ff212c91490abb449cec"><section data-id="d98d313707287c139a72775fe305fcda"><div class="sl-block" data-block-type="text" style="width: 862px; left: 49px; top: 31px; height: auto;" data-block-id="493a02bae95647e606c43fa9ad077679"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Learning Vector Quantization (LVQ) </h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="5d7efb78ffcbae6bd34fee6677b7d79c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>small set of labeled vectors (codebook vectors) will act as references</li>
+	<li>label pt, and calculate the Euclidean distance between input <strong>x</strong> and the closest codebook vector <strong>m</strong>
+</li>
+	<li>codebook vectors are random at first, will adapt to be more similar to sample if correctly classify, opposite occurs as well</li>
+	<li>each codebook vector is weighed equally</li>
+</ul>
+</div></div></section><section data-id="15fdb316c729ed282efb0b9b28a6a085" class="has-light-background" data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2740195/Screen_Shot_2016-06-13_at_5.52.28_AM.png" data-background-color="rgb(243,243,243)" data-background-size="initial"><div class="sl-block" data-block-type="text" style="width: 862px; left: 49px; top: 31px; height: auto;" data-block-id="6c633028829fa550e887d643fc45470d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Distinction Sensitive LVQ (DSLVQ)</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="e7c1cb2aa34bea582aa3b6c1f4b52252" style="height: auto; min-width: 30px; min-height: 30px; width: 721px; left: 113px; top: 189px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui"><ul>
+<li>for cases weighing codebook vectors differently due to discriminative ability</li>
+<li>weighed distance function, uses this equation:</li>
+</ul></div></div></section></section><section data-id="c74bbe699839c60b1ef565888d99fd70"><div class="sl-block" data-block-type="text" style="width: 862px; left: 49px; top: 31px; height: auto;" data-block-id="2984b90f8f25beae967ed758b8637686"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Naive Bayes Classifier</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 131px; height: auto;" data-block-id="0e0ce90144d245eadae33f279304132a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>probabilistic classifier based on Bayes' rule with strong independence assumptions ("independent feature model")</li>
+	<li>specific input belongs to a certain class based on large number of features, assuming these features are independent of each other</li>
+	<li>pick the class with maximum posterior probability, which is computed by:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="e35d3af6fceff802d0a28a05efa246e0" style="min-width: 30px; min-height: 30px; width: 469.577px; height: 87px; left: 128px; top: 457px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="421" data-natural-height="78" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2740240/Screen_Shot_2016-06-13_at_6.01.50_AM.png"></div></div></section><section data-id="fc5d56eebaa1e0bb6bd7f3dc738bac34"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 35px; height: auto;" data-block-id="c59a67a0046647b030b3820e0e425841"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1><span style="font-size:0.7em">Evaluation of Classification Performance</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 265px; height: auto;" data-block-id="2eeaaa86f9d984b0cc813b5d1ffe972a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle">
+<h2><span style="font-size:0.7em">"But how good is the method?"</span></h2>
+</div></div></section><section class="stack" data-id="679908114741cffe73781dde5a2debd8"><section data-id="a858b675d6dc13db893bcb31e1742385"><div class="sl-block" data-block-type="text" style="width: 833px; left: 80px; top: 62px; height: auto;" data-block-id="8afd9ddc5c941fc32f55c1173a776fbb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Confusion Matrix </h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 136px; height: auto;" data-block-id="01c3f691f1431650540d153ab426564f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>N<span style="font-size:0.5em">Y </span><span style="font-size:0.9em">x</span> N<span style="font-size:0.5em">Y </span>matrix, where N<span style="font-size:0.5em">Y</span> is the number of classes. Rows are true class labels, columns are outputs</li>
+	<li>let's take the case of a binary classification, we will be able to see the four entries that are:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="78651edc268d52e8a31ca5a50ce8d44c" style="min-width: 30px; min-height: 30px; width: 378px; height: 148.406px; left: 131px; top: 303px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="433" data-natural-height="170" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2740261/Screen_Shot_2016-06-13_at_6.08.54_AM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="2f3d2f80821493e31939375ae4c08239" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 131px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<ul>
+	<li>note that as the threshold changes, the number of TPs and FPs also change</li>
+</ul>
+</div></div></section><section data-id="3886d2fbe822060e44e2c1517beedb3f"><div class="sl-block" data-block-type="text" style="width: 833px; left: 80px; top: 33px; height: auto;" data-block-id="33a65cedde85bf38e3199c689e2f3e21"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Receiver Operating Characteristic (ROC) Curve</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 195px; height: auto;" data-block-id="a80309629a5afe773612613ff6be6817"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>shows how the variation of parameters affect proportions of TPs and FPs</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="294e91fe38966d213dd9091a2b100d5c" style="min-width: 30px; min-height: 30px; width: 434px; height: 310px; left: 40px; top: 294px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="917" data-natural-height="655" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2740282/Screen_Shot_2016-06-13_at_6.15.55_AM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="aed9742800b9538d19f78d67bff912ac" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 216px; top: 598px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><span style="font-size:0.5em">http://web.cs.ucla.edu/~mtgarip/images/ROC_curve.png</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="d6d88de7c1ffe09e41962f9f6c0e14cd" style="height: auto; min-width: 30px; min-height: 30px; width: 429px; left: 480px; top: 342px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>the dotted line represents random chance, the more upper left = better than random chance</p>
+</div></div></section></section><section data-id="d545c5aa46b5e33c723ecb7c42053fca"><div class="sl-block" data-block-type="text" style="width: 863px; left: 49px; top: 41px; height: auto;" data-block-id="efd1da8c6366ad0d744652f3d4853d65"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Classification Accuracy (ACC)</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 124px; height: auto;" data-block-id="163633e9ad844c01c259d18188df3523"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>ratio of correctly classified samples to the total number of samples</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="87839c10ac5d7e85e2f0e25c4b0958fe" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 88px; top: 219px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>ACC = TP + TN / (TP + TN + FP + FN)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="bb9a0a90397200a96d0a84e8af840c19" style="height: auto; min-width: 30px; min-height: 30px; width: 443px; left: 49px; top: 272px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<ul>
+	<li>error rate, err = 1 - ACC</li>
+	<li>chance level, ACC<span style="font-size:0.5em">o </span><span style="text-align:left">= 1/N<span style="font-size:15px; line-height:19.5px">Y </span></span>
+</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="db9f6b60d3526369a86423d1ea5369eb" style="height: auto; min-width: 30px; min-height: 30px; width: 330px; left: 49px; top: 363px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><strong>Kappa Coefficient</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="3214ff5922157b64a9f1276266f24c65" style="height: auto; min-width: 30px; min-height: 30px; width: 526px; left: 8px; top: 412px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p>K = (ACC - ACC<span style="font-size:0.5em">o</span><span>)</span><span style="font-size:0.5em"> </span><span>/ (1 - ACC<span style="font-size:0.5em">o</span>)</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="b652045546aa559779a146b3002a257c" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 63px; top: 461px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;">
+<p>independent of number of samples per class, and number of classes<br>
+K = 0 represents chance level, K = 1 is perfect classification, K &lt; 0 bad</p>
+</div></div></section><section data-id="1f62b904bbc91159a72d588381740360" class="has-light-background" data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742501/Screen_Shot_2016-06-13_at_1.46.32_PM.png" data-background-color="rgb(241,240,240)" data-background-size="initial"><div class="sl-block" data-block-type="text" style="width: 915px; left: 23px; top: 47px; height: auto;" data-block-id="a1f8e953fc973844c771eeaf6b1059bf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Information Transfer Rate (ITR)</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 64px; top: 140px; height: auto;" data-block-id="eb0064df52b2e21e34a843882a30f62c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 12;">
+<ul>
+	<li>measures both speed and accuracy of BCI</li>
+	<li>the important assumption is that there must be the same possibility to be selected for the sample at different trials, ITR is represented by this equation:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="7e07730b8d2f500698518695d76df5d8" style="min-width: 30px; min-height: 30px; width: 311.606px; height: 273px; left: 152px; top: 385px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="452" data-natural-height="396" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742518/Screen_Shot_2016-06-13_at_1.49.21_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="bd7265b700258f56a09cdff410f37f0a" style="height: auto; min-width: 30px; min-height: 30px; width: 361px; left: 416px; top: 591px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><span style="font-size:0.5em">BCI book</span></p>
+</div></div></section><section data-id="16f67e0333ff177afbad7396018a56a9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 55px; height: auto;" data-block-id="db956384087de01f82d096ab180fab09"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Cross Validation</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 163px; height: auto;" data-block-id="ef020f963f8df1ff762355035965db6b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>estimation of error rate err</li>
+	<li>classifier is tested on a different set of data (test data)</li>
+	<li>one for training and one for testing</li>
+	<li>
+<em>K-fold cross-validation:</em><br>
+	 -the data is split into K subsets of equal size, and K-1 is used to train classifier, remaining set for testing</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="13eda38768850b8a18f6af20c0868a05" style="min-width: 30px; min-height: 30px; width: 226.025px; height: 93px; left: 94px; top: 397px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="192" data-natural-height="79" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742534/Screen_Shot_2016-06-13_at_1.53.54_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="b25e557da3c51864f3453cb1008b28f0" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 320px; top: 412px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>tested K times, therefore resulting in K different error rates</p>
+</div></div></section><section data-id="f6e410c999fb425333423aa3384af5e0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 56px; height: auto;" data-block-id="946edf73cf0f55f388e4a7f779e317b2"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Regression</h1>
+</div></div></section><section data-id="e9f0f55afdf19585d69012fd87447d32"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 44px; height: auto;" data-block-id="160afe7213690443da1d6de094b3bac1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Linear Regression</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="24106ac5267d3a220a1bad6456a830b4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>Assume: underlying function generating data is linear</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="1cef935691fbf46824491b25c7d68c66" style="min-width: 30px; min-height: 30px; width: 222px; height: 72.5561px; left: 91px; top: 210px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="205" data-natural-height="67" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742551/Screen_Shot_2016-06-13_at_1.57.16_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="5fa9f62eb07545ec628939c9e882107b" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 320px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><strong>w</strong> is a "weight vector" or linear filter<br>
+<strong>u</strong> is the input, a vector with K dimensions</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="bf6e69326ed4f98c552f2dd15e69516b" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 91px; top: 323px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<ul>
+	<li>
+<strong>Linear least squares regression</strong>: finds w that minimizes sum of squared error</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="5e52b0b27501f15841533804137c201e" style="min-width: 30px; min-height: 30px; width: 233px; height: 98.1053px; left: 80px; top: 430px;"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="228" data-natural-height="96" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742572/Screen_Shot_2016-06-13_at_2.00.10_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="e7a84dd946a5ec22ca3b6f6594b7b2d7" style="height: auto; min-width: 30px; min-height: 30px; width: 586px; left: 320px; top: 420px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;">
+<p><strong>d</strong> is vector of training outputs<br>
+<strong>U</strong> is input matrix with rows <strong>u</strong> from training set</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="005bab16571ae3c922aba21bd5715885" style="height: auto; min-width: 30px; min-height: 30px; width: 653px; left: 80px; top: 552px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<ul>
+	<li>Advantage: simple to calculate</li>
+	<li>Disadvantage: overly simplistic and doesn't account for most non-invasive BCIs</li>
+</ul>
+</div></div></section><section class="stack" data-id="e052ae81f62aea1b7523aafe68f96580"><section data-id="8cd3634cddf3953193c5a22edf91cb94"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 46px; height: auto;" data-block-id="91f4e9fa41e076a5591b2dd7bca247ba"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Neural Networks and Backpropagation</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="f11b0f1cb28437b498723c9a755e453c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>non-linear function approximation</li>
+	<li>perceptron (each neuron utilizes threshold output function on weighted sum of inputs)</li>
+	<li><em>sigmoid (logistic) output function:</em></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="af0744c5d50f7850990e80ea1e09580f" style="min-width: 30px; min-height: 30px; width: 180px; height: 45px; left: 114px; top: 375px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="164" data-natural-height="41" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742600/Screen_Shot_2016-06-13_at_2.05.39_PM.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="1e8a4353f5bcd53d854dc7e781b860b5" style="min-width: 30px; min-height: 30px; width: 158.677px; height: 54px; left: 321px; top: 366px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="191" data-natural-height="65" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742602/Screen_Shot_2016-06-13_at_2.06.09_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="9c108324ac76122272182b058fdb66fb" style="height: auto; min-width: 30px; min-height: 30px; width: 666px; left: 90px; top: 435px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>this results in a nicely differentiable function!</p>
+</div></div></section><section data-id="b9b4e2b41dbe1a37446b1c31fd117821"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 56px; height: auto;" data-block-id="48c37faa3569a4a1ee31e98c42e88ada"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Multilayer neurons</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 163px; height: auto;" data-block-id="2c85172c06d9c8a670c0d48fc6449b58"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>output of one layer feeds another layer</li>
+	<li>most commonly a three layer network<br>
+	i. input , ii. hidden, iii. outer</li>
+	<li>this network can arbitrate some nonlinear function</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="3fd7ad8f603319af923bcadc983c2f95" style="min-width: 30px; min-height: 30px; width: 360px; height: 68.0315px; left: 14px; top: 342px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="254" data-natural-height="48" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742633/Screen_Shot_2016-06-13_at_2.12.03_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="7802f45b4d80e17850a82d507accd6e7" style="height: auto; min-width: 30px; min-height: 30px; width: 543px; left: 374px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>V is weights from input to hidden</p>
+
+<p>W is the weights from hidden to output</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0456fbbcf4227aa0bc37703e159c8853" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 80px; top: 451px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>But wait! We only know the error for the output layer, so we need to back propagate</p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="89f5a01fa0c64be41560bbed95e3e339" style="min-width: 30px; min-height: 30px; width: 425.929px; height: 67px; left: 419px; top: 583px;"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="445" data-natural-height="70" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742661/Screen_Shot_2016-06-13_at_2.19.49_PM.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="fb99fa9fdcc58def1aea5f070d36f8a2" style="min-width: 30px; min-height: 30px; width: 360px; height: 94.8092px; left: 14px; top: 569px;"><div class="sl-block-content" style="z-index: 17;"><img data-natural-width="262" data-natural-height="69" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742662/Screen_Shot_2016-06-13_at_2.19.44_PM.png"></div></div></section></section><section data-id="cd0cf0cd9f3403560b33ec6b0d034505"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 51px; height: auto;" data-block-id="4c2fb42beeeea1aff5b92488190a09d8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Radial Basis Function (RBF) Networks</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 222px; height: auto;" data-block-id="09d478388abb7ae57445a055b3b82b45"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>recall linear regression:<br>
+	if we want to increase the power of the model, we will need to include some non-linear basis functions</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="7c294166b7d2829e59f8477d7044d773" style="min-width: 30px; min-height: 30px; width: 295.427px; height: 95px; left: 93px; top: 350px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="255" data-natural-height="82" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742672/Screen_Shot_2016-06-13_at_2.22.31_PM.png"></div></div></section><section data-id="f727f959953e33055395c1178bdf636e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 51px; height: auto;" data-block-id="41ab85ecbacc47e1bcecb9b1e8bc31d9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Gaussian Processes</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="831e5d227abd125ff71657482e486716"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>problem: algorithm are more certain in regions with more training examples, but the opposite is true</li>
+	<li>Gaussian process regression:<br>
+	   -measure of uncertainty regarding outputs<br>
+	   -nonparametric, can change to accommodate the<br>
+	    complexity of the data</li>
+	<li>ability to predict the next output given the next input </li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="4917155e8737cb10adbbfc9e8be8001d" style="min-width: 30px; min-height: 30px; width: 282.405px; height: 86px; left: 93px; top: 420px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="243" data-natural-height="74" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742747/Screen_Shot_2016-06-13_at_2.32.08_PM.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="28226ad83d8a0d10b08b6d7dc79e7660" style="min-width: 30px; min-height: 30px; width: 360px; height: 197.472px; left: 400px; top: 420px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="443" data-natural-height="243" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2742752/Screen_Shot_2016-06-13_at_2.33.03_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="746c082368161b94c9fbba2963272647" style="height: auto; min-width: 30px; min-height: 30px; width: 418px; left: 0px; top: 533px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>calculating uncertainty can stop accidents!</p>
+</div></div></section>
+						</div>
 
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
