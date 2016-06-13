@@ -1,0 +1,697 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+<div class="reveal">
+				<div class="slides">
+					<section data-id="9fa507d7b7b10fbb2139d4d2822bb9f8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="ac03b78af35a04e6dcb7a9e9df508d6b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1>Brain-Computer Interfacing</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="a4b45bdbc10d666afe05cadf90f345cb" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 31px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Book by: Rajesh P. N. Rao</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="edb7b5ab03ab5c5f3ab38b8b984c1c38" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 451px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Presentation by:</p>
+
+<p>Michael Natenzon, Tsun Wong, and Nitin Kumar</p>
+</div></div></section><section data-id="52bdc076112ccb6db37c29197bdbb9b4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="2247072a4a9e61dafac364b383dd6a48"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Signal Processing</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 265px; height: auto;" data-block-id="d3d59d61caacd7a8f0b159e1b4dda714"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Extracting Spikes from raw signals</li>
+	<li>Extracting Features for classification</li>
+	<li>Applicable with EEG, ECoG, and MEG</li>
+</ul>
+</div></div></section><section data-id="d7e0e4ee020699c179281f21c32026b8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="976e148c8af649715cfd7626b42f567a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Spike Sorting</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 265px; height: auto;" data-block-id="cc1c8fbc359a701f2b161964d852fd3f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Invasive Approaches
+	<ul>
+		<li>Isolate and extract spikes emitted by a single neuron (per recording electrode)​</li>
+		<li>Multiunit (Neural) Hash
+		<ul>
+			<li>Spikes from neighboring neurons --&gt;
+			<ul>
+				<li>Higher amplitude deflections in recorded signal</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="1da934062b030dea14ba01b7291f0c91"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="67b1163cec3d2cf7a3d8f11d549c31c0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Simple Method</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 265px; height: auto;" data-block-id="3c6eb1bce3136a5cfeaace552e7234c8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Peak Amplitude
+	<ul>
+		<li>Strong signals from neurons at different distances
+		<ul>
+			<li>But can be identical for different neurons</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>Window Discriminator
+	<ul>
+		<li>Experimenter visually examines data</li>
+		<li>Places windows on aligned, similar spikes
+		<ul>
+			<li>All spikes crossing 1+ windows is same neuron</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="e608ed0e2d11291266c427ce0b0deaaa"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="c9715f0bb86907a25ae14e2b0f9ef4d3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Trend</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 265px; height: auto;" data-block-id="49abc70f97830b0334b3ae52a73ebe44"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Cluster spikes into group based on shape</li>
+	<li>Each group = spikes from 1 neuron
+	<ul>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section class="stack" data-id="aad887af218ede756c1efc8b9f6e5f15"><section data-id="5ff442a4055065a83f405c7a306b489a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="c2967f6d73a688666b3a9a0efd92b1f0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Frequency Domain Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 265px; height: auto;" data-block-id="1400cc1854fb5efbf6e4bd2c9b035452"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Non invasive
+	<ul>
+		<li>Captures correlated activities of many neurons
+		<ul>
+			<li>Repetitive activity</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>Fourier Analysis</li>
+	<li>
+	<ul>
+		<li>
+<span style="text-align:left">Convert a signal into a weighted sum of sine and cosine waves</span>
+		<ul>
+			<li>Of different frequencies / ampltudes</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="1f2ad88578747236df6c5aa3b3fd7cbb"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="26ec91702b56098944f27788b49ee331"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Example</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 265px; height: auto;" data-block-id="b3f7068a5fa77934fdfba6d6d6564f09"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Overt and Imagined Movements
+	<ul>
+		<li>Power changes in:
+		<ul>
+			<li>Mu (8-12 Hz)</li>
+			<li>Beta (13-30 Hz)</li>
+			<li>Gamma (&gt;30 Hz)</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="246a4c81fcce9dc2d3b7b56fd302f406">
+
+<div class="sl-block" data-block-type="image" data-block-id="6ba2b0063079598a49473cbfd2819f7d" style="min-width: 30px; min-height: 30px; width: 671.933px; height: 202px; left: 145px; top: 411px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1600" data-natural-height="481" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741717/FullSizeRender__1_.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="a19b12a6f99da71f61d6e4a2c646df8a" style="min-width: 30px; min-height: 30px; width: 444.484px; height: 364px; left: 252px; top: 47px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1099" data-natural-height="900" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741720/FullSizeRender.jpg"></div></div></section><section data-id="f2d4172f7e34d34647f84bcd2b8f2b92"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 79px; height: auto;" data-block-id="eee86fbac66d97c7939e8553fa14e5eb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Fourier Expansion</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 183px; height: auto;" data-block-id="d2441d6ed33df26a4bd757c921f68cde"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Expansion of period of periodic signal s(t)
+	<ul>
+		<li>Sum of infinite terms </li>
+	</ul>
+	</li>
+	<li>Synthesis of signals
+	<ul>
+		<li>Sum up sin/cos functions with different weights (a/b)</li>
+	</ul>
+	</li>
+	<li>Analysis of signals
+	<ul>
+		<li>Weights (a/b) are calculated from input signals
+		<ul>
+			<li>Also referred to as amplitudes</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="42e2521ebfdff60686a4f1da206f6030"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 103px; height: auto;" data-block-id="62da67852d6758e143ccde2ceeab4fc2"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Applications</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="4ed87560cbd8a9e3e21c09f881a248bc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Filtering based on frequency
+	<ul>
+		<li>EEG signals are often corrupted by:
+		<ul>
+			<li>Line noise</li>
+			<li>60 Hz in US from
+			<ul>
+				<li>60 Hz AC power supply</li>
+			</ul>
+			</li>
+			<li>Filtered using a "notch" filter</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section class="stack" data-id="330bb76e56f36db2cb9ef37d1dfbcb5b"><section data-id="90345b945db3b92463b7c7026420401a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 50px; height: auto;" data-block-id="f8b84308e66cf47713b06b20f7146716"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Fourier amplitudes</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="d2527bb096270b263263cece0a7dd517" style="min-width: 30px; min-height: 30px; width: 512.393px; height: 261px; left: 224px; top: 199px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1600" data-natural-height="815" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741730/FullSizeRender__2_.jpg"></div></div></section><section data-id="661d6209ba8f9b036e1b1760d627809e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 190px; height: auto;" data-block-id="b61dd09d83195437e7f23bdfe9ed8d6d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>What's happening</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 358px; height: auto;" data-block-id="1db9b1e3adde6f8e385daaea91fb78d6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Correlation between input s(t) and a sin/cos wave
+	<ul>
+		<li>Of a given frequency</li>
+	</ul>
+	</li>
+	<li>The similarity is captured by a(n) and b(n)</li>
+</ul>
+</div></div></section></section><section data-id="54826303e02f830f4c311bece8dc5915"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 87px; height: auto;" data-block-id="ff1422e5cb2e665909c5f0ec6f29473a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Fourier series</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 88px; top: 191px; height: auto;" data-block-id="23f3b8f4fa682a81abb53c625b39fca0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Fourier transform of signal s(t)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="d7c1e0919f2d801e2b9d8aef91e6a86b" style="min-width: 30px; min-height: 30px; width: 360px; height: 301.141px; left: 300px; top: 258px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1052" data-natural-height="880" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741734/FullSizeRender__3_.jpg"></div></div></section><section data-id="da017e7a17581a97e7e951e69e13a75e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 41px; height: auto;" data-block-id="20525130c3446bc7f7c5b33d4e030640"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Discrete Fourier Transform </h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 157px; height: auto;" data-block-id="452138918e1434d92878bcb7a2d2e551"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Time series sampled at time points t = 0,..., T-1</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="6e0dcc948adde6a8ff4bc4f467800590" style="min-width: 30px; min-height: 30px; width: 326.2px; height: 420px; left: 332px; top: 219px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="699" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741738/FullSizeRender__4_.jpg"></div></div></section><section data-id="fe34fee306ca9cdab847f69f459bfb4b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 63px; height: auto;" data-block-id="6743d69c5c90aa550ef33af4de1fb56e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Discrete Fourier Transform </h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 159px; height: auto;" data-block-id="b184c4a0fd55ef06a18cfdfd72653461"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 12;">
+<ul>
+	<li>Amplitude / Phase Spectrum</li>
+	<li>BCI
+	<ul>
+		<li>Focus on magnitude of changes in different frequencies (based on task)</li>
+		<li>Found with Power Spectrum</li>
+	</ul>
+	</li>
+</ul>
+
+<p> </p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="b722d4c650d004332c0702404ceab540" style="min-width: 30px; min-height: 30px; width: 360px; height: 114.75px; left: 300px; top: 374px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1600" data-natural-height="510" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741763/FullSizeRender__5_.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="6fe723660b37066c1b24c25102ff8dd2" style="min-width: 30px; min-height: 30px; width: 360px; height: 34.875px; left: 300px; top: 490px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="1600" data-natural-height="155" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741765/FullSizeRender__6_.jpg"></div></div></section><section data-id="e487d2ccc64db00b285ea2998d9cff33"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 63px; height: auto;" data-block-id="2b6691c0519fc1cd08015431aa030a1f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Fast Fourier Transform (FFT)</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 235px; height: auto;" data-block-id="63ea42da43174affd340cc51db37ae12"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Speed Difference
+	<ul>
+		<li><span style="text-align:left">DFT = T^2 mathematical operations</span></li>
+		<li>FFT = T long T mathematical operations</li>
+	</ul>
+	</li>
+	<li>Cooley-Tukey Algorithm
+	<ul>
+		<li>Repetitively breaks down a DFT into smaller DFTs</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section class="stack" data-id="b9fc4fe46fc81913029b8a4aa27e7aba"><section data-id="9348e9c214a629fee038cfff02e7c90b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 63px; height: auto;" data-block-id="b5e8c088b7b6d2ec2cfe094337cee833"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Applications</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 235px; height: auto;" data-block-id="90afb1543679e6c9b7632f43b6fbf38a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Extract power spectrum over a time interval (FFT)
+	<ul>
+		<li>Power in given frequency is analyzed</li>
+	</ul>
+	</li>
+	<li>Ex. Motor movement or imagery
+	<ul>
+		<li>Reduces power in Mu frequency band
+		<ul>
+			<li>(8-12 Hz)</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>Ex. Subject-specific frequencies
+	<ul>
+		<li>Subject performs movements</li>
+		<li>Frequency bands with robust changes in power</li>
+		<li>BCI through movement imagery</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="7c1d47a6654b165d2f9e470df0d129e8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 63px; height: auto;" data-block-id="e33e46d95f0c062206c430e14fa85798"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Applications</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 235px; height: auto;" data-block-id="c69c38ed52ce6c4ff7fff08e4968cb2f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Use features bank
+	<ul>
+		<li>Machine Learning Algorithm selects features
+		<ul>
+			<li>Enhance classification accuracy on test data</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="7babde1660a027320ff6f357ae3fe357"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 63px; height: auto;" data-block-id="983d9a21dc7599548bb820a86b1fd49e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Fourier Analysis Downsides</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 235px; height: auto;" data-block-id="baab6f05612b5e828545b53b04cd337a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Representing finite, non-repetitive signals</li>
+	<li>Showing sharp peaks and discontinuities</li>
+	<li>Assumes stationary signal
+	<ul>
+		<li>Brain's statistical properties change</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="6705d926045cb926f1935a1f9fdbcb12"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 63px; height: auto;" data-block-id="f5aa4af18c26a752f9dc6dae7a0d8bbc"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Short Term Fourier</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 235px; height: auto;" data-block-id="5da749c8e772f5372392f9c823266483"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>STFT</li>
+	<li>Fourier analysis over short time windows
+	<ul>
+		<li>Small window = good temporal, poor frequency</li>
+		<li>Large window = poor temporal, good freq.</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="428073e6982a072408bf12b96b49fd06"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="9301f99b0357919cab454922b7f081cf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Solution: Wavelet Transform</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 235px; height: auto;" data-block-id="b5922db6cc7179938199f95b2b252bc2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Wavelet = finite bases function
+	<ul>
+		<li>Scaled + translated copy of mother wavelet
+		<ul>
+			<li>Mother wavelet = single finite length waveform</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>Represents original signal as linear combo of wavelets
+	<ul>
+		<li>Signal is analysed using appropriate wavelet coeff.</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="3d3389c0af841c6eceb41a758adfb60c" style="min-width: 30px; min-height: 30px; width: 495.733px; height: 167px; left: 233px; top: 477px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1600" data-natural-height="539" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741767/FullSizeRender__7_.jpg"></div></div></section><section class="stack" data-id="6a2a3ef41c6828dd325c1c50cd5c7a7e"><section data-id="5554d3cccf801618ac820c458c85d82b"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="f574712170c6bb6c066fb7790275d368"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Normalized Slope Descriptors</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="a51abf8a937418e422b4139180a11c93"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<p>For Time Varying Signals</p>
+
+<ul>
+	<li>A.k.a. Hjorth parameters
+	<ul>
+		<li>Mean Power (activity)
+		<ul>
+			<li>a(0) = Signal variance in epoch</li>
+		</ul>
+		</li>
+		<li>Root-Mean-Square Frequency (mobility)
+		<ul>
+			<li>a(2) = Signal's 1st derivative variance</li>
+		</ul>
+		</li>
+		<li>Root-Mean-Square Frequency Spread (Complexity)
+		<ul>
+			<li>a(4) = Signal's 1st derivative variance</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="98d5df839d7a4534a3304b310397c4e3" style="min-width: 30px; min-height: 30px; width: 185px; height: 265.55px; left: 738px; top: 156px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="627" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741770/FullSizeRender__8_.jpg"></div></div></section><section data-id="4dc767b63ee8f1f51570d3d1a8d43e5d"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="2d4c24dffa29be225718efba262a04a4"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Benefits of Hjorth Parameters</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 235px; height: auto;" data-block-id="b66241be9945e166523f5ea7a7458342"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<p>For Time Varying Signals</p>
+
+<ul>
+	<li>Based on variance
+	<ul>
+		<li>Much faster to compute</li>
+	</ul>
+	</li>
+	<li>Used for:
+	<ul>
+		<li>Ongoing characterization of time varying signals</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="3ffbb446e3325c1e257341d89a630305"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="4b7f58dde57d0cf2cf3b424b5fd651d2"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Fractal Dimension</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 235px; height: auto;" data-block-id="3b959cc15dc00bb70d37f8b2ca615075"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Fractal = property of self-similarity
+	<ul>
+		<li>Repetition of parts of a signal throughout</li>
+		<li>Quantitative measure of self-similarity</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section class="stack" data-id="727d5d123ad7a45e5d269c2fe7e84e84"><section data-id="aa4bb646fa3c428a5f644ce9287e96f4"><div class="sl-block" data-block-type="text" style="width: 872px; left: 45px; top: 39px; height: auto;" data-block-id="1f0ffa59c9045cb53ddd36cec4b33fab"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Autoregressive Model</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 122px; height: auto;" data-block-id="6c01e3a7441eb8fb189bee5dd2b0586c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Natural signals usually correlated (over time or space)
+	<ul>
+		<li>Allows to predict based on past measurements</li>
+	</ul>
+	</li>
+	<li>Assumes signal properties are stationary
+	<ul>
+		<li>E = zero mean white noise
+		<ul>
+			<li>accounts for diff. btwn. signal and linear weighed sum approximation</li>
+		</ul>
+		</li>
+		<li>p = order of AR model
+		<ul>
+			<li>window of past inputs used to predict</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="02d47404bbaf21a8b699da13d251e298" style="min-width: 30px; min-height: 30px; width: 360px; height: 171.137px; left: 301px; top: 484px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1117" data-natural-height="531" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741771/FullSizeRender__9_.jpg"></div></div></section><section data-id="0c588d126e32b0691a5b83fc1eb158e4"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="eecee31fee366f74de27f8b312f3fa6b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Adaptive Autoregressive Model</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 75px; top: 235px; height: auto;" data-block-id="9b2cec85b6f6e4be00e9797d054cf8f1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Includes a time-varying set of coefficients a (i,t)</li>
+</ul>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<ul>
+	<li>a (i,t) updated using recursive least-squares optimization
+	<ul>
+		<li>Kalman filtering</li>
+		<li>Captures local statistical structure of signal over time</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="0c532e6da1d51990ff783ebed88046cb" style="min-width: 30px; min-height: 30px; width: 360px; height: 145.575px; left: 300px; top: 277px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1600" data-natural-height="647" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741773/FullSizeRender__10_.jpg"></div></div></section></section><section class="stack" data-id="a9da6f21e4b89d17346b5ce98e400703"><section data-id="d6ae2d2065bb23228104c8aefdb58108"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="778dede7a6445578ffb0e133e6fc3bff"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Bayesian Filtering</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="69eb409274d5643da27e505a81e4ce47"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 12;">
+<ul>
+	<li>Estimates signal properties and their uncertainty</li>
+	<li>Bayes' Rule
+	<ul>
+		<li>P(x|y) = posterior probability of x given y</li>
+		<li>P(y|x) = likelihood</li>
+		<li>P(x) = prior probability of x</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="e809d08d78c1a1fb94678f5062e4b4cd" style="min-width: 30px; min-height: 30px; width: 782.022px; height: 87px; left: 83px; top: 420px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="1600" data-natural-height="178" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741779/FullSizeRender__11_.jpg"></div></div></section><section data-id="79118f953fa5382f6b43eb4652832b7f"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="6db79a3316f4a3c539bf0ae59c2ec248"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Bayesian Filtering Example</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="0cd90145f68abce70604857514f26fb5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>BCI = find cause of measured EEG signal
+	<ul>
+		<li>Estimate posterior probability P(stimulus|EEG)
+		<ul>
+			<li>Hard to do directly</li>
+		</ul>
+		</li>
+		<li>Estimate probability P(EEG|Stimulus)
+		<ul>
+			<li>Expose subject to stimuli and collect stimulus-response data</li>
+		</ul>
+		</li>
+		<li>Prior Probability
+		<ul>
+			<li>Fixed or estimated from data</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="bb890cb352643f682151cb2b33d954b4"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="aeaa1753c68c00931ff9db9eefd5b7db"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Bayesian Filtering Equation</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="0e3b4d5fd68745ebf02c0c6959943cab"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Info from new measurement y(t)
+	<ul>
+		<li>Combined with previous posterior
+		<ul>
+			<li>P( x (t-1)| y(1) ,..., y(t-1))</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>Obtain new posterior distribution at time (t)</li>
+	<li>Probabilistic inferences in a:
+	<ul>
+		<li>Dynamic Bayesian Network</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="d3ea7d2900ab9009baf99504c0efcdc4" style="min-width: 30px; min-height: 30px; width: 462.574px; height: 192px; left: 243px; top: 438px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1460" data-natural-height="606" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741784/FullSizeRender__12_.jpg"></div></div></section></section><section class="stack" data-id="ace91e4138c87990c0fcf259432d64da"><section data-id="bb4595d31a1ee23d258dfeaaa735ef7f"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="01b43fedf9f9f0fae32b0876ac7dfd0a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Kalman Filter</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="a92ec692b9a2b35d0ee8fffacd5754b0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui"><ul><li>Recursively updates:<ul>
+<li>mean x(t) | covariance s(t)</li>
+<li>prediction of: mean x-bar(t) | covariance M(t)</li>
+<li>prediction error y(t) - B(x-bar(t))</li>
+<li>correction term K(t) [ <span style="text-align:left">y(t) - B(x-bar(t)) ]</span>
+</li>
+<li>
+<span style="text-align:left">kalman gain K(t)</span><ul><li>
+<span style="text-align:left">​weight given to new evidence y(t)</span><ul><li><span style="text-align:left">​function of noise covariances Q / R</span></li></ul>
+</li></ul>
+</li>
+</ul>
+</li></ul></div></div></section><section data-id="01b4fecc316fdb7460330776df24176c"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="e5af2917dacca0a906ce1b7a55f23718"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Kalman Filter</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="e9e97268812e0c4fec25824f27ca27a9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 12;">
+<ul>
+	<li>Assumes dyamics and measurement processes are:
+	<ul>
+		<li>Linear</li>
+		<li>Gaussian</li>
+		<li>Not true in all real world examples</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="dbfda78ed62ad8f4ee62a0f4f9516ba5" style="min-width: 30px; min-height: 30px; width: 297.28px; height: 288px; left: 332px; top: 342px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="929" data-natural-height="900" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741802/FullSizeRender__13_.jpg"></div></div></section></section><section class="stack" data-id="1faa0c9baf680ca817d69001f674a60a"><section data-id="1b5044df1dadd34cc410cbf112bf894b"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="46eac28212b9d200d4021bb6821ca0b1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Particle Filtering</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="ae646891f3321d9b05a3121dfe975af7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Allows for estimation of posterior distribution over hidden states
+	<ul>
+		<li>Non-linear</li>
+		<li>Non-Gaussian</li>
+	</ul>
+	</li>
+	<li>Same equation as for Kalman Filter
+	<ul>
+		<li>Except:
+		<ul>
+			<li>Posterior P(x(t) | y(1), ..., y(t)</li>
+			<li>Estimated using a population of samples (particles)</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="203c42375f1a0008d9aa1c0ef337f0b2"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="343c13e24be7c40f7b4a2ec17147289b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Prediction Re-sampling Steps</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="1efa272a010d333fc5ea53ea6e6b4e3d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Completed at each time step</li>
+	<li>Starting population (N)
+	<ul>
+		<li>Usually 1,000-5,000</li>
+	</ul>
+	</li>
+	<li>From prior distribution p(x(0))</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="ea3988b82f6b98b76f8237b36a200a69" style="min-width: 30px; min-height: 30px; width: 776.048px; height: 243px; left: 92px; top: 350px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1600" data-natural-height="501" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741805/FullSizeRender__14_.jpg"></div></div></section><section data-id="f78ab2cfc9a2265142a424ece8852898"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="16f291b42e6eb10f97f63c2208258606"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Particle Filtering</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="3023bef5fd6aa630c795fd42a729c48e" style="min-width: 30px; min-height: 30px; width: 736.96px; height: 441px; left: 104px; top: 173px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1504" data-natural-height="900" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741808/FullSizeRender__15_.jpg"></div></div></section></section><section data-id="f3decb25bd6f61984c5aa050b156a8e0"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="6d9f146449aeec09c94559b70fbe0af0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Spatial Filtering</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="1cdb57942048f7cd9dc5fb629695537e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Enhancing local activity</li>
+	<li>Reducing noise common to all channels</li>
+	<li>Decreasing data dimensionality</li>
+	<li>Identifying hidden cources</li>
+	<li>Finding projections to maximize discrimination
+	<ul>
+		<li>Between different classes</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section class="stack" data-id="d4589d2339be323257198af3a5d5eeed"><section data-id="d0b20bd761de8efab1ae5789e2147a59"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="f978925e6f43d3742b2c2a6b8f8b705a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>BiPolar</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="489ac066eea210d09d31ba49b8859547"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Continuous electrical brain signals</li>
+	<li>Highlight electrical potentials differences between two electrodes (i and j)
+	<ul>
+		<li>S = s(i) - s(j)</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="264168b783b8fd3eab4af666b891c48a"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="cd190ef315dc21dc87dc7a27693d15e1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Laplacian</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 74px; top: 155px; height: auto;" data-block-id="ef91e2a05cd1e0bcaa26b235af8255df"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Local activity at electrode i
+	<ul>
+		<li>Subtracts average activity in 4 orthogonal nearest neighbor electrodes</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="57a2b7e81824ac70f366a2d2fde9ea5d" style="min-width: 30px; min-height: 30px; width: 456.441px; height: 232px; left: 253px; top: 350px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1570" data-natural-height="798" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741813/FullSizeRender__16_.jpg"></div></div></section><section data-id="c8058b5a4e775726506d00cfa46ebc95"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="8e4e67c8fcff1d39d0ad10c321d796b5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Common Average Referencing</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 224px; height: auto;" data-block-id="f49a8aac9f7d19bbef6b718fbc0dd574"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Local activity at electrode i
+	<ul>
+		<li>Subtracts average over all electrodes</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="df540010825b82e009aa527708d60edc" style="min-width: 30px; min-height: 30px; width: 360px; height: 163.739px; left: 300px; top: 366px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1273" data-natural-height="579" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741814/FullSizeRender__17_.jpg"></div></div></section><section data-id="3f185c494278afd581b6407cf08ddea0"><div class="sl-block" data-block-type="image" data-block-id="622b1c1b415800674852fa4e47b2bf48" style="min-width: 30px; min-height: 30px; width: 618.889px; height: 557px; left: 171px; top: 70px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1000" data-natural-height="900" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741815/FullSizeRender__18_.jpg"></div></div></section></section><section class="stack" data-id="6c7dbff0376e7825b021b6273d5c5025"><section data-id="deef97b3c5c41ae4c40e7f0745d41c0c"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="e137e3fb4f6f3a6230283c0217e27e0c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Principal Component Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 191px; height: auto;" data-block-id="707cccb29ae5383dd7c820297ac86799"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Finds dominant directions of variability in data</li>
+	<li>Reduce dimensionality &lt;&lt;L</li>
+	<li>Decorrelates input
+	<ul>
+		<li>Used for classification and other BCI analyses</li>
+	</ul>
+	</li>
+	<li>ex. of (N) data points
+	<ul>
+		<li>(N) Vectors of signals from L electrodes at time t</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="e0a41aa0f0be6af6d4c1e18be7937443" style="min-width: 30px; min-height: 30px; width: 171px; height: 171px; left: 395px; top: 469px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="900" data-natural-height="900" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2741817/FullSizeRender__19_.jpg"></div></div></section><section data-id="4844e34de806c8cd6997fd664c40006e"><div class="sl-block" data-block-type="text" style="width: 872px; left: 44px; top: 63px; height: auto;" data-block-id="09e0a844cb170153f658eb0df9971f23"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Principal Component Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 191px; height: auto;" data-block-id="680e84b5959c01da7876be577652681c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Mathematically</li>
+	<li>Matrix A = L x L sample covariance matrix of input</li>
+	<li>Directions of maximal variance
+	<ul>
+		<li>Compute eigenvectors of matrix A</li>
+		<li>A*<em>v</em> = (lamda)*<em>v</em>
+		<ul>
+			<li>
+<em>​</em>Large evalue = most variation</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section>
+				</div>
+				<div class="dimmer"></div>
+			</div>
+		</div>
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
