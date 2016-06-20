@@ -591,6 +591,133 @@
 	</li>
 </ul>
 </div></div></section><section data-id="939c2cf58e024229166393754db0f66a"><div class="sl-block" data-block-type="image" data-block-id="04602fe53a581b59eb2ed6321407a68d" style="min-width: 30px; min-height: 30px; width: 580px; height: 536.554px; left: 190px; top: 70px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="801" data-natural-height="741" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2767087/Experiment6_Results.jpg"></div></div></section></section>
+<section class="stack" data-id="aa4b8ff00c7327f1e0d63e19969893a6"><section data-id="23c77ca96611a5d411109a867be69417"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 22px; height: auto;" data-block-id="0589622862cda7c7044363ab60cfcda7"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.9em">Cursor Control</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="50f6e68a96bc45514cddf6966cdca64e" style="height: auto; min-width: 30px; min-height: 30px; width: 780px; left: 80px; top: 125px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>control of computer cursors using motor neurons</li>
+	<li>allow locked-in patients to access menus</li>
+	<li>Two types of cursor control:
+	<ul>
+		<li>1. Linear control
+		<ul>
+			<li>monkeys use 7-30 primary motor neurons to move mouse cursor</li>
+			<li>uses hand to track continuous target, following the trajectory, then replace with neural control</li>
+			<li>hand or neural control had around the same reaction time</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="87c013447520bda949bc4e6454225e98"><div class="sl-block" data-block-type="image" data-block-id="284ad4c0076229ef4e8ed3851bce0bd2" style="min-width: 30px; min-height: 30px; width: 394.4px; height: 348px; left: 160px; top: 40px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="425" data-natural-height="375" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2759586/Screen_Shot_2016-06-17_at_12.50.05_AM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="1b12a7088820cd9fd12a34dc348d2c39" style="height: auto; min-width: 30px; min-height: 30px; width: 640px; left: 167px; top: 396px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong>Cursor control using invasive BCI</strong></p>
+
+<p>A and B map the actual movement of the cursor with x-y coordinates in 50 ms intervals</p>
+
+<p>C and D are the reaction times via hand and neural control, respectively. </p>
+</div></div></section><section data-id="7c650e0c9cbaa05a463bdc14d494478c"><div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 62px;" data-block-id="431ad885c99c77e3894bdc4f349a671f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" dir="ui">
+<p>2. Nonlinear Kalman Filter</p>
+
+<ul>
+	<li>two monkeys were given two tasks using a joystick:
+	<ul>
+		<li>i. "center-out"- move cursor from center to a random target</li>
+		<li>ii. "pursuit" - monkeys track continuously moving targets</li>
+	</ul>
+	</li>
+	<li>94-240 neurons, recorded via multielectrode array in: primary motor cortex (M1), primary somatosensory cortex (S1), dorsal premotor cortex (PMd), posterior parietal cortex (PP), supplementary motor area (SMA)</li>
+	<li>neural data used to train nonlinear version of Kalman filter, known as <em>unscented Kalman filter </em>(UKF)</li>
+</ul>
+</div></div></section><section data-id="0315cded884ddebfab7c7a56bc091c91"><div class="sl-block" data-block-type="image" data-block-id="4a536d98a5202bc8852a578928a2ac5d" style="min-width: 30px; min-height: 30px; width: 424.132px; height: 418px; left: 90px; top: 22px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="415" data-natural-height="409" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2759971/Screen_Shot_2016-06-17_at_4.16.11_AM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="e4277a518e42e98389203ddccba4778d" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 90px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>The UKF allows for better tuning due to its quadratic nature. It also uses position and velocity values from 10 consecutive time steps for AR.</p>
+</div></div></section></section><section data-id="0b9de0061778b4e4be155339fdde2e6a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 83px; height: auto;" data-block-id="fce3dcc0afd89204f59aae86524d7436"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>BCI Control Enhancements</h2>
+</div></div></section><section data-id="6c343f8d27673e79de1a114f8da77987"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 40px; height: auto;" data-block-id="ef92a5884d6fad5d6be4980eedec13fb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Combine Proprioceptive and Visual Feedback</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="79acd715cf6ee20cdacf649b7b1efd2d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui"><ul>
+<li>brain relies on kinesthetic feedback from muscles to guide movement</li>
+<li>when visual and kinesthetic feedback are congruent, the responses are much faster. </li>
+</ul></div></div></section><section data-id="7c521f7d401b43aa23cb9cf30464c174"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 50px; height: auto;" data-block-id="46cda4eb50458a3ed17d49ead5e6d90d"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Cognitive BCIs</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 188px; height: auto;" data-block-id="b12da32625d44c7577714a6eb78e596b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle">
+<h2>BCIs with higher level cognitive signals</h2>
+</div></div></section><section data-id="62553bf0a4a60c6fc0c57b972b4c12ad"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 49px; height: auto;" data-block-id="eadb78113fc005ad131ab7fc2a27caaf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Reaching Movements</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 171px; height: auto;" data-block-id="0828ca9e89d7a5ee5aadbbfe53a59db1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>neural activity of parietal reach region (PRR) of cerebral cortex can decode the target location of intended reaching movement</li>
+	<li>monkey reach at a flashed location after a brief delay period- Bayesian algorithm</li>
+	<li>either normally , or via "brain control"</li>
+	<li>
+<em>Haar wavelet<s>-</s></em> signal over interval represented by coefficients</li>
+	<li>shows only ~60-68% accuracy, but with LFP stimulation along with both spikes, might have 86% </li>
+</ul>
+</div></div></section><section data-id="50dfe5fcf3a689f843bc536f06981fa0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 50px; height: auto;" data-block-id="15490706f29602ba70b55ed0b0a65d4d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Enhancing Cognitive BCI</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 155px; height: auto;" data-block-id="755eed2aeac891c1d29c281bbd0bd5a0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>There's Tskip and Tint, Tskip occurs when the information is not yet reliable and Tint shows up for interval for target.</li>
+	<li>target response was predicted using spike counts</li>
+	<li>overall performance measured by ITR</li>
+	<li>best = 6.5 bps for 8 target, translate to 15 words per minute</li>
+</ul>
+</div></div></section><section data-id="2d8d86d27323c452bcd46e9b132f5df4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 92px; top: 70px; height: auto;" data-block-id="c48b68d77d13ac6f332feff7946edd29"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Invasive BCIs in Human</h2>
+</div></div></section><section data-id="cf025660e32daa70ba2bba78a154eb6c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 28px; height: auto;" data-block-id="c2f6df341b4bc9bc6873f0d819fbb6d5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Cursor and Robotic Control using a Multielectrode Array Implant</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 202px; height: auto;" data-block-id="fe67b974152550ab9eb027df9a5bce4e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+<em>BrainGate</em> sensor, 100 silicon microelectrodes implanted in arm area of primary motor cortex</li>
+	<li>But can motor intention still modulate cortical activity three years after spinal cord injury and absence of hand motion?</li>
+	<li>imagined hand motion will activate some neurons!</li>
+	<li>can move cursor in the general direction but not exactly accurate</li>
+	<li>eventually develops wider scopes such as simulated email, draw using paint program, adjust volume, play video games, etc</li>
+</ul>
+</div></div></section><section data-id="3fa3cb1c033163840f46506e6ac53938"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 50px; height: auto;" data-block-id="e142e03c958b82fbaba12a6c8f10762a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Cognitive BCIs in Humans</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 160px; height: auto;" data-block-id="54d317f19df78077800ec0e06ce602f1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>recall neural activity from human primary motor cortex can control trajectory of cursors</li>
+	<li>however, it's the frontal cortex beyond primary motor cortex that is related to planning and initiating movement direction</li>
+	<li>this plan worked in monkeys</li>
+	<li>still not been tested in depth yet, but positively thought of as to work.</li>
+</ul>
+</div></div></section><section class="stack" data-id="d8bad9e7ccbb09390763e97e0153cf35"><section data-id="2867bf4344c5c19dc52f767746ad3198"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 32px; height: auto;" data-block-id="6bf27e85cfcad4dc5b142a85fd138bd8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Long-Term Use of Invasive BCIs</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 72px; top: 210px; height: auto;" data-block-id="cb1cbe875f6570b1945cf4b6abf0891f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>for the two monkey experiment regarding the center-out reaching task, the 128-electrode array remained in the monkey's brains for 19 days. </li>
+	<li>it is proven that the longer the monkeys used the device, the higher the accuracy of the task and the lower the reaction time will be.</li>
+	<li>if a decoder is shuffled, then humans can take an adjusting period to get used to the new decoder and achieve the same accurate results.</li>
+</ul>
+</div></div></section><section data-id="90d0f23112931fee8c4c41582d8012c2"><div class="sl-block" data-block-type="image" data-block-id="b3c772e7bcc281cd7c19b0640b5bb7a1" style="min-width: 30px; min-height: 30px; width: 411px; height: 362.973px; left: 126px; top: 57px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="445" data-natural-height="393" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2762525/Screen_Shot_2016-06-17_at_6.10.42_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="629a4683573be42368d858d383e9748e" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 171px; top: 439px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>The diagrams show the difference in accuracy and reaction time between the beginning and the end of the experiment.</p>
+</div></div></section><section data-id="029c5c1900f0fc251ddcc20b462572e9"><div class="sl-block" data-block-type="image" data-block-id="fd0beaefeca715c387f57f603b09a10b" style="min-width: 30px; min-height: 30px; width: 527.397px; height: 175px; left: 80px; top: 88px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="440" data-natural-height="146" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2762528/Screen_Shot_2016-06-17_at_6.13.45_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="66b5523ffa193298dd221d7f15e7164c" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 100px; top: 289px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Starting from around the 8th day, the number of correct trials have been improved significantly. However, the shuffled recorder remains poor in predicting neuroactivity</p>
+</div></div></section></section><section data-id="394c8f99c3fa9f588e4655180910f8a9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 50px; height: auto;" data-block-id="265d2a2c6ce7eab5e0f78497f32ff2df"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Long-Term Use of a Human BCI Implant</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 222px; height: auto;" data-block-id="ccce1d764d06e12e49d8b6ddfdedf83c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>neuro point-and-click experiment for five consecutive days</li>
+	<li>based on spikes of motor neurons to determine two-dimensional cursor velocity</li>
+	<li>94.9% accuracy for center-out task and 91.9% accuracy for the random target task</li>
+	<li>other interferences were measured such as electrode impedances, neural spike waveforms, and local field potentials to rule out discrepancy</li>
+</ul>
+</div></div></section>
 				</div>
 				<div class="dimmer"></div>
 			</div>
