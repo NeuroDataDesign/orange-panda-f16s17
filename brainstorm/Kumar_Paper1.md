@@ -1,4 +1,4 @@
-## Paper 1: Affective Brain-Computer Interfaces As Enabling Technology for Responsive Psychiatric Stimulation
+## [Paper 1: Affective Brain-Computer Interfaces As Enabling Technology for Responsive Psychiatric Stimulation](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4286358/)
 #### Member: Nitin Kumar
 
 ### Summary:
