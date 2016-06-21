@@ -1,0 +1,10 @@
+## Paper 1: Affective Brain-Computer Interfaces As Enabling Technology for Responsive Psychiatric Stimulation
+#### Member: Nitin Kumar
+
+### Summary:
+The paper is about both the limitations currently faced using BCI to record and treat psychiatric diseases. This is mainly in the context of Deep Brain Stimulations (DBS) and technology that both records and stimulates. Current recording techniques via BCI face many barriers. fMRI is too bulky to continuously monitor and watch brain activity, EEG and ECOG face lack of available data, as most emotionally related data have been taken with normal patients, and patients with illnesses may have totally different signal patterns. Beyond this, BCIs currently have some limited ability to classify emotions, but cannot distinguish between negative extreme emotions and just everyday stimulants for sadness/anger/bouts of happiness.
+
+The paper then declares that potential ways to make BCIs usable with emotion recognition is the use of the brain's plasticity and humans' tendency to reprogram their brains to work with BCIs better. Using a brain-reward stimulator within the brain, a human may learn to direcrtly influence the BCI when a traumatically emotional event occurs rather than an everyday event. Looking at the Prefrontal Cortex (PFC), the PFC can be directly influenced by thought easily. Essentially, if there is a need for neurostimulation, signal through the PFC will increase and induce the stimulation. Rats tried and proved that this was possible at a very primitive level.
+
+### Scope of BCI:
+Shows that affective computing with BCI may be very difficult due to lack of available data (especially for people with mental disease) and the lack of guaranteed relevance of negatively emotional signals to necessarily mental health issues. Implied that fMRI's limitations arise from its bulkiness, NIRS and EEG face issues because of the obviousness of them on someone's head, and ECOGs find a fairly nice medium. However, it does provide some papers with some concrete work with EEGs and emotions (though again, will not involve mentally ill subjects), so there might still be an opening there.
