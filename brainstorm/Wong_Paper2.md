@@ -1,0 +1,12 @@
+## [Paper 2: Collaborative Brain-Computer Interface for Aiding Decision-Making]
+(http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4114490/pdf/pone.0102693.pdf)
+
+### Summary:
+In this research, BCI is used to help a lot of human decision making. First, the research attempts to overcome some limitations in human vision to accurately “read” the external environment. Some of these limitations include repetition blindness and attentional blink. There are also group decision making that sometimes are negatively affected by external factors such as communication biases that can be aided by BCIs. An idea was proposed to use BCIs for multi-brain collaborative decisions.
+
+### Valuable Data/Method:
+Images were presented to these observers when they were perceptually taxed. Researchers attempted to gather the specific information from their brains using a BCI. A total of 10 participants were part of this experiment with 8 blocks of trial and each block contained 28 trials. Each trial had a fixation in the middle of the screen for a second. Then two sets of shapes were shown with a mask in between. The subjects are to determine of the shapes are identical. Each set contained three shapes and can be any combination of a triangle, square, and pentagon. It can also vary in the color of either white or light gray but the background is always black. 
+The subjects are tested through three different method: (1) decision of their own, (2) neural features extracted from EEG, (3) combination of 1 and 2. The experiment also tested for the increase in group size correlating with the decrease in error rates. It is shown that for a group size of 1, there are no differences in accuracy between the neural feature and the reaction time one. However, as group sizes increase, it is shown that neural feature gives a much more accurate reading. With the group size of 10, the error rate can go as low as 2.67%.
+
+### Scope of BCI:
+This research shows that we can use BCI to aid us to “pull information” out of our brain via our subconscious when our attention or focus is compromised. It also shows that this neural feature is especially valuable when a group of people are deciding among something. An application of this might be advertisement. Since a lot of times, advertisement is about seeping into people’s subconsciousness, BCI can be an effective tool to test the effectiveness of certain advertisements before releasing into the market.
