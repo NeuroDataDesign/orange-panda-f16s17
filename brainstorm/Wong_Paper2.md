@@ -1,5 +1,4 @@
-## [Paper 2: Collaborative Brain-Computer Interface for Aiding Decision-Making]
-(http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4114490/pdf/pone.0102693.pdf)
+## [Paper 2: Collaborative Brain-Computer Interface for Aiding Decision-Making](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4114490/pdf/pone.0102693.pdf)
 
 ### Summary:
 In this research, BCI is used to help a lot of human decision making. First, the research attempts to overcome some limitations in human vision to accurately “read” the external environment. Some of these limitations include repetition blindness and attentional blink. There are also group decision making that sometimes are negatively affected by external factors such as communication biases that can be aided by BCIs. An idea was proposed to use BCIs for multi-brain collaborative decisions.
