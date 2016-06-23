@@ -6,7 +6,7 @@
 This thesis explored the functionality of the Emotiv EPOC EEG headset (Released in 2010). The software included has been validated to accurately differentiate 
 between facial expressions, emotional states, and imagined cognitive tasks after sufficient training (and after taking into account pre-recorded data). In the
 expressive suite, the user receives feedback during training by matching the signal to a simulated face avatar mimicking user's expressions. In the affective suite, the 
-EEG headset averages the total value of the Delta, Theta, Alpha, and Beta bands to determine emotional state.
+EEG headset measures the intensities  of the Delta, Theta, Alpha, and Beta bands to determine emotional state.
 
 -Expressive suite: claims to recoglize blink, wink, look, raise/furrow brow, smile, clench, smirk, and laugh
 -Affective suite: emotional states: engagement/boredom, frustration, meditation, instantaneous excitement, longterm excitement 
