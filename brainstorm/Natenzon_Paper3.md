@@ -1,4 +1,4 @@
-## [Paper 3: Brain-Computer Interface Wtih Single Channel EEG](https://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/#)
+## [Paper 3: Brain-Computer Interface With Single Channel EEG](https://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/#)
 ### Publishing Date: 2012
 #### Member: Michael Natenzon
  
