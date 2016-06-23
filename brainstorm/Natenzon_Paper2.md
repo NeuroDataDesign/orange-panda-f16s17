@@ -1,7 +1,4 @@
-## [Paper 2: The Emotiv mind: Investigating the accuracy of the Emotiv
-EPOC in identifying emotions and its use in an Intelligent
-Tutoring System
-](https://www.cosc.canterbury.ac.nz/research/reports/HonsReps/2013/hons_1302.pdf)
+## [Paper 2: The Emotiv mind: Investigating the accuracy of the Emotiv EPOC in identifying emotions and its use in an Intelligent Tutoring System](https://www.cosc.canterbury.ac.nz/research/reports/HonsReps/2013/hons_1302.pdf)
 ### Publishing Date: 2013
 #### Member: Michael Natenzon
 
