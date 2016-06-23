@@ -1,5 +1,4 @@
-## [Paper 1: Think to Move: a Neuromagnetic BCI System for Chronic Stroke]
-(http://stroke.ahajournals.org/content/39/3/910.full.pdf+html)
+## [Paper 1: Think to Move: a Neuromagnetic BCI System for Chronic Stroke](http://stroke.ahajournals.org/content/39/3/910.full.pdf+html)
 
 ### Summary:
 In this research, the usage of BCI help chronic stroke patients’ with their inability to move their hands via training to operate a mechanical hand orthosis. A magnetoencephalography-based (MEG) BCI control was used by these patients to raise or lower a screen cursor in the direction of a target displayed on the screen. 
