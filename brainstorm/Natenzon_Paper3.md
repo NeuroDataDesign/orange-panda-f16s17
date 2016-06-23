@@ -19,6 +19,8 @@ than they can learn to control their focus and BCI with greater discipline and p
 The intensities of alpha and mu waves can be manipulated by the user through training. While this is not ideal for
 out of the box applications, it offers a reliable means of controlling some aspects of BCI. By specifically
 modulating either of these waves to a specific level, a user can for example open a predefined shortcut
-to any function or application. This also touches on the shortcomings of the P300 response, however, 
+to any function or application. This article also touches on the shortcomings of the P300 response, however, 
 it does not disprove the feasability of using the P300 response as a means of identifying 
-features/gameplay/content transitions that are unexpected to the user.
+features/gameplay/content transitions that are unexpected to the user. The significance of noise is discussed in
+the paper, however, no perfect methods were devised to completely eliminate all noise. This is a serious problem
+to consider when designing programs for EEG headsets.
