@@ -1,4 +1,4 @@
-## [Paper 2: Brain-Computer Interface Games and an Opinion Survey from Researchers, Developers, and Users]
+## [Paper 3: Brain-Computer Interface Games and an Opinion Survey from Researchers, Developers, and Users]
 (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4178978/pdf/sensors-14-14601.pdf)
 
 ### Summary:
