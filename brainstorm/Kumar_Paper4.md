@@ -9,3 +9,5 @@ Additionally, ICA will be able to find specific functions that are found by data
 
 ### Scope of BCI:
 We can combine different data sets (potentially) if we can find direct algorithms that can handle datasets from different experiments. This adds to the amount of data we can use to train our program and adds a level of potential novelty with using old, potentially untapped and uncombined, data.
+
+NOTE: On further research, it doesn't seem possible using measurements from different experiments.
