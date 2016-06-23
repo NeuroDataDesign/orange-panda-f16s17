@@ -15,10 +15,10 @@ EEG headset averages the total value of the Delta, Theta, Alpha, and Beta bands 
 The headset was sensitive enough to  collect data to control a robot's movement by cognitive thought, and in creating accurate blink recognition software.
 
 ### Scope of BCI:
-This research serves indicates that non-invasivek EEG headsets offered by Epoc can be used to accurately recognize a large diversity of inputs. This makes EEG headsets
-a feasible technology to be used to control BCI, for PCs, and augmented/virtual reality devices. It can also provide feedback to companies regarding the quality, clarity,
-and engagement of advertisements. 
+This research indicates that non-invasive EEG headsets offered by Epoc can be used to accurately recognize a large diversity of inputs. This makes EEG headsets
+a feasible technology to be used in BCI, for PCs, and augmented/virtual reality devices. It can also provide feedback to companies regarding the quality, clarity,
+and engagement level of advertisements. 
 To effectively build the BCI proposed, the system will need to have both synchronus and asynchronous data processing.
 
 Synchronous - user performs a cue, and then EEG pattern is recorded in fixed time. (easier)
-Asynchronous - passively overate to continuously monitor the EEG data, trying to classify on the fly.
+Asynchronous - passively operate to continuously monitor the EEG data, trying to classify on the fly.
