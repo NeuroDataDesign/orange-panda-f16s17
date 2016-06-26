@@ -6,6 +6,7 @@
 Description of problem: Further detail describing the problem. What is the problem? Explain in-depth what's been happening.
 
 Answer:
+
 1. Who does it affect?
 2. Where is it happening?
 3. What is the timeline of the problem (Did it just become more relevant? Has it been ongoing but previously untreatable? Is it a coming problem that we could work towards now?)? What makes this currently relevant?
