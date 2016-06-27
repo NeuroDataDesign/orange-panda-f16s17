@@ -1,0 +1,15 @@
+### Psychological abuse during imprisonment and specifically solitary confinement.
+#### Tsun Wong
+
+## 1. Who does it affect?
+Around 716 out of 100000 U.S. citizens are incarcerated. Around 56% of inmates have mental issues. 20-30% of inmates spend time in solitary confinement.
+## 2. Where is it happening?
+Federal and state prison and jail.
+## 3. What is the timeline of the problem (Did it just become more relevant? Has it been ongoing but previously untreatable? Is it a coming problem that we could work towards now?)? What makes this currently relevant?
+The U.S. has been having increasingly high incarceration rate for the past 30 years. A lot of inmates are psychologically abused when they receive solitary confinement due to the lack of social interaction and sensory details throughout the day. It is espeically evident to those who are mentally ill don't get the treatment that they need more so than it serves as a punishment. 
+## 4. Why is this problem happening? What is the main cause (both within brain and outside it?)?
+Humans need social interaction and different sensual stimulations in order to achieve higher level of thinking. According to a 1951 study of McGill University, a lot of cognitive thinking is lost to students after 7 days of solitary confinement.
+## 5. Potential solutions with BCI
+Helps record their psychological state and realize who needs help more so than others. If we can record the frequency, maybe we can allow more outside times for those who need help more.
+## 6. Is there existing work/data with BCI?
+We see that solitary confinement significantly change EEG frequency in inmates' brains. (http://psycnet.apa.org/journals/abn/79/1/54/), but more research needed.
