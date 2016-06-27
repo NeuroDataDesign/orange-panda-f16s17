@@ -12,3 +12,5 @@ Answer:
 4. Why is this problem happening? What is the main cause (both within brain and outside it?)?
 5. Potential solutions with EEG?
 6. Is there existing work/data with EEG?
+
+Attach any reference links for the problem here too (showing its relevance, research in the area, etc.)
