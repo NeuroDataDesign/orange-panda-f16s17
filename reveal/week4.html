@@ -1,0 +1,698 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+<div class="reveal">
+				<div class="slides">
+					<section data-id="9fa507d7b7b10fbb2139d4d2822bb9f8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="ac03b78af35a04e6dcb7a9e9df508d6b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1>Brain-Computer Interfacing</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="a4b45bdbc10d666afe05cadf90f345cb" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 31px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Book by: Rajesh P. N. Rao</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="edb7b5ab03ab5c5f3ab38b8b984c1c38" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 451px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Presentation by:</p>
+
+<p>Michael Natenzon, Tsun Wong, and Nitin Kumar</p>
+</div></div></section><section data-id="cdd94e13b6c66cb0677f0a123b7be64e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="e98f5357f247929d4959c4247b5f40db"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Semi-Invasive BCIs</h1>
+</div></div></section><section data-id="e787312c7e36f9b6c1adadd42051fc4a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="1c180f4d8c4d91fa2f0685ac229c0272"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Focus on</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="58e70316ecf84dd9718f0004e62bd731"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>ECoG
+	<ul>
+		<li>Surgical placement of electrodes underneath skull</li>
+	</ul>
+	</li>
+	<li>Tapping into nerves outside of brain</li>
+</ul>
+</div></div></section><section class="stack" data-id="6821182f2f337675eb15a8996f309621"><section data-id="2654e680986afa741a819a437402e907"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="9fbed67b72c14ed8361361e7a35490e9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>ECoG in Animals</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="820d3070833d4743bed0d481cdcc5ea0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Cursor Control
+	<ul>
+		<li>Using power frequency band (PFB)</li>
+	</ul>
+	</li>
+	<li>One electrode:
+	<ul>
+		<li>Control's horizontal movement based on PFB</li>
+	</ul>
+	</li>
+	<li>Another electrode:
+	<ul>
+		<li>Control's vertical movement based on PFB</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="65acefd10a1b9a3a1e8cc7524127e86b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="8b60bfd31e106cefaddb69aeb0b631fd"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Testing</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="4f28004f8cb74cd585d1f80212782ffa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Center-out Reaching Task
+	<ul>
+		<li>40 movements - 6 minutes</li>
+	</ul>
+	</li>
+	<li>Tracing a Circle
+	<ul>
+		<li>30 circles - 7 minutes</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="6cc58afa9180f655a3e21c3da0c14cc3"><section data-id="eb67b239aa3fe29fa617feda32c41f28"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="ce897471ff3e55db4f462818257b3ac3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>ECoG in Humans</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="0d8ee7552a679022cd1daf2b78e5fb50"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Data is screened to identify the electrodes/freq bands
+	<ul>
+		<li>Highest correlation with executed movements / imagery</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="838da54f530244c37089106ae0cd85ea"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="f46af9c53f87210ed6b8c0f1e907cf2d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Testing</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="4f098c738b4b06db17b76a60d3d94ed1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>1D Cursor Control
+	<ul>
+		<li>Amplitude of power spectrum</li>
+	</ul>
+	</li>
+	<li>PHOTO1</li>
+</ul>
+</div></div></section><section data-id="7fec22aec8f830b8b2b99a5a22d4d5c7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="748e4758467f054f7f2494aa8069ed95"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Low-Freq. Oscillations in Imagery</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="3a08b4453ebdfc7089e5df4cdb187a45"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Allows for cursor control with 97% accuracy
+	<ul>
+		<li>Adjust amplitude to 20.5-22.5Hz</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="317f23d8fdb67d610619dd88aea710a4"><section data-id="28d30e11c39b8e57ae863bff8d55f78d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="71ed8e89e20e674002882a9b7c95978c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>2D Cursor Control</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="7c063737dee1efdf3a98366644103b58"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Screening motor tasks</li>
+	<li>1D Cursor Control</li>
+	<li>2D Cursor Control</li>
+</ul>
+</div></div></section><section data-id="da971ff34b426707a4c896280003ee9d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="baba912b99f846996e26f3eb275f2019"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Screened Motor Tasks</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="513aa133bbb7e5ad0b0420b9e598e3e3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Determines how much control a user has over a particular set of brain signals</li>
+</ul>
+</div></div></section><section data-id="79dd98bfedc1af247e523c095e3cf468"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="8be9544cf7f32f4717672ab34b6795ad"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>1D / 2D Control</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="32d430e07cdec514e381257af09f5e31"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>The features selected (those with most control)
+	<ul>
+		<li>Used to train 1D</li>
+		<li><span style="text-align:left">Then 2D movement</span></li>
+	</ul>
+	</li>
+	<li>53% - 73% accuracy
+	<ul>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="0676b666f16e55baf5b42425b72b1881"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="b3f0c3f06a951ccc63413c08f4ebba31"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Amplification of ECoG</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="b6b8ec1c8dde162432c9eab54d8802d8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Spatial separability of imagined motor movement vs. actual motor movement
+	<ul>
+		<li>Low with high frequency bands (76 - 100Hz)</li>
+		<li>85% - 100% accuracy using tongue, shoulder imagery</li>
+		<li>94% accuracy using word repetition
+		<ul>
+			<li>5-7 minutes</li>
+		</ul>
+		</li>
+		<li>Motor imagery was eventually replaced</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section class="stack" data-id="44a27e31936ccca71c13842784ffb92b"><section data-id="f5169ec6bf88527f9c95e01f29813660"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="41aee6b133c785928ecb8b7e81faecdc"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>ECoG for Prosthetics</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="ec2a0f293b5717fc90d631a5195c377c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>ECoG power spectrum 
+	<ul>
+		<li>Reveals spatially distinct representations of fingers</li>
+	</ul>
+	</li>
+	<li>Dataglove used to track finger movements
+	<ul>
+		<li>Found correlations between that and ECoG data</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="6d2e5ed58ce3495d40c8900f0187f49d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 90px; height: auto;" data-block-id="600e7cf2adac21f3fbe7f9746230b4eb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Local Motor Potential </h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 197px; height: auto;" data-block-id="a60bb5db4c9cd61262f983e5be401b7b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Correlated with position of individual fingers
+	<ul>
+		<li>During grasping motion</li>
+	</ul>
+	</li>
+	<li>ECoG signals
+	<ul>
+		<li>Low-pass filtered </li>
+		<li>2 sec moving average window</li>
+		<li>Obtain LMP for each electrode</li>
+	</ul>
+	</li>
+	<li>Linear filter
+	<ul>
+		<li>Predict each PC of hand motion from LMP</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="35bf77854debf1f0c7809a90353fea60"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 97px; height: auto;" data-block-id="ea85d7f93d1fafaf7dc937fc1fe44d6d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Results</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 200px; height: auto;" data-block-id="a90683464a95b7e3dac7c91259d43ad1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>LMP extracted from ECoG can be used for:
+	<ul>
+		<li>Opening / closing hand</li>
+		<li>Individual finger position</li>
+	</ul>
+	</li>
+	<li>Filters trained on data
+	<ul>
+		<li>Robust performance across multiple sessions and days</li>
+		<li>Invariant to:
+		<ul>
+			<li>Wrist angle / Elbow flex / Hand Placement</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="e265ff2fed7bc91e9c935f41efbc4f9f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="c1d1f654e9a392cf6016950736b40a1a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Long-Term Stability</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="07abcf7ee170ce1439c5c8dbc68c5554"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Performance remained robust over 5 day span</li>
+	<li>Indicates:
+	<ul>
+		<li>BCI can be operated using fixed set of params.</li>
+		<li>No need for pre-session adaptation of params.</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section>
+<section data-id="18cedef76df37b364fd35b121e7531cf"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 250px; height: auto;" data-block-id="f6b2319b4721cc8d9456fc546c6e25cb"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>BCIs based on PNS</h1>
+</div></div></section><section data-id="133c2be243fffb251bba7fbec3448e54"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="f0568ade89c17c381d3ced882792ac90"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Nerve Based BCIs</h1>
+</div></div></section><section data-id="e943aa5c82de31e9f16a1564c28ab447"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="f750e0e3e6645c997abe0d2e625233b6"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Main Concept</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="a7b7112821e4b2ca58839f48a1082893"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Severed peripheral motory nerves still send signals</li>
+	<li>Severed sensory nerves still receive</li>
+	<li>Essentially provides a naturally closed-loop feedback</li>
+</ul>
+</div></div></section><section class="stack" data-id="170ebe7f8fe7c2e83b423b88f0722651"><section data-id="ec3115dd17c020d525459ef1b1d9f36c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="3adb1eb65ea524cf67e520261b37c08d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Median-Nerve Based BCIs</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 214px; height: auto;" data-block-id="c9e45779961b4ffb39da02e2cb903641"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Warwick, 2003</li>
+	<li>100 needle electrodes implanted into median nerve fibers</li>
+	<li>20 active electrodes read potential + stimulated</li>
+	<li>Ran multiple experiments
+	<ul>
+		<li>One received touch feedback via sensors and gripped different objects with a prosthetic</li>
+		<li>One allowed wheelchair control via open + closing hand</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="ce67aed90fd7a82f14e48c70270896eb"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 54px; height: auto;" data-block-id="59edcbe7a401b4acbd2ef3aeb2716d2c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>More Advanced Experiments</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 202px; height: auto;" data-block-id="8b6d2ce92978280db3ec54c8b1265dc2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Dhillon and Horch, 2005</li>
+	<li>Electrodes in 6 humans with upper limb amputations (at or below elbow)</li>
+	<li>Calibration:
+	<ul>
+		<li>Short pulses sent to electrodes to find most effective ones for sensory activity</li>
+		<li>Connected the electrodes to a speaker to isolate which electrode got the highest motor output</li>
+	</ul>
+	</li>
+	<li>Started with cursor control training, then moved to arm control, which saw users being able to accurately judge position and angle as well as grip-force</li>
+</ul>
+</div></div></section><section data-id="d4b32f4775b414b065d8cc3dda229929"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="49e9a8f610db639f62a9200a947a7427"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment Graphs</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 477.907px; height: 512px; left: 241px; top: 164px;" data-block-id="8a797da48e72c2c27a9be5afc026dbbd"><div class="sl-block-content"><img data-natural-width="785" data-natural-height="841" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2794653/Experiment2_Diags.png"></div></div></section><section data-id="abebc16e9c37172757fab7cf5efc48da"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="81acdad1446db08b91d9fe0e0c56c858"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Cuff Electrodes</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="19b9b86480e0349f967405c1d34302a0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Wrap around a peripheral nerve and record motor signals from the brain</li>
+	<li>Have seen successful control over elbow, wrist, and hand of prosthetics</li>
+</ul>
+</div></div></section><section data-id="a093be42d32ea964d9ed949acd76ca0c"><div class="sl-block" data-block-type="image" data-block-id="94c2e76d866ef211904ba7c68cd7e923" style="min-width: 30px; min-height: 30px; width: 845.068px; height: 280px; left: 58px; top: 124px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="667" data-natural-height="221" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2794646/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0807e2cec5ad801d391c7ea9c58e9df9" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 437px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; font-size: 50%;">
+<p>https://microprobes.com/images/products/Nerve/Nerve_cuff_header-0116.jpg</p>
+</div></div></section></section><section class="stack" data-id="626ab42be15fe6a6667a972fd42eb037"><section data-id="1571a5683d79a0f223476440bde3c2fd"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 152px; height: auto;" data-block-id="350fc7700ff658be6f25d14ff3f0a157"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Targeted Muscle Reinnervation</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 300px; height: auto;" data-block-id="ba0d0797171c7e77069b7d5631983ad8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Use EMG signals to transmit signals to a prosthetic</li>
+	<li>However, when a muscle is severed, there's no EMG signal to listen to</li>
+	<li>This reconnects severed muscle nerves to currently existing ones, and amplify the signal sent to the new location to control a prosthetic</li>
+	<li>Sensory signals can be routed to skin</li>
+</ul>
+</div></div></section><section data-id="3d033b0c4c2bd4861af7c04c7ee92a95"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 155px; height: auto;" data-block-id="6334175cab97af58919f7723ff467d8e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Example Experiment: Kuiken, 2007</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 303px; height: auto;" data-block-id="36e04583b29d7808c915ca0851b43f79"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Left arm amputated patient</li>
+	<li>Multiple muscle nerve endings in left arm were rerouted to chest</li>
+</ul>
+</div></div></section><section data-id="4108b2feecb88d94de5776a61f328063"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="5b0ff58f247020ff2451751c9fe89dfa"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Rerouting of Nerves and Placement of Electrodes</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 700px; height: 366.074px; left: 130px; top: 219px;" data-block-id="c6a8795346fa40428b0abb488c570869"><div class="sl-block-content"><img data-natural-width="675" data-natural-height="353" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2794711/Experiment3_Diags.png"></div></div></section><section data-id="e25d5668540bd3190ebe102770c28ad5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="f09a2cb43ac07914dc70102dc94024c4"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Addition of BCI</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="613729b5da6d8fc6c67b235b3a768827"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>After 3 months of rerouting nerves, imagining movement of hand and elbows would make chest twitch</li>
+	<li>6 months- discernable EMG pattern was found via electrodes, routed signals to prosthetic arm</li>
+	<li>Intuitive control</li>
+</ul>
+</div></div></section></section><section data-id="e3f385c7190933b6467e789a20247ee9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="8efc84ec72041996449395ae02b368ae"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Noninvasive BCI</h1>
+</div></div></section><section data-id="a89987cc02cbb0ec0bb14a4a46c8de89"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 139px; height: auto;" data-block-id="e9a1d59af3f5ec3799d199714612838d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Electroencephalographic (EEG) BCIs</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 287px; height: auto;" data-block-id="3ecc2b724617ea83670ee2ec5c0ea0a3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Records voltage fluctuations from a population of neurons</li>
+	<li>Stronger temporally than spatially, but tech has improved</li>
+	<li>Asynchronous-  voluntary signal sent via patient</li>
+	<li>Synchronous- monitoring for a generic stereotype signal for a specific situation</li>
+</ul>
+</div></div></section><section data-id="3f911283235fd8420a2b1e347e459e23"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 100px; height: auto;" data-block-id="ff65dd32bcb5e54dd3002071c184d1f5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Oscillatory  Potentials + ERD</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 247px; height: auto;" data-block-id="e7c12d2dffc19fac2cc2f7e7909a47a0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Imagery-based BCI: control specific brain rhythms as oscillatory EEG potentials at specific frequencies</li>
+	<li>Performing/imagining movement cause decrease in power of low frequency bands
+	<ul>
+		<li>Mu (8-12 Hz)</li>
+		<li>Beta (13-30 Hz)</li>
+		<li>Called Event Related Desynchronization</li>
+	</ul>
+	</li>
+	<li>By initially relating BCI control to imagery/movement, eventually train brain</li>
+</ul>
+</div></div></section><section class="stack" data-id="6ad0ac54d2aceec86701c693218a7221"><section data-id="a43676dd047071fa05259b54a483484f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 100px; height: auto;" data-block-id="9d514444c522f2cebb023fca1428cfb3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Wadsworth BCI</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 174px; height: auto;" data-block-id="8d3fc0612f168c103e814d5bf40432b0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Trained 4 subjects to use mu band to move a cursor up or down</li>
+	<li>Find bipolar spatial filtering based on 2 electrodes</li>
+	<li>Amplitude of mu rhythm :
+	<ul>
+		<li>Calculated square root of power at 9 Hz band</li>
+		<li>Compared amplitude to 5 amplitude ranges to decide movement</li>
+	</ul>
+	</li>
+	<li>Initially subjects trained only moving up for better control</li>
+	<li>Initially had to rely on imagery for movement, but eventually lost need</li>
+	<li>Accuracy from 80% - 95%</li>
+</ul>
+</div></div></section><section data-id="ba6da87a3159ae5cc869b577bdf0c251"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="4f663361c5f2b6a3d1792776da910f91"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Experiment Results</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 450.557px; height: 475px; left: 64px; top: 162px;" data-block-id="d21664084b7559f4d6dceaefda528c72"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="553" data-natural-height="583" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2794884/Wadsworth1D_Diag.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="bfefbb8c85ce144b49c926d00044b7ea" style="min-width: 30px; min-height: 30px; width: 377.021px; height: 468px; left: 554px; top: 162px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="489" data-natural-height="607" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2794892/Wadsworth1D_ResultsDiag.png"></div></div></section><section data-id="edf9ced8ebd4c6064dc2e7de559ecb09"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="1d3d3d3a9c0cec5b3db662263452e34a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Wadsworth- 2 Dimensions</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="5706d8c43af357c9613f4e2773cd0d4a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Same approach but 2 channels of bipolar EEG
+	<ul>
+		<li>Left and right hemisphere</li>
+		<li>Sum of left and right generate vertical movement amplitude</li>
+		<li>Difference generate horizontal</li>
+	</ul>
+	</li>
+	<li>Equation adjusted to optimize subject experience</li>
+	<li>Achieved accuracy 2-3 times chance levels </li>
+</ul>
+</div></div></section><section data-id="ae05e3d32522b4fb0f5bf86c6808206e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="b49918900d729c462f4335e54d9c2948"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment Setup</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 700px; height: 417.891px; left: 129px; top: 172.5px;" data-block-id="6438059ffbee49cc137bd1dc0793aa3c"><div class="sl-block-content"><img data-natural-width="531" data-natural-height="317" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2794904/Wadsworth2D_Diag.png"></div></div></section><section data-id="a69859f0af86110567cfeb89b965e2f5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 84px; height: auto;" data-block-id="0551375a6e9b75a443aa3baeb7eecf51"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Comparing with Invasive BCI</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 232px; height: auto;" data-block-id="01ca385dd062e3009aa17acfc1b61d5a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>To compare with the invasive experiments on primates, varied the 2-dimensional experiment
+	<ul>
+		<li>Had to hit 8 targets</li>
+		<li>64 electrodes (split evenly across the head)</li>
+	</ul>
+	</li>
+	<li>Adapted weights in a linear model (different weights for left and right) and combined these with a slope weight and intercepts</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="bbd70a6b13159dd32076560be52aac10" style="min-width: 30px; min-height: 30px; width: 360px; height: 44.1877px; left: 300px; top: 560px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="277" data-natural-height="34" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2795292/WadsworthInvComp_LinEq.png"></div></div></section><section data-id="098265f8e4cab6005ba473fdd7031182"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="7439ee2b2314c08432f30abb14a41471"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Results</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="e7c6a67a8e55acc5a5437649a8b46c08"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>10 Seconds to Hit Target:
+	<ul>
+		<li>89%, 70%, 78%, and 92% accuracy</li>
+		<li>1.9s, 3.9s, 3.3s, 1.9s average hit times</li>
+	</ul>
+	</li>
+	<li>Comparison with invasive:
+	<ul>
+		<li>Similar movement time and hit rate</li>
+		<li>Target sizes were in middle of other primate target sizes</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="7dbeb25832507aa847e7cf2beb8ec7cc"><section data-id="22f534490d081c0b4e1b70cca0e9c9bb"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 114px; height: auto;" data-block-id="86a522871573c42bd707ce051cd2f7b0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Graz BCI</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 188px; height: auto;" data-block-id="af22d4b667baeb204a4bd59a982a8365"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Lower frequency oscillation ERDs, just like Wadsworth</li>
+	<li>However, focus on feature extraction and classification techniques</li>
+	<li>Early prototypes: Find EEG patterns during willful movements
+	<ul>
+		<li>Adapt electrode position, frequency band, etc. for each subject to increase accuracy</li>
+	</ul>
+	</li>
+	<li>Showed imagery activates same areas as actual movement</li>
+</ul>
+</div></div></section><section data-id="9dea3ff4463de5edeccb335b27fcaf2a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="8742e411a713ddd6f49dffa8dcf189d2"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Further Studies</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 144px; height: auto;" data-block-id="428f4df51f68de3c3ae40bfb69a21104"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Continuous feedback of classification performance
+	<ul>
+		<li>Bar moved left and right as subject imagined moving right and left hand</li>
+	</ul>
+	</li>
+	<li>3 signal processing methods used:
+	<ul>
+		<li>Band power in pre-defined bands</li>
+		<li>Adaptive Autoregression estimated at each iteration</li>
+		<li>CSP (Common Spatial Patterns)</li>
+	</ul>
+	</li>
+	<li>Feature vectors classified via LDA</li>
+	<li>Lowest error via CSP, then AAR, worst with band power</li>
+</ul>
+</div></div></section><section data-id="0e5dc3a8119529d943e4b40ef0142444"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="7bd2a504b197b56e06b863f153b0cdb0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Even More Studies</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="43d552ad695673a4b87634ce07132af1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Reported Information Transfer Rate (ITR) of up to 17 bits/minute</li>
+	<li>Tested usefulness of ERD as control signal with a spinal cord injury</li>
+	<li>Electric hand orthosis taught to help a tetraplegic</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="2449c91c8d44f62dda88e1d977097e3e"><section data-id="85fb4ae0d68a23785b69c8bc62c7bbcc"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="ea8929755495b241ef02bc0aaaa1f7f5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Berlin BCI</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="715d1cfc22f2fd1dd7b131845a694e76"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Are months of training necessary to control imagery based EEG BCI?</li>
+</ul>
+</div></div></section><section data-id="f335ea667cce15500dcfa31680bf4ce7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="ee8697e5a96c275f0d772ce69e9e7545"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Rapid Control Experiment</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="6508e42feb428c64491b5a001171fbe9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Trained classifying algorithms via calibrations with movements and imagery</li>
+	<li>Made the calibration algorithms more adaptable to the person, people were able to learn</li>
+	<li>Movements were used to move a cursor</li>
+	<li>Had some positive results and some people still resulting in chance level movements</li>
+</ul>
+</div></div></section></section><section data-id="dc436a23ca59d29390666573760538a8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="6be0c14e7358794ee7eceee2010f4371"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Slow Cortical Potentials</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 144px; height: auto;" data-block-id="7a0dc1f2d4109f508c912c73a384ee77"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Reminder: slow non-movement related changes in EEG amplitude</li>
+	<li>SCPs can voluntarily be regulated based on feedback, thus can be used as a "Thought Translation Device" (TTD)</li>
+	<li>Taught 13 healthy and 3 totally motor paralyzed patients to control cursors via SCP</li>
+	<li>Results (of healthy):
+	<ul>
+		<li>4 were able to induce positive responses</li>
+		<li>3 could induce negative</li>
+		<li>3 could induce both</li>
+		<li>(Positive and negatives were combined to move left/right and up/down)</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section>
+<section class="stack" data-id="337dbc34a59d0fb73cffb4fd7b51717d"><section data-id="093e3816e7bfd7ea0a6c90a221b3c706"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 36px; height: auto;" data-block-id="e1f9626254af33753e6284f9a5988c0b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.7em">Movement-Related Potential</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="791f230e3c600687d77a47a92dda22fe" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 81px; top: 140px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>MRPs are small and slow potential drift before a voluntary movement </li>
+	<li>the potentials are different between left and right arm, so it's easy to distinguish left vs right movement intention.</li>
+	<li>harder detection than alpha and beta rhythms</li>
+	<li>however, can be more specific to supplementary and primary motor cortical areas</li>
+</ul>
+</div></div></section><section data-id="de596dbb00a158359e90deb82635c579"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 36px; height: auto;" data-block-id="90894bb57deec48522e9c898c6d492ce"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.7em">Experimentation</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 140px;" data-block-id="2cd16677905abc06014f556e4c00ac4c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>
+<strong>Hiraiwa (1990)</strong>- backpropagation neural network to test voluntary utterance of vowels (a, e, i, o, u) and moving the joystick in 4 directions</li>
+	<li>53% patterns correctly classified for vowels, 96% patterns recognized by directions</li>
+	<li>vowels require a higher level of cognitive activity, hence a harder pattern recognition</li>
+	<li>asyncrhonous switch- BCI can detect from a user is idle to active control state</li>
+	<li>low-frequency AS- record 1-4 Hz range</li>
+</ul>
+</div></div></section><section data-id="4e9cb95771fe3244515196ea497cca95"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 36px; height: auto;" data-block-id="fe9ccb78fc16a0a9c090e127abdf11af"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.7em">More Experimentation!</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 140px;" data-block-id="3dec47b4eb112aff5f9440e4bef098b0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>
+<strong>Shenoy and Rao (2005)</strong> - dynamic Bayesian network</li>
+	<li>probability distributions over brain and body-states during planning + execution</li>
+	<li>continuous tracking, allows generation of control signals</li>
+	<li>MRPs can estimate movement</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="0747248dc23c2cdfbcd3457cff7830a7"><section data-id="68c9a4b1ab2bafa9dd0c6f9e97dff761"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 36px; height: auto;" data-block-id="123b28d61b91d1664eee9190075bb333"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:52.5px; line-height:68.25px">Stimulus-Evoked Potentials</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 140px;" data-block-id="999ed4641ee61a020c9177347d5d8674"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>stereotypical EEG responses but by specific stimuli</li>
+	<li>rare stimulus triggers a<strong> P300 response</strong> (300 ms)</li>
+	<li>The <strong>P300 response </strong>stimulus itself is unpredictable, but is always 300 ms after the stimulus.</li>
+	<li>Generally in the parietal lobe, but sometimes certain components in the temporal and frontal lobes as well.</li>
+	<li>
+<em>oddball paradigm</em>- spelling a word using a matrix of letters and are flashed in random orders.</li>
+</ul>
+</div></div></section><section data-id="41db4e661e28f87ffca4bf3d03111abd"><div class="sl-block" data-block-type="image" data-block-id="a5c9860bca4b1138d6be05935fca6d19" style="min-width: 30px; min-height: 30px; width: 360px; height: 332.595px; left: 80px; top: 114px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="289" data-natural-height="267" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2794540/Screen_Shot_2016-06-27_at_9.40.10_AM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="934cf554f62db08e3afc5838060ba04f" style="height: auto; min-width: 30px; min-height: 30px; width: 361px; left: 448px; top: 185px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Every time a letter flashed, the brain will generate a P300 reponse.</p>
+</div></div></section><section data-id="de983e9dc224b940af3c82e2ce788591"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 92px; height: auto;" data-block-id="0bef14fec38d8ffbe2a3ebb2d65bb640"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.5em">Steady State Visually Evoked Potential </span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="1782e945f1cb772d822cf39300973837" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 225px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>detecting SSVEP caused by a continuously fluctuating stimuli (hence the name steady state)</li>
+	<li>Ex: decoding one of two possible choices, these two choices can be represented by a light at different frequency. Then we can see the difference in stimuli.</li>
+</ul>
+</div></div></section><section data-id="2e85ae191fd5dea10ecec88ca6a41eb2"><div class="sl-block" data-block-type="image" data-block-id="c069947c8a5acde4abfe1a485bcb51e3" style="min-width: 30px; min-height: 30px; width: 360px; height: 330.178px; left: 60px; top: 140px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="338" data-natural-height="310" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2794577/Screen_Shot_2016-06-27_at_9.47.09_AM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="e5f26beb7918bb5ed9b3de68c7097d13" style="height: auto; min-width: 30px; min-height: 30px; width: 436px; left: 444px; top: 140px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>Each button was lit up at a different frequency ranging from 6-14 Hz. Therefore, decoding SSVEP is possible.</li>
+	<li>8 out of 13 subjects used SSVEP subject to type desire phone number. Avg: 27.15 bpm for ITR.</li>
+</ul>
+</div></div></section><section data-id="b1a647213b0e115c28d983c072e9e5d1"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 109px; height: auto;" data-block-id="d1bc8529f3bccbed74f6e808ed485105"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Auditory Evoked Potentials</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 202px; height: auto;" data-block-id="d02031bccb24492215480a9ffc9d1227"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Donchin and colleagues- used P300 in spoken commands (yes, no, pass, and end), achieved accuracy in 63%-80% in 3 ALS pateitns</li>
+	<li>Hill and colleagues (2005)- ICA with support vector machines. 50 ms square-wave beeps of different frequencies either on the left or right ear. Subjects count the amount of beep on the left or right side.</li>
+</ul>
+</div></div></section><section data-id="808da2eef771926c80d91e7e74b66ede"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 97px; height: auto;" data-block-id="15e984f6c89a1b931c02d6d648b5d650"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">More on Auditory Evoked Potentials</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 188px; height: auto;" data-block-id="9ffe916dbbec464ac5ef3d60a44f2129"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Furdea and colleagues: letters in matrix coded with acoustically presented numbers</li>
+	<li>Less accurate than a visual BCI- Halder (2010) found that ITR has an avg of 2.46 bpm and accuracy around 78.5%.</li>
+	<li>Only reliable to patients who have lost all motor function and have short attention spans.</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="6140865e0aed39565feedf53244ea2cf"><section data-id="8b2d8fa71ce10533fb96490cc1a4760e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 103px; height: auto;" data-block-id="2534d01b9492b35fcbc428c6cffe8b00"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">BCIs based on Cognitive Tasks</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 177px; height: auto;" data-block-id="1a503333f24c6cffb41f13029324d5ff"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>requires higher levels of thinking, but each cognitive task can be mapped to a control signal</li>
+	<li>can discriminate between activity patterns of different tasks</li>
+	<li>Anderson (1996)- (1) relax, (2) letter composition (3) math, (4) visual counting, (5) geometric figure</li>
+	<li>EEG recorded from 10-20 system. Autoregressive model with two/three-layer backpropagation neural networks</li>
+</ul>
+</div></div></section><section data-id="fae30f8fd5efa48d07bf8f09f7280284"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 103px; height: auto;" data-block-id="39771c1ebdd7d1bbe0a2c6e51a2e6ca7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">BCIs based on Cognitive Tasks</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 198px; height: auto;" data-block-id="de455d19c263f7aa361c8819fa804850"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>average accuracy ranged from 71% to 38%</li>
+	<li>Galan (2008) - 3 mental tasks to operate simulated wheelchair along specified path. (1) mentally search for words, (2) relaxing while fixating on the center of screen, (3) motor imagery of left hand</li>
+	<li>used LDA classifier. 100% and 80% (different subjects) of the final goals. </li>
+</ul>
+</div></div></section></section><section data-id="ef2902466e3fa15a1f9b46bc3f309df4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 103px; height: auto;" data-block-id="c67bc0f7837353ca1e68a876ffb79727"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Error Potentials in BCIs</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 194px; height: auto;" data-block-id="f0760db17a85e4d1ecc10cb7d82d842e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>error detection is very important</li>
+	<li>detection is done by recognizing the brain's reaction to error: hence the error potential</li>
+	<li>Buttfield (2006) - deliberately make 20% errors to record ErrPs from frontocentral region.</li>
+	<li>with errors - accuracy 79.9%, without errors- accuracy 82.4%</li>
+</ul>
+</div></div></section><section data-id="a4812944bb3dbe4735bc991fdbd6c686"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 103px; height: auto;" data-block-id="495796a77b8997a73b7b3b40060dc369"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Coadaptive BCI</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 195px; height: auto;" data-block-id="8ab5689ed5ddd86655edcb8451d2babf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>BCI can adapt to a user's brain signals continuously </li>
+	<li>non-stationary learning task - continuously mapping brain signals to control signals</li>
+	<li>3-6 minutes of adaptation go a long way</li>
+	<li>Buttfield (2006) - continuously adapting mean and covariance to calculate the learning rates and online adaptation is better than static (for up to 20.3%)</li>
+	<li>DiGiovanna (2009) tried operant condition with BCI</li>
+</ul>
+</div></div></section><section data-id="4fa07d0b6b9b0fad423156be3b1ea16e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 96px; height: auto;" data-block-id="c3d239ed4dcdd2d348dc5eb4315f7409"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Hierarchy BCI</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 182px; height: auto;" data-block-id="4e882ff272ffbefe007629f5e3b4a226"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Continuous non-invasive BCI might be cognitively taxing</li>
+	<li>
+<em>hierarchical BCI - </em>user teaches BCI system new skills, then invoked directly as high level command</li>
+	<li>developed to control a humanoid robot</li>
+	<li>hierarchical control is faster and more accurate</li>
+</ul>
+</div></div></section><section data-id="8b2ba8a640b44b2d32353f46286ab5ae"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 162px; height: auto;" data-block-id="cee6b70e86fa6578196fd8080f622c1f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1><span style="font-size:0.7em">Other Non-Invasive BCIs</span></h1>
+</div></div></section><section data-id="489846c2d1e866c7e394c84095c25395"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 89px; height: auto;" data-block-id="0342ccb481dbd4a17b289a668097ebdf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2><span style="font-size:0.9em">fMRI</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 174px; height: auto;" data-block-id="481a543080b659861383a6cb9413f005"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;"><ul>
+<li>Can a subject learn to control their blood oxygen level dependent (BOLD) response?</li>
+<li>Weiskopf (2003) - feedback paradigm- local BOLD signals constantly provided with a delay &lt; 2 sec</li>
+<li>subjects can increase or decrease BOLD responses</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="1a2b1cefdd166f4671a258d5ba748c7c" style="min-width: 30px; min-height: 30px; width: 254px; height: 234.382px; left: 80px; top: 372.809px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="492" data-natural-height="454" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2795317/Screen_Shot_2016-06-27_at_12.24.02_PM.png"></div></div></section><section data-id="6ed4988fc03fad7b10fb16e1575edd74"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 89px; height: auto;" data-block-id="38e0247bc398d72009a30259910eaf9b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Magnetoencephalography (MEG)</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 191px; height: auto;" data-block-id="f7fd8744120f409e770576eb2e410119"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>higher spatiotemporal resolution than EEG</li>
+	<li>Mellinger (2007) - investigated a MEG on voluntary amplitude modulation of sensorimotor mu and beta rhythm
+	<ul>
+		<li>spatial filtering method based on geometric properties of signal propagation</li>
+		<li>successfully communicate limb movements</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="7e1d6f55918abe4f07f3751140e05f1d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="af3ee655a974c9151d0eacb01e8e029d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>fNIR</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 227px; height: auto;" data-block-id="f55265744e63232696e53514f737f9cf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>captures hemodynamic response</li>
+	<li>Coyle (2004) - fNIR detects characteristic repsonses when subjects engage in motor imagery and utilize this response to control an application</li>
+	<li>easy for drawing and cursor control</li>
+	<li>however, average completion time actually decreased with practice</li>
+</ul>
+</div></div></section>
+				</div>
+				<div class="dimmer"></div>
+			</div>
+
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
