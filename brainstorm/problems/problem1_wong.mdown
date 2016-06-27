@@ -1,0 +1,15 @@
+### People are so busy with their daily lives that they forget about basic needs such as hunger and tiredness.
+#### Tsun Wong
+
+## 1. Who does it affect?
+High school students, college students and workers in our modern day society.
+## 2. Where is it happening?
+Home and/or workplace.
+## 3. What is the timeline of the problem (Did it just become more relevant? Has it been ongoing but previously untreatable? Is it a coming problem that we could work towards now?)? What makes this currently relevant?
+It's becoming increasingly more relevant as we become busier everyday indulging ourselves in distractions that take away a lot of our times (specifically perhaps technological distractions). A lot of people don't realize that it's an ongoing problem but some people are busy to the point where they only eat one meal a day or not get enough sleep. 
+## 4. Why is this problem happening? What is the main cause (both within brain and outside it?)?
+Our capitalist society and the fact that our brains are always so focused on something else- that a lot of the modern day workers are focused on work more so than their physical or mental health.
+## 5. Potential solutions with BCI?
+When people are feeling more tired or hungry than they're supposed to, their neural activity will act differently. In the case of hunger, different neurotransmitters such as NPY and leptin work as a feedback system to tell neurons whether the person needs nutrition at the moment. We can use this as a useful tool to interact with some kind of non-invasive BCI to remind the person that they're hungry.
+## 6. Is there existing work/data with BCI?
+According to a Russian article from 1995 (http://www.ncbi.nlm.nih.gov/pubmed/8585299) , it is shown that food deprivation correlates to a decrease in the EEG spectral power in the delta range, and an increase in the alpha range. Can't find the exact article-- need more confirmation.
