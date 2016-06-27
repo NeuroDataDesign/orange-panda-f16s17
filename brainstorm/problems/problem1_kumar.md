@@ -18,8 +18,16 @@ Substance abuse has been a problem for years, with a variety of substances. Howe
 This problem has been occurring in the real world likely due to societal pressure and increased ease in communication and accessing such drugs. Prescription drugs are likely on the rise for the same reason. Within the brain, the brain associates the release it gets from these drugs with happiness over natural causes (family, activity, etc.) and becomes very attached to the drug.
 
 5. Potential solutions with BCI?
-In the field of behavioral health, BCI has already made serious breakthroughs in attempts to identify brain imaging biomarkers and neurofeedback treatments (especially for PTSD). But, the 
+In the field of behavioral health, BCI has already made serious breakthroughs in attempts to identify brain imaging biomarkers and neurofeedback treatments (especially for PTSD). Neurofeedback targets treating the actual cause of the issue, the mapping in the brain, and ecouraging signals to stop being dependent on substances. At the same time, not exactly BCI related, but other biomarkers could be used as factors to help individualize one's neurofeedback/treatment (including heart rate, respiratory rate, etc.)
 
-6. Is there existing work/data with EEG?
+6. Is there existing work/data with BCI?
+Neurofeedback already exists effectively with PTSD, and work is being done in the area currently. In addition, research into brain imaging and other biomarkers already is ongoing.
+
+[Neuroplasticity and Addiction Recovery](https://www.psychologytoday.com/blog/ending-addiction-good/201302/neuroplasticity-and-addiction-recovery)
+[History on Relating Neuroplasticity and Drugs](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3878148/)
+[Neurofeedback in Treatment](https://www.researchgate.net/profile/Fateme_Dehghani-Arani/publication/45718746_Effectiveness_of_neurofeedback_training_as_a_treatment_for_opioid-dependent_patients/links/53ff60370cf29dd7cb51f2ad.pdf)
+[A couple other examples of Neurofeedback](http://www.parkerneurofeedback.com/research-on-substance-abuse/)
+[Neurofeedback in Brain Trauma](http://www.addictionpro.com/article/neurofeedback-showing-promise-addressing-tbi)
+
 
 Attach any reference links for the problem here too (showing its relevance, research in the area, etc.)
