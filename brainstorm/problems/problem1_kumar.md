@@ -24,10 +24,11 @@ In the field of behavioral health, BCI has already made serious breakthroughs in
 Neurofeedback already exists effectively with PTSD, and work is being done in the area currently. In addition, research into brain imaging and other biomarkers already is ongoing.
 
 [Neuroplasticity and Addiction Recovery](https://www.psychologytoday.com/blog/ending-addiction-good/201302/neuroplasticity-and-addiction-recovery)
+
 [History on Relating Neuroplasticity and Drugs](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3878148/)
+
 [Neurofeedback in Treatment](https://www.researchgate.net/profile/Fateme_Dehghani-Arani/publication/45718746_Effectiveness_of_neurofeedback_training_as_a_treatment_for_opioid-dependent_patients/links/53ff60370cf29dd7cb51f2ad.pdf)
+
 [A couple other examples of Neurofeedback](http://www.parkerneurofeedback.com/research-on-substance-abuse/)
+
 [Neurofeedback in Brain Trauma](http://www.addictionpro.com/article/neurofeedback-showing-promise-addressing-tbi)
-
-
-Attach any reference links for the problem here too (showing its relevance, research in the area, etc.)
