@@ -20,3 +20,25 @@
 
 ##Applications
   * Athletics
+
+#[MUSE - meditation assistant](http://www.choosemuse.com/)
+
+##Pros
+  * Converts "brain signals" into sounds of wind
+  .. * Calm mind = calm winds. Vise versa 
+
+##Cons
+  * All sensors must be custom fabricated (from basic chemicals)
+  * Requires sweat
+  * Not as accurate as blood tests
+  * Sweat can be contaminated by  microbes
+  * Must be calibated to temperature
+  * Electrochemical sensors are very sensitive to temp / skin temp
+
+
+##Biomarkers
+  * sweat composition: glucose / lactate / sodium / potassium / body temperature
+  * electrical signals generated upon contact with sweat
+
+##Applications
+  * Athletics
