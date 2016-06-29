@@ -1,4 +1,4 @@
-#Sweat Sensor
+#[Sweat Sensor](http://www.nature.com/news/wearable-sweat-sensor-paves-way-for-real-time-analysis-of-body-chemistry-1.19254)
 
 ##Pros
   * Real time updates
