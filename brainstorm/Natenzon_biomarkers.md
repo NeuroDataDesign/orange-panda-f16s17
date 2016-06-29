@@ -25,20 +25,19 @@
 
 ##Pros
   * Converts "brain signals" into sounds of wind
-  ⋅⋅* Calm mind = calm winds. Vise versa 
+  ⋅⋅*--- Calm mind = calm winds. Vise versa 
+  * Traks and displays overall progress
+  * 7 hour battery life
+  * Sleek
+  * 7 total sensors
 
 ##Cons
-  * All sensors must be custom fabricated (from basic chemicals)
-  * Requires sweat
-  * Not as accurate as blood tests
-  * Sweat can be contaminated by  microbes
-  * Must be calibated to temperature
-  * Electrochemical sensors are very sensitive to temp / skin temp
+  * Only really used for meditation
+  * Only function is to determine to which extend your mind is active
 
 
 ##Biomarkers
-  * sweat composition: glucose / lactate / sodium / potassium / body temperature
-  * electrical signals generated upon contact with sweat
-
+  * Unclear. Claims to measure "brain signals"
+  
 ##Applications
-  * Athletics
+  * Meditation
