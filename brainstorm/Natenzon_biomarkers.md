@@ -16,7 +16,7 @@
 
 ##Biomarkers
   * sweat composition:
-    ..* glucose / lactate / sodium / potassium / body temperature
+  ..* glucose / lactate / sodium / potassium / body temperature
   * electrical signals generated upon contact with sweat
 
 ##Applications
