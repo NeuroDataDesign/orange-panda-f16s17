@@ -25,7 +25,7 @@
 
 ##Pros
   * Converts "brain signals" into sounds of wind
-  .. * Calm mind = calm winds. Vise versa 
+  ⋅⋅* Calm mind = calm winds. Vise versa 
 
 ##Cons
   * All sensors must be custom fabricated (from basic chemicals)
