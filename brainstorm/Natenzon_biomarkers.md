@@ -14,7 +14,7 @@
   -Electrochemical sensors are very sensitive to temp / skin temp
 
 
-#Biomarkers
+##Biomarkers
   -sweat composition:
     -glucose / lactate / sodium / potassium / body temperature
   -electrical signals generated upon contact with sweat
