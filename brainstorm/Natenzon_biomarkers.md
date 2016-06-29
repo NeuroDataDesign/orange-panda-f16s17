@@ -1,9 +1,9 @@
 #Sweat Sensor
 
 ##Pros
-  *.Real time updates
-  *.Non-invasive
-  *.Measure's multiple biomarkers at once
+  * Real time updates
+  * Non-invasive
+  * Measure's multiple biomarkers at once
 
 ##Cons
   -All sensors must be custom fabricated (from basic chemicals)
