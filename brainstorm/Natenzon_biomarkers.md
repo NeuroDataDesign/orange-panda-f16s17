@@ -61,7 +61,8 @@
 
 
 ##Biomarkers
-  * Your breathing batterns
+  * Your breathing patterns
   
 ##Applications
-  * Meditation
+  * Breathing --> state of mind over the course of your day
+  * Could be used for drug addicts in recovery (not intended application, just side idea I had)
