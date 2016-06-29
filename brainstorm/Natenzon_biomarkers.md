@@ -41,3 +41,27 @@
   
 ##Applications
   * Meditation
+
+#[Spire - mindfulness and activity tracker](https://www.spire.io/?)
+
+##Pros
+  * Measures breathing and provides feedback to keep you more focused / calm all day
+  * Unobtrusive and not openly displayed
+  * Includes exercies to help with meditation
+  * Real time streaming all day
+  * Tracks and displays long term progress
+  * Tracks steps and calories
+  * 7 day battery life
+  * Integrated with apple watch
+  * Integrates with Calendar / Location / Photos so you can what you were doing, where you were, and whom you were with during different states of mind
+
+##Cons
+  * Only measures your breathing patterns and body movement nothing else
+  * Only compatible with iphone
+
+
+##Biomarkers
+  * Your breathing batterns
+  
+##Applications
+  * Meditation
