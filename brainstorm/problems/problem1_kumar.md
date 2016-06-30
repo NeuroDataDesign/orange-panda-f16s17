@@ -23,6 +23,8 @@ Answer:
 6. Is there existing work/data with BCI?
     - Neurofeedback already exists effectively with PTSD, and work is being done in the area currently. In addition, research into brain imaging and other biomarkers already is ongoing.
 
+**Neuroplasticity, Neurofeedback and Substance Abuse:**
+
 [Neuroplasticity and Addiction Recovery](https://www.psychologytoday.com/blog/ending-addiction-good/201302/neuroplasticity-and-addiction-recovery)
 
 [History on Relating Neuroplasticity and Drugs](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3878148/)
@@ -32,3 +34,13 @@ Answer:
 [A couple other examples of Neurofeedback](http://www.parkerneurofeedback.com/research-on-substance-abuse/)
 
 [Neurofeedback in Brain Trauma](http://www.addictionpro.com/article/neurofeedback-showing-promise-addressing-tbi)
+
+**Biomarkers in Substance Abuse:**
+
+[Biomarkers in Cocaine Dependence](http://www.nature.com/npp/journal/v39/n1/full/npp2013210a.html)
+
+[Neuroimaging and Biomarkers in Substance Abuse](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4427893/)
+
+[Genetic Biomarkers for Predictive Models for Opioids](https://clinicaltrials.gov/ct2/show/NCT01562353)
+
+[Biomarkers for Treatment of Opioids](http://clinicalresearch.itmat.upenn.edu/clinicaltrial/50/biomarkers-of-disease-and-response-to-treatment-i/)
