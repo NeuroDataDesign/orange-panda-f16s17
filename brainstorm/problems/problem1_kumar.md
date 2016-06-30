@@ -6,6 +6,7 @@ Description of problem: Tens of millions of US citizens (and people globally) us
 Answer:
 
 1. Who does it affect?
+
 Tens of millions of Americans each year, not including fall-out on users' families and careers.
 
 2. Where is it happening?
