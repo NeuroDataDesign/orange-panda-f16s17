@@ -83,6 +83,7 @@
   * Battery lasts for days
   * Has GPS and heart rate tracking
   * Real time data collection
+  * Ex. integrates with lumosity to see how exercise is related to brain training
   
 ##Cons
   * Heart rate data is highly inaccurate (getting sued over it)
