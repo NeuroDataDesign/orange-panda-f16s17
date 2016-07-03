@@ -86,10 +86,15 @@
   
 ##Cons
   * Heart rate data is highly inaccurate (getting sued over it)
+  * Heart rate data is difficult to get from the wrist
+  * MEDICAL grade devices (placed around the chest) measure electrical impulses traveling through the heart
 
 ##Biomarkers
   * GPS location and accelerometer for distance / steps taken / calories / active minutes
+  * Shine a light through the wearer's skin to detect blood activity on the wrist, to measure heart rate
   
 ##Applications
   * Fitness and lifestyle tracking (exercise / food consumption / sleep patterns)
   * Motivation to exercise through social media integration
+  * Being that heart rate data is highly inaccurate, this is mostly just a means of looking at your longterm
+    fitness/weight loss /sleep patterns.
