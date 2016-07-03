@@ -66,3 +66,30 @@
 ##Applications
   * Breathing --> state of mind over the course of your day
   * Could be used for drug addicts in recovery (not intended application, just side idea I had)
+
+#[Fitbit - activity tracker](https://www.fitbit.com/)
+
+##Pros
+  * Measures daily activity (steps, distance, calories, active minutes)
+  * App displays performance over time
+  * Doesn't require fitbit watch to record basic states (uses smartphone): steps, distance, calories burned
+  * Watch can be used to record sleeping patterns. App used for weekly sleep goals, bedtime reminders, long term trends
+  * App integrates with multiple fitbit watches / trackers so you can easily switch between them
+  * App has a fitness tracker to measure workouts
+  * Integrates with social media apps to compete with friends / family
+  * App provides access to logs for weight / nutrition tracking
+  * Integrates with a slew of other fitness / lifestyle tracking apps
+  * open API
+  * Battery lasts for days
+  * Has GPS and heart rate tracking
+  * Real time data collection
+  
+##Cons
+  * Heart rate data is highly inaccurate (getting sued over it)
+
+##Biomarkers
+  * GPS location and accelerometer for distance / steps taken / calories / active minutes
+  
+##Applications
+  * Fitness and lifestyle tracking (exercise / food consumption / sleep patterns)
+  * Motivation to exercise through social media integration
