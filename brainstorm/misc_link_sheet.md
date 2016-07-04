@@ -9,6 +9,14 @@
 
 [The Importance of Tech in Behavioral Health:](http://www.thelowdownblog.com/2015/10/technology-is-driving-advances-in.html) explains some of the building reasons for tech in healthcare, from communication costs to efficacy. Elaborates most important thing is collaboration of information from different companies/apps.
 
+[The Revolution Will Be Digitized (Washington Post 2015):](http://www.washingtonpost.com/sf/national/2015/05/09/the-revolution-will-be-digitized/) Discusses the growth in searching for strong startups and applications in wearables. The hurdles in tracking, such as security and openness, are also discussed, and some of the bigger name companies and what they're looking for/involved in.
+
+ - Important note: "The innovation is outpacing the scientific and legal framework for testing and regulating such devices. The Food and Drug Administration in January indicated it would regulate devices that are invasive but take a lighter touch on wearables.
+ - According to the agency’s draft guidelines, a wellness product crosses into the territory of a medical device, which requires a rigorous FDA review that is expensive for manufacturers, when its intended use refers to a specific disease or condition, or it presents an inherent risk to a user’s safety. That would essentially leave hundreds, if not thousands, of “low-risk general wellness” products - a category that presumably applies to the current incarnation of Fitbits - free from extra scrutiny under federal food and drug safety laws."
+
+
 To Read Later:
 
 [The Rise of Consumer Health Wearables](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4737495/)
+
+[Wearable System for Detecting Drug Cravings](http://www.ncbi.nlm.nih.gov/pubmed/22311668)
