@@ -17,6 +17,18 @@
     - Likely no biomarker affects distinct part of brain, rather, PTSD is a complex disease with potential issues accross different parts of brain with various potential factors
     - Applications of biomarker: 
         - Risk evaluation
+        - Validating trauma exposure
+        - Predicting + monitoring recovery
+        - Subtyping PTSD
+    - Challenges in identifying biomarker:
+        - Various influences on many levels (biological, environmental, psycho, social)
+        - Markers may not be unique to PTSD
+        - Markers are probablistic, not definitive
+    - Clinical, ethical, social, legal considerations. Eg:
+        - Public lack of knowledge may add stigma for employers, people, etc. How much should people know, and how will we educate them?
+        - To what extent should businesses with trauma-potential environments screen potential PTSD victims?
+        - What if someone still feels PTSD, but biomarkers have gone down?
+
 
 ### Biomarker List:
 
