@@ -163,3 +163,70 @@
   
 ##Applications
   * Improving posture | Activity tracking
+ 
+#[iOptik - augmented reality contact lenses ](http://innovega-inc.com/)
+
+##Pros
+  * Does not use optics in the eyeware frame (higher performance / better styling)
+  * Instead uses a micro-lens incorporated into a contact lens
+  * Uses transparent optics so that no peripheral vision is lost
+  * Interacts with the eye in the same way it views the world, to bring a virtual media "canvas" that delivers a display larger than conventional video eyewear
+  * Allows us to easily see near-eye images without blur with the help of the contact lens
+  * Lenses can be used to enhance quality of other products
+  
+##Cons
+  * No available product yet
+  * No details on when the product will be released
+
+##Biomarkers
+  * N/A
+  
+##Applications
+  * Allows for people to see images projected on displays very close to the user's eye, while still allowing for a wide field of view
+
+#[Vi - artificial intelligence personal trainer ](http://vi.life-beam.com/vi/)
+
+##Pros
+ * Provides fitness tips during your workout (ex. progress / push harder / go easier)
+ * Real-time monitoring 
+ * Machine learning: learns more about your energy levels, optimal rest times, challenges, and limits with every workout
+ * Plays music that aligns with your pace of exercise
+ * 8+ hours of battery
+ * Apps for iOS and Android
+ * Speech recognition for playing music / sending text messages
+ * Sends text message "check-ins" between workouts
+ * Adjusts plans according to weather 
+ * Answer calls / listen to music
+ * Records: location, weather, elevation, goals, speed, cadence, heartrate variability, heart rate, training history
+ * Integrates with health kit, google fit, and strava
+ * Earbud touch for voice trigger
+  
+##Cons
+ * No data indicating the quality of the data collected
+ * Product is still not available for consumer use
+
+##Biomarkers
+ * Heartrate / heartrate variability sensor
+ * 6 axis accelerometer and gyroscope
+ * barometer
+ * In-ear detection sensor
+ * Speech recognition
+  
+##Applications
+ *AI personal trainer fitness programs and monitoring exercise habits
+
+#[Magic Leap - merged reality](https://www.magicleap.com/#/home)
+
+##Pros
+ * Use photonics built into a clear plate do display images with near perfect quality
+ * Nearly indistinguishable virtual projections from real life objects
+ * All we know is that it received $800 million total in funding from Alibaba group, Google, and AltaVista
+ * No details regarding what their actual product will look like / how it will be integrated into daily life 
+##Cons
+ * Company has not released any details regarding the product
+ 
+##Biomarkers
+ * N/A
+
+##Applications
+ * Merged reality - projecting holograms that seamlessly integrate with the real environment to create a merged virtual/real-life objects experience
