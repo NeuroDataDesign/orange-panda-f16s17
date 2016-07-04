@@ -148,10 +148,13 @@
   * Vibrates when slouching is detected
   * Set custom goals / track progress over time
   * Integrated with MyFitnessPal and Walgrees apps
+  * Battery lasts up to 5 days
+  * Relatively cheap compared to other similar technologies
   
 ##Cons
   * Limited functionality and integration with other apps
-  *
+  * Only used for posture control | Only used for activity tracking
+  * Limited application
 
 ##Biomarkers
   * 9-axis rotational sensors
@@ -159,4 +162,4 @@
   * Bounce / Breaking / Pelvic Tilt / Pelvic Rotation / Pelvic Drop / Stride Length / Ground Contact Time
   
 ##Applications
-  * Interfacing in free space with computers, toys, and smartphones
+  * Improving posture | Activity tracking
