@@ -128,15 +128,15 @@
 ##Pros
   * Integrated with a slew of apps in their app store
   * Proprietary music software, spotify, youtube, drones, fruit ninja, tetris, web browser nav, global mouse control, itunes, powerpoint, adobe reader
+  * Collected data is from hand movement - less room for noise
   
 ##Cons
-  * Requires you to purchase calm / energy strips
-  * Each strip is only good for a few sessions
-  * Mixed reviews on amazon. Some love it, others don't
-  * Lifestyle devices (rather than medical device) so exempt from FDA regulations
+  * Small learning curve to pick up pre-programmed guestures 
+  * Occasionally picks up guestures involved in everyday functions as control guestures 
+  * Only controls one device at a time (does not easily switch between various devices)
   
 ##Biomarkers
-  * Stimulates nerves on your forehead with low frequency electrical pulses
+  * Electrical impulses going through your hand dependent on guestures
   
 ##Applications
-  * Replace drinks and pills as a means for people to boost their adrenaline or calm them down
+  * Interfacing in free space with computers, toys, and smartphones
