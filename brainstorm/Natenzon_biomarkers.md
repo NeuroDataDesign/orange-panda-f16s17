@@ -122,3 +122,21 @@
   
 ##Applications
   * Replace drinks and pills as a means for people to boost their adrenaline or calm them down
+
+#[Myo - control technology with gestures and motion](https://www.myo.com/)
+
+##Pros
+  * Integrated with a slew of apps in their app store
+  * Proprietary music software, spotify, youtube, drones, fruit ninja, tetris, web browser nav, global mouse control, itunes, powerpoint, adobe reader
+  
+##Cons
+  * Requires you to purchase calm / energy strips
+  * Each strip is only good for a few sessions
+  * Mixed reviews on amazon. Some love it, others don't
+  * Lifestyle devices (rather than medical device) so exempt from FDA regulations
+  
+##Biomarkers
+  * Stimulates nerves on your forehead with low frequency electrical pulses
+  
+##Applications
+  * Replace drinks and pills as a means for people to boost their adrenaline or calm them down
