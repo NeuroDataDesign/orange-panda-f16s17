@@ -140,3 +140,23 @@
   
 ##Applications
   * Interfacing in free space with computers, toys, and smartphones
+
+#[Lumo Lift- posture coaching | Lumo Run - running biometrics ](http://www.lumobodytech.com/lumo-lift/)
+
+##Pros
+  * Posture and Activity Tracking
+  * Vibrates when slouching is detected
+  * Set custom goals / track progress over time
+  * Integrated with MyFitnessPal and Walgrees apps
+  
+##Cons
+  * Limited functionality and integration with other apps
+  *
+
+##Biomarkers
+  * 9-axis rotational sensors
+  * Steps per minute - how often foot contacts ground
+  * Bounce / Breaking / Pelvic Tilt / Pelvic Rotation / Pelvic Drop / Stride Length / Ground Contact Time
+  
+##Applications
+  * Interfacing in free space with computers, toys, and smartphones
