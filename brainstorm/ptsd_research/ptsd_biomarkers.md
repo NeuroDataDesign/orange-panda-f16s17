@@ -29,6 +29,7 @@
         - To what extent should businesses with trauma-potential environments screen potential PTSD victims?
         - What if someone still feels PTSD, but biomarkers have gone down?
 
+ - Diagnostic Biomarkers for Posttraumatic Stress Disorder: Promising Horizons from Translational Neuroscience Research (located in folder): gives a span of different biomarkers that have been related to PTSD. I'm not including a huge list here because there are so many and they traverse so many systems (endocrinal, lymph, neurological, etc.). However, they give nice summaries of the readings in tables accross the paper. They acknowledge many of these relationships need more defining and also that PTSD is a very complex disease that sees contributors accross the spectrum, and accurate use and testing for PTSD will involve using multiple of these factors. Also, many of these factors may be more related to stress-related disorders and stress-inducing activity. Also, again skin conductance and heart rate and activity, especially with correct stimulus.
 
 ### Biomarker List:
 
