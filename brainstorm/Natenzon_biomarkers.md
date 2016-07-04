@@ -218,9 +218,15 @@
 #[Magic Leap - merged reality](https://www.magicleap.com/#/home)
 
 ##Pros
-  
+ * Use photonics built into a clear plate do display images with near perfect quality
+ * Nearly indistinguishable virtual projections from real life objects
+ * All we know is that it received $800 million total in funding from Alibaba group, Google, and AltaVista
+ * No details regarding what their actual product will look like / how it will be integrated into daily life 
 ##Cons
-
+ * Company has not released any details regarding the product
+ 
 ##Biomarkers
-  
+ * N/A
+
 ##Applications
+ * Merged reality - projecting holograms that seamlessly integrate with the real environment to create a merged virtual/real-life objects experience
