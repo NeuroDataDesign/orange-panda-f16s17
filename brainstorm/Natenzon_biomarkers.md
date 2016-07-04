@@ -99,3 +99,67 @@
   * Motivation to exercise through social media integration
   * Being that heart rate data is highly inaccurate, this is mostly just a means of looking at your longterm
     fitness/weight loss /sleep patterns.
+
+#[Thync - mental state shifter](http://www.thync.com/)
+
+##Pros
+  * Electrical stimulation used to energize / relax you
+  * Non-invasive / No drinks / No pills
+  * Company offers 30 day trial for $1
+  * Studies suggest that a daily 10 minute use of device for a week lowers stress / improves sleep / improves mood
+  * Controlled through an app
+  * Non-invasive
+  * Don't have to wear it all day (average session = 20 minutes)
+  
+##Cons
+  * Requires you to purchase calm / energy strips
+  * Each strip is only good for a few sessions
+  * Mixed reviews on amazon. Some love it, others don't
+  * Lifestyle devices (rather than medical device) so exempt from FDA regulations
+  
+##Biomarkers
+  * Stimulates nerves on your forehead with low frequency electrical pulses
+  
+##Applications
+  * Replace drinks and pills as a means for people to boost their adrenaline or calm them down
+
+#[Myo - control technology with gestures and motion](https://www.myo.com/)
+
+##Pros
+  * Integrated with a slew of apps in their app store
+  * Proprietary music software, spotify, youtube, drones, fruit ninja, tetris, web browser nav, global mouse control, itunes, powerpoint, adobe reader
+  * Collected data is from hand movement - less room for noise
+  
+##Cons
+  * Small learning curve to pick up pre-programmed guestures 
+  * Occasionally picks up guestures involved in everyday functions as control guestures 
+  * Only controls one device at a time (does not easily switch between various devices)
+  
+##Biomarkers
+  * Electrical impulses going through your hand dependent on guestures
+  
+##Applications
+  * Interfacing in free space with computers, toys, and smartphones
+
+#[Lumo Lift- posture coaching | Lumo Run - running biometrics ](http://www.lumobodytech.com/lumo-lift/)
+
+##Pros
+  * Posture and Activity Tracking
+  * Vibrates when slouching is detected
+  * Set custom goals / track progress over time
+  * Integrated with MyFitnessPal and Walgrees apps
+  * Battery lasts up to 5 days
+  * Relatively cheap compared to other similar technologies
+  
+##Cons
+  * Limited functionality and integration with other apps
+  * Only used for posture control | Only used for activity tracking
+  * Limited application
+
+##Biomarkers
+  * 9-axis rotational sensors
+  * Steps per minute - how often foot contacts ground
+  * Bounce / Breaking / Pelvic Tilt / Pelvic Rotation / Pelvic Drop / Stride Length / Ground Contact Time
+  
+##Applications
+  * Improving posture | Activity tracking
