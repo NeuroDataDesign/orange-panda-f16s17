@@ -99,3 +99,26 @@
   * Motivation to exercise through social media integration
   * Being that heart rate data is highly inaccurate, this is mostly just a means of looking at your longterm
     fitness/weight loss /sleep patterns.
+
+#[Thync - mental state shifter](http://www.thync.com/)
+
+##Pros
+  * Electrical stimulation used to energize / relax you
+  * Non-invasive / No drinks / No pills
+  * Company offers 30 day trial for $1
+  * Studies suggest that a daily 10 minute use of device for a week lowers stress / improves sleep / improves mood
+  * Controlled through an app
+  * Non-invasive
+  * Don't have to wear it all day (average session = 20 minutes)
+  
+##Cons
+  * Requires you to purchase calm / energy strips
+  * Each strip is only good for a few sessions
+  * Mixed reviews on amazon. Some love it, others don't
+  * Lifestyle devices (rather than medical device) so exempt from FDA regulations
+  
+##Biomarkers
+  * Stimulates nerves on your forehead with low frequency electrical pulses
+  
+##Applications
+  * Replace drinks and pills as a means for people to boost their adrenaline or calm them down
