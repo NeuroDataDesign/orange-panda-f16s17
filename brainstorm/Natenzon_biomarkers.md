@@ -183,3 +183,23 @@
   
 ##Applications
   * Allows for people to see images projected on displays very close to the user's eye, while still allowing for a wide field of view
+
+#[Vi - artificial intelligence personal trainer ](http://vi.life-beam.com/vi/)
+
+##Pros
+  
+##Cons
+
+##Biomarkers
+  
+##Applications
+
+#[Magic Leap - merged reality](http://vi.life-beam.com/vi/)
+
+##Pros
+  
+##Cons
+
+##Biomarkers
+  
+##Applications
