@@ -163,3 +163,23 @@
   
 ##Applications
   * Improving posture | Activity tracking
+ 
+#[iOptik - augmented reality contact lenses ](http://innovega-inc.com/)
+
+##Pros
+  * Does not use optics in the eyeware frame (higher performance / better styling)
+  * Instead uses a micro-lens incorporated into a contact lens
+  * Uses transparent optics so that no peripheral vision is lost
+  * Interacts with the eye in the same way it views the world, to bring a virtual media "canvas" that delivers a display larger than conventional video eyewear
+  * Allows us to easily see near-eye images without blur with the help of the contact lens
+  * Lenses can be used to enhance quality of other products
+  
+##Cons
+  * No available product yet
+  * No details on when the product will be released
+
+##Biomarkers
+  * N/A
+  
+##Applications
+  * Allows for people to see images projected on displays very close to the user's eye, while still allowing for a wide field of view
