@@ -61,3 +61,7 @@
     - Automated self-exams, remotely activated implants
     - **PTSD:** Wearables allow for remote monitoring, 21% of 5.2 million PTSD Americans receive "minimally adequate treatment."
     - [Neumitra:](https://neumitra.com/research) bio-device that monitors stress via electrodermal signals. Will soon open source data.
+
+
+### To Read
+[Dissociative aspects of posttraumatic stress disorder: Epidemiology, clinical manifestations, assessment, and diagnosis](http://www.uptodate.com/contents/dissociative-aspects-of-posttraumatic-stress-disorder-epidemiology-clinical-manifestations-assessment-and-diagnosis?source=search_result&search=ptsd&selectedTitle=3~150#H670096)
