@@ -31,6 +31,10 @@
 
  - Diagnostic Biomarkers for Posttraumatic Stress Disorder: Promising Horizons from Translational Neuroscience Research (located in folder): gives a span of different biomarkers that have been related to PTSD. I'm not including a huge list here because there are so many and they traverse so many systems (endocrinal, lymph, neurological, etc.). However, they give nice summaries of the readings in tables accross the paper. They acknowledge many of these relationships need more defining and also that PTSD is a very complex disease that sees contributors accross the spectrum, and accurate use and testing for PTSD will involve using multiple of these factors. Also, many of these factors may be more related to stress-related disorders and stress-inducing activity. Also, again skin conductance and heart rate and activity, especially with correct stimulus.
 
+ - [Biomarkers for combat-related PTSD: focus on molecular networks from high-dimensional data:](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4138711/) rather than giving concrete data, points out that PTSD is an emergent property of a complex set of biological functions. Offers a method of trying to investigate high-dimensions of data to account for multiple different types of data (genomic, mRNA, etc.). Points out relevant data will need to be collected via experiments that focus on a large set of potential factors in PTSD patients rather than isolating a few and seeing how they interact.
+
+
+
 ### Biomarker List:
 
 *A biomarker is defined as a process, substance, or structure that can be measured in the body or its products in order to analyze the risk to develop a certain disease, to diagnose a disease, to assess disease progress and prognosis, to predict the outcome of various treatment options before their application, or to determine treatment efficacy * - United Nations Environment Programme- Biomarkers in Risk Assessment: Validity and Validation
