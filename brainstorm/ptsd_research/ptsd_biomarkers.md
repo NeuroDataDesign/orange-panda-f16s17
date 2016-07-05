@@ -39,9 +39,19 @@
 
 *A biomarker is defined as a process, substance, or structure that can be measured in the body or its products in order to analyze the risk to develop a certain disease, to diagnose a disease, to assess disease progress and prognosis, to predict the outcome of various treatment options before their application, or to determine treatment efficacy * - United Nations Environment Programme- Biomarkers in Risk Assessment: Validity and Validation
 
- - Skin Conductivity: Measures nervous signals sent to different parts of body to indicate amplified arousal
-
- - Heart Rate and Heart Rate Reactivity: Resting heart rate as well as how the heart rate changes given different stimuli
+ - **Physiological**
+    - Skin Conductivity: Measures nervous signals sent to different parts of body to indicate amplified arousal. Amplified w/ PTSD, especially when presented with stimulus.
+    - Heart Rate and Heart Rate Reactivity: Resting heart rate as well as how the heart rate changes given different stimuli
+ - Monoamine (3 emotion neuro-chemicals) (look at Diagnostic Biomarkers for PTSD...Translational)
+ - **Neurological (The root cause of PTSD?)**
+    - Amygdala activity goes up, size may or may not change
+    - Hippocampus size and specific subregions of the hippocampus become smaller
+ - Neuroendocrinal
+    - HPA: Hypothalmic-Pituitary-Adrenal axis: set of direct influences and feedback interactions among three endocrine glands: pituitary, hypothalamus, adrenal. Namely lower cortisol is a risk factor (varying agreement on this)
+    - There are other endocrinal (look at Diagnostic Biomarkers for PTSD...Translational)
+ - Immunological- Look at Diagnostic Biomarkers for PTSD...Translational
+ - Inflammatory- linked more with diseases that are likely to be comorbid with PTSD (eg depression)
+ - Genetic, Transcriptomic, etc.: Found genes directly related to stress, like the *FKBP5* gene, and saw they corresponded with potential development of PTSD. PTSD related genes have been moreso genes related to stress-dependent behavioral disorders.
 
 ### Slightly Relevant:
 
