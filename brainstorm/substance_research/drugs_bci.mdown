@@ -1,0 +1,10 @@
+# BCIs in Drug Addiction
+
+### Papers:
+
+- [Predicting Relapse to Alcohol and Drug Abuse via Quantitative Electroencephalography(2001):](http://www.nature.com/npp/journal/v25/n3/full/1395679a.html) Patients have been abstained from substances for 1-5 months. Then they were to measure EEG's periodically and to also see if they relapse. Relapse prone patients had a higher power of beta signal than abstinent prone patients. (0.8 vs 0.5). Relapse prone group also has more fast beta power. This is related to perhaps a loss of the function of a brain region that normally serves to dampeen impulsivity and emotionality.
+
+- [EEG and brainstem auditory evoked response potentials in adult male drug abusers with self-reported histories of aggressive behavior(1989):](http://www.sciencedirect.com/science/article/pii/0006322389900851) Patients with psychiatric disorders with a minimum IQ of 82 (avg IQ 106) are tested. EEG responses are slowers from aggressive sujbects. Aggressiveness is linked to drug usage. 
+
+- [Cocaine-Induced Increases in EEG Alpha and Beta Activity: Evidence for Reduced Cortical Processing(1994):](http://www.nature.com/npp/journal/v11/n1/full/npp199430a.html) Cocaine significantly increased beta in frontal and central area, enhanced alpha in frontal and temporal regions. This is because cocaine also reduces cortical glucose metabolism- reduction in cortical neural activity. Cocaine increases heart rate and both systolic and diastolic blood pressure. But more importantly increases beta power.
+
