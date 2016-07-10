@@ -1,0 +1,745 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+<div class="reveal">
+				<div class="slides">
+					<section data-id="9fa507d7b7b10fbb2139d4d2822bb9f8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 254px; height: auto;" data-block-id="ac03b78af35a04e6dcb7a9e9df508d6b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1><span>Building a BCI</span></h1>
+</div></div>
+
+</section><section data-id="e0d190842569a720d85d914ae51ab1cb"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="6e75b8029cdfd172796bdd7d3d4dc443"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Major Types</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="113ad083019a6366a069f9fa81615d1c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Invasive
+	<ul>
+		<li>Stimulation inside of brain</li>
+	</ul>
+	</li>
+	<li>Semi-Invasive
+	<ul>
+		<li>
+<span style="text-align:left">Stimulation on surface of brain</span><br>
+		<span style="text-align:left">Non-Invasive</span>
+</li>
+	</ul>
+	</li>
+	<li>Non-Invasive</li>
+	<li><span style="text-align:left">Record / Stimulate / Both</span></li>
+</ul>
+</div></div></section><section data-id="4ca12c61f59d70193ef382e2daa52298"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 43px; height: auto;" data-block-id="eab5355f7f515cb3febe7e12fd0710c9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Brain Responses for BCI</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="1be9f8e1579035237b8d213c04d8b736"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Conditioned Responses
+	<ul>
+		<li>Classical
+		<ul>
+			<li>Dog / Food / Bell</li>
+		</ul>
+		</li>
+		<li>Instrumental
+		<ul>
+			<li><span>Dog / Reward / Lever</span></li>
+		</ul>
+		</li>
+		<li>
+<span>Operant</span>
+		<ul>
+			<li><span>​Action resulting in reward is paired with activity of neuron</span></li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li><span>Summary</span></li>
+</ul>
+
+<p>Single / networks of neurons can be modulated by coupling neural activity with external actions that result in reward</p>
+</div></div></section><section data-id="82fa9adebc66c26f27d5041c768aa3cd"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 118px; height: auto;" data-block-id="dc5926314e571ac550c842702abda190"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Population Activity</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 235px; height: auto;" data-block-id="f3f96d440a050801527d9a39ede276b8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Represents movement
+	<ul>
+		<li>
+<span style="text-align:left">Neurons fire according:</span>
+		<ul>
+			<li>
+<span style="text-align:left">​</span><span style="text-align:left">Preferred direction of movement relative to actual direction</span>
+</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>
+<span style="text-align:left">Allows for prosthetics controlled by motor cortex</span><br>
+	 </li>
+</ul>
+</div></div></section><section data-id="bf8d94ec998fcc7e66136f9eec2fa383"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="735d89c634aa12a7dae8f1842e1696a4"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Imagined and Cognitive Ability</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 224px; height: auto;" data-block-id="6e2fdf87ffa7c8ef02065a5d68e4d143"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Motor Imagery
+	<ul>
+		<li>
+<span>Imagining a movement (ex. Cursor)</span>
+		<ul>
+			<li>
+<span>​</span><span>Improves if person receives feedback while learning</span>
+</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>
+<span>Cognitive Task</span>
+	<ul>
+		<li>
+<span>Tied to a function</span>
+		<ul>
+			<li><span>Relies on accurately discriminating activity patterns of cog. tasks</span></li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="c361bb23498b0d748badb47d3975d20c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="2370566e4de9338a9258235d08732c8e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Stimulus – Evoked Activity</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 180px; height: auto;" data-block-id="76d57887b375cb69a1aed23274858b66"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>P300 Response
+	<ul>
+		<li><span>Pos deflection of EEG signal ~300ms after a stimulus</span></li>
+		<li>
+<span>Event-Related (evoke) Potential</span>
+		<ul>
+			<li>
+<span>​</span><span>Caused by rare / unexpected stimulus</span>
+</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>
+<span>N100 and N400</span>
+	<ul>
+		<li>
+<span>Steady State Visually Evoked Potential</span>
+		<ul>
+			<li><span>Neurons in visual cortex</span></li>
+			<li><span>When subject is fixating on stimulus</span></li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="bbc1e6efcb8d14e5890897b241931dc4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="8189e69c4c838ea89a25cdd386040f9c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Stimulus – Evoked Activity</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="002d8ff63f4ec8c19ecb546813dfe763"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>N100-P200 Complex
+	<ul>
+		<li><span style="text-align:left">Caused by unpredictable stimulus</span></li>
+		<li><span style="text-align:left">Followed by a positive wave (P200)</span></li>
+	</ul>
+	</li>
+	<li>
+<span style="text-align:left">N400</span>
+	<ul>
+		<li>
+<span style="text-align:left">​</span>Incongruent but meaningful inputs</li>
+		<li>Similar to error potential </li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="19dc70cf40c61f98c89a0127fa7ac2c1"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 51px; height: auto;" data-block-id="ada2bb5aca2618c2629a079482fff51c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h3><span>Invasive BCI – Operant Conditioning</span></h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 124px; height: auto;" data-block-id="e7ef472376f84cf8b053c4a42e86df1a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Neuron can be trained to control a derive
+	<ul>
+		<li>Monkey | Analog Dial | Reward | Firing Rate</li>
+	</ul>
+	</li>
+	<li>Pros
+	<ul>
+		<li>No complicated machine learning algorithms needed</li>
+	</ul>
+	</li>
+	<li>Cons
+	<ul>
+		<li>Training time can be long</li>
+	</ul>
+	</li>
+	<li>Co-adaptive BCI
+	<ul>
+		<li>Brain + BCI adapt to speed up control of acquisition</li>
+		<li>Direct conversion of single cortical cells to a control signal</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="394363e1e639b0b2f62884ffd8b94ea9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 30px; height: auto;" data-block-id="ba7bf8e051719a6c9cdf71094d702121"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2><span>Invasive BCI – Population Decoding</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 72px; top: 184px; height: auto;" data-block-id="7bd0df83232e385239a2295318ea61c8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Decode control signals
+	<ul>
+		<li>Neuron’s activation during movement</li>
+		<li>Direction
+		<ul>
+			<li>Neurons fire according to preferred direction (p) relative to actual direction (d)</li>
+			<li>Neuron’s firing rate (r)</li>
+			<li>Baseline firing rate (r0)</li>
+			<li>Max AVG. firing rate (rmax)</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="6a5128b8bd2725fd7737efd88c954806" style="min-width: 30px; min-height: 30px; width: 154.073px; height: 75px; left: 620px; top: 409px;"><div class="sl-block-content" style="z-index: 13;">
+<img data-natural-width="643" data-natural-height="313" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2761170/IMG_1762.JPG"></div></div></section><section data-id="0ed2b4a95a08c4ec1958499b7fdcadc6"><div class="sl-block" data-block-type="image" data-block-id="d485219c93d678097e16bfbe0d6280a8" style="min-width: 30px; min-height: 30px; width: 377.207px; height: 411px; left: 292px; top: 185px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="826" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2761173/IMG_1763.JPG"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="f871b65fe74fd3ccecae5fa6192843a4" style="height: auto; min-width: 30px; min-height: 30px; width: 960px; left: 0px; top: 81px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+	<h2>Testament to Accuracy</h2>
+</div></div></section>
+<section data-id="84c17bbf6da012e00c135c39bf1ea12c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 250px; height: auto;" data-block-id="b51c9447a770768ee03450c8e9cc4bb6"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Invasive BCIs in Animals</h1>
+</div></div></section><section data-id="6ebab97e0ef8d2bab0f5d22b7b4bfbe3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 199px; height: auto;" data-block-id="75100dbb72c458b33ab5a792c1524f1c"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" dir="ui">
+<h1>BCIs for Prosthetic Arm and Hand Movement</h1>
+</div></div></section><section class="stack" data-id="61e9c5743380603fb10fc304463787ae"><section data-id="cd4844788a845f6bfd59457905618ebe"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="05ec7782a0f33d6174ae6b61926aa3e1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment 1: Nicolelis in 1999</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="98eb099f25e123d52312e6275aff30db"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui"><ul>
+<li>Rats were trained to press a lever<br><ul><li>Lever moved arm to obtain water</li></ul>
+</li>
+<li>Monitored up to 46 neurons in primary motor cortex and ventrolateral thalamus</li>
+</ul></div></div></section><section data-id="d7501922425c36afc58f904cdf47ff58"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="2b3ce71dd8e1bce82f6c93fdd32be1be"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment Diagram</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 547.301px; height: 541px; left: 207px; top: 140px;" data-block-id="f4c8690b0754aec2beb4a9e0c617e784"><div class="sl-block-content"><img data-natural-width="608" data-natural-height="601" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2762163/Experiment1_Diag.jpg"></div></div></section></section><section class="stack" data-id="55001840c9adc2b0f732e2a85eb81307"><section data-id="75133db6c20aeb9280f0f5313b2cbc08"><div class="sl-block" data-block-type="text" style="width: 887px; left: 37px; top: 101px; height: auto;" data-block-id="f296b23ced3275a6336557eb33d314e7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10; font-size: 80%;" dir="ui">
+<h2>Neural Population Function (NPF)</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 857px; left: 23px; top: 187px; height: auto;" data-block-id="39eea3f67755abd6a6b049d1cf3df5b7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat." style="z-index: 13; text-align: left;">
+<ul>
+	<li>PCA was applied to find principal components</li>
+	<li>Most principal component was NPF</li>
+	<li>Thresholding NPF predicted lever movements pretty well</li>
+	<li>Neural Network produced:
+	<ul>
+		<li>Input: NPF</li>
+		<li>Output: Lever Movement</li>
+		<li>Backpropagation teaching</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+
+</section><section data-id="00aa006bbf62dbd1698def84dd0a9efa"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="0a8b880140407426e5652f741689f652"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10; font-size: 80%;">
+<h2>Prediction of Lever Movement</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 571.327px; height: 425px; left: 194px; top: 135px;" data-block-id="02c13bba90ad552d59d74f1cf259dbf4"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="613" data-natural-height="456" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2762144/Experiment1_SpikeChart.jpg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 437px; left: 262px; top: 574px;" data-block-id="9379169190fec2d749545a8890989445"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 70%;">
+<p>Prediction of lever movement from neural activities</p>
+
+<p>Brain-Computer Interfacing: An Introduction, Rajesh PN Rao, p. 114</p>
+</div></div></section></section><section data-id="47e90238d080bc1551ba739aa59f8140"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="386f6530ccdea211c977e2e2d5d426cc"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>NPF Direct Control</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="08f2e9e6158e9be163a54e6ad7ce2e23"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Let NPF signals directly control water dropping
+	<ul>
+		<li>8/9 accuracy overall</li>
+		<li>Over 15 trials, 100% successful in neural control</li>
+		<li>After some trials, many rats didn't even press levers, simply used neural activity</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section class="stack" data-id="91328fdc81e9970a02134ed83ca79d76"><section data-id="1bba4fd8ad2b52863a8f161359768ac0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="b6e3385228280a7973e3be5b21684ba3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment 2: Nicoleis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="e19b096b5f66b8d968834bedb3302faf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui"><ul>
+<li>Control of robotic arm by monkeys based on spikes spontaneously from:<ul>
+<li>Primary motor cortex</li>
+<li>Dorsal premotor cortex</li>
+<li>Posterior parietal cortex</li>
+</ul>
+</li>
+<li>2 movements:<ul>
+<li>1-Dimensional left-to-right movement</li>
+<li>3-Dimensional hand movement across a tray</li>
+</ul>
+</li>
+</ul></div></div></section><section data-id="ba85fad14465bd32a8e5c61bcd6b849c"><div class="sl-block" data-block-type="image" data-block-id="43f33a97164ae75b5a8f62749384253d" style="min-width: 30px; min-height: 30px; width: 760.661px; height: 591px; left: 100px; top: 55px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="946" data-natural-height="735" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766283/Experiment2_1Dim_Diag.jpg"></div></div></section></section><section class="stack" data-id="2287664999a68df6e257377fe12e4d19"><section data-id="5a1cbbdf4c02e95809cfeb1b20bdbb1d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="05eb2190f65ffdee7b695a79a1629cdb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Linear Regression Algorithm</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 218px; height: auto;" data-block-id="df18fdc2af38445d61057554e15ad073"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>v(t) = recorded hand position</li>
+	<li>u(t) = recorded neural activity</li>
+	<li>w(t) = weight vectors, c = intercept
+	<ul>
+		<li>These 2 calculated from training data</li>
+	</ul>
+	</li>
+	<li>m and n define how much data used for prediction
+	<ul>
+		<li>m = 0 when predicting in real time</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 436.157px; height: 134px; left: 262px; top: 493px;" data-block-id="9c56270f66b9756c5ae132484671ebcd"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="332" data-natural-height="102" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766314/Experiment2_LinearEq.jpg"></div></div></section><section data-id="c71ca839c1de6400ec28a36e12bbe5be"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="0fbdb89f9fbd076c69b4b40d69d8b57e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Neural Network</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="0305b7345f0e7683811bddb66e117362"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Same input of neural activity</li>
+	<li>Hidden layer of 15-20 sigmoid functions</li>
+	<li>Linear output
+	<ul>
+		<li>1-Output for 1-Dimensional</li>
+		<li>3-Output for 3-Dimensional</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="816cd1d4803d5e3ac7cd122d2f642cfb"><section data-id="11b7e130959d51cedfbd8b17d1a8e9ea"><div class="sl-block" data-block-type="text" style="width: 797px; left: 49px; top: 78px; height: auto;" data-block-id="6663306de88292f71ede8c8be1f20926"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; font-size: 90%; z-index: 10;">
+<h2>1-Dimensional Predictions</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 757px; left: 49px; top: 144px; height: auto;" data-block-id="2b9da0673597d68380f42818e1135b2e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin urna odio, aliquam vulputate faucibus id, elementum lobortis felis. Mauris urna dolor, placerat ac sagittis quis." style="text-align: left; z-index: 11;">
+<ul>
+	<li>Predictions were close by both methods</li>
+	<li>Captured by correlation coefficient r</li>
+	<li>Improved in first few minutes</li>
+	<li>Remained stable at average values between 0.6 and 0.7</li>
+</ul>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="width: 720px; left: 49px; top: 361px; height: auto;" data-block-id="95830d8fc928f3797c688c17e92cfe7d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; font-size: 90%; z-index: 13;">
+<h2>3-Dimensional Predictions</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 751px; left: 49px; top: 427px; height: auto;" data-block-id="76c98618d1a0731d161fe9f108ae4a56"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin urna odio, aliquam vulputate faucibus id, elementum lobortis felis. Mauris urna dolor, placerat ac sagittis quis." style="text-align: left; z-index: 14;">
+<ul>
+	<li>Again close, but significantly worse at endpoints of movement</li>
+	<li>Improvement in prediction accuracy over time</li>
+	<li>Predictions for targets oriented to the right could help predict the left</li>
+</ul>
+</div></div></section><section data-id="cd22aef78ffca210550071805285f96f"><div class="sl-block" data-block-type="image" style="width: 700px; height: 446.388px; left: 130px; top: 79.5px;" data-block-id="815d96dc358a20d388cd7e8edb87a0c9"><div class="sl-block-content"><img data-natural-width="886" data-natural-height="565" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766424/Experiment2_OneDim_Predict.jpg"></div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 575px; height: auto;" data-block-id="a0ec345ca4c1a703327739424f19014d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Prediction: One-Dimension</h2>
+</div></div></section><section data-id="01d04874ca32b98429c3c66b33e01842"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="c380ace8dc649e85a0f61cf64e350538"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="font-size: 91%;">
+<h2>Prediction: Three Dimension</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 700px; height: 530.28px; left: 129px; top: 116.5px;" data-block-id="78702fb21224f40c3b4156945d9f5461"><div class="sl-block-content"><img data-natural-width="928" data-natural-height="703" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766434/Experiment2_3Dim_Predict.jpg"></div></div></section></section><section class="stack" data-id="079cf6f129dd9031d9c15f23cc49056f"><section data-id="cfcaae747ff40229b9b9726a2116b358"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="df19175c9052e8ba07d2d09d0b5a14c5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment 3: Schwartz, Velliste</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="31f1a89788af8de37186a59a2d132e5d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Cortical signals to control multi-jointed prosthetic device</li>
+	<li>Monkey self-fed via neural control of a prosthetic arm</li>
+	<li>4 Directions of movement for arm:
+	<ul>
+		<li>X, Y, Z directions</li>
+		<li>Aperture distance (finger grip width)</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="fb0737edbaa7c9c3955b497ea620cee6"><div class="sl-block" data-block-type="image" data-block-id="9900a5ab4c6babe972ffbc59e45eb768" style="min-width: 30px; min-height: 30px; width: 699.2px; height: 399px; left: 131px; top: 151px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="736" data-natural-height="420" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766488/Experiment3_Diag.jpg"></div></div></section></section><section class="stack" data-id="29476edca73cf61f1fc3083853909578"><section data-id="e7f0703d89e8b2c4b33549484149653a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 88px; height: auto;" data-block-id="b8d164b572d748b4b63673dce671c2d3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Learning Algorithms</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 162px; height: auto;" data-block-id="02d69da65a5fae978fea7e770776cbe0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Output has 4 Dimensions:
+	<ul>
+		<li>Velocity of X, Y, and Z</li>
+		<li>Aperture velocity</li>
+	</ul>
+	</li>
+	<li>4D vector calculated via weighted sum of neurons
+	<ul>
+		<li>Weight = firing rate</li>
+		<li>Weights inputted in similar eq to previous linear model</li>
+	</ul>
+	</li>
+	<li>Final velocity vector integrated to find endpoint positions</li>
+	<li>Converted to commands for robot hand</li>
+</ul>
+</div></div></section><section data-id="e0f5c77427d95c901438a41083654739"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="74779e5ee5917f315a8ac982172b9a58"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>In Practice</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="768ec82fce0a87930e0673eba386e559"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>2 days of continuous self-feeding with prosthetic arm</li>
+	<li>Success rate:
+	<ul>
+		<li>61%</li>
+		<li>116 primary cortex neurons</li>
+		<li>For just positioning, 98% success rate</li>
+	</ul>
+	</li>
+	<li>Kalman filter has potential for improvement, as uses a probabilistic model</li>
+</ul>
+</div></div></section></section><section data-id="017e2e9bfb0af3ff36217f274eaae98f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="128dd8a50efdef841f6afd481f9ea5f9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment 4: Wu, Black</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="a5e9b0c178484fa59f4463b72ac05b52"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Kalman filtering to get probability distribution over hand kinematics given sequence of firing rates</li>
+	<li>2 tasks (tablet screen, manipulation for cursor):
+	<ul>
+		<li>Pinball: move cursor to targets at random locations on screen</li>
+		<li>Pursuit tracking: Move cursor towards moving target</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section class="stack" data-id="33e3291df9103aac8c8f7f2093d7ec4f"><section data-id="a10e460c0f67d12ab52eb1cf030f4334"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="508d50ce3b1f54b60bec56a2ce4a2f1d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>State Vector for Kalman Filtering</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 278px; height: auto;" data-block-id="f63fd27d282b135decd8d12e9696eef5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>Position, velocity, and acceleration of x and y direction</li>
+	<li>Models:
+	<ul>
+		<li>Likelihood:</li>
+		<li>Dynamics:</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="4d0d2c6ce00d4e0c099747750dae2395" style="min-width: 30px; min-height: 30px; width: 360px; height: 47.7108px; left: 300px; top: 226px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="415" data-natural-height="55" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766572/Experiment4_Vector.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="0a72cc1fc841efd27e702a1343e0b842" style="min-width: 30px; min-height: 30px; width: 167px; height: 44.9076px; left: 349px; top: 398px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="238" data-natural-height="64" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766587/Experiment4_Likelihood.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="97887062f8103f8de7a11ee035b884d2" style="min-width: 30px; min-height: 30px; width: 178.113px; height: 40px; left: 349px; top: 443px;"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="236" data-natural-height="53" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766595/Experiment4_Dynamics.jpg"></div></div></section><section data-id="3ba951b60b6e1e278bdc13914a4b129f"><div class="sl-block" data-block-type="text" style="width: 410px; left: 49px; top: 106px; height: auto;" data-block-id="eb1e5fe8cc4f1ebc0e5a369df0489334"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; font-size: 80%; z-index: 11;">
+<h2>Likelihood Model</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 410px; left: 499px; top: 106px; height: auto;" data-block-id="198e6fe2ff126e18604e19758a9a7ad5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; font-size: 80%; z-index: 13;">
+<h2>Dynamics Model</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 640px; left: 160px; top: 350px; height: auto;" data-block-id="eeb1af2788c8bc2ce85877d82c53b85d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin urna odio, aliquam vulputate faucibus id, elementum lobortis felis. Mauris urna dolor, placerat ac sagittis quis." style="text-align: left; z-index: 14;" dir="ui">
+<ul>
+	<li>x = state vector</li>
+	<li>y = observed firing rate</li>
+	<li>n,m = zero-mean Gaussian noise processes
+	<ul>
+		<li>Covariance matrices Q, R</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="7fa6bd1bbc6f78acc014237baeb49d8b" style="min-width: 30px; min-height: 30px; width: 260.313px; height: 70px; left: 124px; top: 210px;"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="238" data-natural-height="64" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766604/Experiment4_Likelihood.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="2917d7d6c96786dbe2ab338962376ec0" style="min-width: 30px; min-height: 30px; width: 280.528px; height: 63px; left: 564px; top: 214px;"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="236" data-natural-height="53" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766595/Experiment4_Dynamics.jpg"></div></div></section><section data-id="576baf14ea744c9fb37183ba83beab3d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="bdefe8afc9655f0fc21351ac6acac77d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Training</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="270a2fe2e7ad5b1bf36a9c1260d93e3c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Training data collected with both hand position and neural data</li>
+	<li>Velocity and acceleration calculated via deriving</li>
+	<li>Learn from training data:
+	<ul>
+		<li>Matrices A, B, Q, R</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="9038c542faf3469143548910a4368dff"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="87b80de42c6c1a0705a573a9f76cf556"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="font-size: 90%; z-index: 10;">
+<h2>Kalman Predictions (Solid Line)</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 534.358px; height: 194px; left: 213px; top: 140px;" data-block-id="65c2928bc6083ed30fd40d21add2b5ef"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1245" data-natural-height="452" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766635/Experiment4_Predictions.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="b555514f7e2e37606ac447e82da3b812" style="min-width: 30px; min-height: 30px; width: 472.556px; height: 342px; left: 243px; top: 350px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="999" data-natural-height="723" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766653/Experiment4_Predictions2.jpg"></div></div></section><section data-id="bf0056bc6b8725cce64ed9b4f5c9b2ce"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="04b2cc92988dd58ea08f90743038bb37"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui">
+<h2>Kalman Correlations</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 811.453px; height: 374px; left: 74px; top: 186px;" data-block-id="071143e88452c6473b38d8248871a9eb"><div class="sl-block-content"><img data-natural-width="1087" data-natural-height="501" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766647/Experiment4_Correlation.jpg"></div></div></section></section><section class="stack" data-id="5c27dedd86625b74194cabc78f8bc40d"><section data-id="99cad882377feaa74a0a73ac126c6be5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="f4b7091eaa125dd327fc82b01bf5ada7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment 5: Donoghue, Vajas-Irwin</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="187207aab1f5debb1ba6e825abf5bfe2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Map neural activity in primary cortex of monkeys to arm, wrist, and hand posture</li>
+	<li>Linear model predicted 25 joint angles</li>
+	<li>Training data = neural firing rates from 30-122 neurons</li>
+	<li>Actual angles captured via reflective markers</li>
+</ul>
+</div></div></section><section data-id="6e9fa0a6ec9e451bf6f52da6a42af719"><div class="sl-block" data-block-type="image" data-block-id="b131ff8111bdd77e37f9ded08e1d75db" style="min-width: 30px; min-height: 30px; width: 930.367px; height: 494px; left: 15px; top: 103px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="904" data-natural-height="480" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766682/Experiment5_Diag.jpg"></div></div></section></section><section class="stack" data-id="db3e59b3cd9d84c6785d5a8796435280"><section data-id="19dbee03d804cdbed9b7a270f8b72eba"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 111px; height: auto;" data-block-id="cf91447ef58d12abb7864bb53d322835"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Algorithm</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 185px; height: auto;" data-block-id="5f7f6e34bb974ab4a878cda6cbd77c59"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>x = unknown time-varying hidden state vector</li>
+	<li>f = firing rates of neurons</li>
+	<li>y = kinematic outputs</li>
+	<li>n,m = zero-mean Gaussians representing noise processes</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="903364829463ba1c99722910da160992" style="min-width: 30px; min-height: 30px; width: 360px; height: 165.161px; left: 300px; top: 408px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="279" data-natural-height="128" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2766681/Experiment5_Equation.jpg"></div></div></section><section data-id="493a9d08d6deed24626b01a3f309c1f3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="3a09b30947adc10af8a7e5f02230061e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Training</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="08e831fc9862064633099ab8757c893d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>A, B, C, Q, and R trained via likely values and gradient descent methods</li>
+	<li>Trained angles, (x, y, z) arm endpoint, and grip aperture</li>
+	<li>Mean correlation coefficient joint angle = .72 +- .094
+	<ul>
+		<li>Thus, sufficient info in several tens of motor cortical neurons to reconstruct reaching and grasping</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="1ad2342057c945c554171fdf548f10c9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 216px; height: auto;" data-block-id="4b9c3c43ae6a0cf099c3a9a0f368b583"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui">
+<h2>Estimating Kinetic Parameters from Neural Activity</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 438px; height: auto;" data-block-id="8ff1eb0884625c9b5ada6960eabb37f2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Kinematic parameters: positions + joint angles</li>
+	<li>Kinetic parameters: force + joint torque</li>
+</ul>
+</div></div></section><section data-id="203b2f81a90290f407a667de57cc6e51"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="95a989acd762fcb88244c7b07a9adeb4"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment 6: Hatsopoulos, Fagg</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="3f458c814d9e352751392fa841161849"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Incorporating kinetics</li>
+	<li>Using kinematic readings and equations of motion, calculate kinetics </li>
+	<li>Linear filter to predict torque based on neural activity up to one second in the past</li>
+	<li>Found similar efficacy to kinematic predictions</li>
+</ul>
+</div></div></section><section data-id="5410db706b78212f1de4a0ea5708e17d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="ac1ebf1232bfadfe9eb3353304f978a9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui">
+<h2>Local Field Potentials (LFP)</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="ddffc1f241be08cf755da67d7630b36b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Local areas summed potential rather than specific spikes</li>
+	<li>Electrode array placed far from any individual neuron</li>
+	<li>Kalman filters based on different frequencies isolated in LFPs tested for 3-dimensional hand position and grip aperture</li>
+	<li>High frequency bands had highest correlation</li>
+</ul>
+</div></div></section><section data-id="4fa2c763dfcf2c53af43e9fd8d8aa6cb"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="0a9b347295976d444c1e69369cf1a989"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui">
+<h2>BCIs for Lower-Limb Control</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 338px; height: auto;" data-block-id="1d0a3fa3a1c30d634ef4164157fdf2b9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Relatively difficult to record brain while subject is moving</li>
+	<li>Lots of opportunity and help for people without leg control</li>
+</ul>
+</div></div></section><section data-id="f354e880a86f8510f30a8f60b12c94db"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 62px; height: auto;" data-block-id="b062c5cf7cf877b79d9f31ffc0d3d9d3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment 6: Nicolelis, Fitzsimmons</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="124efbaaee067059ced4d6cc6dfff917"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Monitored Parameters of Walking:
+	<ul>
+		<li>Step Time</li>
+		<li>Step Length</li>
+		<li>Leg Orientation</li>
+	</ul>
+	</li>
+	<li>Rely on existing lower-level systems for automatic controls
+	<ul>
+		<li>Foot Orientation</li>
+		<li>Load Placement</li>
+		<li>Balance</li>
+		<li>Other Safety Concerns </li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section class="stack" data-id="51cc3da4fe934108088cad43d76c0379"><section data-id="2690225260e9560376bde2522a2d4ca9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="881f52bc0f85dc81f194e40ee65fe377"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment Execution</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="ef8948475cb68ba8c921714ca0187fa0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>3-D Coordinates of fluorescent markers on the right hip, knee, and ankle</li>
+	<li>Tracked via 2 cameras</li>
+	<li>Recorded neural and kinematic data used to learn a linear model</li>
+</ul>
+</div></div></section><section data-id="e160a0fea51eb702789e480018a9d588"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 119px; height: auto;" data-block-id="9625be262fb309162c2486942bdb7f3e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment Results</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 193px; height: auto;" data-block-id="a42e7577fa9e6808e19ed393edb45416"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Kinematics of walking could be predicted reasonably well </li>
+	<li>Trained model also predicted muscle activation during walking recorded via EMG</li>
+	<li>Correlation coefficients were in range of 0.2 - 0.9
+	<ul>
+		<li>Hip Angle 0.58-.73</li>
+		<li><span style="text-align:left">Foot Contact 0.58-0.61</span></li>
+		<li><span style="text-align:left">Walking Speed 0.24-0.42</span></li>
+		<li>Step Frequency 0.48-0.57</li>
+		<li>Step Length 0.30-0.40</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="939c2cf58e024229166393754db0f66a"><div class="sl-block" data-block-type="image" data-block-id="04602fe53a581b59eb2ed6321407a68d" style="min-width: 30px; min-height: 30px; width: 580px; height: 536.554px; left: 190px; top: 70px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="801" data-natural-height="741" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2767087/Experiment6_Results.jpg"></div></div></section></section>
+<section class="stack" data-id="aa4b8ff00c7327f1e0d63e19969893a6"><section data-id="23c77ca96611a5d411109a867be69417"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 22px; height: auto;" data-block-id="0589622862cda7c7044363ab60cfcda7"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.9em">Cursor Control</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="50f6e68a96bc45514cddf6966cdca64e" style="height: auto; min-width: 30px; min-height: 30px; width: 780px; left: 80px; top: 125px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>control of computer cursors using motor neurons</li>
+	<li>allow locked-in patients to access menus</li>
+	<li>Two types of cursor control:
+	<ul>
+		<li>1. Linear control
+		<ul>
+			<li>monkeys use 7-30 primary motor neurons to move mouse cursor</li>
+			<li>uses hand to track continuous target, following the trajectory, then replace with neural control</li>
+			<li>hand or neural control had around the same reaction time</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="87c013447520bda949bc4e6454225e98"><div class="sl-block" data-block-type="image" data-block-id="284ad4c0076229ef4e8ed3851bce0bd2" style="min-width: 30px; min-height: 30px; width: 394.4px; height: 348px; left: 160px; top: 40px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="425" data-natural-height="375" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2759586/Screen_Shot_2016-06-17_at_12.50.05_AM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="1b12a7088820cd9fd12a34dc348d2c39" style="height: auto; min-width: 30px; min-height: 30px; width: 640px; left: 167px; top: 396px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong>Cursor control using invasive BCI</strong></p>
+
+<p>A and B map the actual movement of the cursor with x-y coordinates in 50 ms intervals</p>
+
+<p>C and D are the reaction times via hand and neural control, respectively. </p>
+</div></div></section><section data-id="7c650e0c9cbaa05a463bdc14d494478c"><div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 62px;" data-block-id="431ad885c99c77e3894bdc4f349a671f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" dir="ui">
+<p>2. Nonlinear Kalman Filter</p>
+
+<ul>
+	<li>two monkeys were given two tasks using a joystick:
+	<ul>
+		<li>i. "center-out"- move cursor from center to a random target</li>
+		<li>ii. "pursuit" - monkeys track continuously moving targets</li>
+	</ul>
+	</li>
+	<li>94-240 neurons, recorded via multielectrode array in: primary motor cortex (M1), primary somatosensory cortex (S1), dorsal premotor cortex (PMd), posterior parietal cortex (PP), supplementary motor area (SMA)</li>
+	<li>neural data used to train nonlinear version of Kalman filter, known as <em>unscented Kalman filter </em>(UKF)</li>
+</ul>
+</div></div></section><section data-id="0315cded884ddebfab7c7a56bc091c91"><div class="sl-block" data-block-type="image" data-block-id="4a536d98a5202bc8852a578928a2ac5d" style="min-width: 30px; min-height: 30px; width: 424.132px; height: 418px; left: 90px; top: 22px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="415" data-natural-height="409" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2759971/Screen_Shot_2016-06-17_at_4.16.11_AM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="e4277a518e42e98389203ddccba4778d" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 90px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>The UKF allows for better tuning due to its quadratic nature. It also uses position and velocity values from 10 consecutive time steps for AR.</p>
+</div></div></section></section><section data-id="0b9de0061778b4e4be155339fdde2e6a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 83px; height: auto;" data-block-id="fce3dcc0afd89204f59aae86524d7436"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>BCI Control Enhancements</h2>
+</div></div></section><section data-id="6c343f8d27673e79de1a114f8da77987"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 40px; height: auto;" data-block-id="ef92a5884d6fad5d6be4980eedec13fb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Combine Proprioceptive and Visual Feedback</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="79acd715cf6ee20cdacf649b7b1efd2d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui"><ul>
+<li>brain relies on kinesthetic feedback from muscles to guide movement</li>
+<li>when visual and kinesthetic feedback are congruent, the responses are much faster. </li>
+</ul></div></div></section><section data-id="7c521f7d401b43aa23cb9cf30464c174"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 50px; height: auto;" data-block-id="46cda4eb50458a3ed17d49ead5e6d90d"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Cognitive BCIs</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 188px; height: auto;" data-block-id="b12da32625d44c7577714a6eb78e596b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle">
+<h2>BCIs with higher level cognitive signals</h2>
+</div></div></section><section data-id="62553bf0a4a60c6fc0c57b972b4c12ad"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 49px; height: auto;" data-block-id="eadb78113fc005ad131ab7fc2a27caaf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Reaching Movements</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 171px; height: auto;" data-block-id="0828ca9e89d7a5ee5aadbbfe53a59db1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>neural activity of parietal reach region (PRR) of cerebral cortex can decode the target location of intended reaching movement</li>
+	<li>monkey reach at a flashed location after a brief delay period- Bayesian algorithm</li>
+	<li>either normally , or via "brain control"</li>
+	<li>
+<em>Haar wavelet<s>-</s></em> signal over interval represented by coefficients</li>
+	<li>shows only ~60-68% accuracy, but with LFP stimulation along with both spikes, might have 86% </li>
+</ul>
+</div></div></section><section data-id="50dfe5fcf3a689f843bc536f06981fa0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 50px; height: auto;" data-block-id="15490706f29602ba70b55ed0b0a65d4d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Enhancing Cognitive BCI</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 155px; height: auto;" data-block-id="755eed2aeac891c1d29c281bbd0bd5a0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>There's Tskip and Tint, Tskip occurs when the information is not yet reliable and Tint shows up for interval for target.</li>
+	<li>target response was predicted using spike counts</li>
+	<li>overall performance measured by ITR</li>
+	<li>best = 6.5 bps for 8 target, translate to 15 words per minute</li>
+</ul>
+</div></div></section><section data-id="2d8d86d27323c452bcd46e9b132f5df4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 92px; top: 70px; height: auto;" data-block-id="c48b68d77d13ac6f332feff7946edd29"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Invasive BCIs in Human</h2>
+</div></div></section><section data-id="cf025660e32daa70ba2bba78a154eb6c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 28px; height: auto;" data-block-id="c2f6df341b4bc9bc6873f0d819fbb6d5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Cursor and Robotic Control using a Multielectrode Array Implant</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 202px; height: auto;" data-block-id="fe67b974152550ab9eb027df9a5bce4e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+<em>BrainGate</em> sensor, 100 silicon microelectrodes implanted in arm area of primary motor cortex</li>
+	<li>But can motor intention still modulate cortical activity three years after spinal cord injury and absence of hand motion?</li>
+	<li>imagined hand motion will activate some neurons!</li>
+	<li>can move cursor in the general direction but not exactly accurate</li>
+	<li>eventually develops wider scopes such as simulated email, draw using paint program, adjust volume, play video games, etc</li>
+</ul>
+</div></div></section><section data-id="3fa3cb1c033163840f46506e6ac53938"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 50px; height: auto;" data-block-id="e142e03c958b82fbaba12a6c8f10762a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Cognitive BCIs in Humans</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 160px; height: auto;" data-block-id="54d317f19df78077800ec0e06ce602f1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>recall neural activity from human primary motor cortex can control trajectory of cursors</li>
+	<li>however, it's the frontal cortex beyond primary motor cortex that is related to planning and initiating movement direction</li>
+	<li>this plan worked in monkeys</li>
+	<li>still not been tested in depth yet, but positively thought of as to work.</li>
+</ul>
+</div></div></section><section class="stack" data-id="d8bad9e7ccbb09390763e97e0153cf35"><section data-id="2867bf4344c5c19dc52f767746ad3198"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 32px; height: auto;" data-block-id="6bf27e85cfcad4dc5b142a85fd138bd8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Long-Term Use of Invasive BCIs</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 72px; top: 210px; height: auto;" data-block-id="cb1cbe875f6570b1945cf4b6abf0891f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>for the two monkey experiment regarding the center-out reaching task, the 128-electrode array remained in the monkey's brains for 19 days. </li>
+	<li>it is proven that the longer the monkeys used the device, the higher the accuracy of the task and the lower the reaction time will be.</li>
+	<li>if a decoder is shuffled, then humans can take an adjusting period to get used to the new decoder and achieve the same accurate results.</li>
+</ul>
+</div></div></section><section data-id="90d0f23112931fee8c4c41582d8012c2"><div class="sl-block" data-block-type="image" data-block-id="b3c772e7bcc281cd7c19b0640b5bb7a1" style="min-width: 30px; min-height: 30px; width: 411px; height: 362.973px; left: 126px; top: 57px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="445" data-natural-height="393" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2762525/Screen_Shot_2016-06-17_at_6.10.42_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="629a4683573be42368d858d383e9748e" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 171px; top: 439px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>The diagrams show the difference in accuracy and reaction time between the beginning and the end of the experiment.</p>
+</div></div></section><section data-id="029c5c1900f0fc251ddcc20b462572e9"><div class="sl-block" data-block-type="image" data-block-id="fd0beaefeca715c387f57f603b09a10b" style="min-width: 30px; min-height: 30px; width: 527.397px; height: 175px; left: 80px; top: 88px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="440" data-natural-height="146" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2762528/Screen_Shot_2016-06-17_at_6.13.45_PM.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="66b5523ffa193298dd221d7f15e7164c" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 100px; top: 289px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Starting from around the 8th day, the number of correct trials have been improved significantly. However, the shuffled recorder remains poor in predicting neuroactivity</p>
+</div></div></section></section><section data-id="394c8f99c3fa9f588e4655180910f8a9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 50px; height: auto;" data-block-id="265d2a2c6ce7eab5e0f78497f32ff2df"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Long-Term Use of a Human BCI Implant</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 222px; height: auto;" data-block-id="ccce1d764d06e12e49d8b6ddfdedf83c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>neuro point-and-click experiment for five consecutive days</li>
+	<li>based on spikes of motor neurons to determine two-dimensional cursor velocity</li>
+	<li>94.9% accuracy for center-out task and 91.9% accuracy for the random target task</li>
+	<li>other interferences were measured such as electrode impedances, neural spike waveforms, and local field potentials to rule out discrepancy</li>
+</ul>
+</div></div></section>
+				</div>
+				<div class="dimmer"></div>
+			</div>
+		</div>
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

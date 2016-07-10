@@ -1,0 +1,844 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+					<section data-id="9fa507d7b7b10fbb2139d4d2822bb9f8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="ac03b78af35a04e6dcb7a9e9df508d6b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1>Brain-Computer Interfacing</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="a4b45bdbc10d666afe05cadf90f345cb" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 31px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Book by: Rajesh P. N. Rao</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="edb7b5ab03ab5c5f3ab38b8b984c1c38" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 451px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Presentation by:</p>
+
+<p>Nitin Kumar, <span>Tsun Wong,</span><span> </span>and <span>Michael Natenzon</span></p>
+</div></div></section><section data-id="2575f6c0e97bfbfb41485c54eafb56fe"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="2e1fbe0e0e06b60e6df7fe04301f06ff"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Chapter 1</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 287px; height: auto;" data-block-id="c2e3f45d688cf282770ecf715c0b7e56"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle">
+<h2>Introduction to BCI</h2>
+</div></div></section><section data-id="54bf9725b365bcda243b92e468f3ca24"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 99px; height: auto;" data-block-id="997f0f8da8aa45bb19c44bbf2468a70e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Origins of BCI</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 171px; height: auto;" data-block-id="5f7c5ba67670bd39995d457f1e62dc08"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>José Delgado (Research from 1969)
+	<ul>
+		<li>Implanted chip "stimoceiver"</li>
+		<li>Radio to stimulate brain, send electrical signals of brain via telemetry</li>
+	</ul>
+	</li>
+	<li>Eberhard Fetz (Research also from 1969)
+	<ul>
+		<li>Monkeys were able to control specific motor cortex neurons to drive biofeedback arm</li>
+		<li>(Driven by food)</li>
+	</ul>
+	</li>
+	<li>Jacques Vidal (Research from 1973)
+	<ul>
+		<li>Scalp-recorded noninvasive signals</li>
+		<li>"Visually evoked potentials"</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="46ef8bcf73d05adb06c6af4e87971fef"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="3e5cf58b6e139f4042203c9191a6af11"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Processing Stages of BCI</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="e3cbf75017c94b1b84fe68c5c6e6b07d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ol>
+	<li>Brain Recording</li>
+	<li>Signal Processing</li>
+	<li>Pattern Recognition and Machine Learning</li>
+	<li>Sensory Feedback</li>
+	<li>Signal Processing for Stimulation</li>
+	<li>Brain Stimulation</li>
+</ol>
+</div></div></section><section data-id="4eb4b9bb99ef63824d67182ea15df717"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="03966f43423fe7392577982c3c77bfdb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Required Background</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="905efecdb5aab7fc70dee66917ab1eac"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Neuroscience</li>
+	<li>Brain recording and stimulating technologies</li>
+	<li>Signal Processing</li>
+	<li>Machine-learning techniques</li>
+</ul>
+</div></div></section><section data-id="2d96586b85a1d5f238a60eaa5c3fc30e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="0a94f0ca505a324222037fe9b1a178b3"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Chapter 2</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 287px; height: auto;" data-block-id="21cbd78c7eac37234a1fafd098684d55"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle">
+<h2>Basic Neuroscience</h2>
+</div></div></section><section data-id="f63fce211d3b87bb490c0fc84b394478"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="11611bc3b10811eed6c56399eca60987"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Basic Neuroscience</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 264px; height: auto;" data-block-id="06a941ca9ae9f66049f49e95a936ee69"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui"><ul>
+<li>Neuron<ul>
+<li>Receives info from hundreds of neurons<br>
+</li>
+<li>Processes the info<br>
+</li>
+<li>Conveys output to hundreds of neurons<br>
+</li>
+</ul>
+</li>
+<li>Plastic Connections<ul><li>Allows brain to adapt to new inputs<br>
+</li></ul>
+</li>
+</ul></div></div></section><section data-id="e54d98ef5d0d148dc2efc69ee6baa2e2"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="4b5c4f4ffc779381dfaf8060c6632061"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Von Neumann Architecture</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 264px; height: auto;" data-block-id="dbcfbdc7145128da8839ce565c041ea2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>CPU</li>
+	<li>Memory</li>
+	<li>Fixed connections between components</li>
+	<li>Serial mode of computation</li>
+</ul>
+</div></div></section><section data-id="af72fb6a3c282bcbcc46a355b7a6cd83"><div class="sl-block" data-block-type="text" style="width: 430px; left: 23px; top: 87px; height: auto;" data-block-id="3065c5fd0a9eda8e5961c546909d072c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h2><span>Neuron</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 430px; left: 23px; top: 161px; height: auto;" data-block-id="da4ab11b53716cf0cd2c523ffb2d9c2d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat." style="z-index: 12; text-align: left;">
+<ul>
+	<li>Impermeable lipid bi-layer</li>
+	<li>Ionic channels</li>
+	<li>Potential difference of ~ -70mV across membrane</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="3f2707a257fafce058d2e285e320e07e" style="min-width: 30px; min-height: 30px; width: 453px; height: 339.75px; left: 480px; top: 180px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="364" data-natural-height="273" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2711657/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="a82116cc4badecbc01b93db920e9ca07" style="height: auto; min-width: 30px; min-height: 30px; width: 369px; left: 522px; top: 520px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui">
+<p><span style="font-size:0.5em">“Brain Computer Interfacing.” By Rajesh P. N. Rao</span></p>
+</div></div></section><section data-id="af6813465a2d7a01e4a6fd75edde1293"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="0e2850b909155a81db9f47195017c202"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Action Potential (Spike)</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="4633f4e4bdf94cd7fdca2c4f5099b75a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Rapid influx of Na+ into cell
+	<ul>
+		<li>Rise in membrane potential</li>
+	</ul>
+	</li>
+	<li>K+ Channels Open
+	<ul>
+		<li>Rapid outflow of K+ ions</li>
+		<li>Drop in membrane potential</li>
+	</ul>
+	</li>
+	<li>Info is conveyed by the firing rate
+	<ul>
+		<li># spikes per second</li>
+		<li>Timing of spikes</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="6f60f953fb5aeb5de5347b7371bcdbaa"><div class="sl-block" data-block-type="text" style="width: 430px; left: 23px; top: 87px; height: auto;" data-block-id="871f4b8609959be1c0e166ae957dee00"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;" dir="ui"><h2>
+<span>Dendrites and Axons</span><br>
+</h2></div></div>
+<div class="sl-block" data-block-type="text" style="width: 430px; left: 23px; top: 235px; height: auto;" data-block-id="55aff17bc7093b70917159a1a3bd080e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat." style="z-index: 12; text-align: left;">
+<ul>
+	<li>Spike initiated near soma/axon junction</li>
+	<li>Axon emanates output spike to other neurons</li>
+	<li>Myelin sheath boosts speed of propagation over long distances</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="33e53b69ab97a8887ca5864f9c97ca6e" style="min-width: 30px; min-height: 30px; width: 462px; height: 309.855px; left: 489px; top: 140px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="498" data-natural-height="334" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2711675/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="abea4b4716dc8c919852c10d8ee4de05" style="height: auto; min-width: 30px; min-height: 30px; width: 473px; left: 484px; top: 493px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 70%;">
+<p><span style="font-size:0.5em">https://upload.wikimedia.org/wikipedia/commons/8/86/1206_The_Neuron.jpg</span></p>
+</div></div></section><section data-id="cf199fff8306d36ee1f77fdef2a5242a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="309f8cd0103ed003159edbcf686bd0dd"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Synapses</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="d7a2dcd4c4d9638fb2d1a6642afdee0c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Gap (synaptic cleft) between axon of a neuron (presynaptic neuron)</li>
+	<li>And another soma (postsynaptic neuron)</li>
+	<li>Action potential releases neurotransmitters into cleft
+	<ul>
+		<li>NT bind to ion channels in soma</li>
+		<li>Channels open -&gt; Local membrane potential changes</li>
+	</ul>
+	</li>
+	<li>Excitatory – increase in membrane potential</li>
+	<li>Inhibitory – decrease in membrane potential</li>
+	<li>Neurons are one or the other, never both</li>
+</ul>
+</div></div></section><section data-id="ab4bd7c989e46ddc0bdcccfc4318b5c7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="cd4b4be61acd93d6fd978ff2ca9ccdee"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Threshold Model of Spike Generation</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="9bdcb6efbf626c5ed0143f65adc1d2d7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Neuron receives sufficiently strong inputs from synapses for membrane to cross a specific threshold
+	<ul>
+		<li>Results in spike</li>
+	</ul>
+	</li>
+	<li>0/1 inputs are converted to analog changes in local membrane potential
+	<ul>
+		<li>Changes are summed at the soma</li>
+		<li>If summation exceeds threshold -&gt; Spike occurs</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="5e23bb36d2e053abe95bbfb53e89d582"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 129px; height: auto;" data-block-id="f0ae5219102a8458668c2648050336e1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Synaptic Plasticity</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 203px; height: auto;" data-block-id="d62be49cdc159ae136b6da0afa5a9cbb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Long Term Potentiation (LTP)
+	<ul>
+		<li>Related to Hebbian Learning</li>
+		<li>If neuron A consistently causes neuron B to fire, then the strength of the connection from A to B should be increased</li>
+		<li>Hippocampus and neocortex</li>
+	</ul>
+	</li>
+	<li>Long Term Depression (LTD)
+	<ul>
+		<li>Decrease in strength of synaptic connection, caused by uncorrelated firing between two neurons</li>
+		<li>Hippocampus and neocortex</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="deeda3e7ad135750d6a83d61eef55066"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 62px; height: auto;" data-block-id="4a9bd077a87522fbe4d393b473195f4d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Spike Time Dependent Plasticity (STDP)</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="ec95a4cbb727bfda88b8c913268cd45b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Hebbian STDP
+	<ul>
+		<li>Presynaptic spike occurs (1-40ms) before postsynaptic spike à Strengthened synapse</li>
+		<li>Vise Versa (1-40ms after)</li>
+		<li>Cerebral cortex / Hippocampus</li>
+	</ul>
+	</li>
+	<li>Anti-Hebbian STDP
+	<ul>
+		<li>Presynaptic spike occurs after post synaptic spike -&gt; Strengthened synapse</li>
+		<li>Vise Versa</li>
+		<li>Inhibitory synapses in cerebellum</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="fddd374c05d24aa2c21a5c5ca4d7126a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 70px; height: auto;" data-block-id="e227d28bd35cb09973a918449fefe9d7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Short-Term Facilitation and Depression</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 218px; height: auto;" data-block-id="3d2a9efc17f0b838879cdded039715f3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>The only type of Short Term plasticity
+	<ul>
+		<li>If neuron receives a burst of spikes as input:</li>
+		<li>STD
+		<ul>
+			<li>First spike has most effect</li>
+			<li>Those that follow have lesser and lesser changes in membrane potential until an equilibrium point is reached</li>
+		</ul>
+		</li>
+		<li>STF</li>
+		<li>Each successive spike has a larger effect than its predecessor until a saturation point is reached</li>
+	</ul>
+	</li>
+	<li>In Neocortical synapses</li>
+</ul>
+</div></div></section><section data-id="319cddad30ff667085bf93e112f06f0a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 105px; height: auto;" data-block-id="e9c5937d56a7a91f88dc2a7bd11ba2cc"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Nervous System</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 179px; height: auto;" data-block-id="57d580840077c863a2d6572ff71a480a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Central Nervous System (CNS)
+	<ul>
+		<li>Brain and spinal cord</li>
+		<li>Spinal cord sends info to/from brain
+		<ul>
+			<li>Also has local feedback loops for reflexes</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>Peripheral Nervous System (PNS)
+	<ul>
+		<li>Somatic Nervous System
+		<ul>
+			<li>Neurons connected to skeletal muscles, skin, and organs</li>
+		</ul>
+		</li>
+		<li>Autonomic Nervous System
+		<ul>
+			<li>Neurons controlling heart pumping, breathing, etc.</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="492711ff4c9b0ac3fc49ff0fdf820ecf"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="6b81354307bd297ebc18887d6d8b2754"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span>Brain Stem</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="8c365041eff26003d5dc6c6487e4cd58"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Consists of medulla, pons, and midbrain</li>
+</ul>
+</div></div></section><section class="stack" data-id="cfded37f92d2e8efae58db69c94dd8a1"><section data-id="5d2e96354eaddf6ab5d7e68e6823f7db"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="3661448fac96432786d0443cc6befcaf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Brain Regions</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="69b8850b554ae4ccdb2849278c841904" style="min-width: 30px; min-height: 30px; width: 614.13px; height: 460px; left: 173px; top: 156px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="514" data-natural-height="385" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2711767/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="385363390ce4a4f17164be51bf18d327" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 179px; top: 616px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" dir="ui"><p><span style="font-size:0.5em;">“Brain Computer Interfacing.” By Rajesh P. N. Rao</span></p></div></div></section><section data-id="0e68da682460966ff82bf62f36d38f23"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 141px; height: auto;" data-block-id="919710d376d05d3ffae7592af6edd33c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Brain Regions</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 215px; height: auto;" data-block-id="3156c3b279f3c65d08b261585ac38f06"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Medulla and Pons
+	<ul>
+		<li>Breathing, muscle tone, blood pressure, sleep, arousal</li>
+	</ul>
+	</li>
+	<li>Tectum (midbrain)
+	<ul>
+		<li>Composed of inferior/superior colliculus</li>
+		<li>Eye movement, visual/auditory reflexes</li>
+	</ul>
+	</li>
+	<li>Tegmentum (midbrain)
+	<ul>
+		<li>Muscle reflexes, pain perception, breathing</li>
+	</ul>
+	</li>
+	<li>Cerebellum
+	<ul>
+		<li>Coordination of movements</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="4cc22a157bd84c9c24481d39e728de46"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 19px; height: auto;" data-block-id="dbc6b9dedad3fed74ea4720445e2cca6"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Brain Regions</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 93px; height: auto;" data-block-id="1f9ce6cd6604566eed70a61cab01ed31"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Thalamus
+	<ul>
+		<li>Relay station that conveys info from sensory organs to neocortex</li>
+		<li>Also has active feedback loops with neocortex</li>
+	</ul>
+	</li>
+	<li>Hypothalamus
+	<ul>
+		<li>Regulates basic needs: feeding, fighting, fleeing, and mating</li>
+	</ul>
+	</li>
+	<li>Basal Ganglia
+	<ul>
+		<li>Motor control and action selection</li>
+	</ul>
+	</li>
+	<li>Amygdala
+	<ul>
+		<li>Regulation of emotion</li>
+	</ul>
+	</li>
+	<li>Hippocampus
+	<ul>
+		<li>Memory, learning, spatial cognition</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="fe92f6fddef5fa08fc4231f675bf07b5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 121px; height: auto;" data-block-id="35ec0e21a086c38a4a47e483cc94edd7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Neocortex</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 195px; height: auto;" data-block-id="dd3fa4e120629955ce7e6a7ea0242b15"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Convoluted surface residing at top of the brain</li>
+	<li>1/8 inch thick</li>
+	<li>30 billion neurons, arranged in 6 layers, each neuron making about 10,000 synapses with other neurons, yielding around 300 trillion total connections</li>
+	<li>Exhibits functional specialization</li>
+	<li>Different areas of the cortex are anatomically similar
+	<ul>
+		<li>Cortex must employ a prototypical algorithm for processing information</li>
+		<li>Specialization occurs through different inputs received in different brain regions</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="d3330575aadf5e7eb084c5edf476960e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="4b19448a3ec3bb6d4fd14873f0bf0575"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Chapter 3</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 287px; height: auto;" data-block-id="b515e85043ddf7d84a39b8dad0f60383"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle">
+<h2>Recording and Stimulating the Brain</h2>
+</div></div></section><section data-id="bcd6e08825e00af6df1539a2006409d0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="80cd77ab445603dcea1f4cb930b48324"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Recording Signals</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 287px; height: auto;" data-block-id="83a09571dd60d6f3f758250b7585b8e1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle" dir="ui"><h2>Invasive Techniques</h2></div></div></section><section data-id="9292d27f65cf41b2cceebdf8bda3d7d3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="916ceb1e65e995f8078e1dec571919cf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Invasive Techniques: Main Points</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="f2e4c976e21290ad4dd3af4bdd18ec44"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui"><ul>
+<li>Recordings from individual neurons are typically invasive</li>
+<li>Based on electrodes and surgically implanting chips</li>
+<li>Major advantage: allow recording of action potentials at millisecond timescale<ul><li>Non-invasive- hundreds of milliseconds</li></ul>
+</li>
+</ul></div></div></section><section data-id="291e987e991c70e855b3913f66588d1c"><div class="sl-block" data-block-type="text" style="width: 410px; left: 49px; top: 106px; height: auto;" data-block-id="47eeb86a07815b4ea55356789929bcea"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; font-size: 99%;">
+<h2>Animal Subjects</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 410px; left: 35px; top: 279px; height: auto;" data-block-id="5d057c5495905b080ae24c115b53709b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin urna odio, aliquam vulputate faucibus id, elementum lobortis felis. Mauris urna dolor, placerat ac sagittis quis." style="text-align: left;">
+<ul>
+	<li>Typically animal subjects <em>in vivo</em>
+</li>
+	<li>Surgery and recovery causes pain and brings risk of disease</li>
+	<li>If awake, restrained during recording</li>
+	<li>Can be recorded for weeks to months</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 410px; left: 499px; top: 106px; height: auto;" data-block-id="3f693f95ea39fa6d010821b998f1ed9d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left;">
+<h2>Human Subject</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 410px; left: 515px; top: 280px; height: auto;" data-block-id="2d363c23e67ccf5fc9f75f6596f46874"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin urna odio, aliquam vulputate faucibus id, elementum lobortis felis. Mauris urna dolor, placerat ac sagittis quis." style="text-align: left;">
+<ul>
+	<li>Only in clinical setting, such as brain surgery</li>
+	<li>Also used to monitor (still clinical setting) potential risks such as seizures</li>
+	<li>Can be recorded for minutes to hours</li>
+</ul>
+</div></div></section><section data-id="d753e92a2921174f281074022b6c1b8f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 191px; height: auto;" data-block-id="50ca338021ca7375cd9e178fcb720209"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Microelectrodes</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 429px; left: 505px; top: 264px; height: auto;" data-block-id="70f1eb9fe3249ecbd16563d3358321d2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>Fine wire or other conductor used to contact brain tissue</li>
+	<li>Made of tungsten/platinum-iridium alloy</li>
+	<li>Insulated except tip
+	<ul>
+		<li>Tip ~1μm diameter</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="b7298c2e3964e15e5022a22713b3a944" style="min-width: 30px; min-height: 30px; width: 360px; height: 147.15px; left: 61px; top: 313px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1600" data-natural-height="654" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2712486/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="933a5084bef9fce802f5ce0a15bb705a" style="height: auto; min-width: 30px; min-height: 30px; width: 348px; left: 87px; top: 490px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 50%;">
+<p>http://www.thomasrecording.com/neuroscience-products/chronic-recording-systems/primate-chronic-recording-system/</p>
+</div></div></section><section class="stack" data-id="0616448877fe6a0dd993c3ff6edd2230"><section data-id="d59092fedc0236afa3517f0023fab076"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="2824a0e741d63f6628576fc64be46d5b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Intracellular Recording</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="d47cbe6748bcc1081385f97ea0092c30"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Measure voltage across membrane</li>
+	<li>Most common method: patch clamp recording</li>
+	<li>Delicate, thus typically <em>in vitro </em>vs <em>in vivo</em>
+</li>
+</ul>
+</div></div></section><section data-id="0d9b346fcdf7d0f5f47869aa6fe09c1e"><div class="sl-block" data-block-type="text" style="width: 430px; left: 23px; top: 87px; height: auto;" data-block-id="0a9718e124f2dc3ae8a528e421484231"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10; font-size: 90%;">
+<h2>Patch Clamp Recording</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 430px; left: 23px; top: 219px; height: auto;" data-block-id="09ad94c7f7c75f5b912fa5247fad2262"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat." style="z-index: 12; text-align: left;">
+<ul>
+	<li>Microelectrode is a glass pipette filled with weak electrolyte
+	<ul>
+		<li>Electrolyte mimics intracellular fluid</li>
+		<li>Tip ~1<span>μm</span>
+</li>
+	</ul>
+	</li>
+	<li>A silver wire connects the electrolyte to an amplifier</li>
+	<li>Voltage is measured with respect to extracellular fluid (reference electrode)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 454px; height: 322.579px; left: 480px; top: 156px;" data-block-id="403d0d927cdb14fcce507ca32c16a513"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="988" data-natural-height="702" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2712514/Patch_Clamp.jpg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 480px; left: 467px; top: 479px;" data-block-id="a4e1d764698cafabc48e1ac46cd33051"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui"><p><span style="font-size:0.5em;">“Brain Computer Interfacing.” By Rajesh P. N. Rao</span></p></div></div></section></section><section class="stack" data-id="588c4d9c69426fa52a7245568b49ff7f"><section data-id="604fcde7d6a1ae4d93fd5ffa90264916"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="6151f894c12b94f53368455ae6a01780"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Extracellular Recording</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="85157a204bd3e5f656082802dc58cee4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Especially on intact brains of animals</li>
+	<li>Records a single neuron</li>
+	<li>Microelectrode
+	<ul>
+		<li>Still tungsten/platinum-iridium tip</li>
+		<li>&lt;10<span style="text-align:left">μm tip diameter</span>
+</li>
+	</ul>
+	</li>
+	<li><span style="text-align:left">​Done with respect to ground (typically a wire on a skull screw)</span></li>
+</ul>
+</div></div></section><section data-id="5f8b75726050e7723d81caf190d0b04b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 189px; height: auto;" data-block-id="5d81480a4d89dd5d488060b48bf441bd"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Extracellular Recording</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 406px; left: 474px; top: 280px; height: auto;" data-block-id="c60d2820e9933526dae14539a40e105e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Bring the microelectrode close to the cell body, it will pick up electrical fluctuations</li>
+	<li>Extracellular fluid composition influenced by intracellular changes, thus potential changes</li>
+	<li>Signal is taken and filtered to isolate spikes</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="887af258ef0a42f30f54e51de9f425d2" style="min-width: 30px; min-height: 30px; width: 394px; height: 254.026px; left: 58px; top: 280px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="988" data-natural-height="637" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2712570/Extracellular.jpg"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 480px; left: 0px; top: 560px;" data-block-id="90c2f92e0dc66477d4c0292548c2d6a7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui"><p><span style="font-size:0.5em;">“Brain Computer Interfacing.” By Rajesh P. N. Rao</span></p></div></div></section></section><section class="stack" data-id="ff75ff98e8f162e3c39edff9758d3a2b"><section data-id="096ff25eace84ce98dc8cacea0f42031"><div class="sl-block" data-block-type="text" style="width: 800px; left: 77px; top: 190px; height: auto;" data-block-id="e71fb90aa3f56109bc0b93b54e8d80d0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Tetrodes and Multi-Unit Recording</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 338px; height: auto;" data-block-id="87a76cbf2e4d969938015456f5292060"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Multiple neurons correspond to 1 electrode</li>
+	<li>4 wires tied tightly in a bundle</li>
+	<li>Will record action potentials in an area</li>
+	<li>Based on a neuron's distance to each wire, has different "signature"</li>
+	<li>~20 neurons</li>
+</ul>
+</div></div></section><section data-id="1b62ddef9f8c462b4c6e15a1c2a0a3f3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;" data-block-id="363d63d798cac95482e7d57d9e8896f1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Tetrode</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 692.603px; height: 361px; left: 129px; top: 199px;" data-block-id="34a06b43f554a7f86248d84b999fe540"><div class="sl-block-content"><img data-natural-width="589" data-natural-height="307" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2712577/HippocampalTetrodeExample.png"></div></div></section></section><section class="stack" data-id="fbf62391810559a6bff17fb0473487ed"><section data-id="e94a9497e594c83c80c12b9eca8d980c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="de26b6a503f24fe918e581b472c73802"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Multielectrode Arrays</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 144px; height: auto;" data-block-id="14664888a27a0d5a49cf4e4ed4143fd5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Grid of microelectrodes, m x n array where dimensions are 1-10</li>
+	<li>Potentially 10%-50% less neurons than electrodes due to electrode failure</li>
+	<li>
+<span style="text-align:left">Advantages:</span>
+	<ul>
+		<li><span style="text-align:left">Gathers information from a larger number of neurons</span></li>
+		<li><span style="text-align:left">Increased spatial resolution and record from several dozens of neurons to get complex data</span></li>
+	</ul>
+	</li>
+	<li>
+<span style="text-align:left">Disadvantages</span>
+	<ul>
+		<li><span style="text-align:left">​Formation of glial cells and scar tissue in brain</span></li>
+		<li>Glial cells impede signal and breaks system</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="88f3854c62752e9c3bf5482f38923b6f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 98px; height: auto;" data-block-id="feb79059ce817f0aa7bcb54de95bd27d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Microwire Array</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 172px; height: auto;" data-block-id="969792ebd6a61b5560277e41414cacf9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>Tungsten/platinum alloy/steel electrodes</li>
+	<li>Similar to tetrodes: bundle to find locaiton</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="30f36832dd842cfeea577581f236d45d" style="min-width: 30px; min-height: 30px; width: 360px; height: 360px; left: 300px; top: 258px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="500" data-natural-height="500" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2712619/microwirearray.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="9789c48bf64fe6d6fff5cfcdd8cefbfd" style="height: auto; min-width: 30px; min-height: 30px; width: 389px; left: 320px; top: 618px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 40%;">
+<p>http://glo-bio.com/image/cache/data/Array%20and%20Array%20Insertion%20tool/MWA_header-06-15-3_web-500x500.jpg</p>
+</div></div></section><section data-id="a9e4403b7fe4300c06dc89b06c64d628"><div class="sl-block" data-block-type="text" style="width: 410px; left: 50px; top: 245px; height: auto;" data-block-id="ec9266187912f7cdb56711b3c69c3d30"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h2><span style="font-size:0.9em">Michigan Array</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 410px; left: 50px; top: 339px; height: auto;" data-block-id="79d1bc4d4766712ac513ba927962e8b3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin urna odio, aliquam vulputate faucibus id, elementum lobortis felis. Mauris urna dolor, placerat ac sagittis quis." style="text-align: left; z-index: 12;">
+<ul>
+	<li>Has multiple probes along electrode for better readings</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 410px; left: 500px; top: 245px; height: auto;" data-block-id="05b18d0ec138f8220fc8d7ecfb23a07b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 13;">
+<h2><span style="font-size:0.9em">Utah Array</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 410px; left: 500px; top: 339px; height: auto;" data-block-id="d7219d257f97683b8eabab63fd863163"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin urna odio, aliquam vulputate faucibus id, elementum lobortis felis. Mauris urna dolor, placerat ac sagittis quis." style="text-align: left; z-index: 14;">
+<ul>
+	<li>Only has probe at tip</li>
+	<li>3D grid</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="5132c9e6fe2a39036cf9c581e1f80821" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 31px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h2>Silicon-based Array</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0bfd299cf896bb9fb8d649c270d0d762" style="height: auto; min-width: 30px; min-height: 30px; width: 640px; left: 160px; top: 116px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<ul>
+	<li>Silicon can be shaped more precisely and has higher stiffness</li>
+	<li>Better spatial resolution than microwire</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="f90bde88be1507d1ad1106138241ee67" style="min-width: 30px; min-height: 30px; width: 360px; height: 87.7955px; left: 60px; top: 472px;"><div class="sl-block-content" style="z-index: 17;"><img data-natural-width="939" data-natural-height="229" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2712649/MichiganProbe.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="ad8ff1a659675609d910087a4f3ed138" style="min-width: 30px; min-height: 30px; width: 314.499px; height: 125px; left: 80px; top: 568px;"><div class="sl-block-content" style="z-index: 18;"><img data-natural-width="1180" data-natural-height="469" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2712651/MichiganProbeResults.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="50b80029335eded87faad5489baf8372" style="min-width: 30px; min-height: 30px; width: 360px; height: 241.592px; left: 500px; top: 420px;"><div class="sl-block-content" style="z-index: 19;"><img data-natural-width="377" data-natural-height="253" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2712658/UtahProbe.png"></div></div></section><section data-id="4432da570c1d89057538b43208f572b8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="ac434394390afb15eaafc81ab150b5c3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Flexible Array</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="3bddc0746e6f9da8ccd4fec1d07d7c88"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Polyimide, parylene, or benzocylcobutere instead of silicon</li>
+	<li>Material better matches brain tissue to avoid damaging the brain and growing scar tissue</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="dd7ee43a907d45f88aec0e44c3f13309"><section data-id="a23014ce124a577f8949d6aa49378b33"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="6247e77e9cf89db859059d6627699291"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Electrocoticography (ECoG)</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="c4bd4b6e9774ae24025eb98b28e2f8e2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Placing electrodes on surface of brain</li>
+	<li>Implant grid/strip of array of electrodes</li>
+	<li>Measure tens of thousands of neurons at a time</li>
+</ul>
+</div></div></section><section data-id="0b7ff3563037b109a4b793e4fa5f0e00"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 113px; height: auto;" data-block-id="3912b86034564010aa48389ffd079d4b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Advantages and Disadvantages</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 261px; height: auto;" data-block-id="1aec5811df5c783154314fce8a1cdf60"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Advantages
+	<ul>
+		<li>Safer than implants:
+		<ul>
+			<li>No glial tissue</li>
+			<li>No breaking blood-brain boundary</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>Disadvantages
+	<ul>
+		<li>Only works in clinical setting</li>
+		<li>Only surgically relevant parts of the head can be recorded</li>
+		<li>Drug and/or patient initial condition.</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="165fd75c8f8b4c80398f1a986d57e82d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="2b1b5cbe775b92c73e66cc8d99d8d21d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>MicroECoG</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="1b3288abde6b6c67d9759b0172ea22e5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>ECoG but smaller</li>
+	<li>Fraction of mm tip</li>
+	<li>2-3 mm apart in the grid</li>
+</ul>
+</div></div></section><section data-id="ba5362cad1a3f626fefb354583b26f90"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="f4ff78ab0aeaf8fc13717dbf6a5ad1b0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Optical Recording: Voltage-Sensitive Dyes</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="db09828a02b679a9bf255823658ff05e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Electric activity changes dye's absorption/fluorescence</li>
+	<li>Photodiode arrays are affected simultaneously by many neurons</li>
+	<li>Useful for macroscopic observations, but as so many neurons have a role in the electrode's output, no classification can be done</li>
+</ul>
+</div></div></section><section data-id="51ca7f39756dd9865050a1582374ed33"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="ab421a1e1d1c30a522b6c9712ca2d59a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Optical Recording: 2-Photon Calcium Imaging</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="754ca4f4390083cc4d6e7842bc21658f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Calcium corresponds to activity in neuron</li>
+	<li>Steps:
+	<ul>
+		<li>1. Pressure eject load neurons with calcium indicator dyes</li>
+		<li>2. Monitoring changes in flourescence via 2-photon microscopy (infrared laser beam through objective lens)</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="4b6f66f1e4dea283ec858e10578f2d08"><div class="sl-block" data-block-type="text" data-block-id="f98f84c376f8c953e498bbb4b48141f7" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 149px; top: 132px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h1><strong><span style="font-size:0.7em">Recording Signals</span></strong></h1>
+
+<h1><span style="font-size:0.7em">Non-Invasive Techniques</span></h1>
+</div></div></section><section class="stack" data-id="8b2c6ef5e9ed9bb12df44b8f45ca8741"><section data-id="b1727767ad361ce389f5dd25e94056ef"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 99px; height: auto;" data-block-id="1a285aefc47cd5a922576be409b02ea0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="font-size: 110%;">
+<p style="text-align:left"><strong>Electroencephalography (EEG)</strong>:</p>
+
+<ul>
+	<li><span style="font-size:0.7em">electrodes placed at scalp to record signals</span></li>
+	<li><span style="font-size:0.7em">reflection of sum of postsynaptic potentials</span></li>
+	<li><span style="font-size:0.7em">cannot record signals from tangential to scalp/deep inside the brain</span></li>
+	<li>
+<span style="font-size:0.7em">poor spatial resolution (cm)</span><span style="font-size:0.7em">, great temporal resolution (ms)</span>
+</li>
+</ul>
+
+<p style="text-align:left"><strong><span style="font-size:0.7em">    Conditions</span></strong></p>
+
+<ul>
+	<li><span style="font-size:0.7em">weak signals, need amplification/processing and avoid movements</span></li>
+	<li>
+<span style="font-size:0.7em">cap with recording electrode</span> <span style="font-size:0.7em">along with position references: mastoids   (behind ear), nasion (on top of nose), inion (base of skull) -- to measure skull circumference​</span>
+</li>
+</ul>
+</div></div></section><section data-id="78117595fa750999aa2bdb3947a331a8"><div class="sl-block" data-block-type="text" data-block-id="cc203a70badad4dcf7cdbfcadf4c8397" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 40px; top: 101px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong>The 10-20 System</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="4e4f20f4fa88686eddc8dc8af38828da" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 134px; top: 152px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><span>A standard method used to identify locations of the various lobes of the brain with respect to each other</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="d5afad9d0ff09d5ef8162d8a38fc66db" style="min-width: 30px; min-height: 30px; width: 360px; height: 322.2px; left: 80px; top: 299px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="200" data-natural-height="179" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2712794/eeg.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="340d04b5343d8202ec10bf16752d1876" style="height: auto; min-width: 30px; min-height: 30px; width: 373px; left: 440px; top: 443px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><span style="font-size:0.5em">https://en.wikipedia.org/wiki/10-20_system_(EEG)#/media/File:21_electrodes_of_International_10-20_system_for_EEG.svg</span></p>
+</div></div></section></section><section data-id="7caa4888a58306563bb462e54f8d7675"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="9f5b584fe930beddd2a5d6f22944138a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>EEG Methodology</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="467e0f1fba46ab9108e7dd13f166ac02"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="font-size: 110%;">
+<ul>
+	<li><span style="font-size:0.7em">Bipolar (measure potential difference of electrodes) or unipolar (compare charge to neutral or average)</span></li>
+	<li><span style="font-size:0.7em">one plugs in to differential amplifier and the other to reference electrode, amplifying by 1000-100000 times</span></li>
+	<li><span style="font-size:0.7em">anti-aliasing filter then A/D (analog to digital), then another filter (1-50 Hz)</span></li>
+	<li><span style="font-size:0.7em">can capture "brain waves" at various frequencies</span></li>
+	<li>
+<span style="font-size:0.7em">neurons have characteristic frequency ranges</span><br>
+	  <span style="font-size:0.7em">i.e. alpha waves - 8-13 Hz in occipital region of awake person when relaxed<br>
+	         beta waves, delta waves, gamma waves</span>
+</li>
+</ul>
+</div></div></section><section class="stack" data-id="c27064969be33f5d10fefd17f983d53e"><section data-id="381e47e532d9cba7bf395a8d406b02fa"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="531ef78940b6e9fa2fee14896e300746"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Magnetoencephalography (MEG)</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="2367e027184a5e0d7988bba1d317eb8f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="font-size: 110%;">
+<ul>
+	<li><span style="font-size:0.7em">measures magnetic field of brain via superconducting quantum interfacing devices (SQUID)</span></li>
+	<li><span style="font-size:0.7em">only sensitive to the neurons tangential to scalp due to Maxwell's equations</span></li>
+	<li><span style="font-size:0.7em">also high temporal resolution</span></li>
+	<li><span style="font-size:0.7em">offers better spatial resolution than EEG</span></li>
+	<li><span style="font-size:0.7em">independence from head geometry</span></li>
+	<li><span style="font-size:0.7em">more expensive, non-portable</span></li>
+</ul>
+</div></div></section><section data-id="8fef4b3f809e5508b27d3dd332311087"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="da74e44bf9bf1ab4463784d5bc96f251"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2><span style="font-size:0.7em">Maxwell's Equations of the Brain</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 144px; height: auto;" data-block-id="335126b1bf05c6a9e393f08f2e4c3276"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li><span>The neural stimuli in a specific direction as a result of an applied magnetic field</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="0a98d70a76ae55387ff3df43292db7fa" style="min-width: 30px; min-height: 30px; width: 360px; height: 240.424px; left: 80px; top: 273px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="283" data-natural-height="189" style="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2712810/Magnetoencephalography.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="fe1375ee9f7da028d00c098973e3a37d" style="height: auto; min-width: 30px; min-height: 30px; width: 408px; left: 461px; top: 375px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><span style="font-size:0.5em">https://upload.wikimedia.org/wikipedia/commons/0/0e/Magnetoencephalography.png</span></p>
+</div></div></section></section><section data-id="90fb920adc58e495ff7414c75d6f07fe"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="d902dc9e801273aedc08524385c9be81"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="font-size: 115%;">
+<h2><span style="font-size:0.5em">Functional Magnetic Resonance Imaging (fMRI)</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 168px; height: auto;" data-block-id="9741b27c599a7967d58fc984cf65ca42"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="font-size: 125%;">
+<ul>
+	<li><span style="font-size:0.7em">detect change in blood flow from activation of neurons during specific tasks</span></li>
+	<li><span style="font-size:0.7em">deoxygenated hemoglobin is more magnetic</span></li>
+	<li><span style="font-size:0.7em">blood oxygenation level dependent (BOLD) response.</span></li>
+	<li><span style="font-size:0.7em">present stimuli to subjects</span></li>
+	<li><span style="font-size:0.7em">high spatial resolution, low temporal resolution</span></li>
+</ul>
+</div></div></section><section data-id="186e8639c8c182909238c2f355fb7cf4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="97fb8a6d5515bde956818007abb0b7bf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="font-size: 115%;">
+<h2><span style="font-size:0.5em">Functional Near Infrared (fNIR) Imaging</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 168px; height: auto;" data-block-id="76d091873705e4b4e531ef44ff5c8fb8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="font-size: 125%;">
+<ul>
+	<li><span style="font-size:0.7em">detect near-infrared light absorbance of hemoglobin in blood (comparing oxygenated or deoxygenated)</span></li>
+	<li><span style="font-size:0.7em">can penetrate skull and reflect back to detectors</span></li>
+	<li><span style="font-size:0.7em">subjects aren't as strict with movements because of optical measurements rather than electrical</span></li>
+</ul>
+</div></div></section><section data-id="e6368f87131f85c96a9b01234af05ec7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="ef1b9c00eaccc3eab632190a75ba9b14"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2><span style="font-size:0.7em">Positron Emission Tomography (PET)</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 183px; height: auto;" data-block-id="d142827fb16022764970af07db86fabe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="font-size: 125%; z-index: 12;">
+<ul>
+	<li><span style="font-size:0.7em">measures emission of radioactively labeled chemical injected into blood stream transporting to brain (radiotracer)</span></li>
+	<li><span style="font-size:0.7em">great spatial resolution, low temporal resolution</span></li>
+	<li><span style="font-size:0.7em">drawback requires injection of radioactive chemicals and also have to account for rapid decay of radioactivity</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="5f8bcaea92549d143aa4c7ed50c054e6" style="min-width: 30px; min-height: 30px; width: 360px; height: 238.866px; left: 80px; top: 423px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="529" data-natural-height="351" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2713414/functpet.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="671dbbc5d1f84a6abd3f09f399179b54" style="height: auto; min-width: 30px; min-height: 30px; width: 496px; left: 427px; top: 477px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 87%;">
+<p>The brain shown on a PET scan at various cognitive actions</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="ddb725173978a1f798005225a3e8c76d" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 360px; top: 584px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 45%;">
+<p>http://www.cerebromente.org.br/</p>
+</div></div></section><section data-id="f26dd09a9ba0a2acf8e406a597adb5b9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="f1f8f8d4c3b0684b1899575a7ec9c6ee"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Stimulating the Brain</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 287px; height: auto;" data-block-id="b74e9fa76c1b583c09945a7e6341b417"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle">
+<h2>Invasive Techniques</h2>
+</div></div></section><section data-id="9d78062b360e8e3ed74ad2d46b62ebb4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="7c8ebab8bcc186ef152b27939e7368b3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Microelectrodes</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 176px; height: auto;" data-block-id="297c22f95c6216fa5bd8da2156e12a0c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="font-size: 125%;">
+<ul>
+	<li><span style="font-size:0.7em">glass microelectrodes can inject current into cell to excite or inhibit action potentials</span></li>
+	<li><span style="font-size:0.7em">platinum-iridium microelectrodes can also be used</span></li>
+	<li><span style="font-size:0.7em">can be used for DBS and can relieve tremors and gait problems</span></li>
+</ul>
+</div></div></section><section data-id="04b0a5bf82e6567b46316b5c41e5e112"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="9457bd5f37ab148ca43a5bf62ac4bf00"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="font-size: 115%;">
+<h2><span style="font-size:0.5em">Direct Cortical Electrical Simulation (DCES)</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 172px; height: auto;" data-block-id="0228ec5a7f6dfad2418efb46c57ea850"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="font-size: 125%;">
+<ul>
+	<li><span style="font-size:0.7em">electrodes used on the surface of the cortex much like ECoG</span></li>
+	<li><span style="font-size:0.7em">electric current (&lt;15 mA) delivered across bipolar electrodes</span></li>
+	<li><span style="font-size:0.7em">can generate movements or cause particular sensations, or do the exact opposite.</span></li>
+	<li><span style="font-size:0.7em">helps locate where each brain function is located</span></li>
+</ul>
+</div></div></section><section data-id="fc5786f00cd18f3057df867e4ecdae74"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="9fe63a59f7356bdfa46b3c6e1816bfa6"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em"><strong>Optical Simulation</strong></span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 177px; height: auto;" data-block-id="37f3f69df03a4c6575ef5a35c2614d09"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="font-size: 125%;">
+<ul>
+	<li><span style="font-size:0.7em">two photon laser illumination- illuminate the tangent at the membrane of the cell and creates excitation</span></li>
+	<li><span style="font-size:0.7em">optogenetic stimulation - use genetic manipulation to make only certain neurons responsive to illumination</span></li>
+	<li><span style="font-size:0.7em">two photons can selectively excite single neurons while optogenetic can selectively excite a class of neurons</span></li>
+</ul>
+</div></div></section><section data-id="b0deb5f97764613c7a30aca511b71b73"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 82px; height: auto;" data-block-id="206b39d391a13b7fb4946c25deb2d224"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Stimulating the Brain</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="ae04d9b6bd45fdcd0f08d06cb5dae23a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle">
+<h2>Non-Invasive Techniques</h2>
+</div></div></section><section data-id="8c4a144a8a7a0847fb6d22338c4e1d8f"><div class="sl-block" data-block-type="text" style="width: 825px; left: 80px; top: 77px; height: auto;" data-block-id="4e2ec51a088efe8cad69f0c754c48bc5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2><span style="font-size:0.7em">Transcranial Magnetic Stimulation (TMS)</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 173px; height: auto;" data-block-id="75f58dfcd802ec81c77d713b4dcfc7ab"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="font-size: 125%; z-index: 12;">
+<ul>
+	<li><span style="font-size:0.7em">uses electromagnetic induction and generates a magnetic field to create a current in the brain and excite the neurons</span></li>
+	<li><span style="font-size:0.7em">penetrates 3-5 cm into the brain- only for superficial layers</span></li>
+	<li><span style="font-size:0.7em">advantage is non-invasive</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="c34acaed6011714d21fea294bd529db1" style="min-width: 30px; min-height: 30px; width: 213px; height: 308.85px; left: 507px; top: 329px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="320" data-natural-height="464" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2713392/142724-144052.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0bc4a33cb5f26d14bdbebbec9d97cb15" style="height: auto; min-width: 30px; min-height: 30px; width: 457px; left: 332px; top: 630px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 45%;">
+<p>https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half/public/blogs/84335/2014/01/142724-144052.png?itok=ClZ4n5NL</p>
+</div></div></section><section data-id="19c6d7a16188f817dbfde9a63220d7c9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="a49c6c4e89f7b6dec11b5407bf5b197f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Transcranial Ultrasound</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 179px; height: auto;" data-block-id="cd29d1d6d24da89f2f7140ae03915824"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="font-size: 125%;">
+<ul>
+	<li><span style="font-size:0.7em">low-intensity pulsed ultrasound to influence neural activation without thermal effects or tissue damage</span></li>
+	<li><span style="font-size:0.7em">worked up to 92% of mice tested</span></li>
+</ul>
+</div></div></section><section data-id="cea513e002c848bb83a4eef9932c39b2"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="0a81f0f84033a4c1503791e667bb0049"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1><span style="font-size:0.9em">Simultaneous Recording and Stimulation</span></h1>
+</div></div></section><section data-id="7093681d3c6ce82450e56a263a57aaab"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="ae73063ef0348de057c1781e80f63896"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Multielectrode Array</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 174px; height: auto;" data-block-id="4d518123079f664100e7aa89ccc459cf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li><span style="font-size:0.9em">Good for both recording spike activity and delivering currents to excite or inhibit neurons</span></li>
+	<li><span style="font-size:0.9em">Some can be used specifically for recording, others for stimulation</span></li>
+</ul>
+</div></div></section><section data-id="0637c6a339b6571cc0932b290b0f21e4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="400aa2e0c2afa0835667e56fbb876b12"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2><span style="font-size:0.7em">Neurochip</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 176px; height: auto;" data-block-id="6ff32898d4f4486676226256765228e9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 12;"><ul>
+<li><span style="font-size:0.9em">integrated chip to serve multiple purposes</span></li>
+<li><span style="font-size:0.9em">records from neurons, performs signal processing and delivers appropriate stimulation to other neurons</span></li>
+<li><span style="font-size:0.9em">preprocessor to do spike sorting</span></li>
+<li><span style="font-size:0.9em">instruct circuit to deliver electrical pulses</span></li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="8c1e2dcad67f3e578537eeafc15c803c" style="min-width: 30px; min-height: 30px; width: 400px; height: 203.704px; left: 80px; top: 383px;"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="432" data-natural-height="220" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2713383/chip-fab.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="f32965be9b6b45764c7afdda1543bb6d" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 86px; top: 592px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 51%;">
+<p>http://www.its.caltech.edu/~pinelab/new_pinelab_page/current-research/neurochip.htm</p>
+</div></div></section>
+				</div>
+				<div class="dimmer"></div>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
