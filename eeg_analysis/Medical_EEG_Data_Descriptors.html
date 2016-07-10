@@ -1022,6 +1022,160 @@
 	</li>
 </ul>
 </div></div></section>
+<section class="stack" data-id="9ed1faf6b7bb17ed93c8273a56f2f34e"><section data-id="e2cddf593f6a232629a06c9940ac9705"><div class="sl-block" data-block-type="text" style="width: 831px; left: 15px; top: 43px; height: auto;" data-block-id="087c44ff2c1a26861c4c8b2587967690"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.5em">EEG and Eye-Tracking Preprocessing Steps</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="8f3a8a01f6d409cd0f59fbac8b1cc1de" style="height: auto; min-width: 30px; min-height: 30px; width: 782px; left: 26px; top: 161px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui"><ul>
+<li>preprocessed by MATLAB</li>
+<li>triggers and latencies extracted and specific temporal order of patients determined </li>
+<li>replace and identify bad electrodes (electrodes that are &gt; 3 stdev away from other electrodes in frequency spectrum distribution) using spherical spline interpolation (?)</li>
+<li>noisy channels filtered - either visually or replaced entirely by zeros</li>
+<li>109 channels for EEG,  6 EOG for artifact removal</li>
+</ul></div></div></section><section data-id="901c9ba4b36fd991c9a85a0131355f74"><div class="sl-block" data-block-type="text" style="width: 831px; left: 15px; top: 43px; height: auto;" data-block-id="e3fe413fa6c1e0025a44ba812b0a0ac8"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.5em">More Preprocessing</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 782px; left: 27px; top: 174px;" data-block-id="b99abd09afebef74cd3d50d5be176b54"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>data high pass filtered at 0.1 Hz and notch filtered at 59-61 Hz</li>
+	<li>Principal Components Analysis (PCA) algorithm removed sparse noise - recovers a low-rank matrix from a corrupted matrix by subtracting the error.</li>
+	<li>visual inspection after preprocessing as well.</li>
+</ul>
+</div></div></section><section data-id="6395a73471ca4da1f026622db910ec12"><div class="sl-block" data-block-type="text" style="width: 831px; left: 15px; top: 43px; height: auto;" data-block-id="7d87caa5a2330ba347300c0019059d34"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.5em">Tools for EEG Analysis</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 782px; left: 27px; top: 174px;" data-block-id="8aecdf551b4859e18d1a0da2cac7aafb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>
+<strong>EYE-EEG: </strong>plugin for MATLAB- integrates analysis for electrophysiological + eye-tracking data.</li>
+	<li>adds eye-tracking data as extra channels to EEG</li>
+	<li>Adaptive velocity-based algorithm to detect saccades and fixations, i.e. a blink
+	<ul>
+		<li>identifies fixation as groups of consecutive points</li>
+		<li>uses that to map minimum and maximum x and y values - compare that to maximum dispersion value.</li>
+		<li>if the dispersion is lower, then its a fixation. </li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="0210a3b09c2ad4ed7897b5766230d8f9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="a1bfed6333fedd3917a2c49f3d59fed5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Misc about Data </h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 874px; left: 53px; top: 144px; height: auto;" data-block-id="9b1ef499d50561f92c0262efad709bf4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+<strong>Code Availability: </strong>analysis performed in MATLAB + EEGlab</li>
+	<li>
+<strong>Data records</strong>: a folder for each subject. an EEG binary file, two eye-tracker files. One is segmented into blinks, saccades, and fixations. The other isn't. Each folder has a file for each paradigm.</li>
+	<li>
+<strong>Behavioral Assessment: </strong>self-report by Collaborative Informatics and Neuroimaging Suite (COINS)</li>
+	<li>
+<strong>Cognitive Assessment: </strong>two research assistants obtained separate raw scores for each patient, entered as dataset</li>
+	<li>
+<strong>Developmental History: </strong>medical/school/demographics</li>
+</ul>
+</div></div></section><section data-id="697ddf7cd81d1c0ee47e05f01ef757a0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="d9fa907b6f57ce8ad1d1b82ff43826f0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Resting EEG Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 151px; height: auto;" data-block-id="dbcca145939ba9969109db850951c773"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>after filter, data segmented into eye-closed and eye-open segments</li>
+	<li>analyze <strong>eye-closed</strong>
+</li>
+	<li>EEG recomputed against average reference, split into 2-second epochs, then Fourier transformed</li>
+	<li>Resting-state EEG had their spectral amplitude saved. </li>
+	<li>Spectra for each channel averaged for the epochs</li>
+	<li>group mean spectral amplitude for all or each electrode calculated</li>
+	<li>split up into the different frequency bands (alpha beta etc)</li>
+</ul>
+</div></div></section><section class="stack" data-id="21dd648fa545c77ebfeaebcd91b9723c"><section data-id="bc7bebd72b7c02dd670412d3751213da"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="03def44e1cc8511bceb1927b4808a36a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Sequence Learning Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 152px; height: auto;" data-block-id="4cb061e0200703fc77aba6cded74a203"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>EEG data segmented based on stimulus of each filled white circles at each of the eight different locations</li>
+	<li>900 ms long epochs (100 ms pre, 800 ms post)</li>
+	<li>averaged trial types (hits, missed, learned) for each subject individually and calculated group average</li>
+	<li>found a decrease of P300 over different blocks</li>
+	<li>
+<strong>behavioral performance</strong>: percentage of correctly learned spatial location</li>
+	<li>
+<strong>learning rate:</strong> newly learned location in relation to all possible locations</li>
+</ul>
+</div></div></section><section data-id="84043d245144bbadec76e931cc80e915"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 50px; height: auto;" data-block-id="ff3d2a686146cc684b20da2d8319f47d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">More Sequence Learning Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 152px; height: auto;" data-block-id="82d6fa37fa29882b5d412dec9fc1530f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>P300 amplitude = amplitude on electrode CPZ, with latency of 350-500 ms post stimulus</li>
+	<li>slightly delayed because children have greater latency</li>
+	<li>performance increases while learning rate and P300 decrease w practice</li>
+	<li>recall the expectation that subjects learn to expect the order of the appearance of targets w/ 5 blocks</li>
+	<li>decrease in P300 because of novelty indicator of a target stimulus- subjects are not surprised anymore!</li>
+</ul>
+</div></div></section></section><section data-id="4b83d5537f91eb61ebd7bc0dd8e6f63e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="9b24b6a51b7793cbf9f460df1281d82b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.5em">WISC Symbol Search / Processing Speed Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 881px; left: 53px; top: 165px; height: auto;" data-block-id="d65344b97733ba83fa5e93fc1b8f40d5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Eye-tracking data</li>
+	<li>recall the goal is to find two target symbols among a set of five search symbols</li>
+	<li>graphic - three sub regions: target, search group, response buttons</li>
+	<li>calculated number of saccade steps, repetitions, pupil size, and protracted gaze dwell time (fixation duration) for each sub region</li>
+	<li>graph to indicate the duration of fixation and distribution</li>
+</ul>
+</div></div></section><section data-id="439326c6f19bad54e86f6ca7a04daeec"><div class="sl-block" data-block-type="text" style="width: 800px; left: 66px; top: 70px; height: auto;" data-block-id="f5e26a35ad22844f85552b8ca696a826"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Naturalistic Stimuli Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 155px; height: auto;" data-block-id="6f1526c88ee8226f9a99d674dbcd30f8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>covariance matrices were computed </li>
+	<li>found the 3 strongest correlated components and compute corresponding correlation values</li>
+	<li>"how does this specific video probe people's EEG responses"</li>
+	<li>ISC measure</li>
+</ul>
+</div></div></section><section class="stack" data-id="8c0249b389d55afa758104a6b605e15c"><section data-id="60831e337586144bd734385eefc38d26"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="110afafebbb94b8bb90388536e23243a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Surround Suppression Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="666c06b94734ca60bb64e304debf6996"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>extracted based on flickering stimulus</li>
+	<li>4 foreground contrast (0%, 30%, 60%, 100%) and 3 background conditions (parallel, orthogonal, none)</li>
+	<li>data of two blocks merged for each subject</li>
+	<li>computed SSVEP signal without background, and a SSVEP averaged all conditions with a background</li>
+	<li>FFT computed to obtain a measure of SSVEP power at 25 Hz freq</li>
+	<li>subtracted this from neighboring freq to get the actual evoked activity</li>
+</ul>
+</div></div></section><section data-id="899439ae3021be88bb2268dd846559cf"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="b93377e4fd79b33c96c5b23750d1b933"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.5em">More on Surround Suppression Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 64px; top: 155px; height: auto;" data-block-id="05dd2c43332d30ae2d77a72e03d9ccd4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>in-house algorithm to detect highest SSVEP amplitude, compute signal based on the average of max electrode + four surrounding electrodes</li>
+	<li>graph to demonstrate the difference in SSVEP amplitude between different contrasts with or without a background</li>
+	<li>increase SSVEP amplitude with an increase in foreground contrast</li>
+	<li>relative reduction in SSVEP amplitude due to surround contrast</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="5d4b7349a8cae14569699b0fb8fd9c1a"><section data-id="31356dfe2c1405c9b070b4257a5d29bb"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="0657fdc5781b7a5776e62760fb936b4a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Contrast Change Detection Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="1a7aebf1eb31edd64bfa11e719f627d4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>data of three blocks merged for each subject</li>
+	<li>target epochs extracted from 500 ms before target to 1000 ms after peak sensory evidence</li>
+	<li>response-locked epochs extracted from 1000 ms before repsonse to 300 ms after response (buttons)</li>
+	<li>rejected trials for scalp channel over 100 microV</li>
+	<li>SSVEP based on stimulus locked epochs + motor response signal based on response-locked epochs measured by Fourier</li>
+	<li>CPP analysis averages single-trial  waveforms (baseline corrected 500 ms before response)</li>
+</ul>
+</div></div></section><section data-id="f1f94c330fac612bc1243414a30a3775"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="66d1887e75260278b2179880e61400ab"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.5em">More on Contrast Change Detection Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 163px; height: auto;" data-block-id="b631ee17f935b4a5856abd69e5332729"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Figure to show SSVEP, CPP, and motor response signal topographies</li>
+	<li>Result shows posterior maximum for SSVEP around electrode Oz. </li>
+	<li>CPP shows highest activity near CPz electrode and motor response signal peaks over C3 and C4.</li>
+</ul>
+</div></div></section>
 				</div>
 			</div>
 
