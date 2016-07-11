@@ -21,17 +21,29 @@
 2. Feasibility
     1. Background
         1. What is the current state of knowledge regarding this problem?
-        2. What are the key challenges? 
+            - It's known that multiple biomarkers correspond with multiple mental diseases
+            - We have multiple sets of correlations of brain activity (alongside other biomarkers) with different diseases
+            - It's unknown when you look at multiple different biomarkers at once how they correlate with different diseases
+        2. What are the key challenges?
+            - Trying to assess already complicated data with multiple dimensions (i.e. 6 dimensions of EEG data)
         3. Has anyone made a concerted effort to solve the problem? Give examples. 
+            - Our reference paper
         4. If so, what progress did they make, and why have they not succeeded?
+            - They collected data, they didn't actually find connections within it
     2. Gap
         1. What gaps in scientific understanding must be bridged in order to solve this problem? 
+            - How do different mental disorders react to different stimuli
         2. What gaps in technological  capabilities must be bridged in order to solve this problem? 
+            - How do you analyze data with multiple dimensions via machine learning
         3. What organizational, financial, and/or technological challenges must be addressed in order to bridge these gaps?
+            - More data, control subjects, etc.
     3. Work
         1. Why will this approach work? 
+            - Because we have data that would work, and we've read a study that uses a relevant algorithm that can compare data.
         2. Why might it not, and what can be done to mitigate those challenges? 
+            - How do you analyze data with multiple dimensions
         3. How will you inspire financial support at the end of the year?
+            - How do you analyze data with multiple dimensions
 3. Significance
     1. What tangible benefits would the world derive from solving this problem? For each of the below, provide specific/concrete numbers in absolute terms, and provide a meaningful point of reference (e.g., X costs 10 USD per year, which is Y fraction of medical spending)
         1. Economic
