@@ -25,7 +25,7 @@
             - We have multiple sets of correlations of brain activity (alongside other biomarkers) with different diseases
             - It's unknown when you look at multiple different biomarkers at once how they correlate with different diseases
         2. What are the key challenges?
-            - Trying to assess already complicated data with multiple dimensions (i.e. 6 dimensions of EEG data)
+            - Trying to assess already complicated data with multiple dimensions (i.e. 6 dimensions of EEG data, which likely means many many dimensions of relevant data)
         3. Has anyone made a concerted effort to solve the problem? Give examples. 
             - Our reference paper
         4. If so, what progress did they make, and why have they not succeeded?
@@ -39,20 +39,27 @@
             - More data, control subjects, etc.
     3. Work
         1. Why will this approach work? 
-            - Because we have data that would work, and we've read a study that uses a relevant algorithm that can compare data.
+            - Because we have corresponding data with that aim that has not been used
         2. Why might it not, and what can be done to mitigate those challenges? 
-            - How do you analyze data with multiple dimensions
+            - Unfortunately, we have not been able to look at our data yet, and correlations may simply not exist between datas across those datasets
         3. How will you inspire financial support at the end of the year?
-            - How do you analyze data with multiple dimensions
+            - This is a relatively untouched area, so our entering it with novel data with a proven effective approach will see likely and important success.
 3. Significance
     1. What tangible benefits would the world derive from solving this problem? For each of the below, provide specific/concrete numbers in absolute terms, and provide a meaningful point of reference (e.g., X costs 10 USD per year, which is Y fraction of medical spending)
         1. Economic
+            - Save people money on misdiagnoses from general symptoms.
+            - Also, will provide a more effective and quantitative basis for the diagnosis, saving money on psychiatrist trips.
         2. Medical
+            - Will prevent misdiagnosis and will act as a building block for integrating other relevant and measurable factors that correlate with different diseases.
         3. Scientific
+            - Will both increase our understanding on how different diseases affect different parts of our brain differently, but also our ability to understand the relationships between these diseases and their biomarkers.
         4. Societal
+            - Will make handling and treatment of mental disorders on a large scale treatable.
     2. Which citizens of the world will be affected?
+        - People with mental disorders and with potential for it.
 4. Approach
     1. What is the approach for filling these gaps and solving the larger problem?
+        - 
     2. What are each of the parts of the approach?
     3. How will each of these disparate parts be coordinated to bridge these gaps and then solve the larger problem? 
     4. How is this approach different from the status quo?
