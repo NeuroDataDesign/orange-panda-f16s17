@@ -3,16 +3,16 @@
         - Many psychological disorders share symptoms and biomarkers. Many previous research studies have attempted to associate individual behavioral disorders with individual brain activity, but due to the similarities of disorders and potential biomarkers, research needs to look at multiple biomarkers and see how they affect multiple disorders so that we get a multi-dimensional view of disorders, and can thus differentiate between them with a broader and deeper understanding.
     2. What will be required to solve that problem?
         1. Data
-            - 126 data samples from EEG data sharing paper from Jovo
-            - Potentially control data under similar circumstances to provided data
+            - We currently have 126 data samples from EEG data sharing paper from Jovo. Because this data corresponds to potentially an assortment of mental illnesses (that we don't know for sure), we need other data for similar biomarkers in order to make confident correlations. We also want to look into finding some control data under similar circumstances so that we can compare. Also, we may want to see if other situations/biomarkers may provide a bigger sample size (this can open doors for other brian activity areas, wearables, etc.).
         2. Technology
-            - EEG headsets to collect data
-            - Machine learning to classify data across multiple dimensions
+            - We won't need EEG headsets (we want already made data), but we want EEG headsets to become more of a standard in psychiatric treatment. We will need to use EEG analysis to find correlations in the data. In addition, we need to have some sort of machine learning model that can:
+                - Learn from the available data
+                - Handle many, many layers of inputs and potential biomarkers
+                - Has room to grow when we find additional relevant biomarkers/someone else finds relevant biomarkers
         3. Funding
-            - $0? We have the data already and not too much technology needed?
+            - Right now $0 as all data we have is being found/given (unless we're mistaken). Potentially increase the funding to host the algorithm via a web app. Also, instead of direct funding, we could use the Hopkins coursera courses for Biostatistics for free.
         4. Societal stuff?
-            - EEG headsets need to become more commonplace in psychological treatments
-            - Growing amount of data provided to improve algorithm
+            - Psychiatric treatment needs to standardize related biomarker tests and use them actively. This will both increase the potential data available to us and will improve treatment ability. As this shift happens, however, this research will not be as relevant. Also, the research world must start to move towards more multimodal and dimensional experiments on mental disorders.
     3. What scientific questions will we answered?
             - Are there correlations between disorders and the responses to the stimuli in the data?
             - Can you distinguish between multiple mental disorders by finding similar responses to multiple stimuli?
