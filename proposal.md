@@ -55,14 +55,27 @@
             - Will both increase our understanding on how different diseases affect different parts of our brain differently, but also our ability to understand the relationships between these diseases and their biomarkers.
         4. Societal
             - Will make handling and treatment of mental disorders on a large scale treatable.
+            - Willl prevent people who do not need the drug from attaining it
+            - Decraese black market supply of attention improving drugs
     2. Which citizens of the world will be affected?
         - People with mental disorders and with potential for it.
 4. Approach
     1. What is the approach for filling these gaps and solving the larger problem?
-        - 
+        - Looking into various EEG studies related to attention, and dissecting the means that they used to decompose and cross correlate the signals.
     2. What are each of the parts of the approach?
+        -  Step 1: Find additional articles discussing the various successful studies completed using EEGs
+        -  Step 2: Analyze the signal processing methods used, and identify which methods would be most applicable given the data we have
+        -  Step 3: Look into how me can use machine learning algorithms to classify different users to a mental disorder category
+        -  Step 4: Find articles discussing machine learning algorithms for better signal processing, and cross subject/stimuli analysis
     3. How will each of these disparate parts be coordinated to bridge these gaps and then solve the larger problem? 
+        - These separate parts will be fused into a series of algorithms that can be used to group different users based on similar  neural responses to various stimuli. The data we have will be split into two halves. Then, we will see if the results run on the first have (tested on as the algorithms are written) match with the results run on the second half of the data.
     4. How is this approach different from the status quo?
+        - This approach is different from the status quo because rather than comparing the activity picked up at specific electrodes, and comparing that across multiple users, we will be normalizing the data or each subject, for each stimuli, and we will find similarities in the decomposed, normalized data cross various subjects, and trials.
     5. How and when will success be measured/quantified?  Be as specific as possible.
+        - Success is measured by the consistently of grouping of the algorithm. If the groups created from the first half of the data match perfectly with the groups created from the second half of the data, then we will conclude that the program was successful in finding similarities in the neural activity of various subjects across various tasks, and then groupnig those subjects based on the picked up similarities.
     6. What does success look like at defined points along the roadmap?
-    7. After 10 years, what does moderate success look like? What about huge success?
+        - Success defined at points along the roadmap include:
+        - First: Completing courses in R programming (and python if necessary)
+        - Second: Having a rough algorithm completed and working with a relatively high level of accuracy, 6 months after completing our programming courses, and having the complete data set.
+    7. After 10 years, what does moderate success look like? What about huge success
+        - 
