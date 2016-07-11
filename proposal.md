@@ -78,4 +78,4 @@
         - First: Completing courses in R programming (and python if necessary)
         - Second: Having a rough algorithm completed and working with a relatively high level of accuracy, 6 months after completing our programming courses, and having the complete data set.
     7. After 10 years, what does moderate success look like? What about huge success
-        - 
+        - In 10 years, moderate success would mean tens of thousands of psychiatrists/doctors using our EEG analyzing web app to identify more precisely which mental disorders their patients have. Using this quantitative data, in accordance with qualitative data may make diagnosing mental disorders more reliable.
