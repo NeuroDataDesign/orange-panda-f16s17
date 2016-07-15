@@ -10,3 +10,7 @@
  - [EEG dynamics in patients with Alzheimer's disease](https://www.researchgate.net/profile/Jaeseung_Jeong/publication/8504822_EEG_dynamics_in_patients_with_Alzheimer's_disease/links/00463514fdee293c8a000000.pdf)
  - [EEG Correlates of Task Engagement and Mental Workload in Vigilance, Learning, and Memory Tasks](http://www.ingentaconnect.com/content/asma/asem/2007/00000078/A00105s1/art00032)
  - [The influence of mental fatigue and motivation on neuralnetwork dynamics; an EEG coherence study](http://www.cs.rug.nl/~roe/publications/Lorist_2009)
+
+
+### Kumar EEG Articles
+ - [EEG Alpha Asymmetry in Schizophrenia, Depression, PTSD, Panic Disorder, ADHD and Conduct Disorder]
