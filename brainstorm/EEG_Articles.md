@@ -13,4 +13,4 @@
 
 
 ### Kumar EEG Articles
- - [EEG Alpha Asymmetry in Schizophrenia, Depression, PTSD, Panic Disorder, ADHD and Conduct Disorder]
+ - [EEG Alpha Asymmetry in Schizophrenia, Depression, PTSD, Panic Disorder, ADHD and Conduct Disorder](https://github.com/Upward-Spiral-Science/orange-panda/blob/master/brainstorm/eeg_papers/eeg_alpha_asymmetry_behavioral.pdf)
