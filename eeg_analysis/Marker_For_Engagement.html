@@ -1,0 +1,383 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+<div class="reveal">
+				<div class="slides">
+					<section data-id="1c837afdf57a25ac5ceb4815b44a93be"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 95px; height: auto;" data-block-id="a36d14e1badb77ebdc7eae918f0580f7"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>A Possible EEG Marker for Engagement</h1>
+</div></div></section><section data-id="0a24bc07d9dc8537381fda2e98a730b4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 72px; top: 104px; height: auto;" data-block-id="937d834888853bea9daa3be16672370b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Introduction</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 239px; height: auto;" data-block-id="3088b38b350c9b8f64cc9d3fb3de297b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Regress neural activity of one subject into that of another
+	<ul>
+		<li>Correlation between multiple records to inform state variables</li>
+		<li>fMRI studies show strong voxel-wise inter-subject correlations across participants
+		<ul>
+			<li>Exposed to common naturalistic stimulus</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="0afb9a24631012b15b8b52a47ba523a5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="4a1f5480e9d59867d960462dfd9735ca"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>fMRI tells us if neural activity significantly correlates in response to a certain stimuli</li>
+	<li>Cannot tell us when this synchronization occurs\</li>
+	<li>Cannot analyze fast oscillatory activity</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="e6fc77309462c76f2185ac61be3e946b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 12;">
+<h2>fMRI</h2>
+</div></div></section><section data-id="f001dbc0c08dec2fda92ff5cbbc2554d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="e79f8305bf1a5af4db3149a15c3c5ea6"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>EEG</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="c80f42c1ccf3a021cebb677c2635abc8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Measures correlations to ongoing oscillatory activity</li>
+	<li>Derive a signal decomposition method
+	<ul>
+		<li>Finds linear components of data with max mutual correlations (in time)</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="fb570496d995489e42546b992e55d762"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 96px; height: auto;" data-block-id="1adae1a6335f002a04e7de05305676b5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Investigate</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="455feed435a872218c834720c2931f96"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Link between neural correlation and viewer engagement
+	<ul>
+		<li>Applications in:
+		<ul>
+			<li>Neuro-marketing</li>
+			<li>Quantitative assessment of entertainment</li>
+			<li>Impact of narrative discourse</li>
+			<li>Study of ADHD</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="6f23c57918eb803fb3dda39ffcb19710"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 59px; height: auto;" data-block-id="349b8c9168cceccb52dff50e7f4d357b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>What They've Observed</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 156px; height: auto;" data-block-id="13d525dcb81a52537db51325d583f00a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Peaks in neural correlation occur in high correspondence with arousing moments in the film
+	<ul>
+		<li>Don't arise in amateur footage of daily life</li>
+		<li>Fewer peaks the second time watching</li>
+		<li>Fewer peaks when watched out of order</li>
+	</ul>
+	</li>
+	<li>Alpha and beta bands decrease during synchronous peaks
+	<ul>
+		<li>Theta power increased during windows of heightened correlation</li>
+	</ul>
+	</li>
+	<li>Engagement can be measured to the 1-second mark</li>
+</ul>
+</div></div></section><section data-id="b7ba3d8fe8c0af80935f315917b4da05"><div class="sl-block" data-block-type="text" style="width: 800px; left: 86px; top: 77px; height: auto;" data-block-id="e154d97ed47763f704a0215e03979a86"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Extraction of Maximally Correlated Components</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 280px; height: auto;" data-block-id="570b114e8fd2e267349917500c25dc6f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Algorithm maximizes Pearson Product Moment Correlation Coefficient
+	<ul>
+		<li>Simultaneously diagonalizes the pooled covariance and cross-correlations of 2 data sets</li>
+	</ul>
+	</li>
+	<li>Linear components that achieve this
+	<ul>
+		<li>Solutions of a generalized eigenvalue equation</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="828fa3a1f35d2c3eee2d589b0c9b248d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 107px; height: auto;" data-block-id="6420c21f158ac1fc02833dbf497ecb19"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Inter- / Intra-Subject Correlation</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 272px; height: auto;" data-block-id="308fe53a781be3031dcdf3d2f85ada08"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;">
+<ul>
+	<li>Analysis 1
+	<ul>
+		<li>Within-subject correlations</li>
+		<li>
+<em>i</em>th viewing</li>
+		<li>
+<em>N</em>th subject</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 200.808px; height: 92px; left: 620px; top: 384px;" data-block-id="3967f1795c885eb7a4e7e9f0c5d83317"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="227" data-natural-height="104" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2830903/1.PNG"></div></div></section><section data-id="2c6b59fe39ce7cbdd7b4b553bff848a9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 107px; height: auto;" data-block-id="49cc925714c2bed66d7268487067c66e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Inter- / Intra-Subject Correlation</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 272px; height: auto;" data-block-id="27cd6e93d149dfa8e541978eaca2618c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 12;">
+<ul>
+	<li>Analysis 2
+	<ul>
+		<li>Across-subject correlations</li>
+		<li><em>ex. 3 subject population</em></li>
+		<li>Only from viewing #1</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 235.955px; height: 100px; left: 352px; top: 451px;" data-block-id="7e39cc6be7527039f6674ead062fa4e0"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="210" data-natural-height="89" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2830907/1.PNG"></div></div></section><section data-id="06e0a68fb6a867946bc01ca87bb84ee1"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 104px; height: auto;" data-block-id="113929b0f2ba0d0fc05274f02cb6123f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Forward Model</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="444252666ea10a8b0d587098e8816b4c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui" style="z-index: 11;"><ul>
+<li>W = set of linear spatial filters</li>
+<li>R = data covariance matrix</li>
+<li>A = scalp projections of synchronized activity extracted by projection vectors (W</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 57.4233px; left: 300px; top: 392px;" data-block-id="9b58d44eca5125241da5b4b2a240a3ef"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="163" data-natural-height="26" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2830909/1.PNG"></div></div></section><section data-id="1444e1306b7608a0bda9dab54ef187ea"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="e993bf7983b1b9081c85aa5fedaf261c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Source Localization</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="4b7606d6cd076bb67711fa88fc7bd164"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Low-resolution brain electromagnetic tomography package
+	<ul>
+		<li>Translate forward models into distributions of underlying cortical activity</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="dd921b9cb9a75d789936f530ef474e05"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 174px; height: auto;" data-block-id="711d054565594fa36ad3177c006055a5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Spectral Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="997c4a7ed67f7820d316fa3ebec0666b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Instantaneous power of EEG in Theta, Alpha, and Beta
+	<ul>
+		<li>Morlet filter</li>
+		<li>h(t) = </li>
+	</ul>
+	</li>
+	<li>Instantaneous power = squared mag. of complex filter output</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 121.98px; height: 43px; left: 272px; top: 350px;" data-block-id="489462e94697b80484a863113c88e6ff"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="139" data-natural-height="49" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2830913/1.PNG"></div></div></section><section data-id="e7cddbd136023e5aaac33b4c8a47fa59"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="85cd2352992df896860750a57ef7634e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Procedure</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="a1f3ad64632c8731fa778fe36ab984e7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>20 subjects (normal vision/hearing)</li>
+	<li>14 males / 6 females
+	<ul>
+		<li>21 - 45 years old</li>
+	</ul>
+	</li>
+	<li>Instructed to watch clips, and refrain from moving
+	<ul>
+		<li>Three 6-minute clips, each shown twice</li>
+		<li>Used control film : natural outdoor scene</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="166648912ccdf7a702047fc36faf9e5f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="fa38da2a3795e0a84070bb0ac98e9dce"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Data Collection / Pre-Processing</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 266px; height: auto;" data-block-id="39533315f63a12061e453c4f7bf599b9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>64 electrode cap
+	<ul>
+		<li>512 Hz freq.</li>
+		<li>10/10 international standard</li>
+	</ul>
+	</li>
+	<li>EOG (to remove eye-movement artifacts)
+	<ul>
+		<li>4 electrodes</li>
+	</ul>
+	</li>
+	<li>Processing performed offline (MATLAB)</li>
+</ul>
+</div></div></section><section data-id="f595feb55f39d423a01287f1c511a96e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="6c55000a932af8d688df740c915e8baa"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Data Collection / Pre-Processing</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 266px; height: auto;" data-block-id="d4442c080a39c4d36626678273140cc7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>High-pass filtered (0.5 Hz)</li>
+	<li>Notch filtered (60 Hz)</li>
+	<li>Linearly regress out 4 EOG channels
+	<ul>
+		<li>Remove eye-movement artifacts</li>
+	</ul>
+	</li>
+	<li>EEG samples w/ squared magnitudes above 4 stdev. of mean power of respective channel
+	<ul>
+		<li>Replaced with 0</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="47b7a1f5e5474eca4c2179e1783e9cf9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 104px; height: auto;" data-block-id="c53df883c7a2e545fd25f688b693fbe7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Statistical Significance</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 195px; height: auto;" data-block-id="577946bb8fe54fb41d204156e4d8c18a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Permutation Test Approach
+	<ul>
+		<li>Compute correlations with one of two records
+		<ul>
+			<li>2nd viewing or subject</li>
+			<li>Scrambled in time</li>
+		</ul>
+		</li>
+		<li>2nd record is divided into 5-s blocks
+		<ul>
+			<li>Order of blocks randomly shuffled</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>Significance tests are corrected for multiple comparisons using the false discovery rate</li>
+</ul>
+</div></div></section><section data-id="17935a1b15728da00f4f0db03f3912ac"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="c9ee17a3558799249152d6600100d771"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Results</h1>
+</div></div></section><section data-id="3ebdb1307950b0b446856a1077440bc2"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 80px; height: auto;" data-block-id="0f0a91a55761b38687aaefb957447480"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Peaks in Intra-Subject Correlations</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 291px; height: auto;" data-block-id="040fc894d301e17dc4bdc6ef5ed520f6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Found there is a significant increase in proportion of significantly correlated time windows in the two critically acclaimed films, as compared to the control film</li>
+	<li>When order of clip was shuffled, fewer correlations</li>
+	<li>When watched a second time, fewer correlations</li>
+</ul>
+</div></div></section><section data-id="3bbb461d233b0a7e15706760cf6019fd"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="af70c473eec1ae98739327894ec8ac74"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Alpha / Theta Waves</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="22f573c64d9fb8ba8865bce3cff8c8d6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Desynchronization of alpha band
+	<ul>
+		<li>Increased attention</li>
+	</ul>
+	</li>
+	<li>Increased alpha-band oscillations
+	<ul>
+		<li>Attention suppression </li>
+	</ul>
+	</li>
+	<li>Compared instantaneous power at several EEG freq. bands
+	<ul>
+		<li>High and low within subject correlations</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="e41945f039fec8708ff15d7e1b21a8cb"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="06631dcb3ae55b43f8bbe806ad20547b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Alpha / Theta Waves</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="27ba4b7b33d0af38c7ec010f40736457"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Increased Theta band power
+	<ul>
+		<li>Highly correlated times</li>
+	</ul>
+	</li>
+	<li>Synchromization of frontal theta power with decrease in alpha power
+	<ul>
+		<li>Linked to encoding new info</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="c0b8eadae1892aacf51f8e436ae9d75f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 67px; height: auto;" data-block-id="b90955e7a1617f3537ae6c3bb7eb0e7b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Discussion</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="96098f21589fac664534d68bd7245c4b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Clear overlap between engagement / attention
+	<ul>
+		<li>Both involve suppression of internally oriented mental processing</li>
+	</ul>
+	</li>
+	<li>Engagement entails emotional involvement</li>
+	<li>Increased theta activity in frontal area
+	<ul>
+		<li>Implicated with memory encoding</li>
+	</ul>
+	</li>
+	<li>Correlated Component Analysis applied
+	<ul>
+		<li>Did not prove effective</li>
+	</ul>
+	</li>
+	<li>Further investigations may require ICA-type algorithm
+	<ul>
+		<li>Independent component analysis</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="f04cd1925027469772a138f485d548fe"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 104px; height: auto;" data-block-id="2d7d6a7ed5c4c892be025b7bebac126a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Conclusion</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="69d0abc73a9f4049fd7172b3a0a277c3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>It is possible to identify ongoing attentional and emotional changes using temporally localized changes in neural synchrony</li>
+	<li>The context of the stimuli was very important</li>
+	<li>Projections of data that maximize correlations across viewings will reflect more of the sensory processing, and less of the default-mode activity 
+	<ul>
+		<li>Than that of raw recordings</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="91c25196314b875ff3d9f17dcffa2aee"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 104px; height: auto;" data-block-id="f13bdb85cedd1260e36137f90df151e0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Conclusion</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 227px; height: auto;" data-block-id="b6003c3946f91cd648780cca66df9a4d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Neural activity of less attentive viewer
+	<ul>
+		<li>Exhibits less of the extrinsic response and more intrinsic activity (noise)</li>
+		<li>Decreased correlations</li>
+	</ul>
+	</li>
+	<li>Sensory processing becomes more precisely time-locked to stimulus during high engagement</li>
+</ul>
+</div></div></section>
+				</div>
+				<div class="dimmer"></div>
+			</div>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

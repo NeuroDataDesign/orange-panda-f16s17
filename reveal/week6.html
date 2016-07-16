@@ -1,0 +1,480 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+<div class="reveal">
+				<div class="slides">
+					<section data-id="9fa507d7b7b10fbb2139d4d2822bb9f8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="ac03b78af35a04e6dcb7a9e9df508d6b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1>Brain-Computer Interfacing</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="a4b45bdbc10d666afe05cadf90f345cb" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 31px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Book by: Rajesh P. N. Rao</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="edb7b5ab03ab5c5f3ab38b8b984c1c38" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 451px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Presentation by:</p>
+
+<p>Michael Natenzon, Tsun Wong, and Nitin Kumar</p>
+</div></div></section><section data-id="6e88bad9e2d1a6e95b87c5a956b622b7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="a76a39fd2c95b244cf5a54dd49bcbdff"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui"><h2>Applications of BCI</h2></div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="4a9862566c38ceed83c5b777de188eb4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Medical</li>
+	<li>Entertainment</li>
+	<li>Robotic Control</li>
+	<li>Security</li>
+	<li>Gaming</li>
+	<li>Art</li>
+</ul>
+</div></div></section><section data-id="8e14e76bed145a61b792edeeb8bc4719"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 104px; height: auto;" data-block-id="40c496b0c9de7f0a277def8c35dfa069"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Sensory Restoration</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 217px; height: auto;" data-block-id="3f1441c5aa1f691af391d8e9206d287e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Auditory
+	<ul>
+		<li>Cochlear Implant</li>
+	</ul>
+	</li>
+	<li>Visual
+	<ul>
+		<li>Retinal Implants</li>
+	</ul>
+	</li>
+	<li>Touch
+	<ul>
+		<li>Allow paralyzed / amputees to sense objects</li>
+	</ul>
+	</li>
+	<li>Taste / Smell
+	<ul>
+		<li>Security / Robotics Applications</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="7fc4f93ba51ac586040e73808408273e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="522da8fd66d51edf0dbf8352f1fb4723"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Motor Restoration</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="fc3c85f60d09091004d3d02c0e7f0283"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Robotic Prosthetics
+	<ul>
+		<li>Lower-body prosthetic are more complicated</li>
+		<li>Require balance / stability while brain processes other thoughts</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="4fa54da978ae962b405f3807daf34f2d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 127px; height: auto;" data-block-id="610d422d5f469106ae127f372401fc97"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Cognitive Restoration</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 241px; height: auto;" data-block-id="6a34fa3f59816af4a02c3a898aabb1eb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Predict Seizures
+	<ul>
+		<li>Stimulate neurons or deliver drugs</li>
+		<li>Prevent spread to other brain regions</li>
+	</ul>
+	</li>
+	<li>DBS
+	<ul>
+		<li>Parkinson's disease symptoms</li>
+		<li>Relieve chronic pain</li>
+		<li>Record / stimulate memories</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="cc59315ec4c3febb1aaaa2227a80050a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="3e3bd09266e0a0b26f40d146a8553af0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Rehabilitation</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="0c319862c5853b02cc39e9012c219b1f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui"><ul><li>From stroke, surgery, or other neurological conditions</li></ul></div></div></section><section data-id="5df4ed6e84c4eeb6f6ce1cca077598e3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="be152b39d1821bf92021d034187be09d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Restoring Communication</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 288px; height: auto;" data-block-id="161ce014213593940c0be462a7663d52"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Ex. Paraplegics / Those with ALS</li>
+	<li>Menus, Cursors, and Spellers</li>
+</ul>
+</div></div></section><section data-id="750c088de013c0a24d96c32d18e6c3e9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 101px; height: auto;" data-block-id="15d3a664eb5829fe280b198062a4d17e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Brain Controlled Wheelchairs</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 299px; height: auto;" data-block-id="cddf10d917d10c4cd49c16dfd2ff9cd3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ol>
+	<li>Program Wheelchair with high level commands
+	<ul>
+		<li>Go to kitchen, bedroom, etc.</li>
+	</ul>
+	</li>
+	<li>Shared Control
+	<ul>
+		<li>Command with highest probability based on surroundings is followed</li>
+	</ul>
+	</li>
+</ol>
+</div></div></section><section data-id="8fb00a6eb4ae5e61201268a9f8b55c21"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 85px; height: auto;" data-block-id="09e52a45edb540a0afc8aab97c7dfdda"><div style="z-index: 10;" class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Non-Medical Applications</h1>
+</div></div>
+<div data-block-id="d0155cdb3ffaebbcba65a49f8ab83ac8" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;" data-block-type="text" class="sl-block"><div style="z-index: 12;" data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+<ul>
+	<li>Gaming</li>
+	<li>Entertainment</li>
+	<li>Lie Detection</li>
+	<li>Triaging Many Images</li>
+</ul>
+</div></div></section><section data-id="132b6418b46d774855c212e73ab2f3fa"><div data-block-id="60d73bf8af8d0bb8927ce9571fd6e527" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Web Browser</h2>
+</div></div>
+<div data-block-id="b8434ef41e6902c35aef66ce46368da1" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;"><div data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+<ul>
+	<li>Nessi
+	<ul>
+		<li>Boxes around links for navigation</li>
+	</ul>
+	</li>
+	<li>Google Earth
+	<ul>
+		<li>Change in power of freq. band</li>
+		<li>Detected by classifier</li>
+		<li>Bandpass filtering, squaring, averaging samples
+		<ul>
+			<li>Past 1 second</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="0e9cf0a3700e3d7cfdfa8874650a28f1"><div data-block-id="1210e5d3ba46256d5a600cce2ebf75e7" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Virtual Worlds</h2>
+</div></div>
+<div data-block-id="5e07c4f3a6ed8ba7352dd485f3cc3f4a" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;"><div data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+<ul>
+	<li>3 Binary LDA classifiers
+	<ul>
+		<li>Detect if user wants to use device
+		<ul>
+			<li>Motor image activity detected</li>
+			<li>Majority vote of group of 3 classifiers was output</li>
+		</ul>
+		</li>
+		<li>&gt; 80% accuracy after 5 hours</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="16cb913d3ce32ec5b7758978a53b08d7"><div data-block-id="aa71e03525701e295a3f925ba5082687" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Google Earth</h2>
+</div></div>
+<div data-block-id="e7f5622200f7365a02ac70717f0166b8" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;"><div data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+<ul>
+	<li>10 hours of training</li>
+	<li>20 seconds to navigate to desired country</li>
+</ul>
+</div></div></section><section data-id="3efc254a9ff475afd3dbac5403dcac03"><div data-block-id="93175aefb75eae2d00b2501e47bf00d2" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Other Methods</h2>
+</div></div>
+<div data-block-id="77c16d16f1f84df6099fa22a7604cc8c" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;"><div data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+<ul>
+	<li>Use evoked potentials
+	<ul>
+		<li>ex. P300</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="f4a567b4f430188ba3cc66fdf3ee412d"><div data-block-id="b9b1dc6775e7c78e9a812c5c6c5fbac8" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Robotic Avatars</h2>
+</div></div>
+<div data-block-id="4fe137965bbdc8fc9a61b27aad05f03e" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 157px; height: auto;"><div data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+<ul>
+	<li>Assistive robots
+	<ul>
+		<li>P300 response</li>
+		<li>2 commands
+		<ul>
+			<li>Which location to go to</li>
+			<li>Which object to pick up
+			<ul>
+				<li>User focuses</li>
+				<li>Image in environment flash until P300 is elicited</li>
+			</ul>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="b9b4d1d51c9ad7ecad2955635be3a3df"><div data-block-id="6684bc7bf11aafea5ba824f8e7ca7ff5" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Robotic Avatars</h2>
+</div></div>
+<div data-block-id="bf90607b2ee44f10a83d06e052e45a46" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;"><div data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+<ul>
+	<li>32 EEG Channels</li>
+	<li>Soft Margin Support Vector Machine Classifier
+	<ul>
+		<li>Discriminate btwn. P300 of desired object and response from flashing objects</li>
+	</ul>
+	</li>
+	<li>Spatial filters similar to CSP
+	<ul>
+		<li>Max distance btwn. means of filtered data (class)</li>
+		<li>Minimize within class variance of filtered data</li>
+	</ul>
+	</li>
+	<li>10 minutes of training
+	<ul>
+		<li>95% accuracy</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="c640e4a4eb9383765caddc3a8df54672"><div data-block-id="71ca0f10025c56a233ed81d5eac9ad1d" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>High Throughput Image Search</h2>
+</div></div>
+<div data-block-id="61405364b7a0105f35df26edfb4b3d4e" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 220px; height: auto;"><div data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+<ul>
+	<li>Sort images likely containing desired object
+	<ul>
+		<li>P300 response elicited viewing object</li>
+		<li>Correlate response to image, and move to front of image stack</li>
+	</ul>
+	</li>
+	<li>5 Subjects / 2,500 images
+	<ul>
+		<li>Moved 92% of target images</li>
+		<li>To first 10% of sequence</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="4455da0212285a8be3974c867346919b"><div data-block-id="eaeb95a827bcede87020d105423b27dd" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 59px; height: auto;"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Lie Detection</h2>
+</div></div>
+<div data-block-id="bbead8b2ddbb0d1b5aa92cbf782685ed" class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 156px; height: auto;"><div data-placeholder-text="Text" data-placeholder-tag="p" class="sl-block-content">
+<ul>
+	<li>Possession of Guilty Knowledge
+	<ul>
+		<li>Memory detection</li>
+		<li>Recognition of:
+		<ul>
+			<li>Person / Place / Incident linked to crime</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>Mock case scenario
+	<ul>
+		<li>12.5% of subjects classified as intermediate</li>
+		<li>No false positives / negatives</li>
+	</ul>
+	</li>
+	<li>People who commit minor crimes
+	<ul>
+		<li>87.5% correctly classified as innocent or guilty</li>
+	</ul>
+	</li>
+	<li>Commercialized system in "Brain Fingerprinting"</li>
+</ul>
+</div></div></section>
+<!--  
+
+awefalkjnhfalskjtgvldkbrtj,fghvnls.j,drfhdgbkjmgjldxfjghlbdkmj,ghcnsdxkfjgh
+
+-->
+<section data-id="3e03d49300c1fdb2266b8ff229ebc708"><div class="sl-block" data-block-type="text" style="width: 800px; left: 67px; top: 50px; height: auto;" data-block-id="950e2b2f8368ded6099cb7e14f3bb32f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="font-size: 74%; z-index: 10;">
+<h1>Gaming and Entertainment</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="ee624fdb9cd12c2cf58ab9373e08e3b9" style="height: auto; min-width: 30px; min-height: 30px; width: 749px; left: 80px; top: 132px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>gaming- good application of BCI + lack of liability</li>
+	<li>Some examples include:
+	<ul>
+		<li>Cheung+Rao (2012)- subject control 2-D motion w/ joystick and hand motor imagery using EEG
+		<ul>
+			<li>controlled up-down motion of cursor using imagery, joystick for left-right motion</li>
+		</ul>
+		</li>
+		<li>
+<strong>Brainball </strong>(Hjelm and Browall 2000): control relaxation level by alpha rhythms</li>
+		<li>
+<strong>MindGame </strong>(Finke 2009): P300- moves a character across a 3D board</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="3874d6b076b19cb2b1c9350842042d31"><div class="sl-block" data-block-type="text" style="width: 800px; left: 67px; top: 50px; height: auto;" data-block-id="e63485ffa12955b1cdfa33add5c80e2a"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="font-size: 70%; z-index: 10;">
+<h1>More Cool Games! :)</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 749px; left: 67px; top: 140px;" data-block-id="1d1b0ec859f73df56660374100e1573e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>other gaming applications use SSVEP, or motor imagery and EEG-based virtual navigation</li>
+	<li>More examples:
+	<ul>
+		<li>​<strong>BCI-controlled pinball machine </strong>(Tangermann 2009): paddle controlled by 2-class BCI based on imagery (left and right hand motor!)</li>
+		<li>
+<strong>Tetris </strong>(Blankertz 2010): left or right-hand motor imagery to make tetris go left/right, mental rotation to rotate, foot motor imagery to drop!</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="944e91bdd40072127c03ded511329cc7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 67px; top: 50px; height: auto;" data-block-id="aff13027f789256bdd965db506b7a6fc"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="font-size: 70%; z-index: 10;">
+<h1>Brain-Controlled Art</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 749px; left: 67px; top: 140px;" data-block-id="7c22824ab1b141c2561e8f7dfa98cad8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>fNIR-based sketch drawing program (Mappus, Jackson 2009)</li>
+	<li>perhaps can use the user's brain signal when they're responding to the art to change some elements of the art</li>
+	<li>"The Ascent" by Yehuda Duenyas- wears 3-D flying harness and a dry electrode headset - allows performers to ascend based on brain signals
+	<ul>
+		<li>done by detecting alpha and theta band oscillations in EEG</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="8d93cf2a64db6693517a693a7960268c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 117px; height: auto;" data-block-id="aad7a6284b9aae2a5b9441355638b70e"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="font-size: 80%;">
+<h1>Ethics of BCI</h1>
+</div></div></section><section data-id="aa9cfec834e34ae96bad82e5ffed186c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="c4751db84a18c2fa033b3022fb49b9a8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="font-size: 85%;">
+<h2>Balancing Risks vs Benefits</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 149px; height: auto;" data-block-id="6962e27fd50594b573333f30fc45cdbe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="text-align: center;">
+<ul>
+	<li>care about damage or infection of invasive BCIs</li>
+	<li>Some questions include:
+	<ul>
+		<li>What are the potential side effects?</li>
+		<li>What are the patient's expectations?</li>
+		<li>What effect does it have on family?</li>
+	</ul>
+	</li>
+	<li>Does the increase performance of an invasive BCI compared to non-invasive justify the risk associated with it?</li>
+</ul>
+</div></div></section><section class="stack" data-id="2dd51e5d92e2b064f04dd939b77d49c0"><section data-id="1734580243a0b7d7a86e6ddd51ef7ea2"><div class="sl-block" data-block-type="text" style="width: 800px; left: 69px; top: 91px; height: auto;" data-block-id="b3c3362e8f2d4b886496c5e7ec58ee91"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="font-size: 85%;">
+<h2>Informed Consent</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 58px; top: 190px; height: auto;" data-block-id="ba7848d0d6be0b6d9da3360dcb4ea464"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="text-align: center;">
+<ul>
+	<li>the definition of <strong>informed consent</strong> includes:
+	<ul>
+		<li>the risks + benefits associated with BCI technology in comparison to the alternative methods</li>
+		<li>information being extracted from the brain</li>
+		<li>consequences of extracting this information: could it lead to embarrassment or legal consequences?</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="4dd4bfa9c2d6e561edcbb5a67f24b8ab"><div class="sl-block" data-block-type="text" style="width: 800px; left: 69px; top: 91px; height: auto;" data-block-id="4c872df2fd8ecb0686d27107c0653217"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="font-size: 85%;">
+<h2>More Informed Consent</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 58px; top: 190px; height: auto;" data-block-id="7a286d7f19dcdddad04c0379343eff96"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="text-align: center;">
+<ul>
+	<li>
+<span style="text-align:left">some complications of BCI use might include:</span>
+	<ul>
+		<li><span style="text-align:left">in the case of children, is it enough to get consent from their parents?</span></li>
+		<li><span style="text-align:left">if there's a locked-in patient, who gets to give consent then?</span></li>
+		<li><span style="text-align:left">can consent be obtained from patients suffering from cognitive deficits that prevent them from fully understanding the benefits vs risks?</span></li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="83f45348945cb0758546ab8d2f9b6f4c"><section data-id="c24a84c1dc460638b531baf7aca5ac69"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 95px; height: auto;" data-block-id="5a86240854df84ae1cd45daed6d03d99"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="font-size: 80%;">
+<h2>Abuse of BCI Technology</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 163px; height: auto;" data-block-id="b8f053235fb93f20d3775e2af5b838ee"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>some immoral usage of BCI technology might include:
+	<ul>
+		<li>
+<strong>Mind reading or "brain tapping"</strong>: we are able to intercept, record, or exploit a person's thoughts, reflections, adn beliefs using BCI technology. This might be used by criminals, terrorists, corporations, or spy agencies- not to mention law enforcement and military entities</li>
+		<li>
+<strong>Coercion or "mind control": </strong>BCI can be hijacked or used to force someone to do something against their own will</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="ff15d6563dffdd500a3977ec96b0ea15"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 59px; height: auto;" data-block-id="17dd4892b9da7fd180d1b49eb34118e3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="font-size: 80%;">
+<h2>More Abuse of BCI</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 126px; height: auto;" data-block-id="8bcb82405b098a9373424c09ee23bdfa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>some immoral usage of BCI technology might include:
+	<ul>
+		<li>
+<strong>Memory Manipulation</strong>: BCI that can stimulate the brain can also erase memories or write in false memories, or even "brainwashing"</li>
+		<li>
+<strong>Viruses:</strong> a computer virus can be tapped into the machine, and it will lad to cognitive impairment or manipulation</li>
+	</ul>
+	</li>
+	<li>BCI can also be tampered with to bias an outcome. "lie detection" can be manipulated to align an outcome.</li>
+	<li>need strong security measures as our responsibilities with this enormous power</li>
+</ul>
+</div></div></section></section><section data-id="10cfd3f09331d78f507a5e1f907f92d3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 62px; height: auto;" data-block-id="367c79f0698e1ed74cb65e9f3b96dbbb"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="font-size: 80%; z-index: 10;">
+<h1>BCI Security and Privacy</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="2119e9efac4af3e47f3378df94aa717b" style="height: auto; min-width: 30px; min-height: 30px; width: 793px; left: 84px; top: 154px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>Institutional Review Board (IRB) checks for guidelines to ethical human subjects research.</li>
+	<li>What neural data is being stored? Could the data reveal something that breaches privacy? Will the data be stored and for how long, and why?</li>
+	<li>Activities against BCI security and privacy should be illegal.</li>
+	<li>However, there are a lot of rules that are not yet set in stone.</li>
+</ul>
+</div></div></section><section data-id="f4219f2862f73ea8c5b39a45a8cbba99"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 62px; height: auto;" data-block-id="1a5e7ba33b7f48497389deba395edcfe"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="font-size: 80%; z-index: 10;">
+<h1>Legal Issues</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 793px; left: 84px; top: 154px;" data-block-id="255974ca5bff8f87d6e874854e260145"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>lawmakers will need to determine which BCI activities are legal or not.</li>
+	<li>courts will have to decide the consequences of it </li>
+	<li>what if the BCI machine did something illegal using the user's subconscious, then is the user responsible for it?</li>
+	<li>BCI users might need to sign a waiver, much like driving a car. However, it's much easier to tell when it's the car vs the driver's fault than it is for BCI and its user.</li>
+</ul>
+</div></div></section><section class="stack" data-id="f71f82e6f802de0ace202f5e54db115a"><section data-id="faf1c97cefc49c14bb05cc588df1a756"><div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 82px; height: auto;" data-block-id="cce7b1fd716e8e56422f6565f454e27d"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="font-size: 60%; z-index: 10;">
+<h1>Moral and Social Justice Issues</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 793px; left: 84px; top: 178px;" data-block-id="f3e1949a9d20720e99a595afc0857731"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>Moral dilemmas arise for something such as cochlear implants. Some deaf people don't think deafness is a disability. So should a deaf child receive this implant?</li>
+	<li>Also, evolution sculpted the brain to control our bodies with physical environment. So how will this escape from limitations imposed by our bodies change evolution?</li>
+	<li>Social justice problems will occur such as if the rich gives their children some implants to enhance physical or mental abilities</li>
+</ul>
+</div></div></section><section data-id="d75d47642454fc1753807ed26ea113cf"><div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 82px; height: auto;" data-block-id="2d71074180010f2b17947154467837e9"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="font-size: 60%; z-index: 10;">
+<h1>More on Moral and Social Justice</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 793px; left: 84px; top: 178px;" data-block-id="d8829649d4d6d92959920ba4362b882a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>
+<strong>Potential Solution</strong>: government subsidize basic types of BCI for those who can't afford them</li>
+	<li>Parents will also be faced with the decision that should they allow their child to be involved with BCI? Then will they leave their child at an advantage vs disadvantage?</li>
+	<li>society might be split into the "haves" and the "have-nots", and how will social institutions such as schools or athletes or the Olympics handle that?</li>
+</ul>
+</div></div></section></section>
+				</div>
+				<div class="dimmer"></div>
+			</div>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

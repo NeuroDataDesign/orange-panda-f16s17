@@ -1,0 +1,1197 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+<div class="reveal">
+				<div class="slides">
+					<section data-id="4a0fe19d649c2958aa5838465aa92094"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 250px; height: auto;" data-block-id="d21f0e4506ca76c53cd3b1d6c73a75c1"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Medical EEG Study of Data Descriptors</h1>
+</div></div></section><section data-id="163141b04af19b9e2da4bf7fdcc17f1b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="a8b95a55e92d68352d3162e9ef471bd8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Abstract</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="4c0dae6716a3cf1391406bbd04a8c658"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Multimodal assessment and analysis
+	<ul>
+		<li>Tailored to identify clinical subgroups</li>
+		<li>Validate established diagnostic boundaries</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="9ce1abe0225fc3276c493176a687c792"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="d5e346364161939df160cd32d0a7ed3c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Common Limitation</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 248px; height: auto;" data-block-id="501bfbdb8247287e22f26271c0f26752"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Focus on delineation of single cognitive deficit
+	<ul>
+		<li>To explain all symptomatology</li>
+	</ul>
+	</li>
+	<li>In-effective because for example
+	<ul>
+		<li>Processing speed imparement is a characteristic of both:
+		<ul>
+			<li>ADHD</li>
+			<li>Dyslexia</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="613288669ccc2cc81deb9de76468302a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 191px; height: auto;" data-block-id="6be14cb938eb667e22ad3ea28b587a2a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Data Recorded</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 69px; top: 264px; height: auto;" data-block-id="0c6e2a61dea9f7207913304eaca7b578"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Related to:
+	<ul>
+		<li>Processing speed</li>
+		<li>Basic sensory processing</li>
+		<li>Working memory</li>
+		<li>Attention</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="b6a54f74f7d30847c8ca547a8025d41d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 84px; height: auto;" data-block-id="1d1887c8224785450d9d7a3406665098"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Conceptualizing Targets for Assessment</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="bcf86d44f67804b9663ef8577f03e110"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ol>
+	<li>Sensory Perception</li>
+	<li>Integration of Information</li>
+	<li>Response generation</li>
+</ol>
+</div></div></section><section data-id="415fb704df94d7e0e7991eed639a05b3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 67px; height: auto;" data-block-id="67cc8bef20cdefb14838eb2125ccfa48"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Task Related Paradigms</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 640px; height: 410.115px; left: 160px; top: 175px;" data-block-id="e64f03ac500815ff3c369bd5395525c7"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1044" data-natural-height="669" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2822020/pasted-from-clipboard.png"></div></div></section><section data-id="8171fb48252589e6fb4fe438974d66b2"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 76px; height: auto;" data-block-id="5d697a244873555693467c2e8abbfc29"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Additional Insight </h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 221px; height: auto;" data-block-id="447bfcacbd9793ac0091b06233efefcb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Standardized, abbreviated tests
+	<ul>
+		<li>Intelligence</li>
+		<li>Academic achievement</li>
+	</ul>
+	</li>
+	<li>Self-reported psychiatric functioning</li>
+	<li>Study cog. performance / perception
+	<ul>
+		<li>Analyze variations in performance 
+		<ul>
+			<li>From healthy to pathological functioning</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="2ada33f23f093bdda1e6720c55b72528"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 51px; height: auto;" data-block-id="eb08cd6f854d8d29acb839946b215937"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Examination of Network Responses</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 244px; height: auto;" data-block-id="56d2ea21637e1fbb0efbfb2faf62f4c2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>No stimulation
+	<ul>
+		<li>Classical resting-state</li>
+	</ul>
+	</li>
+	<li>Simple and reduced
+	<ul>
+		<li>Surround-suppression paradigm</li>
+	</ul>
+	</li>
+	<li>Complex and rich
+	<ul>
+		<li>Videos</li>
+	</ul>
+	</li>
+	<li>Probe relative levels of:
+	<ul>
+		<li>Attention / excitement / inhibition in visual cortex</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="00fc86729abb9ff0243bd9220ec31fc6"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 191px; height: auto;" data-block-id="438215235fce7548f8d2afe91e081664"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Data</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="4d13d8468645e06358278178c6eb5079"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>High-density task based (and free) EEG</li>
+	<li>Eye-tracking</li>
+	<li>Cognitive / behavioral data</li>
+	<li>126 subjects
+	<ul>
+		<li>Ages 6 - 44</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="32ac0779e60db1c2d33554ea51888c65"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="799740319ed6da4ede73bc2013af86eb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Overview</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="37d36d8e622d4ea4821313129d7bcb44"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Participants recruited from:
+	<ul>
+		<li>Child Mind Medical Practice / NYC community</li>
+		<li>80.2% developing</li>
+		<li>19.8% diagnosed with clinical disorder(s)</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="e822ca00215a008cccf83a5100666ffe"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="6e86135e6aad793831171e07b8105593"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Participant Diversity</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="417e3228b36d6743f6f24a9d93e2273e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>54.8 % male / 45.2 % female
+	<ul>
+		<li>45.2 % African American</li>
+		<li>32.7 % Caucasian</li>
+		<li>0.04 % Asian</li>
+		<li>12.7 % Other</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="581491d16cd7063664e924af91f47eb1"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 104px; height: auto;" data-block-id="62fca18dd785150b5669851f1fb14f1d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Prior to Arrival</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="fa06a5447a54926453ae2d5eb54c54ad"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>10 min pre-screening phone interview
+	<ul>
+		<li>Psychiatric history</li>
+		<li>Current medications</li>
+		<li>Current / Past psychiatric treatment</li>
+		<li>Various neurological disorders</li>
+	</ul>
+	</li>
+	<li>Approved if no history of:
+	<ul>
+		<li>Seizures / epilepsy / acute psychiatric symptoms</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="77e931186d13b7081e0d10f8ae266b3b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="df4235332a9a30fd3a31a8c1a1575dc9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Overall Test</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="fa211999706f5152cdefaf8784f92588"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>3 hours of EEG and eye-tracking</li>
+	<li>2 hours of cognitive / behavioral assessment</li>
+	<li>Approved by Chesapeake Institutional Review Board</li>
+</ul>
+</div></div></section><section data-id="4707ddfe1ca583885bda58dcfc592add"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="c7d7f343456ad74ba54de4bf3067e1ab"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Data Acquisition Overview</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="9a11bfaf96f4b885cbbc5da8f09225cc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Participants seated in a silent, dark room
+	<ul>
+		<li>70cm from a 17-inch monitor</li>
+	</ul>
+	</li>
+	<li>Task instructions presented on screen</li>
+	<li>Alone in the room
+	<ul>
+		<li>Unless &lt;12 years old - joined by proctor</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="773f3ead94e5d4e8aea603500f18009c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 91px; height: auto;" data-block-id="da90cfe0003c81d00d33aaff4be164db"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>EEG Acquisition</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 202px; height: auto;" data-block-id="711803a5d69a6a1d17aac72e9f89d574"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Used appropriately sized EEG nets
+	<ul>
+		<li>Impedance below 40 kOhm</li>
+		<li>Less than 30 min preparation</li>
+	</ul>
+	</li>
+	<li>High-density EEG data
+	<ul>
+		<li>500 Hz sampling rate</li>
+		<li>0.1 - 100 Hz bandpass</li>
+		<li>128-channel EEG Geodesic Hydrocel System</li>
+		<li>Recording reference at vertex of head</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="5a527ebefa4f0b50072c364fd646ea27"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 95px; height: auto;" data-block-id="2e175dc9e8f38e6bfbee6fef90a8c84f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Eye Tracking Acquisition</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 223px; height: auto;" data-block-id="4f48d6d1e4df2936d4e622c157eab20a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Eye position and pupil dilation
+	<ul>
+		<li>Infrared video-based eye tracker</li>
+		<li>iView-X Red-m, SMI GmbH</li>
+		<li>120 Hz sampling rate</li>
+		<li>0.1 degree spatial resolution</li>
+		<li>Calibrated with a 5-point grid
+		<ul>
+			<li>Before each paradigm</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="6fb1ea654ae28b46bacd9e2cbbc0a591"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 63px; height: auto;" data-block-id="b99a54438921976e8a69d7983a5ddfc1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>EEG and Eye-tracking Paradigms</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 244px; height: auto;" data-block-id="4c0ebbf8b987684603d3d882f23b28e4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Task-free paradigms
+	<ul>
+		<li>Examine intrinsic functional network responses
+		<ul>
+			<li>Based on different degrees of stimulation</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>Talk-based paradigms
+	<ul>
+		<li>Isolate distinct information processing steps</li>
+	</ul>
+	</li>
+	<li>Quantification of neurophysiological mechanisms underlying domain-general cognitive function</li>
+</ul>
+</div></div></section><section data-id="a2fabb672f3132145ac313d934e1bb5c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="e7b7066cf9df01d97e319bdcc7be40a6"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Passive Paradigms</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 280px; height: auto;" data-block-id="6e6a6359ee9ce9a4aed909bc5d0b1262"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Resting-State Paradigm</li>
+</ul>
+</div></div></section><section data-id="52e17d8965323fc019aafdb148f915f4"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 159px; height: auto;" data-block-id="2c8f4cab3bcdf389c3eba5c6ca6cc7f5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Task Overview</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="77cf07172a4f9ae0b7a73b570881ee8b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Resting state data is reliable (studies were cited)
+	<ul>
+		<li>State biological marker for individual brain activity</li>
+		<li>Can be related to cognitive performance</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="1f28aa6122e5c228c632490c2b53af44"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 83px; height: auto;" data-block-id="9945b391a3249f2c635ebd68e1543a11"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Stimuli &amp; Experimental Design</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 280px; height: auto;" data-block-id="d0dd0018283fb304f866235bf9cc37c8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Participants viewed cross in center of screen</li>
+	<li>Female research assistant instructs them to:
+	<ul>
+		<li>Open eyes - rest with eyes open for 20 s</li>
+		<li>Close eyes - rest for 40 s</li>
+		<li>Repeated 5 times</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="92c6d6332b0dd4fdd4ff20ff60df4483"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 116px; height: auto;" data-block-id="ce901a919e455d628c23ee15c1080a7a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Output Measures</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="bc23bb43fa722b0aff7c7dfb7f1cc143"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ol>
+	<li>Frequency domain
+	<ul>
+		<li>Classical power spectral analysis</li>
+	</ul>
+	</li>
+	<li>Temporal-spatial domain
+	<ul>
+		<li>Stable spatial configurations of electric field</li>
+	</ul>
+	</li>
+</ol>
+</div></div></section><section data-id="37b55e6ee0600e90938c6b405691a629"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="83d574c78a854af3ed9dbfbb4e814db7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Passive Paradigms</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 273px; height: auto;" data-block-id="73a9cf37b585dcd1cd40458aafdf30f7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Sound Suppression Paradigm</li>
+</ul>
+</div></div></section><section data-id="b40401704b1d57b53c44d4b97b47685d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="4cd751e35035b230f95c0f6b56f7c051"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Task Overview</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="63079564e16c4349440c7b6b5e3d9f1d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Steady State Visually Evoked Potential
+	<ul>
+		<li>Signals from continuous oscillatory responses </li>
+		<li>Evoked by flickering stimuli</li>
+		<li>Proved useful for collecting data on:
+		<ul>
+			<li>Schizophrenia, anxiety, stress, epilepsy</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="96d5ab9cd316bd794c79535b2fb56f3f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 67px; height: auto;" data-block-id="151e307f8a8629e234e00e00f8abb4a9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Stimuli &amp; Experimental Design</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 244px; height: auto;" data-block-id="5e48e5610e81f87b8970f2ab39120ca4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Flickering foreground stimuli w/ static surround patterns</li>
+	<li>4 vertically-oriented circular gratings
+	<ul>
+		<li>Flickered at 25 Hz</li>
+		<li>Static-full screen</li>
+		<li>Peripheral disks w/ 2 degree radius</li>
+	</ul>
+	</li>
+	<li>Upper disks flickered with opposite temporal phase relative to lower disks
+	<ul>
+		<li>Oscillatory summation on the scalp</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="6c7da653c02dbc60e6463ee2d37a4fb9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 78px; height: auto;" data-block-id="ed1770ecbe0edb9dd31e0b50b6047d17"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experimental Procedure</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 172px; height: auto;" data-block-id="0b920d66f37d8d1c158250f679b6ed07"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Fixation spot presented for 500ms</li>
+	<li>Foreground / surround stimuli were simultaneously presented for 2400 ms
+	<ul>
+		<li>Sinusoidal luminance-modulated gratings</li>
+		<li>Spatial frequency of 1cpd</li>
+	</ul>
+	</li>
+	<li>4 foreground contracts (0, 30, 60, 100)%</li>
+	<li>3 surround conditions (parallel, orthogonal, none)</li>
+	<li>Eye tracking was continually monitored</li>
+	<li>Recorded in two blocks
+	<ul>
+		<li>64 trials each, lasting 3.6 minutes</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="f28bba6eda42b9d827bf57ca3606b6b3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="f753d30b29e61c134834f2a9aa813a42"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Participant Instructions</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 323px; height: auto;" data-block-id="bc74073cdc4c82391e8f6c2dc3f17739"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>“Just maintain fixation on the central spot at all times. Press to begin. First we have to measure the position of your eyes. Just follow with your eyes the circle:”</li>
+</ul>
+</div></div></section><section data-id="724e2f229809074ee61acc832553b0ef"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 91px; height: auto;" data-block-id="0efd0a7ddb925c49d58558edd2ef8376"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Output Measures</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 210px; height: auto;" data-block-id="83e35a1d08c2b3a1eab457b90614c1b1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Flickering foreground
+	<ul>
+		<li>Elicits SSVEP in EEG over posterior scalp</li>
+		<li>At fundamental freq. of stimulation</li>
+		<li>Amplitude increases monotonically w/ foreground contract</li>
+	</ul>
+	</li>
+	<li>Surround suppression
+	<ul>
+		<li>Relative reduction in SSVEP amplitude due to surround contract</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section>
+<section data-id="21b958b9d32f4c1fce79ea8ebdc03898"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="532059acbf412a66bb38a343290ea0a6"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1><strong>Naturalistic Stimuli Paradigm</strong></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 384px; height: auto;" data-block-id="580d2cc038345c2854f1b5cd7d011b26"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle">
+<h2>(Passive Activity, Video Watching)</h2>
+</div></div></section><section class="stack" data-id="64b83969d4c648924cfbea5bab2d203a"><section data-id="8c96ae40a021fd5476f672f1d2572f38"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="6c3bbdef5ab501b4a8c355bb78a6e98f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Task Overview</h1>
+</div></div></section><section data-id="774567a09166ae46eb0679fd2cfe72f7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="7c72268f7906c18591871537a6571080"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Naturalistic Viewing Paradigms</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="7ea9c0a93565a3cac4152b1c3e80898a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span>Evoke patterns of neural activites</span></p>
+	</li>
+	<li>
+	<p><span>Synchronized across individuals, someitme species</span></p>
+	</li>
+	<li>
+	<p><span>Time courses from movie (luminance, sound intensity) can see different facet of neurofuncitonal systems</span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="eefe323d13defd36cca00b3d4a7c8430"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 76px; height: auto;" data-block-id="7e92c5d6a8635af79527044745f031cf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Present Paradigm</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 150px; height: auto;" data-block-id="d064495c65559cd68411d353f3b0f0de"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Measured variable engagement based on strength of higher-level audio-visual responses</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">Aid understanding of modulation of perception across ages and developmental stages</span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">5 short, age-appropriate video clips from TV and movies</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Movies = longer data collection, less head movement</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Research that children's educational TV increases performance</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">This paradigm allows investigation of these effects with all factors coming in play rather than isolated</span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="3bb26153731127290db6b41f91a69802"><section data-id="7b4baf5d12f59fa800a9a45622943387"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="5078e67eecaeb2f655f43ce49a60d14e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Experiment &amp; Design</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="770c182b3a4b0485a0537f7edfb8f81b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>5 short clips</li>
+	<li>Each 2-6 min, total 12:50</li>
+</ul>
+</div></div></section><section data-id="474fefc1dcda165f6ab6c87b2ed09f1d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="d61a259ca664193859a381c2afe37d9e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>The Wire (S4, Ep11)</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="d5205cb236bee899ad03c613a725f00c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Teacher and student dialog</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Rationale: Probe for school-related anxiety</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em"> <a href="http://www.youtube.com/watch?v=73OFVHPkUdQ" target="_blank">http://www.youtube.com/watch?v=73OFVHPkUdQ</a></span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="60991a67765f521da5a61045ddf9dfcf"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="e03083dcd6f83912566f303ce5a24bba"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h3><span style="font-size:0.9em">E-How video: How to Improve at Simple Arithmetic: Lessons in Math</span></h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 314px; height: auto;" data-block-id="04e4e00d9a0e931b25f3bae952d6ef15"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Female instructor, addition and multiplication tricks </span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Rationale: Probe attention-related difficulties</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em"><a href="http://www.youtube.com/watch?v=pHoE7AMtXcA" target="_blank">http://www.youtube.com/watch?v=pHoE7AMtXcA</a></span><span style="font-size:11.0pt"> </span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="d0d83e69df86089b30d0fd958ac58d66"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="4a326c8745ae61c325584ed472957c65"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>MIT K-12 "Fun with Fractals"</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="ba2e2afd6483a54b2057783bae484769"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Fractal based geometry in everyday objects</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Rationale: attention-related difficulties</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em"><a href="http://www.youtube.com/watch?v=XwWyTts06tU" target="_blank">http://www.youtube.com/watch?v=XwWyTts06tU</a> </span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="2c522e740749c483652f2badc7ffb2f1"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="e054e2738c7a2041cb44c49b86a77c52"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Diary of a Wimpy Kid Trailer</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="c9cb55bf6bb5d6daaee5a5a2ebc64b20"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Movie trailer of child in middle school</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Rationale: social anxiety</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em"> <a href="http://www.youtube.com/watch?v=7ZVEIgPeDCE" target="_blank">http://www.youtube.com/watch?v=7ZVEIgPeDCE</a></span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="c38d068be747eaeb943fb407e7ad5067"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="81d8765870b91d0bb963979d78a2720b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Despicable Me</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="0ddc2ead3080b9f32c929573ddabc2b5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Adoptive father reads 3 kids a bedtime story</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Rationale: attachment formation related issues</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em"><a href="http://www.youtube.com/watch?v=HNXxJIhVALI" target="_blank">http://www.youtube.com/watch?v=HNXxJIhVALI</a> </span></p>
+	</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="cf8c9b5147fc7571f4d8bcc5ad8ab28a"><section data-id="c9f4846c57967ac232f6f929f53fd6f2"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 30px; height: auto;" data-block-id="60dca06bfbae4b4bc7d552eb7c844a6a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Output Measures</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 104px; height: auto;" data-block-id="cda7bdebc1a1f6c9c5a417101243ebc9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Naturalistic audiovisual stimuli- highly reliable neural activity across multiple viewers</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em"><strong>Inter-subject correlation(ISC)</strong></span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em"><strong>Measure of correlation across subjects</strong></span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Successful memory encoding and effective communication between individuals</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Increased during scenes of high arousal and negative emotional valence</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Strongest for familiar and naturalistic events</span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Looking for similarity of neural response to stimuli in every-day life</span></p>
+	</li>
+	<li>
+	<p>EEG data analyzed using <strong>Correlated Component Analysis (CCA)</strong></p>
+	</li>
+</ul>
+</div></div></section><section data-id="8a8cad2450d304b2ddac7ebc7c223fd9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 119px; height: auto;" data-block-id="4d797410ede46caa47baf2944a2d8cfe"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui"><h2>Correlated Component Analysis (CCA)</h2></div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 267px; height: auto;" data-block-id="7cc2c57377357290fb049ef27e79a02e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+<strong>Identifies linear combinations of electrodes(called components) that maximize correlation across subjects</strong>
+	<ul>
+		<li><strong>Like PCA, only instead of looking for max variance, max correlation</strong></li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">3 strongest components are usually enough to explain most of the correlation, so paper limits sum of correlation to first 3 components</span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="28ca29d1868a4c7ff29993e8646f6e71"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="8073ed407ad6ae30d0d66395c0cfcce2"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>CCA Method</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 144px; height: auto;" data-block-id="adf24c8d6f142b16371100230d080239"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>
+	<p><span style="font-size:0.9em">2 matrices are calculated</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:0.9em">Pooled between-subject covariance</span><br>
+		 </p>
+		</li>
+		<li>
+		<p><span style="font-size:0.9em">Pooled within-subject covariance</span><br>
+		<br>
+		 </p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:0.9em">Eigenvectors  with highest eigenvalues are data projection that capture largest correlation. Do this for each component and sum them</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:0.9em">Finding correlation of i-th component</span><br>
+		<br>
+		 </p>
+		</li>
+		<li>
+		<p><span style="font-size:0.9em">Correlation = sum of components</span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 240px; height: 47.0588px; left: 320px; top: 233px;" data-block-id="61f3c7e4f7e6470fa8444aaaa353867b"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="204" data-natural-height="40" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2822685/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 533.786px; height: 94px; left: 173px; top: 309px;" data-block-id="ea354776a7a6a05eb85eeb5794dca46f"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="636" data-natural-height="112" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2822687/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 151.667px; height: 91px; left: 271px; top: 553px;" data-block-id="8b91fdef4c67478bdc81528ae2038e2f"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="90" data-natural-height="54" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525212/images/2822691/pasted-from-clipboard.png"></div></div></section></section><section data-id="7d3cfee54f94eb789dc8be82d2fa4529"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="a29cebf0d659850cf31f5710496a77b5"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Active Paradigms</h1>
+</div></div></section><section data-id="74952b5a78c7a8d0687348399fabb803"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="b03b45d9ff9aa931be0cac684a065c04"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Contrast Change Detection Paradigm</h1>
+</div></div></section><section class="stack" data-id="6d935128afa011bd311e98617fbd2caa"><section data-id="5afced758c3b97028a3e6185ce69002b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 123px; height: auto;" data-block-id="34b2c48e1085f3005b88daf6a736fb91"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Task Overview</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 197px; height: auto;" data-block-id="a30142114717b5f449ec60b5121df4be"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Recent study employed novel human EEG paradigm to isolate decision signal on human scalp</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">Determines timing of perceptual decisions vis discrete boundary-crossing criterion</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Paper uses a modified version</span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Goal: examine neural determinants of simple perceptual decisions</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">Isolate discrete freely evolving neural signatures of 3 stages (sensory perception, integration of info, response generation)</span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="f0c407ac6967c46f7e55c2abb304aefa"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 92px; height: auto;" data-block-id="41d588e59d36e14773a4e0669cb82e5f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Paradigm Overview</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 166px; height: auto;" data-block-id="1b17f65e0c0d061b6bd62fde64e57353"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">2 Components:</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">Momentary encoding of sensory info</span></p>
+
+		<ul>
+			<li>
+			<p><span style="font-size:1.0em">Rapidly flickering</span></p>
+			</li>
+		</ul>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Sequential integration of evidence into a decision variable</span></p>
+
+		<ul>
+			<li>
+			<p><span style="font-size:1.0em">Constantly track motor prep</span></p>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Advantages to paradigm</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">Gradual stimuli reduce sudden muscle movement and noise</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Performed continuously, study sustained attention</span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="40053f27b96e0817d7436bd121f8a99d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 18px; height: auto;" data-block-id="4ff605dee37adc4b212216496cb56c84"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Stimuli &amp; Experimental Design</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 106px; height: auto;" data-block-id="6fcf8cf49f6285d9f06681b56e52b439"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:0.7em">Isolate neural signatures of sensory evidence and accumulation directly</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Minimum signal processing</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Circular stimulus continuously flickering checkerboard pattern</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Participants had to discriminate between 2 orientations of diagonal stripes on checkboard</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:0.7em">Computer mouse clicks</span></p>
+
+		<ul>
+			<li>
+			<p><span style="font-size:0.7em">Left-clicked if left pattern stronger, right-clicked vice versa</span></p>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Feedback via smiling or sad face</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Left tilt board: 25 Hz flicker, Right tilt: 20 Hz</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:0.7em">Participants didn't distinguish</span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">Switched up inter-trial intervals to avoid habituation/anticipation</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.7em">3 blocks of 24 trials</span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="ace34c12417ed6315a886278dbe6d56f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 132px; height: auto;" data-block-id="4dd63fdd13b8200d9f22698c513f0eee"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Output Measures</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 206px; height: auto;" data-block-id="ac0409975172ca3ab879e4021d1d4abc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Sensory- Continuous flickering(SSVEP latency and amplitude)</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">Looked for a boundary-crossing to determine behavior</span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Motor response quantified as motor-related beta activity over electrodes C3 and C4</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Additional measures of interest were reaction time, accuracy</span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="6aba66392b24a249f305e9ff9571f963"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 267px; height: auto;" data-block-id="208159846f30f2bf7741c84bee2b54fb"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Sequence Learning Paradigm</h1>
+</div></div></section><section data-id="ba46a5b12906f5546155f8e8be910205"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 151px; height: auto;" data-block-id="b71113a941ed766998e78d0be6ac48f0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Task Overview</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 225px; height: auto;" data-block-id="e0253b5a0936dd048dc0c369dbcfeef7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Evaluates neural correlates of declarative learning on an explicit visual sequence-learning task with semantically unloaded stimuli</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Participants memorized given sequence of elements</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Enables tracking process from unknown to fully memorized</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Used sequence of simplified stimuli for most focused results</span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="dc3e79ff255198d180a15a970b0b5e1d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 134px; height: auto;" data-block-id="a821699aa61b4240a97cc8687e27753b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Stimuli &amp; Experimental Design</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 208px; height: auto;" data-block-id="c98d84da175f1820570e84ab568cd992"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Participants viewed sequence of 10 stimuli, appearing at 8 different locations</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Repeated 5 times, then participant had to reproduce the sequence</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Floor effect in pilot study</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">&lt; 9 years old, abbreviated sequence 8 stimuli, 6 locations</span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">No restrictions on response time, subjects focused on a central fixation cross</span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="f8ae3c0b9b0c82258ea59fef957898b5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="6030d963cbb4dc07108044a920d0fc1a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Output Measures</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="d4ed4e3e5063cc4a3a7284bfb6ea7952"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Trials categorized by</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">"Hits"</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">"Misses"</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">"Learned"</span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">P300 came 300 ms after novel or unexpected stimuli</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">Independent of motor response and sensory stimuli</span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="5e34d330e248d05ccfafa1a94fb5d0e0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 233px; height: auto;" data-block-id="a8bbcb30903cf75861003d073ec6eac0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1><span style="font-size:0.9em"><strong>WISC-IV Symbol Search/Processing Speed Paradigm</strong></span></h1>
+</div></div></section><section class="stack" data-id="0e03e8223663d40baa561a729ff14a85"><section data-id="de605814714f32dab9b21c3fb90332dd"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 15px; height: auto;" data-block-id="4a61443c9436d1252c5fbde78215e6d1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h3>Task Overview</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 65px; height: auto;" data-block-id="8ba8f444a914ed3b35a4f5067a3a81d5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:0.9em">Examined neuro- and psychophysiological mechanisms underlying processing speed in a visual search task</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:0.9em"><strong>Processing Speed</strong></span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:0.9em"><strong>Ability to quickly scan and discriminate between (visual) information</strong></span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:0.9em">Sensitive</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:0.9em">Motivation</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:0.9em">Difficulty</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:0.9em">Time Pressure</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:0.9em">Motor Coordination</span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:0.9em">Previous Studies</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:0.9em">Age</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:0.9em">Reading Performance</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:0.9em">Psychiatric and Neurological Disorders</span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="6109bc2bcf51c9478bdff7d0e0ba688c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 5px; height: auto;" data-block-id="b9bf90e6373e07d89d2a296bc9dca951"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>WISC-IV</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 79px; height: auto;" data-block-id="a76f252df69274d76fcf5419a152ecf0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Processing speed measured using Symbol Search subtest of Wechsler Intelligence Scale for Children IV (WISC-IV)</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">Assess information processing speed</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Visual processing</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Requires subject to solve as many trials possible in 2 minutes</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Adapted from paper to computer</span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Subject must</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">Detect and encode symbol</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Find matching symbol in probes</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Encode pairing symbols</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Select proper response</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">Initiate and execute response</span></p>
+		</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="a3b55544f518367cb473021d498223b7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="97b7bb11f9688e0f9fabdbedcbf29d6d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>In this paradigm...</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="442568daadaf9605a296c9d47dd7b0a6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Studies strategies that may decrease performance, such as double checking</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Present approach (EEG + eye tracking) allows decomposing task into interpretable components of processing</span></p>
+	</li>
+</ul>
+</div></div></section></section><section data-id="9b812a50e611f0483b1f4d47fb6e4679"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 124px; height: auto;" data-block-id="106521a46ec819e962287897d896ba7d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Stimuli &amp; Experimental Data</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 271px; height: auto;" data-block-id="84bbc762d461a64b776f6cc92b592b06"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Stimuli consisted of black symbols 1 sq. cm</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">15 trials at same time on screen</span></p>
+
+	<ul>
+		<li>
+		<p><span style="font-size:1.0em">4 pages of these</span></p>
+		</li>
+		<li>
+		<p><span style="font-size:1.0em">No one ever reached the end of the 60 total trials</span></p>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Participants shown rows containing 5 symbols, searched for 2 target symbols in each row and indicated if there or not</span></p>
+	</li>
+</ul>
+</div></div></section><section data-id="78227093bf699f9003dc966989e07df1"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 92px; height: auto;" data-block-id="3adddc6ac579a8780183b23c811a3a7c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Output Measures</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 166px; height: auto;" data-block-id="46f9139e70ab964a71d995756e98ebbd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+	<p><span style="font-size:1.0em">Number score on test of correct</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Time spent looking at each symbol</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Number of saccade steps</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Number of repetitions</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Pupil size</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Protracted gaze dwell times for each sub-region of the screen</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Can also use this data to identify strategies used in test and reasons for actual score</span></p>
+	</li>
+	<li>
+	<p><span style="font-size:1.0em">Eye-tracking can be complemented with EEG data</span></p>
+	</li>
+</ul>
+</div></div></section>
+<section class="stack" data-id="9ed1faf6b7bb17ed93c8273a56f2f34e"><section data-id="e2cddf593f6a232629a06c9940ac9705"><div class="sl-block" data-block-type="text" style="width: 831px; left: 15px; top: 43px; height: auto;" data-block-id="087c44ff2c1a26861c4c8b2587967690"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.5em">EEG and Eye-Tracking Preprocessing Steps</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="8f3a8a01f6d409cd0f59fbac8b1cc1de" style="height: auto; min-width: 30px; min-height: 30px; width: 782px; left: 26px; top: 161px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui"><ul>
+<li>preprocessed by MATLAB</li>
+<li>triggers and latencies extracted and specific temporal order of patients determined </li>
+<li>replace and identify bad electrodes (electrodes that are &gt; 3 stdev away from other electrodes in frequency spectrum distribution) using spherical spline interpolation (?)</li>
+<li>noisy channels filtered - either visually or replaced entirely by zeros</li>
+<li>109 channels for EEG,  6 EOG for artifact removal</li>
+</ul></div></div></section><section data-id="901c9ba4b36fd991c9a85a0131355f74"><div class="sl-block" data-block-type="text" style="width: 831px; left: 15px; top: 43px; height: auto;" data-block-id="e3fe413fa6c1e0025a44ba812b0a0ac8"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.5em">More Preprocessing</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 782px; left: 27px; top: 174px;" data-block-id="b99abd09afebef74cd3d50d5be176b54"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>data high pass filtered at 0.1 Hz and notch filtered at 59-61 Hz</li>
+	<li>Principal Components Analysis (PCA) algorithm removed sparse noise - recovers a low-rank matrix from a corrupted matrix by subtracting the error.</li>
+	<li>visual inspection after preprocessing as well.</li>
+</ul>
+</div></div></section><section data-id="6395a73471ca4da1f026622db910ec12"><div class="sl-block" data-block-type="text" style="width: 831px; left: 15px; top: 43px; height: auto;" data-block-id="7d87caa5a2330ba347300c0019059d34"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.5em">Tools for EEG Analysis</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 782px; left: 27px; top: 174px;" data-block-id="8aecdf551b4859e18d1a0da2cac7aafb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" dir="ui">
+<ul>
+	<li>
+<strong>EYE-EEG: </strong>plugin for MATLAB- integrates analysis for electrophysiological + eye-tracking data.</li>
+	<li>adds eye-tracking data as extra channels to EEG</li>
+	<li>Adaptive velocity-based algorithm to detect saccades and fixations, i.e. a blink
+	<ul>
+		<li>identifies fixation as groups of consecutive points</li>
+		<li>uses that to map minimum and maximum x and y values - compare that to maximum dispersion value.</li>
+		<li>if the dispersion is lower, then its a fixation. </li>
+	</ul>
+	</li>
+</ul>
+</div></div></section></section><section data-id="0210a3b09c2ad4ed7897b5766230d8f9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="a1bfed6333fedd3917a2c49f3d59fed5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Misc about Data </h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 874px; left: 53px; top: 144px; height: auto;" data-block-id="9b1ef499d50561f92c0262efad709bf4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+<strong>Code Availability: </strong>analysis performed in MATLAB + EEGlab</li>
+	<li>
+<strong>Data records</strong>: a folder for each subject. an EEG binary file, two eye-tracker files. One is segmented into blinks, saccades, and fixations. The other isn't. Each folder has a file for each paradigm.</li>
+	<li>
+<strong>Behavioral Assessment: </strong>self-report by Collaborative Informatics and Neuroimaging Suite (COINS)</li>
+	<li>
+<strong>Cognitive Assessment: </strong>two research assistants obtained separate raw scores for each patient, entered as dataset</li>
+	<li>
+<strong>Developmental History: </strong>medical/school/demographics</li>
+</ul>
+</div></div></section><section data-id="697ddf7cd81d1c0ee47e05f01ef757a0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="d9fa907b6f57ce8ad1d1b82ff43826f0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Resting EEG Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 151px; height: auto;" data-block-id="dbcca145939ba9969109db850951c773"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>after filter, data segmented into eye-closed and eye-open segments</li>
+	<li>analyze <strong>eye-closed</strong>
+</li>
+	<li>EEG recomputed against average reference, split into 2-second epochs, then Fourier transformed</li>
+	<li>Resting-state EEG had their spectral amplitude saved. </li>
+	<li>Spectra for each channel averaged for the epochs</li>
+	<li>group mean spectral amplitude for all or each electrode calculated</li>
+	<li>split up into the different frequency bands (alpha beta etc)</li>
+</ul>
+</div></div></section><section class="stack" data-id="21dd648fa545c77ebfeaebcd91b9723c"><section data-id="bc7bebd72b7c02dd670412d3751213da"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="03def44e1cc8511bceb1927b4808a36a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Sequence Learning Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 152px; height: auto;" data-block-id="4cb061e0200703fc77aba6cded74a203"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>EEG data segmented based on stimulus of each filled white circles at each of the eight different locations</li>
+	<li>900 ms long epochs (100 ms pre, 800 ms post)</li>
+	<li>averaged trial types (hits, missed, learned) for each subject individually and calculated group average</li>
+	<li>found a decrease of P300 over different blocks</li>
+	<li>
+<strong>behavioral performance</strong>: percentage of correctly learned spatial location</li>
+	<li>
+<strong>learning rate:</strong> newly learned location in relation to all possible locations</li>
+</ul>
+</div></div></section><section data-id="84043d245144bbadec76e931cc80e915"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 50px; height: auto;" data-block-id="ff3d2a686146cc684b20da2d8319f47d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">More Sequence Learning Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 152px; height: auto;" data-block-id="82d6fa37fa29882b5d412dec9fc1530f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>P300 amplitude = amplitude on electrode CPZ, with latency of 350-500 ms post stimulus</li>
+	<li>slightly delayed because children have greater latency</li>
+	<li>performance increases while learning rate and P300 decrease w practice</li>
+	<li>recall the expectation that subjects learn to expect the order of the appearance of targets w/ 5 blocks</li>
+	<li>decrease in P300 because of novelty indicator of a target stimulus- subjects are not surprised anymore!</li>
+</ul>
+</div></div></section></section><section data-id="4b83d5537f91eb61ebd7bc0dd8e6f63e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="9b24b6a51b7793cbf9f460df1281d82b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.5em">WISC Symbol Search / Processing Speed Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 881px; left: 53px; top: 165px; height: auto;" data-block-id="d65344b97733ba83fa5e93fc1b8f40d5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Eye-tracking data</li>
+	<li>recall the goal is to find two target symbols among a set of five search symbols</li>
+	<li>graphic - three sub regions: target, search group, response buttons</li>
+	<li>calculated number of saccade steps, repetitions, pupil size, and protracted gaze dwell time (fixation duration) for each sub region</li>
+	<li>graph to indicate the duration of fixation and distribution</li>
+</ul>
+</div></div></section><section data-id="439326c6f19bad54e86f6ca7a04daeec"><div class="sl-block" data-block-type="text" style="width: 800px; left: 66px; top: 70px; height: auto;" data-block-id="f5e26a35ad22844f85552b8ca696a826"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Naturalistic Stimuli Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 155px; height: auto;" data-block-id="6f1526c88ee8226f9a99d674dbcd30f8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>covariance matrices were computed </li>
+	<li>found the 3 strongest correlated components and compute corresponding correlation values</li>
+	<li>"how does this specific video probe people's EEG responses"</li>
+	<li>ISC measure</li>
+</ul>
+</div></div></section><section class="stack" data-id="8c0249b389d55afa758104a6b605e15c"><section data-id="60831e337586144bd734385eefc38d26"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="110afafebbb94b8bb90388536e23243a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Surround Suppression Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="666c06b94734ca60bb64e304debf6996"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>extracted based on flickering stimulus</li>
+	<li>4 foreground contrast (0%, 30%, 60%, 100%) and 3 background conditions (parallel, orthogonal, none)</li>
+	<li>data of two blocks merged for each subject</li>
+	<li>computed SSVEP signal without background, and a SSVEP averaged all conditions with a background</li>
+	<li>FFT computed to obtain a measure of SSVEP power at 25 Hz freq</li>
+	<li>subtracted this from neighboring freq to get the actual evoked activity</li>
+</ul>
+</div></div></section><section data-id="899439ae3021be88bb2268dd846559cf"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="b93377e4fd79b33c96c5b23750d1b933"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.5em">More on Surround Suppression Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 64px; top: 155px; height: auto;" data-block-id="05dd2c43332d30ae2d77a72e03d9ccd4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>in-house algorithm to detect highest SSVEP amplitude, compute signal based on the average of max electrode + four surrounding electrodes</li>
+	<li>graph to demonstrate the difference in SSVEP amplitude between different contrasts with or without a background</li>
+	<li>increase SSVEP amplitude with an increase in foreground contrast</li>
+	<li>relative reduction in SSVEP amplitude due to surround contrast</li>
+</ul>
+</div></div></section></section><section class="stack" data-id="5d4b7349a8cae14569699b0fb8fd9c1a"><section data-id="31356dfe2c1405c9b070b4257a5d29bb"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="0657fdc5781b7a5776e62760fb936b4a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Contrast Change Detection Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="1a7aebf1eb31edd64bfa11e719f627d4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>data of three blocks merged for each subject</li>
+	<li>target epochs extracted from 500 ms before target to 1000 ms after peak sensory evidence</li>
+	<li>response-locked epochs extracted from 1000 ms before repsonse to 300 ms after response (buttons)</li>
+	<li>rejected trials for scalp channel over 100 microV</li>
+	<li>SSVEP based on stimulus locked epochs + motor response signal based on response-locked epochs measured by Fourier</li>
+	<li>CPP analysis averages single-trial  waveforms (baseline corrected 500 ms before response)</li>
+</ul>
+</div></div></section><section data-id="f1f94c330fac612bc1243414a30a3775"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="66d1887e75260278b2179880e61400ab"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.5em">More on Contrast Change Detection Paradigm</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 163px; height: auto;" data-block-id="b631ee17f935b4a5856abd69e5332729"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Figure to show SSVEP, CPP, and motor response signal topographies</li>
+	<li>Result shows posterior maximum for SSVEP around electrode Oz. </li>
+	<li>CPP shows highest activity near CPz electrode and motor response signal peaks over C3 and C4.</li>
+</ul>
+</div></div></section>
+				</div>
+			</div>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
