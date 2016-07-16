@@ -1,0 +1,805 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<div class="theme-font-montserrat theme-color-white-blue" style="width: 100%; height: 100%;">
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 165px; height: auto;">
+                    <div class="sl-block-content">
+                        <h2>EEG Alpha Asymmetry in Schizophrenia, Depression, PTSD, Panic Disorder, ADHD, and Conduct Disorder</h2>
+                    </div>
+                </div>
+            </section>
+            <section class="stack">
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;">
+                        <div class="sl-block-content">
+                            <h1>Quick Summary</h1>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 92px; height: auto;">
+                        <div class="sl-block-content">
+                            <h2>Abstract</h2>
+                        </div>
+                    </div>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 166px; height: auto;">
+                        <div class="sl-block-content">
+                            <ul>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Biomarker: 
+                                            <strong>models of laterality</strong>
+                                        </span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Via
+                                                    <strong> EEG alpha asymmetry </strong>
+                                                </span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Biomarker requires a more fine-grained assessment of clinical utility</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Paper assesses resting brain laterality across 6 disorders</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">~ 1900 dataset from 
+                                                    <strong>Brain Resource International Database</strong>
+                                                </span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Frontocentral region</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Eyes closed and eyes open conditions</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 158px; height: auto;">
+                        <div class="sl-block-content">
+                            <h2>What's being looked at</h2>
+                        </div>
+                    </div>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 232px; height: auto;">
+                        <div class="sl-block-content">
+                            <ul>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Lateralization of neural activity associated with range of clinical disorders</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Also emotional patterns in healthy people</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Can be monitored via EEG alpha asymmetry</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Brain at rest made up of neural networks</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Baseline conditions = context for functioning of specific networks</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 108px; height: auto;">
+                        <div class="sl-block-content">
+                            <h2>Known Lateralization</h2>
+                        </div>
+                    </div>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 182px; height: auto;">
+                        <div class="sl-block-content">
+                            <ul>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Schizophrenia</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Associated with abnormality of left hemisphere</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Deficits in interhemispheric communication</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Greater left lateralized alpha power</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Depressive disorders</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Specific lateralized dysfunction</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Additional shift along anterior-posterior axis</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">This study found alpha asymmetry in right, but other studies haven't</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 99px; height: auto;">
+                        <div class="sl-block-content">
+                            <h2>
+                                <span style="font-size:0.9em">Explaining Differing Laterality Findings in Depression</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 244px; height: auto;">
+                        <div class="sl-block-content">
+                            <ul>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Subtypes of anxiety symptoms = different disorders</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Anxiety disorders</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">PTSD: left lateralized parietal alpha</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Panic Disorder: left lateralized global and frontal alpha</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">ADHD: Right lateralization of EEG alpha</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Typically comorbid with ADHD have left lateralized front alpha power</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 137px; height: auto;">
+                        <div class="sl-block-content">
+                            <h2>Lateralization in Emotional Functioning</h2>
+                        </div>
+                    </div>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 285px; height: auto;">
+                        <div class="sl-block-content">
+                            <ul>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Healthy people</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Reduced left alpha = positive emotion</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Greater right = negative emotion</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Males + females differ in laterality</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Men show more right, women more left</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Men typically have more</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 96px; height: auto;">
+                        <div class="sl-block-content">
+                            <h2>Results</h2>
+                        </div>
+                    </div>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 170px; height: auto;">
+                        <div class="sl-block-content">
+                            <ul>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Schizophrenia: greater left lateralized alpha power (than controls)</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Deficit in left frontal activity at rest</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Depression: more right-lateralized activity</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Remaining disorders did not show difference from controls</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Indicates may see some variance for other diseases in either left or right, but not too far from normal</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Sex difference only in over 70 years old patients</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;">
+                    <div class="sl-block-content">
+                        <h2>Relevance to Us</h2>
+                    </div>
+                </div>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;">
+                    <div class="sl-block-content">
+                        <ul>
+                            <li>
+                                <p>
+                                    <span style="font-size:1.0em">&nbsp;Not multi-modal, but does look across multiple diseases</span>
+                                </p>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:1.0em">Our current project acknowledges similarity between multiple behavioral disorders</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>
+                                    <span style="font-size:1.0em">Also has large dataset analyzed (~1,900 from Brain Resource International Database)</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 18px; height: auto;">
+                    <div class="sl-block-content">
+                        <h2>Data Format</h2>
+                    </div>
+                </div>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 92px; height: auto;">
+                    <div class="sl-block-content">
+                        <ul>
+                            <li>
+                                <p>
+                                    <span style="font-size:1.0em">Collection</span>
+                                </p>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:1.0em">1908 healthy controls, 567 participants</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:1.0em">Data recorded during Eyes Open and Eyes Closed</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:1.0em">32 Channels</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:1.0em">Collected vertical and horizontal eye movement as well</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>
+                                    <span style="font-size:1.0em">
+                                        <strong>Data from Brain Resource International Database</strong>
+                                    </span>
+                                </p>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:1.0em">
+                                                <strong>​Potentially accessible</strong>
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>
+                                    <span style="font-size:1.0em">Analysis:</span>
+                                </p>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:1.0em">z-scores</span>
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                <p>
+                                                    <span style="font-size:1.0em">t-tests to see if alpha asymmetry of patient differed form controls</span>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>
+                                    <span style="font-size:1.0em">Not 100% sure what the data actually is file type wise</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 156px; height: auto;">
+                    <div class="sl-block-content">
+                        <h1>Multimodal EEG Recordings, Psychometrics and Behavioural Analysis</h1>
+                    </div>
+                </div>
+            </section>
+            <section class="stack">
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;">
+                        <div class="sl-block-content">
+                            <h1>Quick Summary</h1>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 131px; height: auto;">
+                        <div class="sl-block-content">
+                            <h2>Introduction</h2>
+                        </div>
+                    </div>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 205px; height: auto;">
+                        <div class="sl-block-content">
+                            <ul>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Voxel-Wise Imaging in EEG</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Attributes current densities from population of neurons to equidistant points in 3D Raster</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Good Imaging Practice</span>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Group comparisons</span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Statistical aid- paired t statistic</span>
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    <p>
+                                                        <span style="font-size:1.0em">Pragmatic sample sizes</span>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span style="font-size:1.0em">Paper goes into more detail</span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 154px; height: auto;">
+                        <div class="sl-block-content">
+                            <h2>Brain metabolic and Electromagnetic activity</h2>
+                        </div>
+                    </div>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 302px; height: auto;">
+                        <div class="sl-block-content">
+                            <ul>
+                                <li>
+                                    <span style="font-size:1.0em">MEG (magnetic) </span>
+                                    <ul>
+                                        <li>
+                                            <span style="font-size:1.0em">Gives deeper understanding of EEG</span>
+                                        </li>
+                                        <li>
+                                            <span style="font-size:1.0em">Topological adaptation gave better understanding of source lcoations of activity</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span style="font-size:1.0em">EEG and fMRI similarly combined in BOLD</span>
+                                    <ul>
+                                        <li>
+                                            <span style="font-size:1.0em">Also can be used in conjunction with MEG</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;">
+                        <div class="sl-block-content">
+                            <h2>RSN- Resting State Network</h2>
+                        </div>
+                    </div>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;">
+                        <div class="sl-block-content">
+                            <ul>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Patterns identified by low frequencies in BOLD</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">RSNs could have a link with oscillatory properties of electrically oscillating patterns</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Potentially prerequisite for normal behavior</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span style="font-size:1.0em">Correlations are usually multimodal across EEG, MEG, and fMRI</span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;">
+                        <div class="sl-block-content">
+                            <h2>Conclusion</h2>
+                        </div>
+                    </div>
+                    <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;">
+                        <div class="sl-block-content">
+                            <ul>
+                                <li>
+                                    <span style="font-size:1.0em">The multimodality looked at here is manner (EEG, MEG, or fMRI)</span>
+                                </li>
+                                <li>
+                                    <span style="font-size:1.0em">Acknowledges gaps in consistency with data modified in this manner</span>
+                                </li>
+                                <li>
+                                    <span style="font-size:1.0em">However, implies deeper understanding of known patterns will only be found with further work</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 169px; height: auto;">
+                    <div class="sl-block-content">
+                        <h2>Relevance to Us</h2>
+                    </div>
+                </div>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 243px; height: auto;">
+                    <div class="sl-block-content">
+                        <ul>
+                            <li>
+                                <span style="font-size:1.0em">No dataset, but discusses multimodal analysis​​</span>
+                            </li>
+                            <li>
+                                <span style="font-size:1.0em">Discusses practices for EEG</span>
+                                <ul>
+                                    <li>
+                                        <span style="font-size:1.0em">
+                                            <span style="line-height:19.0667px">Looks at some good practices and analsyes</span>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span style="font-size:1.0em">
+                                    <span style="line-height:19.0667px">​At the end, this paper was less relevant than I initially expected. Still, earlier components are relevant, and integrating fMRI and MEG are strong ideas for future work</span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;">
+                    <div class="sl-block-content">
+                        <h2>Data</h2>
+                    </div>
+                </div>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;">
+                    <div class="sl-block-content">
+                        <ul>
+                            <li>There's no data. However, has several papers referenced as it's a discussion</li>
+                            <li>Can look for good imaging practice and for multimodal analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 156px; height: auto;">
+                    <div class="sl-block-content" style="z-index: 10;">
+                        <h1>Data Mining EEG signals in depression for their diagnostic value</h1>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 53px; height: auto;">
+                    <div class="sl-block-content">
+                        <h2>Background</h2>
+                    </div>
+                </div>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 127px; height: auto;">
+                    <div class="sl-block-content">
+                        <ul>
+                            <li>
+                                <p>
+                                    <span style="font-size:0.7em">EEG can differentiate between major depressive disorder and healthy volunteers</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span style="font-size:0.7em">Method: data mining method to classify</span>
+                                </p>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:0.7em">Pre-processing data- cleaning + normalization</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:0.7em">LDA- Map features into new space</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:0.7em">Genetic Algorithm- Decide most significant features</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:0.7em">Decision Tree Algorithm- Predictive models</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:0.7em">Evaluate models</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>
+                                    <span style="font-size:0.7em">Aim: see if these methods are applicable to EEG and classifying in depression</span>
+                                </p>
+                            </li>
+                        </ul>
+                        <p>
+                            <span style="font-size:0.7em">Genetic algorithm- use "natural selection" to identify optimal solution</span>
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    <span style="font-size:0.7em">Feature mapping helps classify the selections by separating the 2 classes</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;">
+                    <div class="sl-block-content">
+                        <h2>Relevance to Us</h2>
+                    </div>
+                </div>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;">
+                    <div class="sl-block-content">
+                        <ul>
+                            <li>
+                                <p>
+                                    <span style="font-size:1.0em">How to use EEG data and analyze it in simple scenario</span>
+                                </p>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:1.0em">Applying LDA</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:1.0em">Choosing features</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span style="font-size:1.0em">Pre-processing and a description</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>
+                                    <span style="font-size:1.0em">Use for depression and classification</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;">
+                    <div class="sl-block-content">
+                        <h2>Data Format</h2>
+                    </div>
+                </div>
+                <div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;">
+                    <div class="sl-block-content">
+                        <ul>
+                            <li>Movable into Excel</li>
+                            <li>Processed via Brain Vision Analyzer Software (Brain Vision was used to acquire data as well)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
