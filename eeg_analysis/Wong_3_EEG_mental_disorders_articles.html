@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+			
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+<div class="reveal">
+				<div class="slides">
+					<section data-id="d7f134b2196589d2852ed7bdfa71ecb7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 29px; height: auto;" data-block-id="0e68ec98508bc02f61424b1c58d2be69"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1><span style="font-size:0.5em">Decreased EEG synchronization in Alzheimer’s disease and mild cognitive impairment</span></h1>
+</div></div></section><section data-id="99f9d81c0eb5888626dc12e0b74761de"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 33px; height: auto;" data-block-id="c67f216b4b3b68cb829db8cb479c14b8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Overview</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 848px; left: 56px; top: 140px;" data-block-id="cc18394285c6de44c4fc21ada3749790"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>
+<strong>GOAL:</strong> To analyze the correlation between Alzheimer's disease and decrease in EEG frequency synchronization using Global Field Synchronization (GFS)</li>
+	<li>
+<strong>Reasoning:</strong> Alzheimer's causes characteristic disconnection between neurons, thus studying EEG data can allow us to see changes the synchronization between neurons</li>
+	<li>
+<strong>Experiment:</strong> 6 groups of people ranging from healthy controls to mild cognitive impairment to severe Alzheimer's Disease</li>
+</ul>
+</div></div></section><section data-id="569321bafba4d8921869e76ee021df4f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 26px; height: auto;" data-block-id="8fa8b022717cd05d2bac202e3ccdc574"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Global Field Sync (GFS)</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 68px; top: 127px; height: auto;" data-block-id="30bf4cd19b459cb3e77f52da854f97cd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>measures functional synchronization in frequency-domain EEG data</li>
+	<li>percentage of EEG activity oscillated with a "common phase"</li>
+	<li>high GFS value = phase locked = short-term neural network binding, indicating that brain is normal</li>
+	<li>GFS is global, all electrodes simultaneously measured and independent of reference electrode-- doesn't have to worry about the independent action going on at that specific location of the brain</li>
+</ul>
+</div></div></section><section data-id="9077aca83ba6f9910a3cf4d2ee8fa1e7"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 33px; height: auto;" data-block-id="fbe73d576a4529e81c9b0610d713478a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>GFS Computation</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 132px; height: auto;" data-block-id="8c3d972462280c6a7f4806568608dec3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>At a certain frequency, GFS measures the relative existence of a common phase over all electrodes</li>
+	<li>Fast Fourier Transformation (FFT) is used.</li>
+	<li>Each frequency, each electrode turns into a two dimensional vector. Origin of vector is the reference. Length of vector indicates power of the signal and direction of vector is the phase.</li>
+	<li>How similar the vectors are can be shown by their directions.</li>
+</ul>
+</div></div></section><section class="stack" data-id="194b981ac4f962e484dd1414006dd214"><section data-id="a7391db7ea91cfc5e5e979c1281a75a8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 68px; top: 39px; height: auto;" data-block-id="084444702feaa9b0a0d101a10b1dae63"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Results</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="0d70aa841a4f6b0a456ac75815db0cd0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>The experiment was conducted twice. Once at the New York site and the Stockholm site. </li>
+	<li>Degree of impairment showed significant effect in:
+	<ul>
+		<li>Delta band: New York</li>
+		<li>Theta band: Neither</li>
+		<li>Alpha band: Both (highly significant effect)</li>
+		<li>Beta band: New York, similar effect in Stockholm</li>
+		<li>Gamma band: no significant</li>
+	</ul>
+	</li>
+	<li>Note about Gamma: GFS values were lower in all patient group than controls.</li>
+</ul>
+</div></div></section><section data-id="89cece2f20f3e0addc625d0acdd1044a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 68px; top: 39px; height: auto;" data-block-id="ece848d70313b74500ac4a956d5e546f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">A few facts to keep in mind</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="2864c0f68a0295edeb4359c7cca839c9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>GFS measures signals to be staionary only within a single, short EEG epoch.</li>
+	<li>Relation between GFS and degree of cognitive decline is most evident in the alpha band</li>
+	<li>Almost continuous decrease of GFS with increasing cognitive impairments in the New York group.</li>
+	<li>Possible explanations include neurodegenerative process affect neural synchronization.</li>
+	<li>Alpha band might be the first place where there's functional changes for the Alzheimer's disease</li>
+</ul>
+</div></div></section></section><section data-id="f123310116dc599fd793568ed67618f5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 91px; height: auto;" data-block-id="8ee5080247e143950c225e50769467ab"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Relevance of Data</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 186px; height: auto;" data-block-id="b877422440c220a06f9112b21378ce1f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Instead of just ADHD and anxiety, Alzheimer's data shows result of correlation to EEG as well</li>
+	<li>There are bar graphs provided on the GFS values for every trial. However, we might need to learn more about the specific algorithm in order for this data to be useful.</li>
+</ul>
+</div></div></section><section data-id="063cd943e71294ad43bd7dbcde314e80"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="3b615484d80b5575e0172a282ff64144"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">EEG Correlates of Task Engagement and Mental Workload in Vigilance, Learning, and Memory Tasks</span></h2>
+</div></div></section><section data-id="4afb7064864085f36c54acf0d351c87d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 69px; top: 33px; height: auto;" data-block-id="add3aceed279758716fb99916d626526"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Overview</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 815px; left: 48px; top: 140px; height: auto;" data-block-id="870e701160fe7ac770bd76451823d7bb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>
+<strong>GOAL:</strong> To measure the task engagement and mental workload of a person using both subjective measurements and EEG and see if there's a correlation</li>
+	<li>
+<strong>Why EEG?:</strong> It is stated that other biomarkers that can indicate cognitive state changes include heart rate, oculomotor activity (EOG), pupilometry, fNIR, and galvanic skin response. However, EEG can measure subtle shifts in alertness second-by-second</li>
+	<li>
+<strong>Variables:</strong> Task engagement tracks demands for sensory processing and attention resources while mental workload measures the amount of cognitive process that will be the domain of executive function</li>
+</ul>
+</div></div></section><section data-id="39bcb60c3470af7f1648be9e129cc0ff"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 26px; height: auto;" data-block-id="f0019a24885edab0e71c8f354fa0b3ba"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Methods</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 108px; height: auto;" data-block-id="d49206f255b29ab58e3572b59bf4ed65"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>5 tasks and each had 3-6 varying difficulties
+	<ul>
+		<li>
+<strong>Grid</strong> - a N x N grid of square, missiles were presented at a certain coordinate, then disappears. Subject has to remember where it was</li>
+		<li>
+<strong>Forward Digit Span</strong> - series of single digits of increasing lengths presented, then subject has to remember and enter the numbers</li>
+		<li>
+<strong>Mental Arithmetic</strong> - varying amount added</li>
+		<li>
+<strong>Backward Digit Span </strong>- just like FDS but subject has to enter it in backwards order</li>
+		<li>
+<strong>Trails </strong>- draw a trail based on labeled dots on the screen (connect the dots) based on numbers or letters or the combination of both</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="91badf4f65371ec4f38f74f1c17150ac"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 33px; height: auto;" data-block-id="0a7c5ddd85a4e7c58aa86d652a461c35"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">EEG Metric for Task Engagement</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 129px; height: auto;" data-block-id="9def111d84b42fe7b04fef2bdfed70ac"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Four-class quadratic discriminant function analysis (DFA) constructed using absolute and relative power spectra variables from Fz-POz and Cz-POz</li>
+	<li>This helps measure how often someone's eyes blink, and the time they spend with their eyes open/closed</li>
+	<li>Used a 3-choice vigilance task to measure high vs low engagement vs relaxed wakefulness</li>
+</ul>
+</div></div></section><section data-id="21e57049fa890a81052919866ab54e57"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 33px; height: auto;" data-block-id="c9d9b89a401dc72bb5e8eccf1e969b6a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2><span style="font-size:0.7em">EEG Metric for Mental Workload</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 132px; height: auto;" data-block-id="ccb5485e0b665e52a0d1477b73fae6bb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Linear DFA gives classification of low vs high mental workload</li>
+	<li>Stepwise regression on EEG data from C3-C4, Cz-PO, F3-Cz, Fz-C3, and Fz-PO</li>
+	<li>Different combinations of the data were used to derive a two-class workload classifier.</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 633px; height: 177.24px; left: 123px; top: 420px;" data-block-id="38b747fef2cfbad3f720d5a2fefd0186"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1050" data-natural-height="294" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525399/images/2849993/EEGVariables.jpg"></div></div></section><section data-id="7e9894b6669d7dc4ac44459f483fe844"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 33px; height: auto;" data-block-id="d59a7469c03d2f5aa79de9b7f6454d2e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Relevance/Data</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 65px; top: 140px; height: auto;" data-block-id="8170dc96e2a0733f9024672cdb3252ac"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Correlation between subjective rating of workload and actual increase in EEG workload</li>
+	<li>Correlation between increase in EEG workload and decrease in objective performance</li>
+	<li>Doesn't provide raw data but if we can find the raw data for this paper, it'll be useful</li>
+</ul>
+</div></div></section><section data-id="8106276235a6739bdbb963a88ba56a9e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 59px; height: auto;" data-block-id="fb741704f2b1d187f092536581e12965"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1><span style="font-size:0.5em">The influence of mental fatigue and motivation on neural network dynamics; an EEG coherence study</span></h1>
+</div></div></section><section data-id="b5ab0169ab2775f37e67052a57c394a2"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 28px; height: auto;" data-block-id="2d170384af9096d6f7b345bd6260e0b5"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.7em">Overview</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 720px; left: 80px; top: 140px;" data-block-id="143e050edcdf3130facfa7507361c484"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>
+<strong>GOAL:</strong>  Examine the correlation of EEG data as a result of mental fatigue
+	<ul>
+		<li>Does mental fatigue affect neural network dynamics (by measurement of neural synchronization)?</li>
+	</ul>
+	</li>
+	<li>
+<strong>How to Measure:</strong> EEG coherence measures the association of different timeseries of specific frequency bans.</li>
+	<li>
+<strong>Trials:</strong> repetition vs switch, make subject identify characteristics of colored letters on a screen. Repetition: identifies color all the time</li>
+</ul>
+</div></div></section><section data-id="231a5c145398abc9cff6102097915c4a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 0px; height: auto;" data-block-id="41bc7b2f973de82e4ae63e48c008732c"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="font-size:0.7em">Results</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 720px; left: 80px; top: 116px;" data-block-id="ef51617c0c48cae86e0d679d5c499461"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>
+<strong>Subjective:</strong> Subjects who report increase aversion will take longer time</li>
+	<li>
+<strong>Conditions:</strong> general activation (ga), deactivation/sleep (ds), high activation (ha), and general deactivation (gd)</li>
+	<li>
+<strong>Behavioral</strong>: Reaction time initially decreases, then increases due to mental fatigue. Then after motive manipulation (increasing reward), the reaction time shortens again. Error rates keep going up until reward was offered.</li>
+</ul>
+</div></div></section><section data-id="f24a1d3b8b3b30cbf21cd335b0084e7a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 41px; height: auto;" data-block-id="15e37388d688f6f72ecd9ac39305c3e7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Coherence Data</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="932a3c728a4e764c7a8d73c8fed40caf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>smaller number of functional units observed in lower frequency bands, more FUs in higher frequency</li>
+	<li>the total number of electrodes involved decreased</li>
+	<li>larger local networks at lower frequency</li>
+	<li>Fz, FG5, FG6, PO7, PO8 chosen for further coherence statistical analysis:
+	<ul>
+		<li>highest coherence values = lowest frequency band (has lots of details about specific electrodes)</li>
+		<li>coherence values showed increase with time, and a small non-significant decrease observed after motive manipulation</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="f0b869f4646102f61803f4a73b0e5a6b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 41px; height: auto;" data-block-id="52a8b1438750f034b314ebc75c6258e9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Power Density Data</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="422fb2580404a3e20941213961371551"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>power density decreases with increasing frequency</li>
+	<li>differences in power electrodes are dependent upon frequency</li>
+	<li>i.e. lower frequency bands have high powered density at posterior sites</li>
+	<li>power density higher in repetition condition</li>
+	<li>power density increases with time</li>
+</ul>
+</div></div></section><section data-id="82c8c7e4ca6bc378d25af7aaf867008a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 24px; height: auto;" data-block-id="c95023f88913a18d4cace4751983fe9a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.7em">Relevance/Data</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 98px; height: auto;" data-block-id="88eed31fcf6870c30ba3be90bf175763"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Gives coherence data and meaningful findings on certain parts of the brain. Have electrodes and their coherence listed. Have a bunch of different frequencies listed and their power densities as well.
+	<ul>
+		<li>This includes strong coherence between contra-lateral frontal and parietal area. This is important to note because fronto-parietal networks play an important role in cognitive control.</li>
+	</ul>
+	</li>
+	<li>Uses Fisher z-transformation to find a correlation coefficient</li>
+	<li>Maybe this can be used to measure learning efficiency etc</li>
+</ul>
+</div></div></section>
+				</div>
+			</div>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
