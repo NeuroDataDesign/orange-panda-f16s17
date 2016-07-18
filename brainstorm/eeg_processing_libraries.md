@@ -25,8 +25,7 @@
 
 ### Tsun's Libraries
 
- - [NeuroPy](https://pypi.python.org/pypi/NeuroPy/0.1)
-    - [Algorithm](https://github.com/neuropy/neuropy#readme)
+ - [PyEEG](http://pyeeg.sourceforge.net/)
 
  - [eegR](http://user2014.stat.ucla.edu/abstracts/talks/39_Toth.pdf)
  
