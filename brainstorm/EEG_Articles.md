@@ -7,7 +7,8 @@
 
 ### Wong EEG Articles
 
- - [EEG dynamics in patients with Alzheimer's disease](https://www.researchgate.net/profile/Jaeseung_Jeong/publication/8504822_EEG_dynamics_in_patients_with_Alzheimer's_disease/links/00463514fdee293c8a000000.pdf)
+ - [Decreased EEG synchronization in Alzheimer’s disease and
+mild cognitive impairment](http://boris.unibe.ch/23463/1/Decreased%20EEG%20synchronization%20in%20Alzheimer%E2%80%99s%20disease%20and%20mild%20cognitive%20impairment.pdf)
  - [EEG Correlates of Task Engagement and Mental Workload in Vigilance, Learning, and Memory Tasks](http://www.ingentaconnect.com/content/asma/asem/2007/00000078/A00105s1/art00032)
  - [The influence of mental fatigue and motivation on neuralnetwork dynamics; an EEG coherence study](http://www.cs.rug.nl/~roe/publications/Lorist_2009)
 
