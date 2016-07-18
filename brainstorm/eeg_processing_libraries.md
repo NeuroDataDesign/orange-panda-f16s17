@@ -20,3 +20,8 @@
 - [Modeling nonlinear relationships in ERP data using mixed-effectsregression with R examples](http://onlinelibrary.wiley.com/doi/10.1111/psyp.12299/epdf)
 
 - [Multiway Multidimensional Method to Decompose a Multi-entries Data-array](https://www.jstatsoft.org/article/view/v034i10)
+
+### Tsun's Libraries
+
+ - [NeuroPy](https://pypi.python.org/pypi/NeuroPy/0.1)
+    - [Explanation](https://github.com/neuropy/neuropy#readme)
