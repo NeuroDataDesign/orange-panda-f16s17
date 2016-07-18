@@ -27,3 +27,7 @@
 
  - [NeuroPy](https://pypi.python.org/pypi/NeuroPy/0.1)
     - [Algorithm](https://github.com/neuropy/neuropy#readme)
+
+ - [eegR](http://user2014.stat.ucla.edu/abstracts/talks/39_Toth.pdf)
+ 
+ - [biosppy](https://pypi.python.org/pypi/biosppy/0.2.0)
