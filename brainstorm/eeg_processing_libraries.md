@@ -24,4 +24,4 @@
 ### Tsun's Libraries
 
  - [NeuroPy](https://pypi.python.org/pypi/NeuroPy/0.1)
-    - [How it Works](https://github.com/neuropy/neuropy#readme)
+    - [Algorithm](https://github.com/neuropy/neuropy#readme)
