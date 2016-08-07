@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+<div class="reveal">
+				<div class="slides">
+					<section data-id="12894875782774f10175da33a3eebdb6"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 183px; height: auto;" data-block-id="c27b7c1d3511a95071d3e1b4a11730c7"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Notes on Time-Series Analysis</h1>
+
+<p>Book by: Rubert H. Shumway</p>
+</div></div></section><section class="stack" data-id="22e82e11aae394876409baefd65ccd5e"><section data-id="5f28b0ebc8636e5f96ce0f0d5898dceb"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="08fecc4c76811e8099370f15a282cd07"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Two Approaches to TSA</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="7be27a520fe6fd2fb2fd638a5b6115e0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Time Domain
+	<ul>
+		<li>Model future value of time series as parametric function of currect/past values</li>
+	</ul>
+	</li>
+	<li>Frequency Domain
+	<ul>
+		<li>Relates periodic or systematic sinusoidal variations found naturally in data</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="21a84f4839b499f82fcd5d3cb3389aff"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="d7628b5997785fbe7b7e8240e97caf7a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Spectral Analysis</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="cfe02f1d9baa7e362faab8b790bd1d02"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Evaluate the variance associated with each periodicity of interest</li>
+	<li>Power Spectrum = Variance profile over frequency</li>
+</ul>
+</div></div></section><section data-id="4edee30ae32edadb41e726f42e39e1f9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 85px; height: auto;" data-block-id="d5afe5b969fc9acec4830063554027b0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Common Experimental Time Series Data</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 289px; height: auto;" data-block-id="515f9df70888e0af5cf4c7981ea52710"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Quarterly Earnings Trends</li>
+	<li>Global Temperature Trends</li>
+	<li>Speech Recognition</li>
+	<li>NYSE Trends </li>
+	<li>El Nino Effect and Fish Population</li>
+	<li>fMRI Data</li>
+	<li>Earthquakes vs. Explosions</li>
+</ul>
+</div></div></section></section><section data-id="96a5edaa808654226a85f4f4fbd4fcc0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="a068ac835e7c9b5f9529a94cb07a3f62"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Time Series Statistical Model</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 293px; height: auto;" data-block-id="b68792088ba1096bdf034b63de1a4b74"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Develop a mathematical model that provides plausible descriptions for sample data</li>
+</ul>
+</div></div></section><section data-id="fa9830b9b4b6134b2073aa3af5e54b7a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="6e4435ad6c246da7cd6f7f1566920ccb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>White Noise</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="d6fa67598c366bc305ebc44b81921371"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Uncorrelated random variables with mean 0 and finite variance</li>
+</ul>
+</div></div></section><section data-id="e2a8bb480f665a2b34cef2ee5a953446"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="cff9c3ec0cbf0cb75d690b2f6cd2e135"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Moving Averages</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 144px; height: auto;" data-block-id="f8a2fab159402670604edd6e8d5cf95b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<ul>
+	<li>Smooths series</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 384.201px; height: 282px; left: 308px; top: 308px;" data-block-id="493290296d46bfb6dea979f433cdce4b"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="812" data-natural-height="596" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899279/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 54.6535px; left: 332px; top: 216px;" data-block-id="1e8229c814fc21b38110afc3b842c2ec"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="303" data-natural-height="46" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899283/pasted-from-clipboard.png"></div></div></section><section data-id="2aed8253df96853a1c9975fea9509ff9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 125px; height: auto;" data-block-id="278bddd97752be2200d37777d41fc352"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Autoregressions</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 49.6552px; left: 300px; top: 225px;" data-block-id="104b4093d638ade42af28fc1e3ffba53"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="290" data-natural-height="40" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899290/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 425.081px; height: 253px; left: 274px; top: 307px;" data-block-id="387066532a6fc296c204fd6f514235a9"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="830" data-natural-height="494" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899292/pasted-from-clipboard.png"></div></div></section><section data-id="f193b5ea045c265633b67b8fdd9c555f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 78px; height: auto;" data-block-id="93c0fd50376e85579ccde5c95578b6e8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Random Walk with Drift</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 181px; height: auto;" data-block-id="eb23131840c4f2c8bddb76ff328d8731"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Analyze trends
+	<ul>
+		<li>ex. Global temperature data</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 245.697px; height: 111px; left: 358px; top: 280px;" data-block-id="1825a8c4b32bc6e98ae15dfd6c87610d"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="197" data-natural-height="89" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899295/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 204px; left: 300px; top: 388px;" data-block-id="48f24fecf0903067d27ba3b54a97dafc"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="810" data-natural-height="459" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899296/pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 164px; left: 653px; top: 401px;" data-block-id="03a291cb7837708568aa5ef888201418"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>W/ Drift</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 164px; left: 677px; top: 500px;" data-block-id="3672811462a7a979272bdf4a1625094d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p>W/out Drift</p>
+</div></div></section><section data-id="473448b99a4eaea87740b8a6e66d147a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="9b440f25cb183b0d7711acc3c307b165"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Signal in Noise</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 471.26px; height: 406px; left: 245px; top: 162px;" data-block-id="58c98b5975f9b23ed63a2be172726746"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="881" data-natural-height="759" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899304/noise.JPG"></div></div></section><section data-id="19dcc2349f07a7d34bb1f8046d7009a9"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="8b5590b89c4722b6f1a9f494f8788a04"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Generating Correlated Data</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="d247b364db00073b2f6293c8adb44cc3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Averaging ind. random variables over adjacent time points</li>
+	<li>Looking at output of difference equations that respond to white noise inputs</li>
+</ul>
+</div></div></section><section data-id="bdc7beebc451dde1882084902d8aa781"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="8d728f54b4d2b2adca493471c8184f1a"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Auto-correlation and Cross-Correlation</h1>
+</div></div></section><section data-id="6c49b1709dec5b2b6e304fdb38dbab13"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="a8ea5e30abfe4e9c1bcf7b9e9ccdb3f9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui" style="z-index: 10;"><h2>Mean function</h2></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 76.2466px; left: 300px; top: 280px;" data-block-id="4b0cb4f5337fbad8c809b7515abcf75e"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="373" data-natural-height="79" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899318/Capture.JPG"></div></div></section><section data-id="39ea9051e724db67565cd57c3b69ea9d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="723b5f71b9b594fc302502f02a43c46f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui" style="z-index: 11;">
+<h2>Mean Function of a Moving Average Series</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 642.222px; height: 68px; left: 160px; top: 379px;" data-block-id="f4b0df08cbbf42aacab270f9bb4158fe"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="595" data-natural-height="63" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899321/Capture.JPG"></div></div></section><section data-id="61eacdfa8d40968daf100de0d9b7e498"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="adc2917213a6c619844b08586223a9d7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui" style="z-index: 11;">
+<h2>Mean Function of a Random Walk with Drift</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 434px; height: 90px; left: 263px; top: 376px;" data-block-id="e13d219060a5f18b0992a2e3144c4513"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="434" data-natural-height="90" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899324/Capture.JPG"></div></div></section><section data-id="ca8a8be5a0a9402d64371296bc6ee529"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="e41f10634a633e0aa5d84fee95e8ff0d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" dir="ui" style="z-index: 11;">
+<h2>Mean Function of a Signal Plus Noise</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 65.1584px; left: 300px; top: 388px;" data-block-id="7dc947f3a24b3cba96aeb77eed2ef554"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="221" data-natural-height="40" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899406/Capture.JPG"></div></div></section><section data-id="d7b86d0eed674305b5b704135025fd16"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="f07ed1da97ed9f522b3985d4339cc985"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Autocovariance Function</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 273px; height: auto;" data-block-id="2672adc3e3b2da5c303a23cd51a0015c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Measures linear dependence between 2 points on same series observed at different times</li>
+	<li>Average cross product relative to joint distribution F(x(s), t(s))</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 534.261px; height: 48px; left: 213px; top: 466px;" data-block-id="d88b6216bbfe62e3958d3b3664ae2fed"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="512" data-natural-height="46" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899410/Capture.JPG"></div></div></section><section data-id="fd052d7f34b626c38c9a47b1969b595c"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="20ea1b889f694fa6e7086d4fb4f3af41"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Autocovariance of White Noise</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 549.647px; height: 128px; left: 206px; top: 280px;" data-block-id="99d769edea9222b4e45b023915839452"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="438" data-natural-height="102" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899412/Capture.JPG"></div></div></section><section data-id="dcfba29fee825423d9c5a6786c30c2a1"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="c8b078a928c3943718234163f84d88f9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Autocovariance of a Moving Average</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 241px; height: auto;" data-block-id="3d8712296f5b858f85b4f0d096bfebbc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Only depends on time separation (lag)
+	<ul>
+		<li>Not on absolute location of points along series</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 172.921px; left: 300px; top: 360px;" data-block-id="bfb1f4105392b8a8f2bed79b931e8372"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="356" data-natural-height="171" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899418/Capture.JPG"></div></div></section><section data-id="55cbd6ec51d0e10de5d77bdb0c65bec0"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="953a34c04ecaa0dce17f594772db61e8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Autocovariance of a Random Walk</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 234px; height: auto;" data-block-id="1f7758fa90799db2fa80d67fc0e8b6ea"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Depends on particular time values (s and t)
+	<ul>
+		<li>Not on time separation or lag</li>
+	</ul>
+	</li>
+	<li>Increases without bound as time t increases</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 624.324px; height: 99px; left: 160px; top: 391px;" data-block-id="091539e24cae9a81bdb99b702d37ff28"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="700" data-natural-height="111" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899422/Capture.JPG"></div></div></section><section data-id="2bfab53a40a473feae6bffabaedf5056"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="4f9650e8d692bda95c6ffd570de77b96"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Autocorrelation Function</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 257px; height: auto;" data-block-id="5dc62c81f43dcd54a4ff8b4608277b05"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Measures linear predictability of series at time t, using only the value x(s)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 112.836px; left: 300px; top: 364px;" data-block-id="4063742b53405c73e2fc1b25b3fc0e85"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="268" data-natural-height="84" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899429/Capture.JPG"></div></div></section><section data-id="1301d2e9654852c1b39368a60cf0ba92"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 67px; height: auto;" data-block-id="efd6661c97f8a92098a5e7f5d6acda9b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+<h2>Cross-covariance Function between two series</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 736.465px; height: 58px; left: 112px; top: 280px;" data-block-id="d77cf0084edc1586091ee372f70cbfad"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="546" data-natural-height="43" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899430/Capture.JPG"></div></div></section><section data-id="c11e957052ac02ae5df08e03a1c520b2"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="b62304c49ed388d9e9258c1db93103d8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Cross-Correlation Function</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 95.3943px; left: 300px; top: 317px;" data-block-id="a760acf602c622548af0b8ab35177fe8"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="317" data-natural-height="84" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899433/Capture.JPG"></div></div></section><section data-id="36e971e9c14fc24e7ec732c418d14374"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 183px; height: auto;" data-block-id="5d5ce226c8fed42b59b7bab6e9403ff7"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Stationary Time Series</h1>
+</div></div></section><section data-id="1484e22d89860e2cdef74b022a12fa9e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 151px; height: auto;" data-block-id="343ebd54ca57145a50b72d0282dcd398"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Strictly Stationary Time Series</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 375px; height: auto;" data-block-id="fe58447eb7dceec8ce3e234e585834e8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Probabilistic behavior of every collection of values is <strong>identical</strong> to that of the time shifted set</li>
+</ul>
+</div></div></section><section data-id="e89f297e695d62063bf1b88ae54b6096"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="3b25bf3ab1497188de3fcb48f24dbeb1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Weakly Stationary Time Series</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 240px; height: auto;" data-block-id="6b39f6b6e439f3c466e2ca6903c3177b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>Mean value function is constant
+	<ul>
+		<li>Doesn't depend on time (t)</li>
+	</ul>
+	</li>
+	<li>Autocovariance function depends on s and t only through their difference |s - t|</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 698.4px; height: 60px; left: 131px; top: 460px;" data-block-id="403fa705fbdf21c3f5514229c1df07d6"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="582" data-natural-height="50" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2899442/Capture.JPG"></div></div></section>
+				</div>
+				<div class="dimmer"></div>
+			</div>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
