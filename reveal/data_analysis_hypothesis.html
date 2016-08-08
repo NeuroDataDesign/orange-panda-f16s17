@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+<div class="reveal">
+				<div class="slides">
+					<section data-id="669bb86439d2446c000f4f8c8d57e883"><div class="sl-block" data-block-type="text" style="width: 800px; left: 55px; top: 59px; height: auto;" data-block-id="e57072f25b95945153b3b0c3a96f3120"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>EEG Paper</h1>
+</div></div></section><section class="stack" data-id="41a31bd8dbde5ff27830459fc02482f3"><section data-id="bd6c834db69b0ea3080f61dceda2b369"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 18px; height: auto;" data-block-id="8d22cdb785d294ba586887aa7f195d9c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Data Format</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 54px; top: 104px; height: auto;" data-block-id="e46133e84ff040d7564c8cc731f1d848"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>recall that there are 6 distinct paradigms:
+	<ul>
+		<li>Passive: Resting, Surround Suppression, Video</li>
+		<li>Active: Flickering, Sequence Learning, WISC</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="eb10640af3336876f29975f89c503fb9"><div class="sl-block" data-block-type="text" data-block-id="a6a749f9b73d4d4d3e7c0e1b2331bd48" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 120px; top: 132px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li>
+<strong>.raw</strong> files contain the raw EEG data for all 6 experiments</li>
+	<li>
+<strong>.txt</strong> files contain the eye-tracking data, two of each from each paradigm.
+	<ul>
+		<li>
+<strong>events</strong> - segmented into fixation, saccades, and blinks</li>
+		<li>
+<strong>samples </strong>- unsegmented, includes info such as head position and head rotation</li>
+	</ul>
+	</li>
+	<li>
+<strong>.mat</strong> files have different types, some contain the metadata</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 33px; height: auto;" data-block-id="00bebb2c2035f96b02ad16f906370d79"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 12;">
+<h2>CMI Share Folder</h2>
+</div></div></section><section data-id="7ac19ede315caa2f18454cf1eecb500f"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="1ecb12932ec23a51a7931173c6c65d69"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Main Folders</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="25289aa31e0087736c3e00a510125791"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>
+<strong>full_xxx.mat: </strong>Full partially processed data set, includes data on EEG
+	<ul>
+		<li>Location of EEG</li>
+		<li>Some metadata on events</li>
+		<li>Etc. (sometimes has more data)</li>
+	</ul>
+	</li>
+	<li>
+<strong>reduced </strong>is after PCA and some preprocessing</li>
+</ul>
+</div></div></section></section><section data-id="eca8fb62d21bdedef9a6662cb56e69a2"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="d8bd0506484fe98122a62801b191c6ee"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2><span style="font-size:0.9em">Questions for Data Format</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 176px; height: auto;" data-block-id="52199d9ae25f23470e78fd5b2054da81"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ol>
+	<li>Some of the full .mat files are missing fields/have empty fields. Have these not been filled yet/will more metadata be added later, or is it finalized? Also, is there a legend for it, because we only understand some of it.</li>
+	<li>What programs is recommended for opening the EEG .raw files? Should we bother with the raw data?</li>
+	<li>When describing the participants, what does it mean by "typically developing"? Are we describing mentally healthy patients or patients that are about to develop clinical disorders?</li>
+	<li>Will visual learning and eye tracking rest data be separated?</li>
+</ol>
+</div></div></section><section data-id="56bf8db6a01f899825c1ee000cefe788"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="7764cf57755a4c2e4d66614825ba40d8"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Hypotheses</h1>
+</div></div></section><section data-id="36e8428fac4ef8eeac3547fc3ca2db65"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 45px; height: auto;" data-block-id="fbc9c1cdc5bd0d69a42f0227d15dfa1c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Intrasubject Hypotheses:</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 119px; height: auto;" data-block-id="a23b59218ee646e0035bc7f711410a4e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ol>
+	<li>For resting, does the saccade duration increase as time elapsed increases due to the anxiety/ADHD that these patients have?
+	<ol>
+		<li>Increased inability to focus on the fixation during resting activity corresponds with worse results in the active paradigms.</li>
+		<li>Increased SSVEP/more varied SSVEP (via surround suppression) with worse/ results with the active paradigms.</li>
+	</ol>
+	</li>
+</ol>
+</div></div></section><section data-id="fb8ad12fa3d4b412b419d267c2e4925e"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 162px; height: auto;" data-block-id="edeb85764507d63d9dba5fcef18e43cf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Intersubject Hypotheses</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 236px; height: auto;" data-block-id="eacc172745aead03aa4f4c151e8d25e1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ol>
+	<li>ADHD and anxiety diseases may cause more varied and less focused brain activity over time during the video stimuli.</li>
+	<li>Subjects with ADHD and anxiety will have similar trends with video stimuli and WISC.</li>
+	<li>SSVEP and resting activity should both be increased for people with mental diseases.</li>
+</ol>
+</div></div></section>
+				</div>
+			</div>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
