@@ -1,6 +1,7 @@
 Questions for Data Keepers:
 
 1. Some of the full .mat files are missing fields/have empty fields. Have these not been filled yet/will more metadata be added later, or is that intentionally not added because they were defualt fields in the processing (eg for icasphere, icaact, etc)? Is the "x" in xmin and xmax time, or another variable?
+
 2. Is there a legend of all the message descriptions and what number means what? (The event numbers)
 
 3. SurrSupp_Block1 eye tracking data is missing from the CMI_share (note: only for A00051826, need to check others). Some other patients are missing data occasionally throughout. Some include:
@@ -13,6 +14,6 @@ Questions for Data Keepers:
 
 5. The order we think the EEG full_xxx.mat files are in is in the attached Excel file. Are we right about which file number corresponds with which paradgim, and is that true for each patient, and is there a reason the tests were run in that order?
 
+6. What is TargOnT (it's an array in multiple of the metadata .mat files from the CMI_share folder)?
 
-
-6. Are you planning to eventually separate the visual and resting data?
+6. Where does the actual resting eyetracking data end and the visual begin, and will the 2 files be eventually separated?
