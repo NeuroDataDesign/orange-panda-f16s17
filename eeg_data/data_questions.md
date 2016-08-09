@@ -16,4 +16,6 @@ Questions for Data Keepers:
 
 6. What is TargOnT (it's an array in multiple of the metadata .mat files from the CMI_share folder)?
 
-6. Where does the actual resting eyetracking data end and the visual begin, and will the 2 files be eventually separated?
+7. There are some par. objects left blank in the CMI_share folder .mat files. Were they left like that intentionally?
+
+8. Where does the actual resting eyetracking data end and the visual begin, and will the 2 files be eventually separated?
