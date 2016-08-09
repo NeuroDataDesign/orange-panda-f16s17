@@ -25,7 +25,7 @@ Email:
 
 To whom it may concern,
 
-Thank you so much for the time you've put in to let us access and work with your data. We highly appreciate the unique advantages a dataset like this provides and that we've been given the opportunity to work with it. We've looked through the data a bit, and are starting some exploratory analysis on it just to see some preliminary patterns and give some validation to early hypotheses. We came up with a couple of questions while looking at and working with the data, and were hoping you'd be able to answer a couple of them.
+Thank you so much for taking the time to help us download and interpret your data. We really appreciate the opportunity you have given us to work with your unique dataset. We've looked through the data's structure, and before we can run exploratory analysis on it, we need to receieve some clarification on a few points. We are hoping you'll find a spare moment to answer them.
 
 1. Some of the full .mat files are missing fields/have empty fields. Have these not been filled yet/will more metadata be added later, or is that intentionally not added because they were defualt fields in the processing (eg for icasphere, icaact, etc)? Is the "x" in xmin and xmax time, or another variable?
     1. We've attached an excel file with a list of the fields in the "results" structure in the full_xxxx.mat. They're representative of what we could gather and use from the .mat files (so you have a clearer picture of what we're currently looking at while forming these questions).
@@ -48,4 +48,5 @@ Thank you so much for the time you've put in to let us access and work with your
 
 8. Where does the actual resting eyetracking data end and the visual begin, and will the 2 files be eventually separated?
 
-Thank you so much for your time and all you've done to help our project. Hope to hear from you soon, and if you have any inquisitions about how we've been able to work with/any roadblocks we've seen while processing the data, we'd be very happy to help!
+Thank you so much for taking the time to help us with our project. Hope to hear from you soon!
+-Team Orange Panda
