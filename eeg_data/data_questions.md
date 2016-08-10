@@ -21,7 +21,7 @@ Questions for Data Keepers:
 
 8. Where does the actual resting eyetracking data end and the visual begin, and will the 2 files be eventually separated?
 
-**##Email:##**
+##**Email:**
 
 To whom it may concern,
 
