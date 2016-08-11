@@ -2,9 +2,9 @@
 
 To whom it may concern,
 
-Thank you so much for taking the time to help us download and interpret your data. We really appreciate the opportunity you have given us to work with your unique dataset. We've looked through the data's structure, and before we can run exploratory analysis on it, we need to receieve some clarification on a few points. We are hoping you'll find a spare moment to answer them.
+Thank you so much for taking the time to help us download and interpret your data. We really appreciate the opportunity you have given us to work with your unique dataset. We've looked through the data's structure, and before we can run exploratory analysis on it, we need to recieve some clarification on a few points. We are hoping you'll find a spare moment to answer them.
 
-2. For the numbered user events (ie the numbers representing user messages, button presses, etc.), is there a legend that connects numbers with a particular prompt for the subject/action from the subject? The condition field is also blank in the full_xxx.mat files, are the related condition variables contained somewhere?
+2. For the numbered user events (ie the numbers representing user messages, button presses, etc.), is there a legend that connects numbers with a particular prompt for the subject/action from the subject? The condition field is also blank in the full_xxx.mat files, are the related condition variables for subjects contained somewhere?
 
 3. SurrSupp_Block1 eye tracking data is missing from the CMI_share (note: only for A00051826, need to check others). Some other patients are missing data occasionally throughout. Some include:
     1. A00051826 - missing SurrSupp_Block 1 and video eyetracking data
@@ -15,6 +15,8 @@ Thank you so much for taking the time to help us download and interpret your dat
 4. A more general question about the subjects and the experiment, when test participants were written as "typically developing", does that mean developing normally (with no condition) or had a slightly developed form of the disease?
 
 5. The order we think the EEG full_xxx.mat files are in is in the attached Excel file. Are we right about which file number corresponds with which paradgim, and is that true for each patient, and is there a reason the tests were run in that order?
+
+9. In the paper, it said there were .csv files available if wanting to process the data via languages other than MATLAB. Are these available right now?
 
 Thank you so much for taking the time to help us with our project. Hope to hear from you soon!
 -Team Orange Panda
@@ -42,3 +44,7 @@ Thank you so much for taking the time to help us with our project. Hope to hear 
 7. There are some par. objects left blank in the CMI_share folder .mat files. Were they left like that intentionally?
 
 8. Where does the actual resting eyetracking data end and the visual begin, and will the 2 files be eventually separated?
+
+9. In the paper, it said there were .csv files available if wanting to process the data via languages other than MATLAB. Are these available right now?
+
+10. What is the exact different in pre-processing between reduced and full .mat files?
