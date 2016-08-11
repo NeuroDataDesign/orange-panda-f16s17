@@ -14,7 +14,7 @@ Thank you so much for taking the time to help us download and interpret your dat
 
 4. A more general question about the subjects and the experiment, when test participants were written as "typically developing", does that mean developing normally (with no condition) or had a slightly developed form of the disease?
 
-5. The order we think the EEG full_xxx.mat files are in is in the attached Excel file. Are we right about which file number corresponds with which paradgim, and is that true for each patient, and is there a reason the tests were run in that order?
+5. The order we think the EEG full_xxx.mat files are in is in the attached Excel file. Are we right about which file number corresponds with which paradigm, and is that true for each patient, and is there a reason the tests were run in that order?
 
 Thank you so much for taking the time to help us with our project. Hope to hear from you soon!
 -Team Orange Panda
