@@ -12,8 +12,6 @@ Thank you so much for taking the time to help us download and interpret your dat
     3. A00051955 - missing SurrSupp_Block2 Samples eye tracking data and has a file called A00051955rSupp_Block 1.txt
     4. Additional slight issues across the data. Was this intentional/was the data not measured, or was it missing?
 
-4. A more general question about the subjects and the experiment, when test participants were written as "typically developing", does that mean developing normally (with no condition) or had a slightly developed form of the disease?
-
 5. The order we think the EEG full_xxx.mat files are in is in the attached Excel file. Are we right about which file number corresponds with which paradigm, and is that true for each patient, and is there a reason the tests were run in that order?
 
 9. In the paper, it said there were .csv files available if wanting to process the data via languages other than MATLAB. Are these available right now?
@@ -34,8 +32,6 @@ Thank you so much for taking the time to help us with our project. Hope to hear 
     2. A00051886 - missing video eyetracking data
     3. A00051955 - missing SurrSupp_Block2 Samples eye tracking data and has a file called A00051955rSupp_Block 1.txt
     4. Additional slight issues across the data. Was this intentional/was the data not measured, or was it missing?
-
-4. A more general question about the subjects and the experiment, when test participants were written as "typically developing", does that mean developing normally (with no condition) or had a slightly developed form of the disease?
 
 5. The order we think the EEG full_xxx.mat files are in is in the attached Excel file. Are we right about which file number corresponds with which paradgim, and is that true for each patient, and is there a reason the tests were run in that order?
 
