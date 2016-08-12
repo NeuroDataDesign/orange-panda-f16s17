@@ -2,8 +2,8 @@
 
 **Intrasubject Hypothesis**
 
-(Main focus for Initial Exploratory Analylsis) For resting state, the saccade duration might increase as time elapsed increases, especially for anxiety and ADHD patients. Therefore, this might result in:
-	i. The lack of ability to focus in other experiments (such as contrast change and sequence learning) and leads to less accuracy.
+(Main focus for Initial Exploratory Analylsis) For resting state, the saccade duration might increase as time elapsed increases, especially for anxiety and ADHD patients. Therefore, this might result in:  
+	i. The lack of ability to focus in other experiments (such as contrast change and sequence learning) and leads to less accuracy.  
 	ii. Increased SSVEP/ more varied SSVEP in the surround suppression experiment.
 
 **Intersubject Hypothesis**
