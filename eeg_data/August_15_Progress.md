@@ -8,7 +8,7 @@ Very labor intensive.
 
 ~8 hour time commitment just to complete 6 weeks of courses.
 
-###Draft Email / Hypothesi
+###Draft Email / Hypothesis
 
 COMPLETED
 
