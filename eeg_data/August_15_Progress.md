@@ -3,6 +3,7 @@
 **Coursera (Course 5/ Course 6(weeks 1+2))**
 
 COMPLETED
+
 Very labor intensive. ~8 hour time commitment just to complete 6 weeks of courses.
 
 **Draft Email / Hypothesis**
@@ -219,4 +220,5 @@ $(document).ready(function () {
 
 
 **Time Series Analysis Book**
+
 DID NOT GET TO THIS WEEK
