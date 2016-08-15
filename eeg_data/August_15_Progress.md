@@ -1,15 +1,17 @@
 # Progress Up Until This Point
 
 **Coursera (Course 5/ Course 6(weeks 1+2))**
+
 COMPLETED
 Very labor intensive. ~8 hour time commitment just to complete 6 weeks of courses.
 
 **Draft Email / Hypothesis**
+
 COMPLETED
 
 **Read in Eye Tracking Data**
+
 COMPLETED
-~4 hour time commitment
 
 ***
 # Resting vs SAIIT
