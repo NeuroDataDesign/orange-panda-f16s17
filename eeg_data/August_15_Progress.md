@@ -217,7 +217,7 @@ $(document).ready(function () {
   })();
 </script>
 
-<img src="https://github.com/Upward-Spiral-Science/orange-panda/blob/master/eeg_data/event_occurances.JPG" width="400px" height="400px">
+<img src="https://github.com/Upward-Spiral-Science/orange-panda/blob/master/eeg_data/event_occurances.JPG" width="550px" height="380px">
 </body>
 </html>
 
