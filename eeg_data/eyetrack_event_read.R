@@ -28,8 +28,8 @@ readrestvis <- function(inputpath) {
     restdata <- lapply(restvisdata, function(x) x[which(x$Start < restendtime),]);
     # get lower bound for visdata
     # the "start_eye_recording" tag (changed to a 0 in description here) isn't consistently there for resting
-    # so can't use it. use 91, start of visual learning message and sub
-    visstarttime <- restvisdata$userevent[which(91 == restvisdata$userevent$Description, arr.ind = TRUE)[1] - 1, "Start"];
+    # so can't use it. use 91, start of visual learning message
+    visstarttime <- restvisdata$userevent[which(91 == restvisdata$userevent$Description, arr.ind = TRUE)[1], "Start"];
     visdata <- lapply(restvisdata, function(x) x[which(x$Start >= visstarttime),]);
     returnlist <- list(restdata, visdata);
     names(returnlist) <- c("rest", "visual");
