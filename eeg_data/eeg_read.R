@@ -21,8 +21,8 @@ converteeg <- function(inputpath) {
         install.packages("h5");
         library(h5);
     }
-    
-    summary(h5file(inputpath, mode="r")[, "resultf <- h5file("ex-matlab.mat", "r")
-]);
+    file <- h5file(inputpath, "r");
+    timeseries <- data.matrix(data.frame(file["result/times"][], file["result/data"][]));
+    return(timeseries);
     
 }
