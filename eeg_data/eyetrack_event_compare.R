@@ -52,6 +52,7 @@ eventdurationcompare <- function(eventdata) {
   individualduration <- c(totalblinkduration, totalsaccadeduration, totalfixationduration)
   labeling <- c("Blink", "Saccade", "Fixation")
   durationdata <- data.frame(individualduration, labeling)
+  # This is for if we would like to know if a proportion of total data belongs to which event
   #begintime <- eventdata$userevent[which(20 == eventdata$userevent$Description, arr.ind = TRUE)[1], "Start"];
  # endtime <- eventdata$userevent[which(rev(20 == eventdata$userevent$Description, arr.ind = TRUE))[1], "Start"];
   #totaltimeelapsed <- endtime - begintime
