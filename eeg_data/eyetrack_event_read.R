@@ -44,28 +44,28 @@ readrestvis <- function(inputpath) {
 #   - list[2,] = $blink = Blink Data
 #   - list[3,] = $fixation = Fixation Data
 #   - list[4,] = $saccade = Saccade Data
-readfile <- function(rawdata) {
+readfile <- function(inputpath) {
     # Resting data
     # Open connection to file
-    resting_connection <- rawToChar(rawdata);
-    #open(resting_connection);
+    resting_connection <- file(inputpath);
+    open(resting_connection);
     
     # For now just read user events
     # First, grab column names
     # Fixations
-    fixationcols <- unlist(read.table(text=resting_connection, header=FALSE, sep="\t", skip=9, nrows=1, colClasses="character")); # line 10
+    fixationcols <- unlist(read.table(resting_connection, header=FALSE, sep="\t", skip=9, nrows=1, colClasses="character")); # line 10
     fixationcols <- gsub(" ", "", fixationcols, fixed = TRUE);
     fixationcols <- gsub(".", "", fixationcols, fixed = TRUE);
     # Saccade
-    saccadecols <- unlist(read.table(text=resting_connection, header=FALSE, sep="\t", skip=12, nrows=1, colClasses="character")); # line 13
+    saccadecols <- unlist(read.table(resting_connection, header=FALSE, sep="\t", skip=2, nrows=1, colClasses="character")); # line 13
     saccadecols <- gsub(" ", "", saccadecols, fixed = TRUE);
     saccadecols <- gsub(".", "", saccadecols, fixed = TRUE);
     # Blinks
-    blinkcols <- unlist(read.table(text=resting_connection, header=FALSE, sep="\t", skip=15, nrows=1, colClasses="character")); # line 16
+    blinkcols <- unlist(read.table(resting_connection, header=FALSE, sep="\t", skip=2, nrows=1, colClasses="character")); # line 16
     blinkcols <- gsub(" ", "", blinkcols, fixed = TRUE);
     blinkcols <- gsub(".", "", blinkcols, fixed = TRUE);
     # User Events
-    usereventcols <- unlist(read.table(text=resting_connection, header=FALSE, sep="\t", skip=18, nrows=1, colClasses="character")); # line 19
+    usereventcols <- unlist(read.table(resting_connection, header=FALSE, sep="\t", skip=2, nrows=1, colClasses="character")); # line 19
     usereventcols <- gsub(" ", "", usereventcols, fixed = TRUE);
     usereventcols <- gsub(".", "", usereventcols, fixed = TRUE);
     
@@ -74,8 +74,9 @@ readfile <- function(rawdata) {
     tablelen <- max(length(fixationcols), length(saccadecols), length(blinkcols), length(usereventcols));
     # nrows = 7000 as a failsafe, not actual amount
     # fill and col.names are there for making sure read in all potential columns
-    datatable <- read.table(text=resting_connection, header=FALSE, sep="\t", fill = TRUE, nrows=7000, skip=20, comment.char="",
-                    col.names = paste0("V",seq_len(tablelen)), stringsAsFactors = FALSE);
+    datatable <- read.table(resting_connection, header=FALSE, sep="\t", fill = TRUE, nrows=7000,
+                            skip=1, comment.char="", col.names = paste0("V",seq_len(tablelen)),
+                            stringsAsFactors = FALSE);
     
     # separate into event-based tables
     
