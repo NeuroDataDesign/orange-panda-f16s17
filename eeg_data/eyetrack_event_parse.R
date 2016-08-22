@@ -23,3 +23,18 @@ sepopenandclose <- function(restdata) {
   names(returnlist) <- c("open", "closed");
   return(returnlist)
 }
+
+# seprestingtrials
+# Take in resting data and separate out into different trials
+# Arg: file resting data
+# Return 5 lists
+seprestingtrials <- function(restdata) {
+  trialstarts <- restdata$userevent[which(20 == restdata$userevent$Description, arr.ind = TRUE), "Start"];
+  triallist <- list();
+  for (i in 1:5) {
+   restingtrial <- lapply(restdata, function(x) x[which(x$Start <= trialstarts[i+1] & x$Start >= trialstarts[i]),]);
+   triallist[[length(triallist)+1]] <- restingtrial;
+  }
+  names(triallist) <- c("Trial1","Trial2","Trial3","Trial4","Trial5")
+  return(triallist);
+}
