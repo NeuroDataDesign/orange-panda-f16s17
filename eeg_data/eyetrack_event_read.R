@@ -4,7 +4,7 @@
 
 # Read the event data in for the different files for an individual patient to make them all comparable
 # UNDER CONSTRUCTION... DON'T WORRY ABOUT FOR NOW
-readdata <- function(rootpath, patientnum, toret) {
+readeyedata <- function(rootpath, patientnum, toret) {
     # build filepath
     filepath = paste0(rootpath, "/", patientnum, "/", patientnum);
     wiscdata <- readfile(paste0(filepath, "_WISC_ProcSpeed Events.txt"));
@@ -44,33 +44,37 @@ readrestvis <- function(inputpath) {
 #   - list[2,] = $blink = Blink Data
 #   - list[3,] = $fixation = Fixation Data
 #   - list[4,] = $saccade = Saccade Data
-readfile <- function(inputpath) {
+readfile <- function(rawdata) {
     # Resting data
     # Open connection to file
-    resting_connection <- file(inputpath);
-    open(resting_connection);
+    resting_connection <- rawToChar(rawdata);
+    #open(resting_connection);
     
     # For now just read user events
     # First, grab column names
     # Fixations
-    fixationcols <- unlist(read.table(resting_connection, header=FALSE, sep="\t", skip=9, nrows=1, colClasses="character")); # line 10
+    fixationcols <- unlist(read.table(text=resting_connection, header=FALSE, sep="\t", skip=9, nrows=1, colClasses="character")); # line 10
     fixationcols <- gsub(" ", "", fixationcols, fixed = TRUE);
+    fixationcols <- gsub(".", "", fixationcols, fixed = TRUE);
     # Saccade
-    saccadecols <- unlist(read.table(resting_connection, header=FALSE, sep="\t", skip=2, nrows=1, colClasses="character")); # line 13
+    saccadecols <- unlist(read.table(text=resting_connection, header=FALSE, sep="\t", skip=12, nrows=1, colClasses="character")); # line 13
     saccadecols <- gsub(" ", "", saccadecols, fixed = TRUE);
+    saccadecols <- gsub(".", "", saccadecols, fixed = TRUE);
     # Blinks
-    blinkcols <- unlist(read.table(resting_connection, header=FALSE, sep="\t", skip=2, nrows=1, colClasses="character")); # line 16
+    blinkcols <- unlist(read.table(text=resting_connection, header=FALSE, sep="\t", skip=15, nrows=1, colClasses="character")); # line 16
     blinkcols <- gsub(" ", "", blinkcols, fixed = TRUE);
+    blinkcols <- gsub(".", "", blinkcols, fixed = TRUE);
     # User Events
-    usereventcols <- unlist(read.table(resting_connection, header=FALSE, sep="\t", skip=2, nrows=1, colClasses="character")); # line 19
+    usereventcols <- unlist(read.table(text=resting_connection, header=FALSE, sep="\t", skip=18, nrows=1, colClasses="character")); # line 19
     usereventcols <- gsub(" ", "", usereventcols, fixed = TRUE);
+    usereventcols <- gsub(".", "", usereventcols, fixed = TRUE);
     
     # Read in the whole table
     # get max number of cols in a row
     tablelen <- max(length(fixationcols), length(saccadecols), length(blinkcols), length(usereventcols));
     # nrows = 7000 as a failsafe, not actual amount
     # fill and col.names are there for making sure read in all potential columns
-    datatable <- read.table(resting_connection, header=FALSE, sep="\t", fill = TRUE, nrows=7000, skip=1, comment.char="",
+    datatable <- read.table(text=resting_connection, header=FALSE, sep="\t", fill = TRUE, nrows=7000, skip=20, comment.char="",
                     col.names = paste0("V",seq_len(tablelen)), stringsAsFactors = FALSE);
     
     # separate into event-based tables
@@ -88,6 +92,7 @@ readfile <- function(inputpath) {
     usereventdata$Description <- gsub("start_eye_recording","0", usereventdata$Description);
     usereventdata$Description <- as.numeric(usereventdata$Description);
     
+    
     # blink data
     # Using regexes, catch all blink
     blinkdata <- datatable[grep("^(Blink)", datatable$V1),];
@@ -95,6 +100,7 @@ readfile <- function(inputpath) {
     blinkdata <- blinkdata[, unlist(lapply(blinkdata, function(x) !all(is.na(x))))];
     # put col headers
     colnames(blinkdata) <- blinkcols;
+    
     
     # fixation data
     # Using regexes, catch all fixation
@@ -112,8 +118,9 @@ readfile <- function(inputpath) {
     # put col headers
     colnames(saccadedata) <- saccadecols;
     
+    
     # Close connection
-    close(resting_connection);
+    #close(resting_connection);
     
     # return list of tables
     returnlist <- list(usereventdata, blinkdata, fixationdata, saccadedata);
