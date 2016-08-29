@@ -91,7 +91,7 @@ accesseegdata <- function(patientnum = "A00051826", recordnum = 1, recordtype = 
     path <- paste0(patientpath, eventname);
     dir.create(file.path(getwd(), "temp"));
     # Potentially need to add something to handle if temp folder already exists
-    tosave <- paste0(getwd(), "/temp/", eventname, ".mat");
+    tosave <- paste0(getwd(), "/temp/", eventname);
     save_object(path, bucket="fcp-indi", tosave);
     return(tosave);
 }
