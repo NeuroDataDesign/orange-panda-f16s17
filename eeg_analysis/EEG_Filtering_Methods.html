@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+<div class="slides">
+					<section data-id="ea54cf68cd084d5a15cb888d327ac17a"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 250px; height: auto;" data-block-id="f2d4bf7e813587732ec33e642b1b67b0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>EEG Signal Filtering</h1>
+</div></div></section><section data-id="25f9f41a7def1edc747f2519f485d2c8"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="bc1bd60ad0901f8fe4a0c163afc760ff"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>
+<a href="https://cran.r-project.org/web/packages/eegkit/eegkit.pdf" target="_blank">Single / Multi Channel Time Series</a> - Library</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 280px; height: auto;" data-block-id="8bba69f4c9ca703576df1a126d9b1636"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Single-Channel Voltage Time Series Plot
+	<ul>
+		<li>W/ Confidence Interval</li>
+	</ul>
+	</li>
+	<li>Multi-Channel Voltage Time Series Plot
+	<ul>
+		<li>Subplots based on electrode placement</li>
+	</ul>
+	</li>
+	<li>Only supports 84 electrodes</li>
+</ul>
+</div></div></section><section data-id="7e5457cfca264b83f6c4cdb5106759e1"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="05a0457dc3b1d90b7e1fbe7b925b13ab"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>
+<a href="https://cran.r-project.org/web/packages/icaOcularCorrection/vignettes/vignette.pdf" target="_blank">Eye Movement Filtering</a> - Library</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="0c88d373eae7b40e0473693e085224f2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>ICA based eye movement filtering from EEG</li>
+	<li>Additional EEG noise filtering methods</li>
+	<li>Galvanic Skin Response</li>
+</ul>
+</div></div></section><section data-id="7e5c369aead43eb9bca07399a5ee78d5"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="192ac07e313a71a68ee64e8c24d55133"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>
+<a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/fft.html" target="_blank">Fast Fourier Transform</a> - Library</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 338px; height: auto;" data-block-id="9444bdddba9da931d265768f442dee69"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" dir="ui">
+<ul>
+	<li>Transform time domain into frequency domain</li>
+	<li>To be plotted in frequency - power spectrum</li>
+	<li>Low-pass filtering with cutoff frequency</li>
+</ul>
+</div></div></section><section data-id="f7b3a1f61015a2d9bad9abff74a0197b"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 67px; height: auto;" data-block-id="7751abf7c482c8dca895ad4f408cd0cc"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>
+<a href="http://www.dmf.unisalento.it/~denunzio/allow_listing/BCI/NOISE_ARTIFACTS/Recovering%20EEG%20brain%20signals%20-%20Artifact%20suppression%20with%20wavelet%20enhanced%20independent%20component%20analysis%20CasMak_JNSM2006.pdf" target="_blank">wICA</a> - Library</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 140px; height: auto;" data-block-id="ccca32b6a15173fd75c9ed831337fa8e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Artifact Suppression with Wavelet Enhanced ICA </li>
+	<li>Separation of measured signals into statistically independent components
+	<ul>
+		<li>Discard noise artifacts</li>
+	</ul>
+	</li>
+	<li>ICA
+	<ul>
+		<li>Underestimates Neural Power Spectrum</li>
+		<li>Overestimates coherence between different cortical sides</li>
+	</ul>
+	</li>
+	<li>wICA
+	<ul>
+		<li>Preserves amplitude and phase characteristics</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="bb24fa7418a149666f20f7dcdff2e18d"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="0853b982f106fc4cc31d29ca122ee3bb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>
+<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4535742&amp;tag=1" target="_blank">Empirical Mode Decomposition</a> - Theory</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 259px; height: auto;" data-block-id="731f272849f07684bdefcd045a64c148"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Eliminate interference</li>
+	<li>Power interference reduction</li>
+	<li>Decomposes signals into a number of Intrinsic Mode Functions
+	<ul>
+		<li>Used to extract instantaneous frequencies</li>
+	</ul>
+	</li>
+	<li>Detects / Separates / Removes noise Artifacts</li>
+	<li>Suppresses power interference and movement
+	<ul>
+		<li>Preserves a large number of target characteristics from original data</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="136480914ecceef6ae2ec445698c4486"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="fe9885a388dd5072c63aafb4b4817066"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>
+<a href="http://www.brainclinics.com/dynamic/media/1/documents/Articles/PhD_Martijn_Arns_Final.pdf" target="_blank">Treatment Prediction of ADHD and Depression</a> - Theory</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 86px; top: 350px; height: auto;" data-block-id="cb257f7ab29c36f4152e547b58ddcf19"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>EEG Phenotypes of ADHD Diagnosed Patients</li>
+	<li>EEG Response to Stimulus 
+	<ul>
+		<li>Changes in Theta / Beta Ratio</li>
+	</ul>
+	</li>
+	<li>EEG Phenotypes and Biomarkers for Depression</li>
+</ul>
+</div></div></section><section data-id="5f01715c1e31c299786adef7b108bea3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="551af65b54285680770bff6ec172e98e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>
+<a href="http://www.brainclinics.com/dynamic/media/1/documents/Onderzoeksinstituut/Filtering%20in%20BioExplorer.pdf" target="_blank">Finite Impulse Response</a> - Theory</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 289px; height: auto;" data-block-id="b395f8811dede4a158bdbd22d939bb61"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Constant Delay over all Frequencies
+	<ul>
+		<li>Signal Shape not influenced by Phase Shifts</li>
+	</ul>
+	</li>
+	<li>Disadvantages
+	<ul>
+		<li>Inefficient / Large Delay</li>
+	</ul>
+	</li>
+	<li>Effective for high and low pass filtering</li>
+</ul>
+</div></div></section><section data-id="8878d1024da2868d8dcc523ff6b573d3"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 70px; height: auto;" data-block-id="4d907a53ed7d728915c3e116e2b213dd"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>
+<a href="http://www.brainclinics.com/dynamic/media/1/documents/Onderzoeksinstituut/Filtering%20in%20BioExplorer.pdf" target="_blank">Infinite Impulse Response</a> - Theory</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 289px; height: auto;" data-block-id="f843ff8a515feed5c548a5f7d5739d03"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Efficient with little delay</li>
+	<li>Disadvantages
+	<ul>
+		<li>Output changes because of different phase shifts</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-id="3e1c33e30ab1205980818d08647e4f81"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="1bbc217fe26cee52812ef79e6009e9d7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Butterworth IIR</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="d6e39841bdc432a48c0ecb52c5c6b13c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Online EEG Frequency Analysis
+	<ul>
+		<li>Theta / Gamma / Alpha</li>
+	</ul>
+	</li>
+	<li>Maximally flat pass/stop bands</li>
+</ul>
+</div></div></section><section data-id="5c29794d0fb985d3d1b7b9befd69cffe"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="b371397acffda48a885e1a408074f395"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Chebyshev IIR</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="7a0ac4890883b0f4fd60c698c90ea44d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Some ripple in passband is allowed
+	<ul>
+		<li>Focus is on stop-band behavior and falloff</li>
+	</ul>
+	</li>
+	<li>Useful with intermediate frequency ranges</li>
+</ul>
+</div></div></section><section data-id="c19da47c32618af84f31920067618c79"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="ef2043add5815455ef38bd532ac1d99d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+<h2>Elliptic IIR</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="a515b11ec8c6ead2d76bd56aace4219a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+<ul>
+	<li>Fall-off is critical design criteria</li>
+	<li>Some ripple / phase characteristic degradation is required</li>
+</ul>
+</div></div></section><section data-id="05b9dd5604b5328ba04f3fca77083cea"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 83px; height: auto;" data-block-id="83bb0f710fa7a97b3cb87be72bc67918"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Book</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 172px; height: auto;" data-block-id="bbb8f7001e35fab404fc4cd645ae3e1c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li><span class="a-size-large" style="font-size:21px !important">Analyzing Neural Time Series Data: Theory and Practice (Issues in Clinical and Cognitive Neuropsychology)</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 267.692px; height: 300px; left: 364px; top: 270px;" data-block-id="dd5f5f3519ae02dd96334cf838e1bad4"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="464" data-natural-height="520" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/525203/images/2953906/pasted-from-clipboard.png"></div></div></section><section data-id="075d59923d0b9bcef0c28f0097b74925"><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 190px; height: auto;" data-block-id="2d2208976e3cd39a868d8d888d69aa4d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"><h2>Title Text</h2></div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 264px; height: auto;" data-block-id="34712ea3734236fd842e7081a3dc9519"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text"><ul>
+<li>Bullet One</li>
+<li>Bullet Two</li>
+<li>Bullet Three</li>
+</ul></div></div></section>
+				</div>
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
