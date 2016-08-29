@@ -1,0 +1,36 @@
+---
+title: "ReadInData"
+author: "Nitin"
+date: "August 29, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Read EEG Data
+
+Here is the overhead wrapper EEG function. Using the access keys provided in 
+system environment variables, it runs and grabs eeg data based on patient
+number, whether you want full or reduced data, and which paradigm you want data
+about (1 = Resting, etc. We have more documentation on which is which in excel).
+
+```{r}
+getwd();
+#sys.frame(1)$ofile;
+#parent.frame(2)$ofile
+source('read_data.R');
+eegdata <- readeeg(patientnum = "A00051826", record = 1, recordtype = "full");
+head(eegdata)
+```
+
+## Read Eyetracking Event Data
+
+Eyetracking event data is also now grabbable with similar vars.
+
+```{r}
+eventdata <- readevent(patientnum = "A00051826", record = "Rest", recordtype = "full");
+sapply(eventdata, head)
+```
+

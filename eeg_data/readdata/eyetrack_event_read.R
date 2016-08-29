@@ -4,9 +4,9 @@
 # Return list:
 #   - list[1,] = $rest = Rest Data
 #   - list[2,] = $visual = Visual Data
-readrestvis <- function(inputpath) {
+eventrestvis <- function(inputpath) {
     # First visual learning and resting data parse
-    restvisdata <- readfile(inputpath);
+    restvisdata <- eventfile(inputpath);
     # To separate find the timestamp from user events for the 6th number 20 decription
     # That's the cutoff for actual resting data
     restendtime <- restvisdata$userevent[which(20 == restvisdata$userevent$Description, arr.ind = TRUE)[6], "Start"];
@@ -30,7 +30,7 @@ readrestvis <- function(inputpath) {
 #   - list[2,] = $blink = Blink Data
 #   - list[3,] = $fixation = Fixation Data
 #   - list[4,] = $saccade = Saccade Data
-readfile <- function(inputpath) {
+eventfile <- function(inputpath) {
     # Resting data
     # Open connection to file
     resting_connection <- file(inputpath);

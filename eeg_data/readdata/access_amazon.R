@@ -30,7 +30,7 @@ dependency <- function() {
 #
 # patientnum = patient number
 # datatype = either "Events" or "Samples"
-accesseyedata <- function(patientnum, datatype = "Events") {
+accesseyedata <- function(patientnum = "A00051826", datatype = "Events") {
 
     # define root path to the patient's files based on given patient numbers
     patientpath = paste0("data/uploads/CMI_share/", patientnum, "/", patientnum);
@@ -66,7 +66,7 @@ accesseyedata <- function(patientnum, datatype = "Events") {
         tosave <- paste0(getwd(), "/temp/", y, ".txt");
         save_object(x, bucket="fcp-indi", tosave);
     }, x = pathlist, y = eventnames);
-    
+    return(paste0(getwd(), "/temp/"));
 }
 
 
