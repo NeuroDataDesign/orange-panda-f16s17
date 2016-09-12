@@ -3,7 +3,7 @@
 ## Create Two Datatables from imported eyetrack data.
 ## One for Resting and one for Visual Data
 samplerestvis <- function(inputpath) {
-  restvisdata <- readfile(inputpath);
+  restvisdata <- samplefile(inputpath);
   
   #Identify the time stamp of the 6th "Message: 20"
   #The cutoff for resting data is at the beginning of the 6th "Message 20"

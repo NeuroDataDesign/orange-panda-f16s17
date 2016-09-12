@@ -15,7 +15,7 @@ powerspecplot <- function(eegdata) {
   fftCz <- fft(eegdata$Cz);
   print(length(fftCz)/2);
   #fftCz <- fftCz[1:(nrow(fftCz)/2)];
-  spectrum(fftCz, xlab = "frequency (kHz)", ylab = "Power (W)", xlim = c(0, .25));
+  spectrum(fftCz, main = "CZ Electrode Frequency Graph", xlab = "frequency (kHz)", ylab = "Power (W)", xlim = c(0, .25));
 }
 
 #convert.fft is a courtesy of http://www.di.fc.ul.pt/~jpn/r/fourier/fourier.html
