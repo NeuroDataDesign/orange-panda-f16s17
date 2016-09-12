@@ -1,0 +1,32 @@
+
+This week. I plotted Heat Maps for EEG Data for the six paradigms. Each graph has around 30 electrodes as the x-axis and the time steps as y-axis. 
+
+This melts the data into three columns, one is the time steps, another the electrode name, and the last is the voltage.
+
+```
+eegmelt <- function(eegdata) {
+  library(ggplot2)
+  library(reshape2)
+  eegdata.m <- melt(eegdata)
+  library(plyr)
+  eegdata.m <- ddply(eegdata.m, .(variable), transform)
+  return(eegdata.m)
+}
+```
+
+Plots the heat map of voltage vs time across electrodes. Reuiqres input of the melted data frame from melteegdata
+```
+voltageheatmap <- function(eegsubsetting1min15electrodes) {
+library(ggplot2)
+g <-  ggplot(eegsubsetting1min15electrodes, aes(variable,Time)) +
+      geom_tile(aes(fill = value), color = "white") + 
+      #The color blue was arbitrary
+      scale_fill_gradient(low = "white", high = "red3") +
+      labs(x="Electrode Names",y="Time (ms)") +
+      ggtitle("Voltage of Electrodes of Video Trial for Patient A00051826")
+  
+print(g)
+}
+```
+
+I used this to graph the first 6 seconds of every paradigm and have around 30 electrodes per graph. 
