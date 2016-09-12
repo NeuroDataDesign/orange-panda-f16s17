@@ -35,7 +35,6 @@ converteeg <- function(inputpath) {
         install.packages("h5");
         library(h5);
     }
-    print("Goteem");
     file <- h5file(inputpath, "r");
     resultdata <- file["result/chanlocs"];
     timeseries <- data.matrix(data.frame(file["result/times"][], file["result/data"][]));

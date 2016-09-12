@@ -42,24 +42,50 @@ readeeg <- function(patientnum = "A00051826", record = 1, recordtype = "full") {
 # 
 # Potential args: Rest, Vis, SAIIT(1,2,3), Surround(1,2), WISC, Video(1,2,3)
 
-readevent <- function(patientnum = "A00051826", record = "Rest", recordtype = "full") {
+readevent <- function(patientnum = "A00051826", record = "Rest") {
     # First, load dependencies for Amazon access
     dependency();
     # After dependencies done, grab the eeg data from amazon
     # grab filepath that now holds the data
-    filepath <- accesseyedata(patientnum, "Events");
+    filepath <- accesseyedata(patientnum, recordtype = "Events");
     # now convert eyetracking data from filepath
     # DOESN'T CHECK FOR CORRECT RECORD HERE
-    eventdata <- vector();
+    eyedata <- vector();
     if (record == "Rest") {
-        eventdata <- eventrestvis(paste0(filepath, "Vis.txt"))$rest;
+        eyedata <- eventrestvis(paste0(filepath, "Vis.txt"))$rest;
     } else if (record == "Vis") {
-        eventdata <- eventrestvis(paste0(filepath, record))$visual;
+        eyedata <- eventrestvis(paste0(filepath, "Vis.txt"))$vis;
     } else {
-        eventdata <- eventfile(paste0(filepath, record));
+        eyedata <- eventfile(paste0(filepath, record, ".txt"));
     }
     
     # now get rid of the file
     deletetemp();
-    return(eventdata);
+    return(eyedata);
+}
+
+# Read Eyetracking Sample data.
+# 
+# Potential args: Rest, Vis, SAIIT(1,2,3), Surround(1,2), WISC, Video(1,2,3)
+
+readsample <- function(patientnum = "A00051826", record = "Rest") {
+    # First, load dependencies for Amazon access
+    dependency();
+    # After dependencies done, grab the eeg data from amazon
+    # grab filepath that now holds the data
+    filepath <- accesseyedata(patientnum, datatype = "Samples");
+    # now convert eyetracking data from filepath
+    # DOESN'T CHECK FOR CORRECT RECORD HERE
+    eyedata <- vector();
+    if (record == "Rest") {
+        eyedata <- samplerestvis(paste0(filepath, "Vis.txt"))$rest;
+    } else if (record == "Vis") {
+        eyedata <- samplerestvis(paste0(filepath, "Vis.txt"))$vis;
+    } else {
+        eyedata <- samplefile(paste0(filepath, record, ".txt"));
+    }
+    
+    # now get rid of the file
+    deletetemp();
+    return(eyedata);
 }

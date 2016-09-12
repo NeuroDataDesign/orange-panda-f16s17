@@ -2,7 +2,7 @@
 
 ## Create Two Datatables from imported eyetrack data.
 ## One for Resting and one for Visual Data
-readrestvis <- function(inputpath) {
+samplerestvis <- function(inputpath) {
   restvisdata <- readfile(inputpath);
   
   #Identify the time stamp of the 6th "Message: 20"
@@ -28,7 +28,7 @@ readrestvis <- function(inputpath) {
 }
 
 ## Read in A#########_vis_learnSamples.txt
-readfile <- function(inputpath) {
+samplefile <- function(inputpath) {
   resting_connection <- file(inputpath);
   open(resting_connection);
   
