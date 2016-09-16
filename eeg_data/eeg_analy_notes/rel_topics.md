@@ -24,11 +24,15 @@ I'm only putting the names of the topics, because they're already in note form i
 - 3.5 Things to Be Suspicious of When Viewing Time-Frequency
 Results
 
-### Preprocessing:
+#### Fourier
+Mike's notes didn't help too much beyond what already knew, but learnt from Greg:
+- Need to use FFT and FFTShift function in conjunction
+
+#### Preprocessing:
 - 7.3 Creating Epochs
 - 7.5 Filtering
 	- 50 Hz or 60 Hz: electrical line noise
 	- High pass filters only apply on the whole dataset before making epochs so that smaller artifacts with delayed effects don't damage results
 
-### Noise Artifacts
+#### Noise Artifacts
 - 8.2 can use eyetracking events to filter data (remove saccades, blinks and all)
