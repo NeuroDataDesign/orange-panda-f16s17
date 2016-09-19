@@ -45,7 +45,8 @@ ampplot <- function(fftdata, electrodes, dur, upfreq = 500) {
     amp <- melt(amp, id.vars = "Frequency", variable_name = "Electrode");
     ggplot(amp, aes(y = value, x = Frequency, color = Electrode)) +
         geom_line() +
-        ggtitle(paste(electrodes)) +
+        ggtitle(paste(paste(electrodes, collapse=", "),
+                      "Amplitude vs Frequency")) +
         xlim(0,upfreq) +
         ylim(0,1000) +
         labs(x="Frequency (Hz)",y="Amplitude (dB)");
