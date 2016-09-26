@@ -93,7 +93,8 @@ Some useful links:
 ### Design
 -most commonly used via the reference analog prototype filter
 -again best for all standard types of filters.
--need to determine:
+
+#### Things to determine:
 1. a type of reference analog prototype filter
 2. scaling of frequency range to turn analog prototype filter into an analog filter
 3. convert from analog to digital filter
