@@ -1,0 +1,13 @@
+Functions:
+
+fftshift/ifftshift <- fft data
+subset data <- data, downsampling rate, time subsection
+all plots:
+	- title
+	- x,y label
+fft plots:
+ 	- 0-15000
+ 	- by electrode
+ 		- add color coded
+ 	- focus windows
+ time plots?:
