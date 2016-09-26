@@ -37,18 +37,21 @@ timeplot <- function(eegdata, electrodes) {
 }
 
 # Amplitude vs Frequency Plot of given data
-ampplot <- function(fftdata, electrodes, dur, upfreq = 500) {
+ampplot <- function(fftdata, electrodes, dur, upfreq = 250) {
     # dependency
     require(ggplot2);
+    require(reshape);
     fftdata <- apply(fftdata, FUN = Mod, MARGIN = 2);
-    amp <- as.data.frame(cbind(Frequency = (1:nrow(fftdata))/dur, fftdata));
+    fftlen <- nrow(fftdata);
+    amp <- as.data.frame(cbind(Frequency = ((-fftlen/2):(fftlen/2))/dur, fftdata));
     amp <- melt(amp, id.vars = "Frequency", variable_name = "Electrode");
+    print(head(amp));
     ggplot(amp, aes(y = value, x = Frequency, color = Electrode)) +
         geom_line() +
         ggtitle(paste(paste(electrodes, collapse=", "),
                       "Amplitude vs Frequency")) +
         xlim(0,upfreq) +
-        ylim(0,1000) +
+        ylim(0,20000) +
         labs(x="Frequency (Hz)",y="Amplitude (dB)");
 }
 
