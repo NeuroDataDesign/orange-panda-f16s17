@@ -2,9 +2,9 @@
 
 ## Definition - What is it?
 -orthogonal transformation to convert a set of observations of possibly correlated variables into a set of values of linearly uncorrelated variables called "principal components".
--brain signals tend to be redundant, therefore reducing dimension helps with analysis
--separate out types of variables for easier analysis.
--remove sparse noise from the data.
+  -brain signals tend to be redundant, therefore reducing dimension helps with analysis
+  -separate out types of variables for easier analysis.
+  -remove sparse noise from the data.
 
 ## A simple explanation of how it works
 -finds the maximum variance in a set of data using the variance equation and the Lagrange multiplier optimization method.
