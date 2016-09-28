@@ -8,8 +8,8 @@ L = 1000;             % Length of signal
 t = (0:L-1)*T;        % Time vector
 w = 10*pi;
 
-% S = 0.8*sin(w*t) + 0.6*sin(w*sin(w*t));
-S = 0.8*sin(w*t) + 0.4*sin(0.5*w*t);
+S = 0.8*sin(w*t) + 0.6*sin(w*sin(w*t));
+%S = 0.8*sin(w*t) + 0.4*sin(0.5*w*t);
 
 figure(1)
 subplot(121)
@@ -41,8 +41,8 @@ xlabel('f (Hz)')
 ylabel('|P1(f)|')
 
 
-%% lowpass butterworth at 300 Hz
-fc = 40;
+%% lowpass butterworth at 370 Hz
+fc = 370;
 Fs = 1000;
 
 [b,a] = butter(6,fc/(Fs/2));
@@ -64,10 +64,13 @@ xlabel('f (Hz)')
 ylabel('|P1(f)|')
 
 %% bandstop butterworth with edges at 0.2 pi and 0.6 pi
-[b,a] = butter(3,[0.21 0.8],'stop');
+fc = [55 65];
+Fs = 1000;
+
+[b,a] = butter(3,fc/(Fs/2),'stop');
 % freqz(b,a)
 
-X_bs = filter(b, a, X);
+X_bs = filter(b, a, X_lp);
 
 figure(4)
 subplot(121)
