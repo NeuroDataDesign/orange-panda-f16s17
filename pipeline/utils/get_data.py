@@ -10,20 +10,24 @@ def get_patients():
         L.append(line[:-1])
     return L
 
-def get_data(patient, recordnum = 1, recordtype = "full"):
-    conn = S3Connection(os.environ['AWS_ACCESS_KEY'],
-            os.environ['AWS_SECRET_KEY'])
-    bucket = conn.get_bucket('fcp-indi')
+def get_record(patient, recordnum = 1, recordtype = "full"):
     patientpath = "data/uploads/" + str(patient) + '/'
     eventname = str(recordtype) + "_" + str(patient)
     if recordnum < 10:
         eventname += "00" + str(recordnum) + ".mat"
     else:
         eventname += "0" + str(recordnum) + ".mat"
-    s3path = patientpath + eventname
-    key = Key(bucket, s3path)
     localpath = "tmp/" + patient + "_" + \
             str(recordnum) + ".mat"
+    if os.path.isfile(localpath):
+        print "There is already a file named: " + \
+                localpath + ", returned that path instead of pulling data."
+        return localpath
+    conn = S3Connection(os.environ['AWS_ACCESS_KEY'],
+            os.environ['AWS_SECRET_KEY'])
+    bucket = conn.get_bucket('fcp-indi')
+    s3path = patientpath + eventname
+    key = Key(bucket, s3path)
     f = file(localpath, 'wb')
     def callback(togo, total):
         print "Got {0: 10d} Bytes out of {1:10d} Bytes".format(togo, total)
