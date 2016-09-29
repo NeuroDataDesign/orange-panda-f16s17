@@ -1,1 +1,7 @@
 /orange-panda/cmi_share_A00051826
+pipeline/utils/tmp
+*.swp
+*.pyc
+*.mat
+*.swo
+*.gif
