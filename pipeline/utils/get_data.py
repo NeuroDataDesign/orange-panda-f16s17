@@ -17,10 +17,10 @@ def get_record(patient, recordnum = 1, recordtype = "full"):
         eventname += "00" + str(recordnum) + ".mat"
     else:
         eventname += "0" + str(recordnum) + ".mat"
-    localpath = "tmp/" + patient + "_" + \
+    localpath = "utils/tmp/" + patient + "_" + \
             str(recordnum) + ".mat"
     if os.path.isfile(localpath):
-        print "There is already a file named: " + \
+        print "  there is already a file named: " + \
                 localpath + ", returned that path instead of pulling data."
         return localpath
     conn = S3Connection(os.environ['AWS_ACCESS_KEY'],
