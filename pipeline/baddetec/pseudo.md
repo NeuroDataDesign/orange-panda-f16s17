@@ -27,7 +27,7 @@
 		- *Output:* make one array of joint probs
 		- *Description:* pretty self explanatory
 3. **Normal Distribution:**
-	- *Input:* joint prob. of channel
+	- *Input:* joint prob. of channels
 	- *Output:* normal distribution of joint probs
 	- *Description:* get a normal dist of joint probs so that we can find outlier
 4. **Threshold:**
