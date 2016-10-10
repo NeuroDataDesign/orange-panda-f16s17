@@ -133,13 +133,27 @@ def gc(coords, i, j, r):
     return haversine(**args)
 
 
-def gc_invdist_interp(data, gcord, coords, r, numpts = 5):
-    t, p = gcord
-    coords = coords[:, :-1, -1]
-    ds = np.array(map(lambda c: haversine(r, t, c[0], p, c[1]), coords))
-    inds = np.argsort(ds)[1: numpts + 1]
-    w = 1 / ds[inds]
-    weighted = np.multiply(data[:, inds, -1], w)
-    predicted = np.sum(weighted, axis = 1) / sum(w)
-    return predicted, inds
+def gc_invdist_interp(data, bad_electrodes, coords, r, numpts = 5):
+    #all_indicies = np.array(range(coords.shape[0]))
+    #bad_indicies = np.array(bad_electrodes)
+    #indicies = np.setdiff1d(all_indicies, bad_indicies)
+    #coords = coords[indicies]
+    closest = []
+    for ind in bad_electrodes:
+        gcord = coords[ind]
+        t, p, _ = gcord
+        ds = np.zeros([coords.shape[0]])
+        for c in range(coords.shape[0]):
+            if c in bad_electrodes:
+                ds[c] = float('Inf')
+            else:
+                ds[c] = haversine(r, t, coords[c][0],
+                            p, coords[c][1])
+        inds = np.argsort(ds)[1: numpts + 1]
+        w = 1 / ds[inds]
+        weighted = np.multiply(data[:, inds], w)
+        predicted = np.sum(weighted, axis = 1) / sum(w)
+        data[:, ind] = predicted
+        closest.append(inds)
+    return data, closest
 

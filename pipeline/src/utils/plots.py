@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import random
 
-def plot_timeseries(data, time = None, selector = "all", start = 0, end = None, skip = 1, randno = 10, title = 'unnamed figure', xlab = '', ylab=''):
+def plot_timeseries(data, time = None, selector = "all", colors = None, start = 0, end = None, skip = 1, randno = 10, title = 'unnamed figure', xlab = '', ylab=''):
     plt.figure()
     numchan = int(data.shape[1])
     numtimesteps = int(data.shape[0])
@@ -16,7 +16,10 @@ def plot_timeseries(data, time = None, selector = "all", start = 0, end = None, 
     for channel in selector:
         d = data[:, channel][start:end:skip]
         assert len(times) == len(d)
-        plt.plot(times, d)
+        if colors is None:
+            plt.plot(times, d)
+        else:
+            plt.plot(times, d, colors[channel])
     plt.title(title)
     plt.xlabel(xlab)
     plt.ylabel(ylab)

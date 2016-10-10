@@ -158,6 +158,8 @@ def EOG_regress():
 def reduce_noise(D):
     for patient in range(D.shape[2]):
         d = D[:, :, patient]
+        print "    filtering data from patient " + \
+                        str(patient)
         for channel in range(d.shape[1]):
             D[:, channel, patient] = butter_highpass_filter(
                                 d[:, channel], 10, 500)
