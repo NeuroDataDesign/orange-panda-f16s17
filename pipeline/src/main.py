@@ -137,7 +137,7 @@ def detect_bad_channels(eeg_data):
     assert len(bad_chans_list) == eeg_data.shape[2]
     return bad_chans_list
 
-def interpolate(eeg_data, coords, bad_chans):
+def interpolate(eeg_data, coords, bad_chans, npts = 3):
     closest = []
     for patient in range(eeg_data.shape[2]):
         print "fitting a sphere to patient " + str(patient) + \
@@ -147,7 +147,7 @@ def interpolate(eeg_data, coords, bad_chans):
                 "'s bad channels"
         eeg_data_fixed, close = gc_invdist_interp(eeg_data[:, :, patient],
                     bad_chans[patient], coords[:, :, patient],
-                    r, numpts = 3)
+                    r, numpts = npts)
         eeg_data[:, :, patient] = eeg_data_fixed
         closest.append(close)
     return eeg_data, closest
@@ -155,14 +155,15 @@ def interpolate(eeg_data, coords, bad_chans):
 def EOG_regress():
     pass
 
-def reduce_noise(D):
+def reduce_noise(F):
+    D = F.copy()
     for patient in range(D.shape[2]):
         d = D[:, :, patient]
         print "    filtering data from patient " + \
                         str(patient)
         for channel in range(d.shape[1]):
             D[:, channel, patient] = butter_highpass_filter(
-                                d[:, channel], 10, 500)
+                                d[:, channel], 0.1, 500)
             for k in range(60, 240, 60):
                 D[:, channel, patient] = butter_bandstop_filter(
                                     d[:, channel], [k-5,k+5], 500)

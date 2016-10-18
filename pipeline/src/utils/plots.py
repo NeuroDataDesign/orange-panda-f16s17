@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import random
 
-def plot_timeseries(data, time = None, selector = "all", colors = None, start = 0, end = None, skip = 1, randno = 10, title = 'unnamed figure', xlab = '', ylab=''):
+def plot_timeseries(data, time = None, selector = "all", colors = None, start = 0, end = None, skip = 1, randno = 10, title = 'unnamed figure', xlab = '', ylab='', save_path = ""):
     plt.figure()
     numchan = int(data.shape[1])
     numtimesteps = int(data.shape[0])
@@ -23,5 +23,8 @@ def plot_timeseries(data, time = None, selector = "all", colors = None, start = 
     plt.title(title)
     plt.xlabel(xlab)
     plt.ylabel(ylab)
-    plt.show()
+    if save_path is not "":
+        plt.savefig(save_path)
+    else:
+        plt.show()
 
