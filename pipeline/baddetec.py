@@ -26,7 +26,7 @@ def baddetec_prob(data, elec, disc, threshold):
 	#	for trial in 
 
 
-swag0 = np.zeros((2,3,5))
-swag = np.array(([1,2,3],[4,5,6, 7], [7,8,9]))
+swag = np.empty((3,4,5))
+swag = np.array(([,12,3],[4,5,6, 7], [7,8,9]))
 print swag0
 #baddetec_prob(swag, 0, 0, 0)

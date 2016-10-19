@@ -7,11 +7,14 @@
 	- Smoothing function
 	- Bandwith value that controls smoothness of density curve
 
+
 #### Kernel Density Estimator
 - Estimated probability density function of random var
 - [**Equation here**](https://www.mathworks.com/help/stats/kernel-distribution.html)
 
 #### Kernel Smoothing Function
+- Kernel is called a kernel because it's a small base that's used to determine a distribution at each point
+- Represents distribution of weights that sum to original point
 - Define shape of curve
 - Build function using sample data
 - Sum component smoothing functions for each data value to produce a smooth continuous probability curve
@@ -36,7 +39,11 @@
 		- "Empirical approach to model parameter selection = very flexible"
 		- Note: All this from 1 source, potential bias
 
-
+#### Pseudo:
+[Equation Here](http://rafalab.github.io/pages/649/section-06.pdf)
+- N(x0) = neighborhood of points around x0 (set of all points)
+- h = bandwith
+- Kh = kernel function in terms of h
 
 ## Kernel Density in Python:
 - [2013 comparison of different methods and advantages/disadvantages](https://jakevdp.github.io/blog/2013/12/01/kernel-density-estimation/)
