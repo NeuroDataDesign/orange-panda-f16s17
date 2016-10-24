@@ -1,4 +1,4 @@
 # Team Orange Panda
 ## EEG Pipeline
 
-* read the docs - neurodatadesign.github.io/orange-panda
+* read the docs - [https://neurodatadesign.github.io/orange-panda]
