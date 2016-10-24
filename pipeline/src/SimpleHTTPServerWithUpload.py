@@ -218,8 +218,8 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 	ou +=  '![](' + img_path + 'spectrogram_channel_4.png ' + \
 			'\"sp Image\")\n'
 
-	np.savetxt(res_path + "pre_processed.csv", eeg_data_filtered,
-			delimiter=",")
+#	np.savetxt(res_path + "pre_processed.csv", eeg_data_filtered,
+#			delimiter=",")
         html_text = markdown(ou, output_format='html4')
 	out = pypandoc.convert(html_text, 'pdf', format = "html",
 		outputfile=res_path + "out.pdf")	
@@ -229,7 +229,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 		print "zipping", root, file
 		ziph.write(os.path.join(root, file))
 	ziph.close()
-	os.remove(res_path + "pre_processed.csv")
+	#os.remove(res_path + "pre_processed.csv")
 	return html_text, "results/" + patient + ".zip"
 
 

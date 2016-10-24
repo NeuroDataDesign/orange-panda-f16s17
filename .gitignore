@@ -5,3 +5,4 @@ pipeline/utils/tmp
 *.mat
 *.swo
 *.gif
+*.ipynb-checkpoints*
