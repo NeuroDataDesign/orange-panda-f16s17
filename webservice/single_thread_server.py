@@ -28,12 +28,14 @@ from preprocessing.interp import fit_sphere, gc, gc_invdist_interp
 from main import set_args, clean, detect_bad_channels, interpolate, reduce_noise 
 from markdown import markdown
 import matplotlib.pyplot as plt
-from utils.plots import plot_timeseries
+from utils.plots import (plot_timeseries,
+                         make_3d_scatter,
+                         make_spectrogram,
+                         my_save_fig)
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import ast
 import h5py
-from scipy.signal import spectrogram
 import pypandoc
 import zipfile
 import shutil
@@ -42,6 +44,7 @@ try:
     from cStringIO import StringIO
 except ImportError:
     from StringIO import StringIO
+
 
 class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
@@ -58,48 +61,51 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     """
 
     def do_analysis(self, fn):
+        #!! REMOVE
+        out = ''
+
+        # Figure out which patient this is
         patient = os.path.basename(fn)
+        out = "# Upload Report for File at " + str(patient) + ".\n"
+
+        # Create folder for results if doesn't exist
+        # Also set path variables to save data to later
 	res_path = "results/" + patient + '/'
 	img_path = "results/" + patient + "/imgs/"
+	img_rel = "imgs/"
 	if not os.path.exists(res_path):
 	    os.makedirs(res_path)
 	if not os.path.exists(img_path):
 	    os.makedirs(img_path)
-	img_rel = "imgs/"
 
-        ou = "# Upload Report for File at " + str(patient) + ".\n"
+        # Get pipeline parameters from 'pipeline.conf'
         set_args()
+
+        # Load data from file path
         d = make_h5py_object(fn)
+
+        # Wrap this patient's data.
+        # Our functions take an array of patients,
+        # but we are only doing one patient here.
         D = [d]
-        ou += "## CLEANING DATA...\n"
-        eeg_data, times, coords = clean(D)
+
+        # Clean the data
+        clean_data, clean_report = clean(D)
+        out += clean_report
+        eeg_data, times, coords = clean_data
         from utils.clean_data import get_electrode_coords
         cart = get_electrode_coords(D[0], coords = "euclidian")
-        ou += "* Extracted EEG data with " + str(eeg_data.shape[1]) + \
-                " channels and " + str(eeg_data.shape[0]) + \
-                " observations.\n"
-        ou += "* Extracted timing data with " + str(times.shape[0]) + \
-                " timesteps.\n"
-        ou += "* Extracted electrode coordinate data.\n\n"
+
+        # We only have one patient for this example
 	d = eeg_data[:, :, -1]
 	t = times[:, :, -1]
 
-	fig = plt.figure()
-	ax = Axes3D(fig)
-	x = cart[:, 0]
-	y = cart[:, 1]
-	z = cart[:, 2]
-	ax.scatter(x, y, z, s=np.abs(d[200]), depthshade = True)
-	ax.set_xlabel('eyes to back of head')
-	ax.set_ylabel('ear to ear')
-	ax.set_zlabel('top of head to bottom')
-	ax.set_title('Electrodes on the brain.')
-        plt.savefig(img_path + "plot_brain_3d.png")
+        # Make and add the brain scatter plot to report
+        out += my_save_fig(make_3d_scatter(d, cart),
+                img_path + "3d_brain.png",
+                "Example 3D Scatter Plot")
 
-        ou += "## Example of electrode intensities at 400ms.\n"
-        ou +=  '![](' + img_path + 'plot_brain_3d.png \"Brain Image\")\n'
-
-        plot_timeseries(data = d,
+        scat = plot_timeseries(data = d,
             time = t,
             selector = "random",
             title = "10 randomly selected electrodes from data.",
@@ -108,18 +114,14 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             skip = 1,
             randno = 10,
             xlab = r'$t$, in milliseconds',
-            ylab = r'voltage in $mV$',
-            save_path = img_path +'time_series_sample.png')        
+            ylab = r'voltage in $mV$')
 
-        ou += "## Example of electrode time series.\n"
-        ou +=  '![](' + img_path +'time_series_sample.png \"Data Image\")\n'
-
-        ou +=  "## DETECTING BAD CHANNELS...\n"
-        bad_chans = detect_bad_channels(eeg_data)
-        ou +=  "* There were " + str(len(bad_chans[0])) + \
-                " bad channels detected.\n\n"
-
-        plot_timeseries(data = d[:, bad_chans[0]],
+        out += my_save_fig(scat, img_path + "rand_time_series.png",
+                    "Randomly Selected Electrode Time Series")
+        # Detect bad electrodes, plot them.
+        bad_chans, bad_report = detect_bad_channels(eeg_data)
+        out += bad_report
+        bad_plot = plot_timeseries(data = d[:, bad_chans[0]],
             time = t,
             selector = "all",
             title = "Plot of the bad electrodes.",
@@ -128,97 +130,72 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             skip = 1,
             randno = 10,
             xlab = r'$t$, in milliseconds',
-            ylab = r'voltage in $mV$',
-            save_path = img_path + 'bad_electrode_plot.png')        
+            ylab = r'voltage in $mV$')
 
-        ou += "## Here is a plot of these bad electrodes.\n"
-        ou +=  '![](' + img_path + 'bad_electrode_plot.png \"bad Image\")\n'
+        # Plot the bad channels
+        out += my_save_fig(bad_plot, img_path + "bad_electrodes.png",
+                    "The 'Bad' Electrodes")
 
+        # Interpolate bad electrodes
+        pool = 10 # How many electrodes to interp against?
+        int_data, int_report = interpolate(eeg_data, coords,
+				bad_chans, npts = pool)
+        eeg_data, closest = int_data
+        out += int_report
 
-        ou += "## INTERPOLATING BAD CHANNELS...\n"
-        eeg_data, closest = interpolate(eeg_data, coords,
-				bad_chans, npts = 10)
+        # Plotting the interpolated electrodes
 	for l in range(len(closest[0])):
-	    ou += "\nInterpolating for channel: " + \
+	    out += "\nInterpolating for channel: " + \
 			str(bad_chans[0][l]) + '\n'
-	    ou +=  "\nInterpolating against: " + str(closest[0][l]) + '\n'
+	    out +=  "\nInterpolating against: " + str(closest[0][l]) + '\n'
 	    inds = closest[0][l]
 	    d = np.column_stack([eeg_data[:, i, 0] for i in inds])
 	    d = np.column_stack([d, eeg_data[:, bad_chans[0][l], 0]])
-	    cols = ["red"] * 10
+	    cols = ["red"] * pool
 	    cols.append("blue")
-	    plot_timeseries(data = d,
+	    tmp_fig = plot_timeseries(data = d,
 			  time = t,
 			  selector = "all",
-			  title = "Interpolated (blue) electrode" + \
-			    " with its 10 closest neighbors.",
+			  title = "Interpolated (blue) electrode with " + \
+			    " its " + str(pool) + " closest neighbors.",
 			  colors = cols,
 			  start = 100,
 			  end = 2000,
 			  skip = 10,
 			  xlab = r'$t$, in milliseconds',
 			  ylab = r'difference from mean' + \
-				    'voltage in $mV$',
-            		  save_path = img_path + 'interpolated_chan_' + \
-				str(l) + '.png')        
-	    ou +=  '\n![]('+ img_path + 'interpolated_chan_' + \
-			str(l) + '.png \"int_' + str(l) + ' Image\")\n'
+				    'voltage in $mV$')
+            title = "Interpolation of Electrode " + str(l)
+            out += my_save_fig(tmp_fig, img_path + "elect_interp_" + \
+                            str(l) + ".png", title)
 
-	plt.clf()
-        ou +=  "## REDUCING NOISE...\n"
+
+        # Reduce noise on data
         eeg_data_filtered = reduce_noise(eeg_data)
 
+        # Plot spectrograms (before and after) for each channel
 	for i in range(5):#eeg_data.shape[1]):
             fig = plt.figure()
             fig.suptitle("Channel " + str(i), fontsize=10)
-	    f, t, Sxx = spectrogram(eeg_data[:, i, 0], 500)
             plt.subplot(211)	
-	    plt.pcolormesh(t, f, np.log(Sxx))
-	    plt.ylabel('Frequency [Hz]')
-	    plt.xlabel('Time [sec]')
-	    cmap = plt.get_cmap('viridis')
-	    vmin = 0
-	    vmax = 30
-	    cmap.set_under(color='k', alpha=None)
-
-	    NFFT = 256
-	    pxx,  freq, t, cax = ax.specgram(x/(NFFT/2), Fs=500, mode='magnitude',
-					     NFFT=NFFT, noverlap=NFFT/2,
-					     vmin=vmin, vmax=vmax, cmap=cmap)
-	    cbar = plt.colorbar(cax)
-	    cbar.ax.set_ylabel('Magnitude in mV', rotation=270)
-	    cbar.ax.get_yaxis().labelpad = 15
-
+            make_spectrogram(eeg_data[:, i, 0], fig)
             plt.subplot(212)	
-
-	    f, t, Sxx = spectrogram(eeg_data_filtered[:, i, 0], 500)
-	    plt.pcolormesh(t, f, np.log(Sxx))
-	    plt.ylabel('Frequency [Hz]')
-	    plt.xlabel('Time [sec]')
-	    cmap = plt.get_cmap('viridis')
-	    vmin = 0
-	    vmax = 30
-	    cmap.set_under(color='k', alpha=None)
-
-	    NFFT = 256
-	    pxx,  freq, t, cax = ax.specgram(x/(NFFT/2), Fs=500, mode='magnitude',
-					     NFFT=NFFT, noverlap=NFFT/2,
-					     vmin=vmin, vmax=vmax, cmap=cmap)
-	    cbar = plt.colorbar(cax)
-	    cbar.ax.set_ylabel('Magnitude in mV', rotation=270)
-	    cbar.ax.get_yaxis().labelpad = 15
+            make_spectrogram(eeg_data_filtered[:, i, 0], fig)
 	    plt.tight_layout()
 	    plt.savefig(img_path + "spectrogram_channel_"+str(i)+".png")
             plt.clf()
             plt.close(fig)
-	ou += "## Here is a sample of channel 4 before and after noise reduction.\n"
-	ou +=  '![](' + img_path + 'spectrogram_channel_4.png ' + \
+
+        # Plot example spectrogram for the report
+	out += "## Here is a sample of channel 4 before and after noise reduction.\n"
+	out +=  '![](' + img_path + 'spectrogram_channel_4.png ' + \
 			'\"sp Image\")\n'
 
+        # Saving everything
 #	np.savetxt(res_path + "pre_processed.csv", eeg_data_filtered,
 #			delimiter=",")
-        html_text = markdown(ou, output_format='html4')
-	out = pypandoc.convert(html_text, 'pdf', format = "html",
+        html_text = markdown(out, output_format='html5')
+	report = pypandoc.convert(html_text, 'pdf', format = "html",
 		outputfile=res_path + "out.pdf")	
 	ziph = zipfile.ZipFile("results/" + patient + '.zip', 'w', zipfile.ZIP_DEFLATED)
 	for root, dirs, files in os.walk(res_path):
@@ -228,8 +205,6 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 	ziph.close()
 	#os.remove(res_path + "pre_processed.csv")
 	return html_text, "results/" + patient + ".zip"
-
-
 
 
     def do_GET(self):
