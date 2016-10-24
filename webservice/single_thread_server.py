@@ -8,12 +8,11 @@ and HEAD requests in a fairly straightforward manner.
 """
 
 
-__version__ = "0.1"
-__all__ = ["SimpleHTTPRequestHandler"]
-__author__ = "bones7456"
-__home_page__ = "http://li2z.cn/"
+import os, sys
+lib_path = os.path.abspath(os.path.join('..', 'pipeline', 'src'))
+sys.path.append(lib_path)
 
-import os
+
 import posixpath
 import BaseHTTPServer
 import urllib
@@ -57,8 +56,6 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     request omits the actual contents of the file.
 
     """
-
-    server_version = "SimpleHTTPWithUpload/" + __version__
 
     def do_analysis(self, fn):
         patient = os.path.basename(fn)

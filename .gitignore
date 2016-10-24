@@ -6,3 +6,5 @@ pipeline/utils/tmp
 *.swo
 *.gif
 *.ipynb-checkpoints*
+webservice/files
+webservice/results
