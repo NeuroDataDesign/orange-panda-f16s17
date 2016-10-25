@@ -1,0 +1,20 @@
+<div class="jumbotron text-center">
+<h1>Explore Data</h1>
+<div class="text-center col-md-10">{{ message }}</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Report of Analysis</th>
+      <th>Zip of Analysis Files</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="n in $root.f_name_list">
+      <th scope="row">{{n.f_name}}</th>
+      <td><a target = "_blank" ng-href="{{n.report}}">{{n.f_name}}.pdf</td>
+      <td><a target = "_blank" ng-href="{{n.zip}}">{{n.f_name}}.zip</td>
+	</tr>
+  </tbody>
+</table>
+</div>

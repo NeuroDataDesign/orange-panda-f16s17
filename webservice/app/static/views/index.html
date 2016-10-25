@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html ng-app="eegApp">
+
+<head>
+  <!-- SCROLLS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+
+  <!-- SPELLS -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+  <script src="views/script.js"></script>
+</head>
+
+<!-- define angular controller -->
+<body ng-controller="mainController">
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Neurodata EEG</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="#view"><i class="fa fa-eye"></i> Explore Analyses</a></li>
+        <li><a href="#analyze"><i class="fa fa-area-chart"></i> Analyze Your Data</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="main">
+  
+    <!-- angular templating -->
+		<!-- this is where content will be injected -->
+    <div ng-view></div>
+    
+  </div>
+  
+  <footer class="text-center">
+    <p>Read the Docs <a href="https://neurodatadesign.github.io/orange-panda">here</a></p>
+  
+    <p>Make requests and issues <a href="https://github.com/NeuroDataDesign/orange-panda/">here</a></p>
+  </footer>
+  
+</body>
+
+</html>
+

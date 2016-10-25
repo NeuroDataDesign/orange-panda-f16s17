@@ -1,0 +1,36 @@
+body {
+  margin-top: 50px;
+  padding: 5px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.btn-inversePrimary {
+    background: #ffffff;
+    border : 2px solid #337ab7;
+    color: #337ab7;
+}
+
+
+.basicSlider {
+    background-color: #ffffff;
+    height: 100%;
+}
+
+.footer{
+    width:100%;
+    min-height:100px;    
+    background-color: #ffffff; /* This color gets inverted color or you can add navbar inverse class in html */
+}
+
+#header {
+    background-color: #337ab7;
+    width: 100%;
+    position: absolute; 
+    top:0px;
+    height: 20%;
+    color: #ffffff;
+}

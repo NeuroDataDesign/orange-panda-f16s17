@@ -5,6 +5,9 @@ pipeline/utils/tmp
 *.mat
 *.swo
 *.gif
-*.ipynb-checkpoints*
+*.ipynb_checkpoints*
 webservice/files
 webservice/results
+webservice/set_keys.py
+pipeline/src/set_keys.py
+webservice/app/static/results/*

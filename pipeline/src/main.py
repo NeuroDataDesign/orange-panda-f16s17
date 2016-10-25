@@ -18,7 +18,7 @@ from preprocessing.interp import fit_sphere, gc, gc_invdist_interp
 NUM_PATIENTS = 59 # Half of total, randomly selected
 
 
-def acquire_data():
+def acquire_data(loc_path = 'utils/tmp'):
     r"""A one-line summary that does not use variable names or the
     function name.
     Several sentences providing an extended description. Refer to
@@ -95,7 +95,7 @@ def acquire_data():
     d = [] * len(patients)
     for p in patients:
         p_filepath = get_record(pat_map[p], args["record_num"],
-                            args["record_type"]) 
+                            args["record_type"], loc_path) 
         d.append(make_h5py_object(p_filepath))
     return d
 
@@ -176,8 +176,8 @@ def reduce_noise(F):
     D = F.copy()
     for patient in range(D.shape[2]):
         d = D[:, :, patient]
-        out += "* Highpass filtered at .1 Hz threshold."
-        out += "* Bandstop filtered at harmonics of 60Hz."
+        out += "* Highpass filtered at .1 Hz threshold.\n"
+        out += "* Bandstop filtered at harmonics of 60Hz.\n"
         for channel in range(d.shape[1]):
             D[:, channel, patient] = butter_highpass_filter(
                                 d[:, channel], 0.1, 500)
@@ -185,7 +185,7 @@ def reduce_noise(F):
                 D[:, channel, patient] = butter_bandstop_filter(
                                     d[:, channel], [k-5,k+5], 500)
 
-    return D
+    return D, out
 
 def set_args():
     global args
@@ -195,17 +195,22 @@ def set_args():
 
 
 def main():
-    print "# EEG PIPELINE GO!"
+    print "# EEG PIPELINE TEST!"
     print "## GETTING DATA..."
     D = acquire_data()
     print "## CLEANING DATA..."
-    eeg_data, times, coords = clean(D)
+    cleaned, o = clean(D)
+    print o
+    eeg_data, times, coords = cleaned
     print "## DETECTING BAD CHANNELS..."
-    bad_chans = detect_bad_channels(eeg_data)
+    bad_chans, o = detect_bad_channels(eeg_data)
     print "## INTERPOLATING BAD CHANNELS..."
-    eeg_data, closest = interpolate(eeg_data, coords, bad_chans)
+    interped, o = interpolate(eeg_data, coords, bad_chans)
+    print o
+    eeg_data, closest = interped
     print "## REDUCING NOISE..."
-    eeg_data = reduce_noise(eeg_data)
+    eeg_data, o = reduce_noise(eeg_data)
+    print o
 
 
 if __name__ == '__main__':

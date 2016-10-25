@@ -6,7 +6,8 @@ This module builds on BaseHTTPServer by implementing the standard GET
 and HEAD requests in a fairly straightforward manner.
 
 """
-
+# Sets the keys as environment variables
+import set_keys
 
 import os, sys
 lib_path = os.path.abspath(os.path.join('..', 'pipeline', 'src'))
@@ -21,11 +22,29 @@ import shutil
 import mimetypes
 import re
 
-from utils.get_data import get_record, get_patients, make_h5py_object
-from utils.clean_data import get_eeg_data, get_times, get_electrode_coords
-from utils.fourier import butter_highpass_filter, butter_lowpass_filter, butter_bandstop_filter
-from preprocessing.interp import fit_sphere, gc, gc_invdist_interp
-from main import set_args, clean, detect_bad_channels, interpolate, reduce_noise 
+from utils.get_data import (get_record,
+                            get_patients,
+                            make_h5py_object)
+
+from utils.clean_data import (get_eeg_data,
+                              get_times,
+                              get_electrode_coords)
+
+from utils.fourier import (butter_highpass_filter,
+                           butter_lowpass_filter,
+                           butter_bandstop_filter)
+
+from preprocessing.interp import (fit_sphere,
+                                  gc,
+                                  gc_invdist_interp)
+
+from main import (set_args,
+                  clean,
+                  detect_bad_channels,
+                  interpolate,
+                  reduce_noise,
+                  acquire_data) 
+
 from markdown import markdown
 import matplotlib.pyplot as plt
 from utils.plots import (plot_timeseries,
@@ -77,9 +96,6 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 	    os.makedirs(res_path)
 	if not os.path.exists(img_path):
 	    os.makedirs(img_path)
-
-        # Get pipeline parameters from 'pipeline.conf'
-        set_args()
 
         # Load data from file path
         d = make_h5py_object(fn)
@@ -171,7 +187,8 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
 
         # Reduce noise on data
-        eeg_data_filtered = reduce_noise(eeg_data)
+        eeg_data_filtered, rn_report = reduce_noise(eeg_data)
+        out += rn_report
 
         # Plot spectrograms (before and after) for each channel
 	for i in range(5):#eeg_data.shape[1]):
@@ -458,4 +475,8 @@ def test(HandlerClass = SimpleHTTPRequestHandler,
     BaseHTTPServer.test(HandlerClass, ServerClass)
 
 if __name__ == '__main__':
+    # Get pipeline parameters from 'pipeline.conf'
+    set_args()
+
+    #acquire_data(loc_path = 'files/')
     test()
