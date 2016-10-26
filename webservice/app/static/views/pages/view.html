@@ -1,7 +1,10 @@
 <div class="jumbotron text-center">
 <h1>Explore Data</h1>
-<div class="text-center col-md-10">{{ message }}</p>
-<table class="table">
+<div class="text-center col-md-12">{{ message }}</div>
+<div id="" ng-show = 'show_report' style="overflow-y: scroll; height:400px;border:2px solid black;border-radius:4px">
+<div class="col-md-8 text-left" style="background-color: #ffffff;font-family='Times New Roman', Times, serif;height:auto;width:auto;" ng-bind-html="view_html"></div>
+</div>
+<table class="table-hover col-md-12 text-center row table">
   <thead>
     <tr>
       <th>File Name</th>
@@ -12,8 +15,8 @@
   <tbody>
     <tr ng-repeat="n in $root.f_name_list">
       <th scope="row">{{n.f_name}}</th>
-      <td><a target = "_blank" ng-href="{{n.report}}">{{n.f_name}}.pdf</td>
-      <td><a target = "_blank" ng-href="{{n.zip}}">{{n.f_name}}.zip</td>
+      <td data-ng-click="showHtml(n.f_name)">{{n.f_name}}.html</td>
+      <td><a target = "_blank" ng-href="{{n.zip}}">zip file</td>
 	</tr>
   </tbody>
 </table>

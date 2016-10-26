@@ -14,10 +14,21 @@ body {
     color: #337ab7;
 }
 
+.report{
+    background-color: #ffffff !important;
+    font-family: "Times New Roman", Times, serif;
+}
 
 .basicSlider {
     background-color: #ffffff;
     height: 100%;
+}
+
+p{
+    height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    max-height: 300px;
 }
 
 .footer{

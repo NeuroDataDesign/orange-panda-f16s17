@@ -3,6 +3,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import random
 import numpy as np
 from scipy.signal import spectrogram
+from os.path import basename
 
 def plot_timeseries(data, time = None, selector = "all", colors = None,
                     start = 0, end = None, skip = 1, randno = 10,
@@ -62,7 +63,7 @@ def make_spectrogram(data, fig, Fs = 500, vmin = 0, vmax = 30):
 def my_save_fig(fig, f_name, title):
     plt.savefig(f_name)
     out = ''
-    out += '## ' + title + '.\n'
-    out +=  '![](' + f_name + ')\n'
+    out += '## '  + title + '.\n'
+    out +=  '![](' + 'imgs/' + basename(f_name) + ')\n'
     return out
 

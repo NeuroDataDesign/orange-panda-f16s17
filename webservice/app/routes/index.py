@@ -207,8 +207,10 @@ def analyze_data():
 #	np.savetxt(res_path + "pre_processed.csv", eeg_data_filtered,
 #			delimiter=",")
         html_text = markdown(out, output_format='html5')
-	report = pypandoc.convert(html_text, 'pdf', format = "html",
-		outputfile=res_path2 + "out.pdf")	
+	with open(res_path2 + "report.html", 'w') as f:
+		f.write(html_text)
+	#report = pypandoc.convert(html_text, 'pdf', format = "html",
+	#	outputfile=res_path2 + "out.pdf")	
 	ziph = zipfile.ZipFile(res_path2 + patient + '.zip', 'w', zipfile.ZIP_DEFLATED)
 	for root, dirs, files in os.walk(res_path):
 	    for file in files:
@@ -218,7 +220,7 @@ def analyze_data():
 	#os.remove(res_path + "pre_processed.csv")
         res = {
 		'f_name': patient,
-                'report': res_path + 'out.pdf',
+                'report': res_path + 'report.html',
                 'zip': res_path + patient + ".zip"
             }
 	return jsonify(res)
@@ -261,6 +263,14 @@ def index():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('index'))
     return app.send_static_file('views/pages/analyze.html')
+
+@app.route("/getHtml", methods=['GET', 'POST'])
+def getHtml():
+    if request.method == 'POST':
+	with open('app/static/results/' + request.json["name"] + '/report.html', 'r') as f:
+		html_data = f.read()
+		return html_data
+	 
 
 @app.route('/<path:path>')
 def static_proxy(path):
