@@ -1,2 +1,4 @@
-# ugrad-data-design-team-1
-Machine O4range panda Learning BCI group
+# Team Orange Panda
+## EEG Pipeline
+
+* read the docs - [https://neurodatadesign.github.io/orange-panda]

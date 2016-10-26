@@ -5,6 +5,7 @@ from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 import h5py
 import os
+import set_keys
 
 def get_patients():
     r"""Gets a list of patient numbers to query the S3 bucket with.
@@ -38,7 +39,8 @@ def get_patients():
         L.append(line[:-1])
     return L
 
-def get_record(patient, record_num = 1, record_type = "full"):
+def get_record(patient, record_num = 1, record_type = "full",
+                loc_path = 'utils/tmp'):
     r"""Pulls a patient record from the S3 bucket.
 
     Parameters
@@ -85,7 +87,7 @@ def get_record(patient, record_num = 1, record_type = "full"):
         event_name += "00" + str(record_num) + ".mat"
     else:
         event_name += "0" + str(record_num) + ".mat"
-    local_path = "utils/tmp/" + patient + "_" + \
+    local_path = loc_path + patient + "_" + \
             str(record_num) + ".mat"
     print local_path
     if os.path.isfile(local_path):
@@ -94,8 +96,9 @@ def get_record(patient, record_num = 1, record_type = "full"):
         return local_path
     conn = S3Connection(os.environ['AWS_ACCESS_KEY'],
             os.environ['AWS_SECRET_KEY'])
-    bucket = conn.get_bucket('fcp-indi')
+    bucket = conn.get_bucket('neurodatadesign-test', validate=False)
     s3path = patient_path + event_name
+    print s3path
     key = Key(bucket, s3path)
     f = file(local_path, 'wb')
     def callback(togo, total):
