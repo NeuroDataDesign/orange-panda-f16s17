@@ -67,3 +67,8 @@ def my_save_fig(fig, f_name, title):
     out +=  '![](' + 'imgs/' + basename(f_name) + ')\n'
     return out
 
+def plotly_hack(fig):
+    from plotly.offline.offline import _plot_html
+    plot_html, plotdivid, width, height = _plot_html(
+                fig, False, "", True, '100%', 525, False)
+    return plot_html
