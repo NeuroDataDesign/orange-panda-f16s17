@@ -111,12 +111,12 @@ def analyze_data():
         print "made it past clean"
 
         # We only have one patient for this example
-        d = eeg_data[:, :, -1]
-        t = times[:, :, -1]
-        bad_chans, bad_report = detect_bad_channels(eeg_data)
-        pool = 10 # How many electrodes to interp against?
-        int_data, int_report = interpolate(eeg_data, coords,
-				bad_chans, npts = pool)
+        d = eeg_data[::100, :, -1]
+        t = times[::100, :, -1]
+        #bad_chans, bad_report = detect_bad_channels(ed)
+        #pool = 10 # How many electrodes to interp against?
+        #int_data, int_report = interpolate(ed, coords,
+        #				bad_chans, npts = pool)
         cct = [pd.DataFrame(data=d[:, x]) for x in range(d.shape[1])]
         df = pd.concat(cct, axis=1)
         #df.index = t
@@ -239,7 +239,7 @@ def analyze_data():
 	with open(res_path + "report.html", 'w') as f:
 		f.write(out)
         print "made it to writ ehtml"
-	ziph = zipfile.ZipFile(res_path + '../full_out.zip',
+	ziph = zipfile.ZipFile(res_path + '../' + patient + '.zip',
                 'w', zipfile.ZIP_DEFLATED)
 	for root, dirs, files in os.walk(res_path):
 	    for file in files:
@@ -251,7 +251,7 @@ def analyze_data():
         res = {
 		'f_name': patient,
                 'report': res_path + 'report.html',
-                'zip': res_path + "full_out.zip"
+                'zip': 'results/' + patient + ".zip"
             }
 	return jsonify(res)
     else:
