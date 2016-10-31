@@ -1,2 +1,6 @@
+import sys
 from app import app
-app.run(debug = True)
+if len(sys.argv) > 1:
+    app.run(host='0.0.0.0', port=80)
+else:
+    app.run(debug=True)

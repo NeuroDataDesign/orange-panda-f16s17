@@ -105,8 +105,8 @@ def my_spectrogram(df, ind, sfreq):
 def anomaly(df):
     df = df.replace([np.inf, -np.inf], np.nan).fillna(0)
     mcdf = df - df.mean()
-    U, S, Vt = np.linalg.svd(mcdf.as_matrix(), full_matrices = False)
-    df = (df).dot(U[0, :])
+    S, U = np.linalg.eigh(mcdf.cov().as_matrix())
+    df = (df).dot(U[:, -1].T)
     df.columns=['Scatter Points']
     spline = df.rolling(window=df.shape[0]/50, center=True, min_periods = 0).mean()
     spline.columns=['Smoothed Values']
@@ -127,8 +127,8 @@ def anomaly(df):
 def cv(df):
     df = df.replace([np.inf, -np.inf], np.nan).fillna(0)
     mcdf = df - df.mean()
-    U, S, Vt = np.linalg.svd(mcdf.as_matrix(), full_matrices = False)
-    S = S**2
+    S, U = np.linalg.eigh(mcdf.cov().as_matrix())
+    S = S[::-1]
     total = np.sum(S)
     S = np.cumsum(S)
     S = S / total
@@ -255,7 +255,7 @@ def full_report(df):
     print "Making NaNs over rows distribution bar chart..."
     html += plotly_hack(bad_values(df, 'Inf', 'Row')) 
     print "Making Infs over rows distribution bar chart..."
-    html += plotly_hack(var_dist(df, 'Column')) 
+    #html += plotly_hack(var_dist(df, 'Column')) 
     print "Making bar chart of the variance of each column..."
     #html += plotly_hack(heatmap(df)) 
     print "Making a heatmap of the entire dataset..."
