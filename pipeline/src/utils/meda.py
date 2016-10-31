@@ -1,6 +1,7 @@
+import sys
+import pickle
 from plotly.tools import FigureFactory as FF
 import scipy.interpolate as interpolate
-import colorlover as cl
 from scipy.signal import spectrogram
 from pandas_datareader import data
 import datetime
@@ -11,8 +12,7 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import numpy as np
 from collections import Counter
-from plots import plotly_hack
-# matrix exploratory data analysis
+
 def type_summary(df):
     g = df.columns.to_series().groupby(df.dtypes).groups
     s = {k.name: v for k, v in g.items()}
@@ -72,7 +72,7 @@ def var_dist(df, axis='Column'):
     minimum = var.min()
     maximum = var.max()
     logscale = ""
-    if float(minimum) / maximum < .1:
+    if float(minimum) / maximum < .01:
         logscale = "logscale"
         var = df.apply(np.log, axis=1).var()
         minimum = var.min()
@@ -93,11 +93,11 @@ def var_dist(df, axis='Column'):
 def my_spectrogram(df, ind, sfreq):
     cols = df.columns
     df = df.replace([np.inf, -np.inf], np.nan).fillna(0)
-    col = df.as_matrix()[:, ind]
+    col = df.as_matrix()[:, int(ind)]
     f, t, Sxx = spectrogram(col.T, sfreq)
     sp = pd.DataFrame(data=np.log(Sxx.T), index = t, columns = f)
     fig = sp.iplot(kind='heatmap', colorscale='spectral', asFigure=True,
-            title="Spectrogram for " + cols[ind],
+            title="Spectrogram for " + str(cols[ind]),
             xTitle='Time', yTitle = 'Frequency', zTitle="log magnitude")
     fig.data.update(dict(colorbar=dict(title="Magnitude logscale", titleside="right")))
     return fig
@@ -112,12 +112,12 @@ def anomaly(df):
     spline.columns=['Smoothed Values']
     resid = (df - spline).apply(np.abs)
     sd = np.sqrt(resid.var())
-    hcb = spline + 1 * sd
-    lcb = spline - 1 * sd
-    fig = df.iplot(title="Anomaly Detection Plot (outside 1 SD bands from rolling mean)",
+    hcb = spline + 5 * sd
+    lcb = spline - 5 * sd
+    fig = df.iplot(title="Anomaly Detection Plot (outside 5 SD bands from rolling mean)",
             xTitle='Time', yTitle='Value', 
             kind='line', mode='markers', asFigure=True, legend=True)
-    fig.data.update(dict(marker=dict(size = 6)))
+    fig.data.update(dict(marker=dict(size = 2)))
     fig.data.extend(spline.iplot(kind='line', asFigure=True, color='blue', legend=True).data)
     fig.data.extend(hcb.iplot(kind='line', asFigure=True, color='red', legend=True).data)
     fig.data.extend(lcb.iplot(kind='line', asFigure=True, color='red', legend=True).data)
@@ -133,7 +133,9 @@ def cv(df):
     S = np.cumsum(S)
     S = S / total
     index = (np.arange(S.shape[0]) + 1).tolist()
-    scree = pd.DataFrame(data = S.tolist(), index = range(1, len(df.columns) + 1), columns=["eigenvalue"])
+    scree = pd.DataFrame(data = S.tolist(),
+            index = range(1, len(df.columns) + 1),
+            columns=["eigenvalue"])
     fig = scree.iplot(kind='line', fill = True,
             title="Cumulative Variance Explained",
             asFigure=True)
@@ -149,30 +151,31 @@ def sparklines(df):
     if len(df.index) > 1000:
         cp = "(time compressed from " + str(len(df.index)) + " to 1000)"
         index = np.floor(np.linspace(0, len(df.index) - 1, 1000))
-        df = df.ix[index.astype(int)]
+        df = df.ix[index.astype(np.int64)]
     df = df.replace([np.inf, -np.inf], np.nan).dropna(how="all")
+    colind = np.floor(np.linspace(0, df.shape[1]-1, min(20, df.shape[1]))).astype(int)
+    df = df.ix[:, colind]
+    #print len(df.columns)
+    #print df.shape
     return df.iplot(kind='line',  asFigure=True,
             title="Sparklines " + cp,  xTitle='Row Index',
-            shared_xaxes=True,
-            subplots=True,
             shape=(len(df.columns), 1))
 
 def heatmap(df):
+    df = df.replace([np.inf, -np.inf], np.nan).dropna(how="all")
     cp = ''
     minimum = df.min().min()
     maximum = df.max().max()
     mean = df.mean().mean()
     logscale = ""
-    if float(mean) / maximum < .1 or float(minimum) / mean < .1:
+    if maximum - mean > 10 * mean or mean - minimum > 10 * minimum:
         logscale = "logscale"
-        var = df.apply(np.log, axis=1).var()
-        minimum = var.min()
-        maximum = var.max()
+        df = df.apply(np.log, axis=1)
     if len(df.index) > 1000:
         cp = "(time compressed from " + str(len(df.index)) + " to 1000)"
         index = np.floor(np.linspace(0, len(df.index) - 1, 1000))
         df = df.ix[index.astype(int)]
-    df = df.apply(np.log, axis=1)
+    df.index = np.arange(len(df.index))
     fig = df.iplot(kind='heatmap', colorscale='spectral', asFigure=True,
             title="Heatmap over time " + cp, xTitle='Row Index',
             yTitle = 'Column Index')
@@ -185,10 +188,7 @@ def correlation(df):
     y = x[::-1]
     z_text = np.around(correl, 2)
     colorscale = [[-1, '#0000FF'], [1, '#FF0000']]  # custom colorscale
-    print x
-    print y
-    print z_text
-    fig = FF.create_annotated_heatmap(correl, x=x, y=y, annotation_text=z_text)
+    fig = pd.DataFrame(data=correl).iplot(kind='heatmap', asFigure=True)
     fig.layout.update(dict(title="Pearson Correlation Matrix", height = 800, width = 800, autosize = False))
     fig.data.update( 
             dict(colorscale = colorscale, showscale = True,
@@ -213,12 +213,10 @@ def get_messy_data(df):
     dataset = datasets.load_boston()
     n_samples = df.shape[0]
     n_features = df.shape[1]
-    missing_rate = 0.10
-    n_missing_samples = np.floor(n_samples * missing_rate)
-    missing_samples = np.hstack((np.zeros(n_samples - n_missing_samples,
-					  dtype=np.bool),
-				 np.ones(n_missing_samples,
-					 dtype=np.bool)))
+    missing_rate = 0.05
+    n_missing_samples = int(np.floor(n_samples * missing_rate))
+    missing_samples = np.hstack((np.zeros(n_samples - n_missing_samples),
+				 np.ones(n_missing_samples)))
     rng.shuffle(missing_samples)
     missing_features = rng.randint(0, n_features, n_missing_samples)
     X_missing = df.copy()
@@ -227,35 +225,74 @@ def get_messy_data(df):
     X_missing[np.where(missing_samples)[0], missing_features] = np.inf
     return X_missing
 
-
-if __name__ == "__main__":
-    cf.go_offline()
+def get_stocks():
     start = datetime.datetime(2010, 10, 10)
     end = datetime.datetime(2016,10,10)
     companies = ["goog", "aapl", "yhoo", "msft", "amzn"]
     cnames = ["Google",  "Apple", "Yahoo", "Microsoft", "Amazon"]
     df = pd.concat([data.DataReader(c, "yahoo", start, end).loc[:, "Close"] for c in companies], axis=1)
     df.columns = cnames
-    df = pd.DataFrame(get_messy_data(df), index = df.index, columns = df.columns)
+    df = pd.DataFrame(get_messy_data(df), index = df.index,
+            columns = df.columns)
     df = df.apply(lambda x: pd.to_numeric(x, errors='ignore'))
+    pickle.dump(df, open('stocks.pkl', 'wb'))
+
+def plotly_hack(fig):
+    from plotly.offline.offline import _plot_html
+    plot_html, plotdivid, width, height = _plot_html(
+                fig, False, "", True, '100%', 525, False)
+    return plot_html
+
+def full_report(df):
     html = ''
-    #html += plotly_hack(type_plot(iris))
     html += plotly_hack(type_plot(df))
+    print "Making data type bar chart..."
     html += plotly_hack(bad_values(df, 'NaN', 'Column')) 
+    print "Making NaNs over columns distribution bar chart..."
     html += plotly_hack(bad_values(df, 'Inf', 'Column')) 
+    print "Making Infs over columns distribution bar chart..."
     html += plotly_hack(bad_values(df, 'NaN', 'Row')) 
+    print "Making NaNs over rows distribution bar chart..."
     html += plotly_hack(bad_values(df, 'Inf', 'Row')) 
+    print "Making Infs over rows distribution bar chart..."
     html += plotly_hack(var_dist(df, 'Column')) 
-    #html += var_dist(iris, 'Row') 
-    html += plotly_hack(heatmap(df)) 
+    print "Making bar chart of the variance of each column..."
+    #html += plotly_hack(heatmap(df)) 
+    print "Making a heatmap of the entire dataset..."
     html += plotly_hack(sparklines(df)) 
+    print "Making sparklines for each column..."
     d = len(df.columns)
     sp_compress = np.floor(np.linspace(0, d-1, min(d, 10)))
+    print "Making spectrograms..."
     for i in sp_compress:
-        html += plotly_hack(my_spectrogram(df, i, 1))
+        html += plotly_hack(my_spectrogram(df, int(i), 500))
+        print "    spectrogram made for " + str(df.columns[int(i)])
     html += plotly_hack(correlation(df))
+    print "Making Pearson Correlation Matrix..."
     html += plotly_hack(cv(df))
+    print "Making cumulative variance elbow of Principal Components..."
     html += plotly_hack(anomaly(df))
+    print "Making anomaly graph..."
     html = wrap_html(html)
-    with open('meda_example.html', 'w') as f:
+    return html
+
+
+
+if __name__ == "__main__":
+    cf.go_offline()
+    df = None
+    f_name = None
+    if len(sys.argv) > 1:
+        df = pickle.load(open(sys.argv[1], 'rb')) 
+        f_name = sys.argv[1] + '.html'
+    else:
+        print "No Pickle file given, using example data from stocks"
+        get_stocks()
+        f_name = 'stocks.pkl.html'
+        df = pickle.load(open('stocks.pkl', 'rb'))
+    html = full_report(df)
+    with open(f_name, 'w') as f:
         f.write(html)
+    print "DONE! Wrote report to " + f_name
+
+

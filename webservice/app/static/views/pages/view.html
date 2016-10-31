@@ -15,7 +15,7 @@
   <tbody>
     <tr ng-repeat="n in $root.f_name_list">
       <th scope="row">{{n.f_name}}</th>
-      <td data-ng-click="showHtml(n.f_name)">{{n.f_name}}.html</td>
+      <td><a ng-href="{{n.report}}" target="_blank">report</a></td>
       <td><a target = "_blank" ng-href="{{n.zip}}">zip file</td>
 	</tr>
   </tbody>

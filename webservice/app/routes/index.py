@@ -1,7 +1,10 @@
+import pandas as pd
 import set_keys
 import os, sys
 lib_path = os.path.abspath(os.path.join('..', 'pipeline', 'src'))
 sys.path.append(lib_path)
+
+from utils import meda
 
 from app import app
 
@@ -12,6 +15,9 @@ from flask import (Flask,
                    url_for,
                    send_from_directory,
                    jsonify)
+
+import plotly.plotly as py
+import plotly.graph_objs as go
 
 from werkzeug import secure_filename
 
@@ -45,7 +51,8 @@ import matplotlib.pyplot as plt
 from utils.plots import (plot_timeseries,
                          make_3d_scatter,
                          make_spectrogram,
-                         my_save_fig)
+                         my_save_fig,
+                         plotly_hack)
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import ast
@@ -54,10 +61,8 @@ import pypandoc
 import zipfile
 import shutil
 
-UPLOAD_FOLDER = '/home/ryan/test/yo'
 ALLOWED_EXTENSIONS = set(['mat', 'csv', 'txt'])
 
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/')
 def root():
@@ -71,29 +76,26 @@ def allowed_file(filename):
 def analyze_data():
     if request.method == 'POST':
         patient = request.json['name']
-        #!! REMOVE
+
+        set_args()
+
         out = ''
-        out = "# Upload Report for File at " + patient + ".\n"
+        #out += '<html><head><script src="https://cdn.plot.ly/plotly-latest.min.js"></script></head><body>'
 
         # Create folder for results if doesn't exist
         # Also set path variables to save data to later
-	res_path = "results/" + patient + '/'
-	img_path = "results/" + patient + "/imgs/"
-	res_path2 = "app/static/results/" + patient + '/'
-	img_path2 = "app/static/results/" + patient + "/imgs/"
+	res_path = "app/static/results/" + patient + '/'
+	img_path = "app/static/results/" + patient + "/imgs/"
 	if not os.path.exists(res_path):
 	    os.makedirs(res_path)
 	if not os.path.exists(img_path):
 	    os.makedirs(img_path)
-	if not os.path.exists(res_path2):
-	    os.makedirs(res_path2)
-	if not os.path.exists(img_path2):
-	    os.makedirs(img_path2)
 
         fn = 'files/' + patient
         
         # Load data from file path
         d = make_h5py_object(fn)
+        print "made it past files"
 
         # Wrap this patient's data.
         # Our functions take an array of patients,
@@ -102,126 +104,154 @@ def analyze_data():
 
         # Clean the data
         clean_data, clean_report = clean(D)
-        out += clean_report
+        #out += clean_report
         eeg_data, times, coords = clean_data
         from utils.clean_data import get_electrode_coords
         cart = get_electrode_coords(D[0], coords = "euclidian")
+        print "made it past clean"
 
         # We only have one patient for this example
-	d = eeg_data[:, :, -1]
-	t = times[:, :, -1]
-
-        # Make and add the brain scatter plot to report
-        out += my_save_fig(make_3d_scatter(d, cart),
-                img_path + "3d_brain.png",
-                "Example 3D Scatter Plot")
-
-        scat = plot_timeseries(data = d,
-            time = t,
-            selector = "random",
-            title = "10 randomly selected electrodes from data.",
-            start = 1500,
-            end = 2000,
-            skip = 1,
-            randno = 10,
-            xlab = r'$t$, in milliseconds',
-            ylab = r'voltage in $mV$')
-
-        out += my_save_fig(scat, img_path + "rand_time_series.png",
-                    "Randomly Selected Electrode Time Series")
-        # Detect bad electrodes, plot them.
+        d = eeg_data[:, :, -1]
+        t = times[:, :, -1]
         bad_chans, bad_report = detect_bad_channels(eeg_data)
-        out += bad_report
-        bad_plot = plot_timeseries(data = d[:, bad_chans[0]],
-            time = t,
-            selector = "all",
-            title = "Plot of the bad electrodes.",
-            start = 1000,
-            end = 2000,
-            skip = 1,
-            randno = 10,
-            xlab = r'$t$, in milliseconds',
-            ylab = r'voltage in $mV$')
-
-        # Plot the bad channels
-        out += my_save_fig(bad_plot, img_path + "bad_electrodes.png",
-                    "The 'Bad' Electrodes")
-
-        # Interpolate bad electrodes
         pool = 10 # How many electrodes to interp against?
         int_data, int_report = interpolate(eeg_data, coords,
 				bad_chans, npts = pool)
-        eeg_data, closest = int_data
-        out += int_report
+        cct = [pd.DataFrame(data=d[:, x]) for x in range(d.shape[1])]
+        df = pd.concat(cct, axis=1)
+        #df.index = t
+        df.columns = [str(x) for x in range(d.shape[1])]
+        out += meda.full_report(df)
 
-        # Plotting the interpolated electrodes
-	for l in range(len(closest[0])):
-	    out += "\nInterpolating for channel: " + \
-			str(bad_chans[0][l]) + '\n'
-	    out +=  "\nInterpolating against: " + str(closest[0][l]) + '\n'
-	    inds = closest[0][l]
-	    d = np.column_stack([eeg_data[:, i, 0] for i in inds])
-	    d = np.column_stack([d, eeg_data[:, bad_chans[0][l], 0]])
-	    cols = ["red"] * pool
-	    cols.append("blue")
-	    tmp_fig = plot_timeseries(data = d,
-			  time = t,
-			  selector = "all",
-			  title = "Interpolated (blue) electrode with " + \
-			    " its " + str(pool) + " closest neighbors.",
-			  colors = cols,
-			  start = 100,
-			  end = 2000,
-			  skip = 10,
-			  xlab = r'$t$, in milliseconds',
-			  ylab = r'difference from mean' + \
-				    'voltage in $mV$')
-            title = "Interpolation of Electrode " + str(l)
-            out += my_save_fig(tmp_fig, img_path + "elect_interp_" + \
-                            str(l) + ".png", title)
+        #out += plotly_hack(fig)
+        #correl = np.corrcoef(d.T)
+	#data = [
+	#    go.Heatmap(
+	#	z = correl.T,
+        #        colorbar=go.ColorBar(title='Correlation coefficient (rho)')
+	#    )
+	#]
+	#layout = go.Layout(
+	#    title='Electrode Pearson Correlation Matrix',
+	#    xaxis=dict(
+	#	title='Electrode',
+	#	titlefont=dict(
+	#	    family='Courier New, monospace',
+	#	    size=18,
+	#	    color='#7f7f7f'
+	#	)
+	#    ),
+	#    yaxis=dict(
+	#	title='Electrode',
+        #        autorange='reversed',
+	#	titlefont=dict(
+	#	    family='Courier New, monospace',
+	#	    size=18,
+	#	    color='#7f7f7f'
+	#	)
+	#    )
+        #)
+	#fig = go.Figure(data=data, layout=layout)
+	#fig['layout'].update(height = 800, width = 800, autosize=False)
+	##out += plotly_hack(fig)
+        ## Make and add the brain scatter plot to report
+        #print "made it to here"
+
+        #scat = plot_timeseries(data = d,
+        #    time = t,
+        #    selector = "random",
+        #    title = "10 randomly selected electrodes from data.",
+        #    start = 1500,
+        #    end = 2000,
+        #    skip = 1,
+        #    randno = 10,
+        #    xlab = r'$t$, in milliseconds',
+        #    ylab = r'voltage in $mV$')
+
+        ## Detect bad electrodes, plot them.
+        #bad_chans, bad_report = detect_bad_channels(eeg_data)
+        ##out += bad_report
+        #bad_plot = plot_timeseries(data = d[:, bad_chans[0]],
+        #    time = t,
+        #    selector = "all",
+        #    title = "Plot of the bad electrodes.",
+        #    start = 1000,
+        #    end = 2000,
+        #    skip = 1,
+        #    randno = 10,
+        #    xlab = r'$t$, in milliseconds',
+        #    ylab = r'voltage in $mV$')
+
+        ## Interpolate bad electrodes
+        #pool = 10 # How many electrodes to interp against?
+        #int_data, int_report = interpolate(eeg_data, coords,
+	#			bad_chans, npts = pool)
+        #eeg_data, closest = int_data
+        #print "made it to interp"
+        ##out += int_report
+
+        ## Plotting the interpolated electrodes
+	##for l in range(len(closest[0])):
+	##    #out += "\nInterpolating for channel: " + \
+	##    #		str(bad_chans[0][l]) + '\n'
+	##    #out +=  "\nInterpolating against: " + str(closest[0][l]) + '\n'
+	##    inds = closest[0][l]
+	##    d = np.column_stack([eeg_data[:, i, 0] for i in inds])
+	##    d = np.column_stack([d, eeg_data[:, bad_chans[0][l], 0]])
+	##    cols = ["red"] * pool
+	##    cols.append("blue")
+	##    tmp_fig = plot_timeseries(data = d,
+#	#		  time = t,
+#	#		  selector = "all",
+#	#		  title = "Interpolated (blue) electrode with " + \
+#	#		    " its " + str(pool) + " closest neighbors.",
+#	#		  colors = cols,
+#	#		  start = 100,
+#	#		  end = 2000,
+#	#		  skip = 10,
+#	#		  xlab = r'$t$, in milliseconds',
+#	#		  ylab = r'difference from mean' + \
+#	#			    'voltage in $mV$')
+#       #     title = "Interpolation of Electrode " + str(l)
 
 
-        # Reduce noise on data
-        eeg_data_filtered, rn_report = reduce_noise(eeg_data)
-        out += rn_report
+        ## Reduce noise on data
+        ##eeg_data_filtered, rn_report = reduce_noise(eeg_data)
+        ##out += rn_report
 
-        # Plot spectrograms (before and after) for each channel
-	for i in range(5):#eeg_data.shape[1]):
-            fig = plt.figure()
-            fig.suptitle("Channel " + str(i), fontsize=10)
-            plt.subplot(211)	
-            make_spectrogram(eeg_data[:, i, 0], fig)
-            plt.subplot(212)	
-            make_spectrogram(eeg_data_filtered[:, i, 0], fig)
-	    plt.tight_layout()
-	    plt.savefig(img_path + "spectrogram_channel_"+str(i)+".png")
-            plt.clf()
-            plt.close(fig)
+        ## Plot spectrograms (before and after) for each channel
+	##for i in range(5):#eeg_data.shape[1]):
+        ##    fig = plt.figure()
+        ##    fig.suptitle("Channel " + str(i), fontsize=10)
+        ##    plt.subplot(211)	
+        ##    make_spectrogram(eeg_data[:, i, 0], fig)
+        ##    plt.subplot(212)	
+        ##    make_spectrogram(eeg_data_filtered[:, i, 0], fig)
+	##    plt.tight_layout()
+	##    #plt.savefig(img_path + "spectrogram_channel_"+str(i)+".png")
+        ##    plt.clf()
+        ##    plt.close(fig)
 
-        # Plot example spectrogram for the report
-	out += "## Here is a sample of channel 4 before and after noise reduction.\n"
-	out +=  '![](' + img_path + 'spectrogram_channel_4.png ' + \
-			'\"sp Image\")\n'
+        ##out += '</body></html>'
 
-        # Saving everything
-#	np.savetxt(res_path + "pre_processed.csv", eeg_data_filtered,
-#			delimiter=",")
-        html_text = markdown(out, output_format='html5')
-	with open(res_path2 + "report.html", 'w') as f:
-		f.write(html_text)
-	#report = pypandoc.convert(html_text, 'pdf', format = "html",
-	#	outputfile=res_path2 + "out.pdf")	
-	ziph = zipfile.ZipFile(res_path2 + patient + '.zip', 'w', zipfile.ZIP_DEFLATED)
+        ## Saving everything
+        ##html_text = markdown(out, output_format='html5')
+	with open(res_path + "report.html", 'w') as f:
+		f.write(out)
+        print "made it to writ ehtml"
+	ziph = zipfile.ZipFile(res_path + '../full_out.zip',
+                'w', zipfile.ZIP_DEFLATED)
 	for root, dirs, files in os.walk(res_path):
 	    for file in files:
 		print "zipping", root, file
 		ziph.write(os.path.join(root, file))
 	ziph.close()
-	#os.remove(res_path + "pre_processed.csv")
+        print "past zip"
+        res_path = "/results/" + patient + "/"
         res = {
 		'f_name': patient,
                 'report': res_path + 'report.html',
-                'zip': res_path + patient + ".zip"
+                'zip': res_path + "full_out.zip"
             }
 	return jsonify(res)
     else:
@@ -271,8 +301,3 @@ def getHtml():
 		html_data = f.read()
 		return html_data
 	 
-
-@app.route('/<path:path>')
-def static_proxy(path):
-      # send_static_file will guess the correct MIME type
-        return send_from_directory('png', path)

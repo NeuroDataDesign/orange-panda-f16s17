@@ -36,10 +36,10 @@ scotchApp.controller('viewController', function($sce, $http, $scope) {
 	$scope.showHtml = function(name){
 		$http.post('/getHtml', {'name': name})
              .success(function(res){
-				 $scope.show_report = true
+				 //$scope.show_report = true
                  $scope.message = "Showing report for " + name
-				 res = '<base href="../results/' + name + '/"/>' + res
-				 $scope.view_html = $sce.trustAsHtml(res);
+				 //res = '<base href="../results/' + name + '/"/>' + res
+				 //$scope.view_html = $sce.trustAsHtml(res);
 
              })
 	}
