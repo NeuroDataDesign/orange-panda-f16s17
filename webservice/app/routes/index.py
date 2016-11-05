@@ -25,9 +25,9 @@ def allowed_file(filename):
 @app.route('/analyze_data', methods=['GET', 'POST'])
 def analyze_data():
     if request.method == 'POST':
-        patient = request.json['name']
-        out = web.make_meda_html(patient)
-        res = web.save_analysis(out, patient)
+        file_name = request.json['name']
+        out = web.make_meda_html(file_name)
+        res = web.save_analysis(out, file_name)
         return jsonify(res)
     else:
 	   abort(404)

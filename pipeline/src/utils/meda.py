@@ -156,17 +156,19 @@ def cv(df):
     return fig 
 
 
-def sparklines(df):
+def sparklines(df, title = 'Sparklines '):
     cp = ''
     if len(df.index) > 1000:
-        cp = "(time compressed from " + str(len(df.index)) + " to 1000)"
-        index = np.floor(np.linspace(0, len(df.index) - 1, 1000))
-        df = df.ix[index.astype(np.int64)]
+        cp = "(compressed from " + str(len(df.index)) + " timesteps to 1000)"
+        index = np.floor(np.linspace(0, len(df.index) - 1, 1000)).astype(np.int64)
+        #new_ind = df.index[index]
+        df = df.ix[df.index[index]]
+        #df.index = new_ind
     df = df.replace([np.inf, -np.inf], np.nan).dropna(how="all")
     colind = np.floor(np.linspace(0, df.shape[1]-1, min(20, df.shape[1]))).astype(int)
     df = df.ix[:, colind]
     fig = df.iplot(kind='line',  asFigure=True,
-            title="Sparklines " + cp, subplots=True, xTitle='Row Index',
+            title=title + cp, subplots=True, xTitle='Row Index', yTitle='Column Index',
             shape=(len(df.columns), 1), shared_xaxes = True, theme='solar')
     fig.layout.update(height=len(df.columns) * 80)
     return fig
@@ -211,8 +213,8 @@ def wrap_html(html):
     out += '<html><head>'
     out += '<title>PANDA Report</title>'
     out += '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">' 
-    out += '<script src="https://cdn.plot.ly/plotly-latest.min.js">'
-    out += '</script></head><body style="background-color: rgb(21, 21, 22)">'
+    out += '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+    out += '</head><body style="background-color: rgb(21, 21, 22)">'
     out += html
     out += '</body></html>'
     return out
