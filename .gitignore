@@ -11,3 +11,4 @@ webservice/results
 webservice/set_keys.py
 pipeline/src/set_keys.py
 webservice/app/static/results/*
+webservice/full_out.zip
