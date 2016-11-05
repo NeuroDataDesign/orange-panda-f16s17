@@ -19,7 +19,7 @@ def get_s3(req):
     f_name, extension = os.path.splitext(req['fpath'])
     local_path = 'files/' + req['name'] + extension
     if os.path.isfile(local_path):
-        format_data(local_path, 'eeg')
+        format_data(local_path, req['token'])
         return 'ok!'
     conn = S3Connection(os.environ['AWS_ACCESS_KEY'],
             os.environ['AWS_SECRET_KEY'])

@@ -38,8 +38,7 @@ def eeg_format(f_name, ext):
     cct = [pd.DataFrame(data=d[:, x]) for x in range(d.shape[1])]
     df = pd.concat(cct, axis=1)
     df.columns = [str(x) for x in range(d.shape[1])]
-    print t.shape
-    df.index = map(str, t)
+    df.index = map(lambda x: x[0]/1000.0, t)
     with open(f_name + '.pkl', 'wb') as f:
     	pickle.dump(df, f)
 
