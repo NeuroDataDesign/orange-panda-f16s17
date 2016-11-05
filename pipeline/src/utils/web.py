@@ -16,8 +16,8 @@ from utils.formatting_scripts import format_data
 RESULTS='app/static/results/'
 
 def get_s3(req):
-    local_path = 'files/' + req['name']
-    print local_path
+    f_name, extension = os.path.splitext(req['fpath'])
+    local_path = 'files/' + req['name'] + extension
     if os.path.isfile(local_path):
         format_data(local_path, 'eeg')
         return 'ok!'
@@ -66,13 +66,14 @@ def save_analysis(html_report, patient):
         }
     return res
 
-def _make_res(f_name, dir_name):
+def _make_res(name):
     res = {
-    'f_name': f_name,
-            'report': '/results/' + dir_name + '/report.html',
-            'zip': 'results/' + f_name
+    'f_name': name,
+            'report': '/results/' + name + '/report.html',
+            'zip': 'results/' + name + '.zip'
         }
     return res
 def populate_table():
     for root, dirs, files in os.walk(RESULTS):
-        return map(lambda x: _make_res(*x), zip(files, dirs))
+        return map(lambda x: _make_res(x), dirs)
+

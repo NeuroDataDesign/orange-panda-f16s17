@@ -1,3 +1,4 @@
+import os
 import pickle
 from main import (set_args,
                   clean,
@@ -15,13 +16,16 @@ from utils.get_data import make_h5py_object
 import pandas as pd
 
 def format_data(file_path, token):
-	if token == "eeg":
-		eeg_format(file_path)
+	f_name, ext = os.path.splitext(file_path)
+	if token == "pickled_pandas":
+		return
+	if token == "fcp_indi_eeg":
+		eeg_format(f_name, ext)
 
 
-def eeg_format(file_path):
+def eeg_format(f_name, ext):
     set_args()
-    d = make_h5py_object(file_path)
+    d = make_h5py_object(f_name + ext)
     # Wrap this patient's data.
     D = [d]
     # Clean the data
@@ -36,7 +40,7 @@ def eeg_format(file_path):
     df.columns = [str(x) for x in range(d.shape[1])]
     print t.shape
     df.index = map(str, t)
-    with open(file_path + '.pkl', 'wb') as f:
+    with open(f_name + '.pkl', 'wb') as f:
     	pickle.dump(df, f)
 
     #bad_chans, bad_report = detect_bad_channels(ed)
