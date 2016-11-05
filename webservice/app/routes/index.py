@@ -22,7 +22,6 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
-
 @app.route('/analyze_data', methods=['GET', 'POST'])
 def analyze_data():
     if request.method == 'POST':
@@ -39,4 +38,8 @@ def get_s3():
         return web.get_s3(request.json)
     else:
 	abort(400)
+
+@app.route('/getTable', methods=['GET'])
+def get_table_data():
+    return jsonify(web.populate_table())
 

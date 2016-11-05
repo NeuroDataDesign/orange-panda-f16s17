@@ -13,6 +13,8 @@ import ast
 import zipfile
 from utils.formatting_scripts import format_data
 
+RESULTS='app/static/results/'
+
 def get_s3(req):
     local_path = 'files/' + req['name']
     print local_path
@@ -45,7 +47,7 @@ def make_meda_html(file_name):
 def save_analysis(html_report, patient):
     # Create folder for results if doesn't exist
     # Also set path variables to save data to later
-    res_path = "app/static/results/" + patient + '/'
+    res_path = RESULTS + patient + '/'
     if not os.path.exists(res_path):
         os.makedirs(res_path)
     with open(res_path + "report.html", 'w') as f:
@@ -63,3 +65,14 @@ def save_analysis(html_report, patient):
             'zip': 'results/' + patient + ".zip"
         }
     return res
+
+def _make_res(f_name, dir_name):
+    res = {
+    'f_name': f_name,
+            'report': '/results/' + dir_name + '/report.html',
+            'zip': 'results/' + f_name
+        }
+    return res
+def populate_table():
+    for root, dirs, files in os.walk(RESULTS):
+        return map(lambda x: _make_res(*x), zip(files, dirs))

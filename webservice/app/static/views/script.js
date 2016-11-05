@@ -33,16 +33,10 @@ scotchApp.controller('mainController', function($scope) {
 scotchApp.controller('viewController', function($sce, $http, $scope) {
     $scope.message = 'View some analyses here!';
 	$scope.show_report = false
-	$scope.showHtml = function(name){
-		$http.post('/getHtml', {'name': name})
-             .success(function(res){
-				 //$scope.show_report = true
-                 $scope.message = "Showing report for " + name
-				 //res = '<base href="../results/' + name + '/"/>' + res
-				 //$scope.view_html = $sce.trustAsHtml(res);
-
-             })
-	}
+	$http.get('/getTable')
+         .success(function(res){
+            $scope.f_name_list = res
+         })
 });
 
 scotchApp.controller('analyzeController', function($rootScope, $sce, $scope, $http) {
