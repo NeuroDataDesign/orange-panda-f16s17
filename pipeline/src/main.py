@@ -14,6 +14,8 @@ from utils.get_data import get_record, get_patients, make_h5py_object
 from utils.clean_data import get_eeg_data, get_times, get_electrode_coords
 from utils.fourier import butter_highpass_filter, butter_lowpass_filter, butter_bandstop_filter
 from preprocessing.interp import fit_sphere, gc, gc_invdist_interp
+from utils.meda import sparklines, plotly_hack
+import pandas as pd
 
 NUM_PATIENTS = 59 # Half of total, randomly selected
 
@@ -121,20 +123,25 @@ def clean(D):
 
     # Create a report for the cleaning procedure
     out = ''
-    out += "## CLEANING DATA...\n"
-    out += "* Extracted EEG data with " + str(eeg_data.shape[1]) + \
+    out += "<h3>CLEANING DATA</h3>"
+    out += "<ul>"
+    out += "<li>Extracted EEG data with " + str(eeg_data.shape[1]) + \
             " channels and " + str(eeg_data.shape[0]) + \
-            " observations.\n"
-    out += "* Extracted timing data with " + str(times.shape[0]) + \
-            " timesteps.\n"
-    out += "* Extracted electrode coordinate data.\n\n"
+            " observations.</li>"
+    out += "<li>Extracted timing data with " + str(times.shape[0]) + \
+            " timesteps.</li>"
+    out += "<li>Extracted electrode coordinate data.</li>"
+    out += "</ul>"
 
     return (eeg_data, times, electrodes), out
 
-def detect_bad_channels(eeg_data):
+def detect_bad_channels(eeg_data, times):
     out = ''
-    out +=  "## DETECTING BAD CHANNELS...\n"
+    out +=  "<h3>DETECTING BAD CHANNELS</h3>"
     bad_chans_list = []
+    out += "<h4> Summary </h4>"
+    out += "<table><tr><th>Patient</th><th># Bad Electrodes</th><th>Bad Electrodes</th></tr>"
+    plots = '<h4> Plots of Bad Electrodes</h4>'
 
     # Finding list of bad channels for each patient
     # (list of lists)
@@ -146,38 +153,59 @@ def detect_bad_channels(eeg_data):
             if sum(d[:, i]**2) == 0:
                 L.append(i)
         bad_chans_list.append(L)
-        out +=  "* There were " + str(len(L)) + \
-                " bad channels detected for patient " + \
-                str(patient) + ".\n\n"
+        out += "<tr>"
+        out +=  "<td>" + str(patient) + "</td>"
+        out += "<td>" + str(len(L)) + "</td>"
+        out += "<td>" + str(L) + "</td>"
+        out += "</tr>"
+        cct = [pd.DataFrame(data=d[:, x]) for x in L]
+        df = pd.concat(cct, axis=1)
+        df.columns = [str(x) for x in L]
+        df.index = map(lambda x: x[0]/1000.0, times[:, :, -1])
+        plots += plotly_hack(sparklines(df, title="Bad Electrodes for patient " + str(patient)))
     # Numpify the python array
     bad_chans_list = np.array(bad_chans_list)
+
+    out += "</table>"
+    out += plots
+
+
     # Some testing
     assert len(bad_chans_list) == eeg_data.shape[2]
     return bad_chans_list, out
 
-def interpolate(eeg_data, coords, bad_chans, npts = 3):
+def interpolate(eeg_data, coords, bad_chans, times, npts = 3):
     out = ""
-    out += "## INTERPOLATING BAD CHANNELS...\n"
+    out += "<h3>INTERPOLATING BAD CHANNELS</h3>"
     closest = []
     for patient in range(eeg_data.shape[2]):
+        out += "<h4> Interpolation for Patient " + str(patient)
         r = fit_sphere(coords[:, 2, patient])
-        out += "* Fit sphere of radius " + str(r) + " to head."
+        out += "<ul><li> Fit sphere of radius " + str(r) + " to head.</li></ul>"
         eeg_data_fixed, close = gc_invdist_interp(eeg_data[:, :, patient],
                     bad_chans[patient], coords[:, :, patient],
                     r, numpts = npts)
         eeg_data[:, :, patient] = eeg_data_fixed
+        cct = [pd.DataFrame(data=eeg_data[:, x]) for x in bad_chans[patient]]
+        df = pd.concat(cct, axis=1)
+        df.columns = [str(x) for x in bad_chans[patient]]
+        df.index = map(lambda x: x[0]/1000.0, times[:, :, -1])
+        out += plotly_hack(sparklines(df, title="Interpolations for patient " + str(patient)))
         closest.append(close)
     return (eeg_data, closest), out
 
 
 def reduce_noise(F):
     out = ""
-    out +=  "## REDUCING NOISE...\n"
+    out +=  "<h3>REDUCING NOISE</h3>"
     D = F.copy()
     for patient in range(D.shape[2]):
+        out += '<h4>Actions for patient ' + str(patient) + '</h4>'
+        out += '<ul>'
         d = D[:, :, patient]
-        out += "* Highpass filtered at .1 Hz threshold.\n"
-        out += "* Bandstop filtered at harmonics of 60Hz.\n"
+        out += "<li>Highpass filtered at .1 Hz threshold.</li>"
+        out += "<li>Bandstop filtered at harmonics of 60Hz.</li>"
+        out += '</ul>'
         for channel in range(d.shape[1]):
             D[:, channel, patient] = butter_highpass_filter(
                                 d[:, channel], 0.1, 500)

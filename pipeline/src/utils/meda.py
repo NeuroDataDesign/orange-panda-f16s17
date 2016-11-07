@@ -30,6 +30,7 @@ def type_plot(df):
             title = "Frequency and Density of each data type over columns.",
             xTitle = 'Type',
             asFigure=True,
+            theme='solar',
             kind='bar',
             legend=False,
             yTitle='Density',
@@ -56,6 +57,7 @@ def bad_values(df, choice='NaN', axis='Column'):
             legend=False,
             yTitle= choice + " Density",
             asFigure=True,
+            theme='solar',
             title='Distribution of ' + choice + ' values over ' + axis,
             xTitle= axis,
             shared_xaxes=True,
@@ -82,6 +84,7 @@ def var_dist(df, axis='Column'):
             columns = {0 : 'Variances'})
     fig = var.iplot(kind='bar',
            legend=False,
+           theme='solar',
            asFigure=True,
            title='Variance for each ' +axis+ ' (excluding all NaN and Inf)',
            xTitle= axis,
@@ -97,15 +100,14 @@ def my_spectrogram(df, ind, sfreq):
     f, t, Sxx = spectrogram(col.T, sfreq)
     sp = pd.DataFrame(data=np.log(Sxx.T), index = t, columns = f)
     fig = sp.iplot(kind='heatmap', colorscale='spectral', asFigure=True,
-            title="Spectrogram for " + str(cols[ind]),
+            title="Spectrogram for " + str(cols[ind]), theme='solar',
             xTitle='Time', yTitle = 'Frequency', zTitle="log magnitude")
     fig.data.update(dict(colorbar=dict(title="Magnitude logscale", titleside="right")))
     return fig
 
 def anomaly(df):
     df = df.replace([np.inf, -np.inf], np.nan).fillna(0)
-    mcdf = df - df.mean()
-    S, U = np.linalg.eigh(mcdf.cov().as_matrix())
+    S, U = np.linalg.eigh((df - df.mean()).cov())
     df = (df).dot(U[:, -1].T)
     df.columns=['Scatter Points']
     spline = df.rolling(window=df.shape[0]/50, center=True, min_periods = 0).mean()
@@ -114,13 +116,18 @@ def anomaly(df):
     sd = np.sqrt(resid.var())
     hcb = spline + 5 * sd
     lcb = spline - 5 * sd
-    fig = df.iplot(title="Anomaly Detection Plot (outside 5 SD bands from rolling mean)",
-            xTitle='Time', yTitle='Value', 
+    out = (df - hcb > 0) | (df - lcb < 0) 
+    fig = df.ix[out].iplot(title="Anomaly Detection Plot (outside 5 SD bands from rolling mean)",
+            xTitle='Time', yTitle='Value', theme='solar', 
             kind='line', mode='markers', asFigure=True, legend=True)
-    fig.data.update(dict(marker=dict(size = 2)))
-    fig.data.extend(spline.iplot(kind='line', asFigure=True, color='blue', legend=True).data)
-    fig.data.extend(hcb.iplot(kind='line', asFigure=True, color='red', legend=True).data)
-    fig.data.extend(lcb.iplot(kind='line', asFigure=True, color='red', legend=True).data)
+    fig.data.update(dict(marker=dict(size = 4)))
+    fig.data.extend(spline.iplot(kind='line', title='mean', asFigure=True, color='blue', legend=True).data)
+    fig.data.extend(hcb.iplot(kind='line', title='5 Sigma', asFigure=True, color='red', legend=True).data)
+    fig.data.extend(lcb.iplot(kind='line', title = '5 Sigma', asFigure=True, color='red', legend=True).data)
+    fig.data[0].update(dict(name='Data'))
+    fig.data[1].update(dict(name='Rolling Mean'))
+    fig.data[2].update(dict(name='+ 5 SD'))
+    fig.data[3].update(dict(name='- 5 SD'))
     return fig
 
 
@@ -132,34 +139,39 @@ def cv(df):
     total = np.sum(S)
     S = np.cumsum(S)
     S = S / total
+    S = S[S < .9999]
     index = (np.arange(S.shape[0]) + 1).tolist()
     scree = pd.DataFrame(data = S.tolist(),
-            index = range(1, len(df.columns) + 1),
+            index = range(1, len(S) + 1),
             columns=["eigenvalue"])
     fig = scree.iplot(kind='line', fill = True,
             title="Cumulative Variance Explained",
-            asFigure=True)
+            asFigure=True, theme='solar')
     ytitle = "Cumulative Proportion of Total Variance Explained"
     xtitle = "Principal Component"
-    fig.layout.update(dict(yaxis=dict(tick0=0, title = ytitle),
-        xaxis=dict(tickvals=index, title=xtitle)))
+    fig.layout.update(dict(yaxis=dict(tick0=0, title = ytitle,
+        titlefont=dict(color='lightgrey'), tickfont=dict(color='lightgrey')),
+        xaxis=dict(tickvals=index, title=xtitle,
+            titlefont=dict(color='lightgrey'), tickfont=dict(color='lightgrey'))))
     return fig 
 
 
-def sparklines(df):
+def sparklines(df, title = 'Sparklines '):
     cp = ''
     if len(df.index) > 1000:
-        cp = "(time compressed from " + str(len(df.index)) + " to 1000)"
-        index = np.floor(np.linspace(0, len(df.index) - 1, 1000))
-        df = df.ix[index.astype(np.int64)]
+        cp = "(compressed from " + str(len(df.index)) + " timesteps to 1000)"
+        index = np.floor(np.linspace(0, len(df.index) - 1, 1000)).astype(np.int64)
+        #new_ind = df.index[index]
+        df = df.ix[df.index[index]]
+        #df.index = new_ind
     df = df.replace([np.inf, -np.inf], np.nan).dropna(how="all")
     colind = np.floor(np.linspace(0, df.shape[1]-1, min(20, df.shape[1]))).astype(int)
     df = df.ix[:, colind]
-    #print len(df.columns)
-    #print df.shape
-    return df.iplot(kind='line',  asFigure=True,
-            title="Sparklines " + cp,  xTitle='Row Index',
-            shape=(len(df.columns), 1))
+    fig = df.iplot(kind='line',  asFigure=True,
+            title=title + cp, subplots=True, xTitle='Row Index', yTitle='Column Index',
+            shape=(len(df.columns), 1), shared_xaxes = True, theme='solar')
+    fig.layout.update(height=len(df.columns) * 80)
+    return fig
 
 def heatmap(df):
     df = df.replace([np.inf, -np.inf], np.nan).dropna(how="all")
@@ -178,7 +190,7 @@ def heatmap(df):
     df.index = np.arange(len(df.index))
     fig = df.iplot(kind='heatmap', colorscale='spectral', asFigure=True,
             title="Heatmap over time " + cp, xTitle='Row Index',
-            yTitle = 'Column Index')
+            yTitle = 'Column Index', theme='solar')
     fig.data.update(dict(colorbar=dict(title="Magnitude " + logscale, titleside="right")))
     return fig
 
@@ -188,7 +200,8 @@ def correlation(df):
     y = x[::-1]
     z_text = np.around(correl, 2)
     colorscale = [[-1, '#0000FF'], [1, '#FF0000']]  # custom colorscale
-    fig = pd.DataFrame(data=correl).iplot(kind='heatmap', asFigure=True)
+    fig = pd.DataFrame(data=correl).iplot(kind='heatmap',
+        theme='solar', asFigure=True)
     fig.layout.update(dict(title="Pearson Correlation Matrix", height = 800, width = 800, autosize = False))
     fig.data.update( 
             dict(colorscale = colorscale, showscale = True,
@@ -198,9 +211,10 @@ def correlation(df):
 def wrap_html(html):
     out = ''
     out += '<html><head>'
+    out += '<title>PANDA Report</title>'
     out += '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">' 
-    out += '<script src="https://cdn.plot.ly/plotly-latest.min.js">'
-    out += '</script></head><body>'
+    out += '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+    out += '</head><body style="background-color: rgb(21, 21, 22)">'
     out += html
     out += '</body></html>'
     return out
@@ -280,6 +294,7 @@ def full_report(df):
 
 if __name__ == "__main__":
     cf.go_offline()
+    cf.set_config(theme='solar')
     df = None
     f_name = None
     if len(sys.argv) > 1:

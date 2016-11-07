@@ -1,19 +1,20 @@
 <div class="jumbotron text-center">
 <h1>Explore Data</h1>
-<div class="text-center col-md-12">{{ message }}</div>
 <div class="container">
-<table class="table-hover offset4 span4 text-center row table">
+<table class="table">
   <thead>
     <tr>
       <th>File Name</th>
-      <th>Report of Analysis</th>
+      <th>Preprocessing</th>
+      <th>Analysis</th>
       <th>Zip of Analysis Files</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="n in $root.f_name_list">
-      <th scope="row">{{n.f_name}}</th>
-      <td><a ng-href="{{n.report}}" target="_blank">report</a></td>
+    <tr ng-repeat="n in f_name_list">
+      <td scope="row">{{n.f_name}}</td>
+      <td><a ng-href="{{n.prep_report}}" target="_blank">Prep Report</a></td>
+      <td><a ng-href="{{n.post_report}}" target="_blank">Post Report</a></td>
       <td><a target = "_blank" ng-href="{{n.zip}}">zip file</td>
 	</tr>
   </tbody>
