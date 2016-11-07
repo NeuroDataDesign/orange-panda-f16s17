@@ -42,8 +42,8 @@ def eeg_prep(f_name, ext):
     html += int_report
     eeg_data, red_report = reduce_noise(eeg_data)
     html += red_report
-    d = eeg_data[::100, :, -1]
-    t = times[::100, :, -1]
+    d = eeg_data[:, :, -1]
+    t = times[:, :, -1]
     cct = [pd.DataFrame(data=d[:, x]) for x in range(d.shape[1])]
     df = pd.concat(cct, axis=1)
     df.columns = [str(x) for x in range(d.shape[1])]
