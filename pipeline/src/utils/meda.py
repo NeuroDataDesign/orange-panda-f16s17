@@ -107,8 +107,7 @@ def my_spectrogram(df, ind, sfreq):
 
 def anomaly(df):
     df = df.replace([np.inf, -np.inf], np.nan).fillna(0)
-    mcdf = df - df.mean()
-    S, U = np.linalg.eigh(mcdf.cov().as_matrix())
+    S, U = np.linalg.eigh((df - df.mean()).cov())
     df = (df).dot(U[:, -1].T)
     df.columns=['Scatter Points']
     spline = df.rolling(window=df.shape[0]/50, center=True, min_periods = 0).mean()
@@ -117,7 +116,8 @@ def anomaly(df):
     sd = np.sqrt(resid.var())
     hcb = spline + 5 * sd
     lcb = spline - 5 * sd
-    fig = df.iplot(title="Anomaly Detection Plot (outside 5 SD bands from rolling mean)",
+    out = (df - hcb > 0) | (df - lcb < 0) 
+    fig = df.ix[out].iplot(title="Anomaly Detection Plot (outside 5 SD bands from rolling mean)",
             xTitle='Time', yTitle='Value', theme='solar', 
             kind='line', mode='markers', asFigure=True, legend=True)
     fig.data.update(dict(marker=dict(size = 4)))

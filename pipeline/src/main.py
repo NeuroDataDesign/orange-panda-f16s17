@@ -123,7 +123,7 @@ def clean(D):
 
     # Create a report for the cleaning procedure
     out = ''
-    out += "<h3>CLEANING DATA...</h3>"
+    out += "<h3>CLEANING DATA</h3>"
     out += "<ul>"
     out += "<li>Extracted EEG data with " + str(eeg_data.shape[1]) + \
             " channels and " + str(eeg_data.shape[0]) + \
