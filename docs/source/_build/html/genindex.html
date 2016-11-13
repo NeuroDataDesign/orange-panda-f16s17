@@ -67,20 +67,13 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preprocessing.html">preprocessing package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="preprocessing.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#module-preprocessing.interp">preprocessing.interp module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preprocessing.html#module-preprocessing">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html#module-utils.clean_data">utils.clean_data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html#module-utils.example">utils.example module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html#module-utils.fourier">utils.fourier module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html#module-utils.get_data">utils.get_data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html#module-utils.plots">utils.plots module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html#module-utils">Module contents</a></li>
 </ul>
 </li>
@@ -143,18 +136,22 @@
  | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#K"><strong>K</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
  
 </div>
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="main.html#main.acquire_data">acquire_data() (in module main)</a>
+  <dt><a href="utils.plots.html#utils.plots.anomaly">anomaly() (in module utils.plots)</a>
   </dt>
 
   </dl></td>
@@ -164,21 +161,29 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="utils.html#utils.fourier.butter_bandpass_filter">butter_bandpass_filter() (in module utils.fourier)</a>
+  <dt><a href="preprocessing.baddetec.html#preprocessing.baddetec.bad_chan_detect">bad_chan_detect() (in module preprocessing.baddetec)</a>
   </dt>
 
       
-  <dt><a href="utils.html#utils.fourier.butter_bandstop_filter">butter_bandstop_filter() (in module utils.fourier)</a>
+  <dt><a href="utils.plots.html#utils.plots.bad_values">bad_values() (in module utils.plots)</a>
+  </dt>
+
+      
+  <dt><a href="utils.fourier.html#utils.fourier.butter_bandpass_filter">butter_bandpass_filter() (in module utils.fourier)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="utils.html#utils.fourier.butter_highpass_filter">butter_highpass_filter() (in module utils.fourier)</a>
+  <dt><a href="utils.fourier.html#utils.fourier.butter_bandstop_filter">butter_bandstop_filter() (in module utils.fourier)</a>
   </dt>
 
       
-  <dt><a href="utils.html#utils.fourier.butter_lowpass_filter">butter_lowpass_filter() (in module utils.fourier)</a>
+  <dt><a href="utils.fourier.html#utils.fourier.butter_highpass_filter">butter_highpass_filter() (in module utils.fourier)</a>
+  </dt>
+
+      
+  <dt><a href="utils.fourier.html#utils.fourier.butter_lowpass_filter">butter_lowpass_filter() (in module utils.fourier)</a>
   </dt>
 
   </dl></td>
@@ -188,7 +193,17 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="main.html#main.clean">clean() (in module main)</a>
+  <dt><a href="preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.clean">clean() (in module preprocessing.preprocessing_scripts)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="utils.plots.html#utils.plots.correlation">correlation() (in module utils.plots)</a>
+  </dt>
+
+      
+  <dt><a href="utils.plots.html#utils.plots.cv">cv() (in module utils.plots)</a>
   </dt>
 
   </dl></td>
@@ -198,7 +213,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="main.html#main.detect_bad_channels">detect_bad_channels() (in module main)</a>
+  <dt><a href="preprocessing.baddetec.html#preprocessing.baddetec.detect_zeroed_chans">detect_zeroed_chans() (in module preprocessing.baddetec)</a>
   </dt>
 
   </dl></td>
@@ -208,7 +223,13 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="main.html#main.EOG_regress">EOG_regress() (in module main)</a>
+  <dt><a href="preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.eeg_prep">eeg_prep() (in module preprocessing.preprocessing_scripts)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="preprocessing.noise_reduct.html#preprocessing.noise_reduct.eye_artifact">eye_artifact() (in module preprocessing.noise_reduct)</a>
   </dt>
 
   </dl></td>
@@ -218,13 +239,17 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="preprocessing.html#preprocessing.interp.fit_sphere">fit_sphere() (in module preprocessing.interp)</a>
+  <dt><a href="preprocessing.interp.html#preprocessing.interp.fit_sphere">fit_sphere() (in module preprocessing.interp)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="utils.html#utils.example.foo">foo() (in module utils.example)</a>
+  <dt><a href="utils.example.html#utils.example.foo">foo() (in module utils.example)</a>
+  </dt>
+
+      
+  <dt><a href="utils.plots.html#utils.plots.full_report">full_report() (in module utils.plots)</a>
   </dt>
 
   </dl></td>
@@ -234,33 +259,49 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="preprocessing.html#preprocessing.interp.gc">gc() (in module preprocessing.interp)</a>
+  <dt><a href="preprocessing.interp.html#preprocessing.interp.gc">gc() (in module preprocessing.interp)</a>
   </dt>
 
       
-  <dt><a href="preprocessing.html#preprocessing.interp.gc_invdist_interp">gc_invdist_interp() (in module preprocessing.interp)</a>
+  <dt><a href="preprocessing.interp.html#preprocessing.interp.gc_invdist_interp">gc_invdist_interp() (in module preprocessing.interp)</a>
   </dt>
 
       
-  <dt><a href="utils.html#utils.clean_data.get_eeg_data">get_eeg_data() (in module utils.clean_data)</a>
+  <dt><a href="utils.clean_data.html#utils.clean_data.get_eeg_data">get_eeg_data() (in module utils.clean_data)</a>
+  </dt>
+
+      
+  <dt><a href="utils.clean_data.html#utils.clean_data.get_electrode_coords">get_electrode_coords() (in module utils.clean_data)</a>
+  </dt>
+
+      
+  <dt><a href="utils.plots.html#utils.plots.get_messy_data">get_messy_data() (in module utils.plots)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="utils.html#utils.clean_data.get_electrode_coords">get_electrode_coords() (in module utils.clean_data)</a>
+  <dt><a href="utils.get_data.html#utils.get_data.get_patients">get_patients() (in module utils.get_data)</a>
   </dt>
 
       
-  <dt><a href="utils.html#utils.get_data.get_patients">get_patients() (in module utils.get_data)</a>
+  <dt><a href="utils.get_data.html#utils.get_data.get_record">get_record() (in module utils.get_data)</a>
   </dt>
 
       
-  <dt><a href="utils.html#utils.get_data.get_record">get_record() (in module utils.get_data)</a>
+  <dt><a href="utils.web.html#utils.web.get_s3">get_s3() (in module utils.web)</a>
   </dt>
 
       
-  <dt><a href="utils.html#utils.clean_data.get_times">get_times() (in module utils.clean_data)</a>
+  <dt><a href="utils.plots.html#utils.plots.get_stocks">get_stocks() (in module utils.plots)</a>
+  </dt>
+
+      
+  <dt><a href="utils.clean_data.html#utils.clean_data.get_times">get_times() (in module utils.clean_data)</a>
+  </dt>
+
+      
+  <dt><a href="preprocessing.baddetec.html#preprocessing.baddetec.good_elec">good_elec() (in module preprocessing.baddetec)</a>
   </dt>
 
   </dl></td>
@@ -270,7 +311,13 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="preprocessing.html#preprocessing.interp.haversine">haversine() (in module preprocessing.interp)</a>
+  <dt><a href="preprocessing.interp.html#preprocessing.interp.haversine">haversine() (in module preprocessing.interp)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="utils.plots.html#utils.plots.heatmap">heatmap() (in module utils.plots)</a>
   </dt>
 
   </dl></td>
@@ -280,7 +327,17 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="main.html#main.interpolate">interpolate() (in module main)</a>
+  <dt><a href="preprocessing.interp.html#preprocessing.interp.interpolate">interpolate() (in module preprocessing.interp)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="preprocessing.baddetec.html#preprocessing.baddetec.kdewrap">kdewrap() (in module preprocessing.baddetec)</a>
   </dt>
 
   </dl></td>
@@ -290,17 +347,17 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="main.html#module-main">main (module)</a>
+  <dt><a href="utils.get_data.html#utils.get_data.make_h5py_object">make_h5py_object() (in module utils.get_data)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="main.html#main.main">main() (in module main)</a>
+  <dt><a href="utils.web.html#utils.web.make_meda_html">make_meda_html() (in module utils.web)</a>
   </dt>
 
       
-  <dt><a href="utils.html#utils.get_data.make_h5py_object">make_h5py_object() (in module utils.get_data)</a>
+  <dt><a href="utils.plots.html#utils.plots.my_spectrogram">my_spectrogram() (in module utils.plots)</a>
   </dt>
 
   </dl></td>
@@ -310,17 +367,41 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="utils.html#utils.plots.plot_timeseries">plot_timeseries() (in module utils.plots)</a>
+  <dt><a href="utils.plots.html#utils.plots.plotly_hack">plotly_hack() (in module utils.plots)</a>
+  </dt>
+
+      
+  <dt><a href="utils.web.html#utils.web.populate_table">populate_table() (in module utils.web)</a>
+  </dt>
+
+      
+  <dt><a href="preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.prep_data">prep_data() (in module preprocessing.preprocessing_scripts)</a>
+  </dt>
+
+      
+  <dt><a href="preprocessing.html#module-preprocessing">preprocessing (module)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="preprocessing.html#module-preprocessing">preprocessing (module)</a>
+  <dt><a href="preprocessing.baddetec.html#module-preprocessing.baddetec">preprocessing.baddetec (module)</a>
   </dt>
 
       
-  <dt><a href="preprocessing.html#module-preprocessing.interp">preprocessing.interp (module)</a>
+  <dt><a href="preprocessing.interp.html#module-preprocessing.interp">preprocessing.interp (module)</a>
+  </dt>
+
+      
+  <dt><a href="preprocessing.noise_reduct.html#module-preprocessing.noise_reduct">preprocessing.noise_reduct (module)</a>
+  </dt>
+
+      
+  <dt><a href="preprocessing.preprocessing_scripts.html#module-preprocessing.preprocessing_scripts">preprocessing.preprocessing_scripts (module)</a>
+  </dt>
+
+      
+  <dt><a href="preprocessing.baddetec.html#preprocessing.baddetec.prob_baddetec">prob_baddetec() (in module preprocessing.baddetec)</a>
   </dt>
 
   </dl></td>
@@ -330,7 +411,13 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="main.html#main.reduce_noise">reduce_noise() (in module main)</a>
+  <dt><a href="preprocessing.noise_reduct.html#preprocessing.noise_reduct.reduce_noise">reduce_noise() (in module preprocessing.noise_reduct)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="preprocessing.baddetec.html#preprocessing.baddetec.reshape">reshape() (in module preprocessing.baddetec)</a>
   </dt>
 
   </dl></td>
@@ -340,7 +427,33 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="main.html#main.set_args">set_args() (in module main)</a>
+  <dt><a href="utils.web.html#utils.web.save_analysis">save_analysis() (in module utils.web)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="utils.web.html#utils.web.save_prep">save_prep() (in module utils.web)</a>
+  </dt>
+
+      
+  <dt><a href="utils.plots.html#utils.plots.sparklines">sparklines() (in module utils.plots)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="utils.plots.html#utils.plots.type_plot">type_plot() (in module utils.plots)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="utils.plots.html#utils.plots.type_summary">type_summary() (in module utils.plots)</a>
   </dt>
 
   </dl></td>
@@ -354,25 +467,49 @@
   </dt>
 
       
-  <dt><a href="utils.html#module-utils.clean_data">utils.clean_data (module)</a>
+  <dt><a href="utils.clean_data.html#module-utils.clean_data">utils.clean_data (module)</a>
   </dt>
 
       
-  <dt><a href="utils.html#module-utils.example">utils.example (module)</a>
+  <dt><a href="utils.example.html#module-utils.example">utils.example (module)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="utils.html#module-utils.fourier">utils.fourier (module)</a>
+  <dt><a href="utils.fourier.html#module-utils.fourier">utils.fourier (module)</a>
   </dt>
 
       
-  <dt><a href="utils.html#module-utils.get_data">utils.get_data (module)</a>
+  <dt><a href="utils.get_data.html#module-utils.get_data">utils.get_data (module)</a>
   </dt>
 
       
-  <dt><a href="utils.html#module-utils.plots">utils.plots (module)</a>
+  <dt><a href="utils.plots.html#module-utils.plots">utils.plots (module)</a>
+  </dt>
+
+      
+  <dt><a href="utils.web.html#module-utils.web">utils.web (module)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="utils.plots.html#utils.plots.var_dist">var_dist() (in module utils.plots)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="utils.plots.html#utils.plots.wrap_html">wrap_html() (in module utils.plots)</a>
   </dt>
 
   </dl></td>

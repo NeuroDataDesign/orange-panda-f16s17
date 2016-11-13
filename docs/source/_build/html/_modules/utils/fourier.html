@@ -67,20 +67,13 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../main.html">main module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">preprocessing package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#module-preprocessing.interp">preprocessing.interp module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#module-preprocessing">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../utils.html">utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.clean_data">utils.clean_data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.example">utils.example module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.fourier">utils.fourier module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.get_data">utils.get_data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.plots">utils.plots module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils">Module contents</a></li>
 </ul>
 </li>
@@ -143,7 +136,7 @@
                     <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
 
-<div class="viewcode-block" id="butter_lowpass_filter"><a class="viewcode-back" href="../../utils.html#utils.fourier.butter_lowpass_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_lowpass_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<div class="viewcode-block" id="butter_lowpass_filter"><a class="viewcode-back" href="../../utils.fourier.html#utils.fourier.butter_lowpass_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_lowpass_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Constructs a lowpass filter at given cutoff</span>
 
 <span class="sd">    Parameters</span>
@@ -201,7 +194,7 @@
                 <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
 
-<div class="viewcode-block" id="butter_highpass_filter"><a class="viewcode-back" href="../../utils.html#utils.fourier.butter_highpass_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_highpass_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<div class="viewcode-block" id="butter_highpass_filter"><a class="viewcode-back" href="../../utils.fourier.html#utils.fourier.butter_highpass_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_highpass_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Constructs a highpass filter at given cutoff</span>
 
 <span class="sd">    Parameters</span>
@@ -259,7 +252,7 @@
                 <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;bandpass&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
 
-<div class="viewcode-block" id="butter_bandpass_filter"><a class="viewcode-back" href="../../utils.html#utils.fourier.butter_bandpass_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_bandpass_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<div class="viewcode-block" id="butter_bandpass_filter"><a class="viewcode-back" href="../../utils.fourier.html#utils.fourier.butter_bandpass_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_bandpass_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Constructs a bandpass filter at given cutoff range</span>
 
 <span class="sd">    Parameters</span>
@@ -317,7 +310,7 @@
                 <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;bandstop&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
 
-<div class="viewcode-block" id="butter_bandstop_filter"><a class="viewcode-back" href="../../utils.html#utils.fourier.butter_bandstop_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_bandstop_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<div class="viewcode-block" id="butter_bandstop_filter"><a class="viewcode-back" href="../../utils.fourier.html#utils.fourier.butter_bandstop_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_bandstop_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Constructs a bandstop filter at given cutoff</span>
 
 <span class="sd">    Parameters</span>

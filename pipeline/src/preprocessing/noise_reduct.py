@@ -1,3 +1,6 @@
+"""Contains basic signal processing utilities.
+
+"""
 from utils.fourier import butter_highpass_filter, butter_lowpass_filter, butter_bandstop_filter
 from sklearn.decomposition import FastICA, PCA
 import numpy as np

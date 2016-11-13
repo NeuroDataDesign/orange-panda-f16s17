@@ -1,3 +1,6 @@
+"""Contains basic signal processing utilities.
+
+"""
 import pickle
 import pandas as pd
 from utils.get_data import make_h5py_object

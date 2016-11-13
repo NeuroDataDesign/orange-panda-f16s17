@@ -1,3 +1,6 @@
+"""Contains basic signal processing utilities.
+
+"""
 import os
 import pickle
 from utils.clean_data import (get_eeg_data,
@@ -11,11 +14,37 @@ import pandas as pd
 import numpy as np
 
 def prep_data(file_path, token):
-	f_name, ext = os.path.splitext(file_path)
-	if token == "pickled_pandas":
-		return
-	if token == "fcp_indi_eeg":
-		return eeg_prep(f_name, ext)
+  r"""Router for tokenized pre-processing scripts.
+
+    Takes a preprocessing token and applies the correct script.
+
+    Parameters
+    ----------
+    file_path : str
+      A path to the file you are pre-processing.
+    token : str
+      Token for your corresponding pre-processing script.
+
+    Returns
+    -------
+    html
+      A report for what happened during preprocessing.
+
+    Notes
+    -----
+    Supported tokens:
+
+    fcp_indi_eeg - token for EEG data from the fcp.
+
+    pickled_pandas - token for a pickled pandas object, no pre-processing is done, only analysis.
+
+    """
+
+  f_name, ext = os.path.splitext(file_path)
+  if token == "pickled_pandas":
+    return
+  if token == "fcp_indi_eeg":
+    return eeg_prep(f_name, ext)
 
 
 def eeg_prep(f_name, ext):
@@ -60,7 +89,7 @@ def eeg_prep(f_name, ext):
   df.columns = [str(x) for x in range(d.shape[1])]
   df.index = map(lambda x: x[0]/1000.0, t)
   with open(f_name + '.pkl', 'wb') as f:
-  	pickle.dump(df, f)
+    pickle.dump(df, f)
   return html
 
 def clean(D):

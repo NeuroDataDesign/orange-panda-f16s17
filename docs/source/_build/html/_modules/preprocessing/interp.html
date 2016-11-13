@@ -67,20 +67,13 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../main.html">main module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">preprocessing package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#module-preprocessing.interp">preprocessing.interp module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#module-preprocessing">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../utils.html">utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.clean_data">utils.clean_data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.example">utils.example module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.fourier">utils.fourier module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.get_data">utils.get_data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.plots">utils.plots module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils">Module contents</a></li>
 </ul>
 </li>
@@ -136,159 +129,194 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">radians</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">asin</span><span class="p">,</span> <span class="n">sqrt</span>
-<div class="viewcode-block" id="fit_sphere"><a class="viewcode-back" href="../../preprocessing.html#preprocessing.interp.fit_sphere">[docs]</a><span class="k">def</span> <span class="nf">fit_sphere</span><span class="p">(</span><span class="n">r_values</span><span class="p">):</span>
-    <span class="sd">r&quot;&quot;&quot;Find the radius of a sphere that best fits a set of 3-d points, given their distance from the origin.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    r_values : float</span>
-<span class="sd">        distance from each point to the origin (radius).</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    rad : float</span>
-<span class="sd">        the best radius</span>
-
-<span class="sd">    See Also</span>
-<span class="sd">    --------</span>
-<span class="sd">    gc : uses the haversine formula</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    Fit is based on minimizing `r` for the sum of the square distances from each point to a sphere of radius `r`.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">E</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">h</span><span class="p">)))</span>
-    <span class="n">Es</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">H</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">Es</span><span class="p">)]</span></div>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">utils.plots</span> <span class="k">import</span> <span class="n">plotly_hack</span><span class="p">,</span> <span class="n">sparklines</span>
 
 
-<div class="viewcode-block" id="haversine"><a class="viewcode-back" href="../../preprocessing.html#preprocessing.interp.haversine">[docs]</a><span class="k">def</span> <span class="nf">haversine</span><span class="p">(</span><span class="n">rad</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">):</span>
-    <span class="sd">r&quot;&quot;&quot;Calculate the great circle distance between two points on a sphere of given radius.</span>
+<div class="viewcode-block" id="interpolate"><a class="viewcode-back" href="../../preprocessing.interp.html#preprocessing.interp.interpolate">[docs]</a><span class="k">def</span> <span class="nf">interpolate</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">bad_chans</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+  <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;h3&gt; INTERPOLATING BAD CHANNELS &lt;/h3&gt;&#39;</span>
+  <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;Inv_GC&#39;</span><span class="p">:</span>
+    <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;p&gt; Interpolating with inverse great circle distance weighting on &#39;</span> <span class="o">+</span> \
+      <span class="nb">str</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;npts&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39; closest neighbors.&#39;</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]):</span>
+      <span class="nb">print</span> <span class="s1">&#39;Interpolating bad chans for patient &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+      <span class="n">r</span> <span class="o">=</span> <span class="n">fit_sphere</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;coords&#39;</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
+      <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;p&gt; Fit sphere of radius &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; to patients head &lt;/p&gt;&#39;</span>
+      <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+        <span class="nb">print</span> <span class="s1">&#39;Interpolating bad chans for trial &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">bcs</span> <span class="o">=</span> <span class="n">bad_chans</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">t</span><span class="p">]</span>
+        <span class="nb">print</span> <span class="n">bcs</span>
+        <span class="n">eeg_data_interped</span><span class="p">,</span> <span class="n">close</span> <span class="o">=</span> <span class="n">gc_invdist_interp</span><span class="p">(</span>
+                    <span class="n">eeg_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">],</span>
+                    <span class="n">bcs</span><span class="p">,</span>
+                    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;coords&#39;</span><span class="p">][:,</span> <span class="p">:,</span> <span class="n">p</span><span class="p">],</span>
+                    <span class="n">r</span><span class="p">,</span>
+                    <span class="n">numpts</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;npts&#39;</span><span class="p">])</span>
+        <span class="n">eeg_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">eeg_data_interped</span>
+        <span class="n">cct</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">eeg_data</span><span class="p">[:,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">bcs</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cct</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cct</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+          <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">bcs</span><span class="p">]</span>
+          <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;times&#39;</span><span class="p">][:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+          <span class="n">out</span> <span class="o">+=</span> <span class="n">plotly_hack</span><span class="p">(</span><span class="n">sparklines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Interpolations for patient &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;p&gt;No bad electrodes to interpolate!&lt;/p&gt;&#39;</span>
+    <span class="k">return</span> <span class="n">eeg_data</span><span class="p">,</span> <span class="n">out</span></div>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    rad : float</span>
-<span class="sd">        the radius of the sphere</span>
+<div class="viewcode-block" id="fit_sphere"><a class="viewcode-back" href="../../preprocessing.interp.html#preprocessing.interp.fit_sphere">[docs]</a><span class="k">def</span> <span class="nf">fit_sphere</span><span class="p">(</span><span class="n">r_values</span><span class="p">):</span>
+  <span class="sd">r&quot;&quot;&quot;Find the radius of a sphere that best fits a set of 3-d points, given their distance from the origin.</span>
 
-<span class="sd">    lon1 : float</span>
-<span class="sd">        the longitude of the first point</span>
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  r_values : float</span>
+<span class="sd">      distance from each point to the origin (radius).</span>
 
-<span class="sd">    lat1 : float</span>
-<span class="sd">        the latitude of the first point</span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  rad : float</span>
+<span class="sd">      the best radius</span>
 
-<span class="sd">    lon2 : float</span>
-<span class="sd">        the longitude of the second point</span>
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  gc : uses the haversine formula</span>
 
-<span class="sd">    lat2 : float</span>
-<span class="sd">        the latitude of the second point</span>
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  Fit is based on minimizing `r` for the sum of the square distances from each point to a sphere of radius `r`.</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    dist : float</span>
-<span class="sd">        the great circle distance between :math:`p_1` and :math:`p_2`</span>
-
-<span class="sd">    See Also</span>
-<span class="sd">    --------</span>
-<span class="sd">    gc : uses the haversine formula</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    :math:`\operatorname{hav}\left(\frac{d}{r}\right) = \operatorname{hav}(\varphi_2 - \varphi_1) + \cos(\varphi_1) \cos(\varphi_2)\operatorname{hav}(\lambda_2-\lambda_1)`</span>
-
-<span class="sd">    * :math:`\varphi_i` is the latitude of point `i`.</span>
-<span class="sd">    * :math:`\lambda_i` is the longitude of point `i`.</span>
-<span class="sd">    * :math:`r` is the radius of a sphere</span>
-
-<span class="sd">    And even use a greek symbol like :math:`omega` inline.</span>
-
-<span class="sd">    References</span>
-<span class="sd">    ----------</span>
-
-<span class="sd">    [1] https://en.wikipedia.org/wiki/Haversine_formula</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># convert decimal degrees to radians </span>
-    <span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">radians</span><span class="p">,</span> <span class="p">[</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">])</span>
-
-    <span class="c1"># haversine formula </span>
-    <span class="n">dlon</span> <span class="o">=</span> <span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span> 
-    <span class="n">dlat</span> <span class="o">=</span> <span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span> 
-    <span class="n">a</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">dlat</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">dlon</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">asin</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> 
-    <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="n">rad</span></div>
-
-<div class="viewcode-block" id="gc"><a class="viewcode-back" href="../../preprocessing.html#preprocessing.interp.gc">[docs]</a><span class="k">def</span> <span class="nf">gc</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
-    <span class="sd">r&quot;&quot;&quot;Given a list of coordinates on a sphere, return the great circle distance between any two of them..</span>
-
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    coords : ``ndarray``</span>
-<span class="sd">        a `(N, 3)` ``ndarray`` with `N` coordinates (3 values per coordinate for :math:`\varphi, \lambda, r`).</span>
-
-<span class="sd">    i : int</span>
-<span class="sd">        index of the first used coordinate from the `coords` list</span>
-
-<span class="sd">    j : int</span>
-<span class="sd">        index of the second used coordinate from the `coords` list</span>
-
-<span class="sd">    r : float</span>
-<span class="sd">        the radius of the sphere we are finding the great circle distance of.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">E</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">h</span><span class="p">)))</span>
+  <span class="n">Es</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">H</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">Es</span><span class="p">)]</span></div>
 
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    dist : float</span>
-<span class="sd">        the great circle distance between :math:`p_1` and :math:`p_2`</span>
+<div class="viewcode-block" id="haversine"><a class="viewcode-back" href="../../preprocessing.interp.html#preprocessing.interp.haversine">[docs]</a><span class="k">def</span> <span class="nf">haversine</span><span class="p">(</span><span class="n">rad</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">):</span>
+  <span class="sd">r&quot;&quot;&quot;Calculate the great circle distance between two points on a sphere of given radius.</span>
 
-<span class="sd">    See Also</span>
-<span class="sd">    --------</span>
-<span class="sd">    haversine : how the distance is calculated</span>
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  rad : float</span>
+<span class="sd">    the radius of the sphere</span>
 
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    :math:`\operatorname{hav}\left(\frac{d}{r}\right) = \operatorname{hav}(\varphi_2 - \varphi_1) + \cos(\varphi_1) \cos(\varphi_2)\operatorname{hav}(\lambda_2-\lambda_1)`</span>
+<span class="sd">  lon1 : float</span>
+<span class="sd">    the longitude of the first point</span>
 
-<span class="sd">    * :math:`\varphi_i` is the latitude of point `i`.</span>
-<span class="sd">    * :math:`\lambda_i` is the longitude of point `i`.</span>
-<span class="sd">    * :math:`r` is the radius of a sphere</span>
+<span class="sd">  lat1 : float</span>
+<span class="sd">    the latitude of the first point</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">t_</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">p_</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rad&#39;</span> <span class="p">:</span> <span class="n">r</span><span class="p">,</span> <span class="s1">&#39;lon1&#39;</span> <span class="p">:</span> <span class="n">t</span><span class="p">,</span>
-        <span class="s1">&#39;lat1&#39;</span> <span class="p">:</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;lon2&#39;</span> <span class="p">:</span> <span class="n">t_</span><span class="p">,</span> <span class="s1">&#39;lat2&#39;</span><span class="p">:</span> <span class="n">p_</span><span class="p">}</span>
-    <span class="k">return</span> <span class="n">haversine</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span></div>
+<span class="sd">  lon2 : float</span>
+<span class="sd">    the longitude of the second point</span>
+
+<span class="sd">  lat2 : float</span>
+<span class="sd">    the latitude of the second point</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  dist : float</span>
+<span class="sd">    the great circle distance between :math:`p_1` and :math:`p_2`</span>
+
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  gc : uses the haversine formula</span>
+
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  :math:`\operatorname{hav}\left(\frac{d}{r}\right) = \operatorname{hav}(\varphi_2 - \varphi_1) + \cos(\varphi_1) \cos(\varphi_2)\operatorname{hav}(\lambda_2-\lambda_1)`</span>
+
+<span class="sd">  * :math:`\varphi_i` is the latitude of point `i`.</span>
+<span class="sd">  * :math:`\lambda_i` is the longitude of point `i`.</span>
+<span class="sd">  * :math:`r` is the radius of a sphere</span>
+
+<span class="sd">  And even use a greek symbol like :math:`omega` inline.</span>
+
+<span class="sd">  References</span>
+<span class="sd">  ----------</span>
+
+<span class="sd">  [1] https://en.wikipedia.org/wiki/Haversine_formula</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># convert decimal degrees to radians </span>
+  <span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">radians</span><span class="p">,</span> <span class="p">[</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">])</span>
+
+  <span class="c1"># haversine formula </span>
+  <span class="n">dlon</span> <span class="o">=</span> <span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span> 
+  <span class="n">dlat</span> <span class="o">=</span> <span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span> 
+  <span class="n">a</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">dlat</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">dlon</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+  <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">asin</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> 
+  <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="n">rad</span></div>
+
+<div class="viewcode-block" id="gc"><a class="viewcode-back" href="../../preprocessing.interp.html#preprocessing.interp.gc">[docs]</a><span class="k">def</span> <span class="nf">gc</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+  <span class="sd">r&quot;&quot;&quot;Given a list of coordinates on a sphere, return the great circle distance between any two of them..</span>
 
 
-<div class="viewcode-block" id="gc_invdist_interp"><a class="viewcode-back" href="../../preprocessing.html#preprocessing.interp.gc_invdist_interp">[docs]</a><span class="k">def</span> <span class="nf">gc_invdist_interp</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bad_electrodes</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">numpts</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
-    <span class="c1">#all_indicies = np.array(range(coords.shape[0]))</span>
-    <span class="c1">#bad_indicies = np.array(bad_electrodes)</span>
-    <span class="c1">#indicies = np.setdiff1d(all_indicies, bad_indicies)</span>
-    <span class="c1">#coords = coords[indicies]</span>
-    <span class="n">closest</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">bad_electrodes</span><span class="p">:</span>
-        <span class="n">gcord</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
-        <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gcord</span>
-        <span class="n">ds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-            <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">bad_electrodes</span><span class="p">:</span>
-                <span class="n">ds</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;Inf&#39;</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">ds</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">haversine</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">coords</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
-                            <span class="n">p</span><span class="p">,</span> <span class="n">coords</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">ds</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span> <span class="n">numpts</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">ds</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
-        <span class="n">weighted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="n">inds</span><span class="p">],</span> <span class="n">w</span><span class="p">)</span>
-        <span class="n">predicted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weighted</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
-        <span class="n">data</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">predicted</span>
-        <span class="n">closest</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inds</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">closest</span></div>
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  coords : ``ndarray``</span>
+<span class="sd">      a `(N, 3)` ``ndarray`` with `N` coordinates (3 values per coordinate for :math:`\varphi, \lambda, r`).</span>
+
+<span class="sd">  i : int</span>
+<span class="sd">      index of the first used coordinate from the `coords` list</span>
+
+<span class="sd">  j : int</span>
+<span class="sd">      index of the second used coordinate from the `coords` list</span>
+
+<span class="sd">  r : float</span>
+<span class="sd">      the radius of the sphere we are finding the great circle distance of.</span>
+
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  dist : float</span>
+<span class="sd">      the great circle distance between :math:`p_1` and :math:`p_2`</span>
+
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  haversine : how the distance is calculated</span>
+
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  :math:`\operatorname{hav}\left(\frac{d}{r}\right) = \operatorname{hav}(\varphi_2 - \varphi_1) + \cos(\varphi_1) \cos(\varphi_2)\operatorname{hav}(\lambda_2-\lambda_1)`</span>
+
+<span class="sd">  * :math:`\varphi_i` is the latitude of point `i`.</span>
+<span class="sd">  * :math:`\lambda_i` is the longitude of point `i`.</span>
+<span class="sd">  * :math:`r` is the radius of a sphere</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">t_</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">p</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">p_</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rad&#39;</span> <span class="p">:</span> <span class="n">r</span><span class="p">,</span> <span class="s1">&#39;lon1&#39;</span> <span class="p">:</span> <span class="n">t</span><span class="p">,</span>
+    <span class="s1">&#39;lat1&#39;</span> <span class="p">:</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;lon2&#39;</span> <span class="p">:</span> <span class="n">t_</span><span class="p">,</span> <span class="s1">&#39;lat2&#39;</span><span class="p">:</span> <span class="n">p_</span><span class="p">}</span>
+  <span class="k">return</span> <span class="n">haversine</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="gc_invdist_interp"><a class="viewcode-back" href="../../preprocessing.interp.html#preprocessing.interp.gc_invdist_interp">[docs]</a><span class="k">def</span> <span class="nf">gc_invdist_interp</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bad_electrodes</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">numpts</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
+  <span class="c1">#all_indicies = np.array(range(coords.shape[0]))</span>
+  <span class="c1">#bad_indicies = np.array(bad_electrodes)</span>
+  <span class="c1">#indicies = np.setdiff1d(all_indicies, bad_indicies)</span>
+  <span class="c1">#coords = coords[indicies]</span>
+  <span class="n">closest</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="n">bad_electrodes</span><span class="p">:</span>
+    <span class="n">gcord</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gcord</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+      <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">bad_electrodes</span><span class="p">:</span>
+        <span class="n">ds</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;Inf&#39;</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">ds</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">haversine</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">coords</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="n">p</span><span class="p">,</span> <span class="n">coords</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">ds</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span> <span class="n">numpts</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">ds</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+    <span class="n">weighted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="n">inds</span><span class="p">],</span> <span class="n">w</span><span class="p">)</span>
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weighted</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">predicted</span>
+    <span class="n">closest</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inds</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">closest</span></div>
 
 </pre></div>
 

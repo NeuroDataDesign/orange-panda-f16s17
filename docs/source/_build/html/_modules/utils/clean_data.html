@@ -67,20 +67,13 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../main.html">main module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">preprocessing package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#module-preprocessing.interp">preprocessing.interp module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#module-preprocessing">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../utils.html">utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.clean_data">utils.clean_data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.example">utils.example module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.fourier">utils.fourier module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.get_data">utils.get_data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils.plots">utils.plots module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils">Module contents</a></li>
 </ul>
 </li>
@@ -136,7 +129,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<div class="viewcode-block" id="get_eeg_data"><a class="viewcode-back" href="../../utils.html#utils.clean_data.get_eeg_data">[docs]</a><span class="k">def</span> <span class="nf">get_eeg_data</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<div class="viewcode-block" id="get_eeg_data"><a class="viewcode-back" href="../../utils.clean_data.html#utils.clean_data.get_eeg_data">[docs]</a><span class="k">def</span> <span class="nf">get_eeg_data</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Extract an eeg numpy data matrix from the h5py object.</span>
 
 <span class="sd">    Parameters</span>
@@ -177,7 +170,7 @@
     <span class="k">return</span> <span class="n">data</span></div>
     
 
-<div class="viewcode-block" id="get_times"><a class="viewcode-back" href="../../utils.html#utils.clean_data.get_times">[docs]</a><span class="k">def</span> <span class="nf">get_times</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<div class="viewcode-block" id="get_times"><a class="viewcode-back" href="../../utils.clean_data.html#utils.clean_data.get_times">[docs]</a><span class="k">def</span> <span class="nf">get_times</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Extract times numpy matrix from the h5py object.</span>
 
 <span class="sd">    Parameters</span>
@@ -215,7 +208,7 @@
     <span class="k">assert</span> <span class="n">times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">times</span></div>
 
-<div class="viewcode-block" id="get_electrode_coords"><a class="viewcode-back" href="../../utils.html#utils.clean_data.get_electrode_coords">[docs]</a><span class="k">def</span> <span class="nf">get_electrode_coords</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="s2">&quot;euclidian&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="get_electrode_coords"><a class="viewcode-back" href="../../utils.clean_data.html#utils.clean_data.get_electrode_coords">[docs]</a><span class="k">def</span> <span class="nf">get_electrode_coords</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="s2">&quot;euclidian&quot;</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Extract times numpy matrix from the h5py object.</span>
 
 <span class="sd">    Parameters</span>

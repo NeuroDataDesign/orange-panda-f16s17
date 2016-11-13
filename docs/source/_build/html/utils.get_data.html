@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>utils.get_data module &#8212; EEGPipeline 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="EEGPipeline 0 documentation" href="index.html" />
+    <link rel="up" title="utils package" href="utils.html" />
+    <link rel="next" title="utils.plots module" href="utils.plots.html" />
+    <link rel="prev" title="utils.fourier module" href="utils.fourier.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          EEGPipeline</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">preprocessing package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#module-preprocessing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="utils.html">utils package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#module-utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">utils.get_data module</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="utils.fourier.html" title="Previous Chapter: utils.fourier module"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; utils.fourier...</span>
+    </a>
+  </li>
+  <li>
+    <a href="utils.plots.html" title="Next Chapter: utils.plots module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">utils.plots m... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/utils.get_data.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="module-utils.get_data">
+<span id="utils-get-data-module"></span><h1>utils.get_data module<a class="headerlink" href="#module-utils.get_data" title="Permalink to this headline">¶</a></h1>
+<p>Contains methods to extract data from the S3 bucket.</p>
+<dl class="function">
+<dt id="utils.get_data.get_patients">
+<code class="descclassname">utils.get_data.</code><code class="descname">get_patients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/get_data.html#get_patients"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.get_data.get_patients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of patient numbers to query the S3 bucket with.</p>
+<p>Uses a patient list in PATIENT_NUMBERS.txt to construct a python object of strings of patient numbers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>L</strong> : <code class="docutils literal"><span class="pre">list</span></code></p>
+<blockquote class="last">
+<div><p>a list of strings of patient numbers.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#utils.get_data.get_record" title="utils.get_data.get_record"><code class="xref py py-obj docutils literal"><span class="pre">get_record</span></code></a></dt>
+<dd>uses these patient numbers.</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>patient numbers are extracted from PATIENT_NUMBERS.txt</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils.get_data</span> <span class="k">import</span> <span class="n">get_patients</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">get_patients</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">A00055540</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.get_data.get_record">
+<code class="descclassname">utils.get_data.</code><code class="descname">get_record</code><span class="sig-paren">(</span><em>patient</em>, <em>record_num=1</em>, <em>record_type='full'</em>, <em>loc_path='utils/tmp'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/get_data.html#get_record"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.get_data.get_record" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pulls a patient record from the S3 bucket.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>patient</strong> : string</p>
+<blockquote>
+<div><p>the patient number of the patient to pull data for.</p>
+</div></blockquote>
+<p><strong>record_num</strong> : int, optional</p>
+<blockquote>
+<div><p>number of the record to pull. This is usually from 1 to around 10.</p>
+</div></blockquote>
+<p><strong>record_type</strong> : {&#8216;full&#8217;, &#8216;reduced&#8217;}, optional</p>
+<blockquote>
+<div><p>&#8216;full&#8217; by default. &#8216;reduced&#8217; has less metadata.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+<blockquote class="last">
+<div><p>the filepath of the .mat file of the record (will go to the <cite>tmp</cite>) directory.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#utils.get_data.make_h5py_object" title="utils.get_data.make_h5py_object"><code class="xref py py-obj docutils literal"><span class="pre">make_h5py_object</span></code></a></dt>
+<dd>uses filepath to create a h5py object.</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>You need to set the amazon keys as environment variables. Put the secret key in <code class="docutils literal"><span class="pre">AWS_SECRET_KEY</span></code> and the regular key in <code class="docutils literal"><span class="pre">AWS_ACCESS_KEY</span></code>.</p>
+<p>Uses the <code class="docutils literal"><span class="pre">boto</span></code> package to access AWS.</p>
+<p class="rubric">Examples</p>
+<p>These are written in doctest format, and should illustrate how to
+use the function.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils.get_data</span> <span class="k">import</span> <span class="n">get_patients</span><span class="p">,</span> <span class="n">get_record</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">get_patients</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;A00055540&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">get_record</span><span class="p">(</span><span class="n">get_patients</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">&#39;~/.../src/utils/tmp/{recordname}.mat&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.get_data.make_h5py_object">
+<code class="descclassname">utils.get_data.</code><code class="descname">make_h5py_object</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/get_data.html#make_h5py_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.get_data.make_h5py_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a h5py object out of a .mat file from your system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>file_path</strong> : string</p>
+<blockquote>
+<div><p>absolute path to the .mat file.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> : h5py object</p>
+<blockquote class="last">
+<div><p>a h5py object containing a (messy) copy of the data from S3.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="utils.clean_data.html#module-utils.clean_data" title="utils.clean_data"><code class="xref py py-obj docutils literal"><span class="pre">utils.clean_data</span></code></a></dt>
+<dd>extract data from object returned from this function</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>File should be around 80 mb.</p>
+<p>File should be in .mat format.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">utils.get_data</span> <span class="k">import</span> <span class="n">get_patients</span><span class="p">,</span> <span class="n">get_record</span><span class="p">,</span> <span class="n">make_h5py_object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">get_patients</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;A00055540&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">get_record</span><span class="p">(</span><span class="n">get_patients</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">&#39;~/.../src/utils/tmp/{recordname}.mat&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">make_h5py_object</span><span class="p">(</span><span class="n">get_record</span><span class="p">(</span><span class="n">get_patients</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Team Orange Panda.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

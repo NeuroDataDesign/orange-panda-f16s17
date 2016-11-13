@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>preprocessing.baddetec &#8212; EEGPipeline 0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="EEGPipeline 0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          EEGPipeline</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">preprocessing package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#module-preprocessing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../utils.html">utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <h1>Source code for preprocessing.baddetec</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Contains basic signal processing utilities.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors.kde</span> <span class="k">import</span> <span class="n">KernelDensity</span>
+<span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">utils.plots</span> <span class="k">import</span> <span class="n">plotly_hack</span><span class="p">,</span> <span class="n">sparklines</span>
+
+<div class="viewcode-block" id="bad_chan_detect"><a class="viewcode-back" href="../../preprocessing.baddetec.html#preprocessing.baddetec.bad_chan_detect">[docs]</a><span class="k">def</span> <span class="nf">bad_chan_detect</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;h3&gt; DETECTING BAD CHANNELS &lt;/h3&gt;&#39;</span>
+    <span class="nb">print</span> <span class="s1">&#39;Detecting Zeroed electrodes&#39;</span>
+    <span class="n">zeroed</span><span class="p">,</span> <span class="n">report</span> <span class="o">=</span> <span class="n">detect_zeroed_chans</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">zeroed</span><span class="p">)</span>
+    <span class="n">eeg_data</span> <span class="o">=</span> <span class="n">eeg_data</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+    <span class="n">out</span> <span class="o">+=</span> <span class="n">report</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;KDE&#39;</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;h4&gt; Detecting bad channels with a Kernel Density Estimator &lt;/h4&gt;&#39;</span>
+        <span class="n">bad_chan_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]):</span>
+            <span class="nb">print</span> <span class="s1">&#39;Detecting bad chans for patient &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="n">bc_t</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+                <span class="nb">print</span> <span class="s1">&#39;Detecting bad chans for trial &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+                <span class="nb">print</span> <span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span>
+                <span class="n">bcs</span> <span class="o">=</span> <span class="n">prob_baddetec</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">[::</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ds&#39;</span><span class="p">],</span> <span class="p">:,</span> <span class="n">p</span><span class="p">],</span>
+                            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;threshold&quot;</span><span class="p">],</span> <span class="n">kdewrap</span><span class="p">)</span>
+                <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;p&gt; Detected &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bcs</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; bad electrodes &lt;/p&gt;&#39;</span>
+                <span class="n">bc_t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bcs</span><span class="p">)</span>
+                <span class="n">cct</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">eeg_data</span><span class="p">[:,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">bcs</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cct</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cct</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">bcs</span><span class="p">]</span>
+                    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">times</span><span class="p">[:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">out</span> <span class="o">+=</span> <span class="n">plotly_hack</span><span class="p">(</span><span class="n">sparklines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bad Channels for patient &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;p&gt;No bad channels!&lt;/p&gt;&#39;</span>
+            <span class="n">bad_chan_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bc_t</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">eeg_data</span><span class="p">,</span> <span class="n">bad_chan_list</span><span class="p">,</span> <span class="n">out</span></div>
+
+
+
+<div class="viewcode-block" id="reshape"><a class="viewcode-back" href="../../preprocessing.baddetec.html#preprocessing.baddetec.reshape">[docs]</a><span class="k">def</span> <span class="nf">reshape</span><span class="p">(</span><span class="n">inEEG</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Reshape the data from the inputted format (timesteps, num channels, num patients) to (time, channels).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    inEEG : array_like (3d or 2d)</span>
+<span class="sd">        Paradigm data characterized by: (timesteps, num channels, num patients). If data previously transformed into (time, channels), also accept and don&#39;t alter.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    inEEG: array_like(2d)</span>
+<span class="sd">        (time, channels)</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    DimensionException</span>
+<span class="sd">        Input is not 2d or 3d, not interpretable</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    These are written in doctest format, and should illustrate how to</span>
+<span class="sd">    use the function.</span>
+
+<span class="sd">    First with a 2D array input (preformatted)</span>
+<span class="sd">    &gt;&gt;&gt; success1 = np.column_stack([sin] * 50)</span>
+<span class="sd">    &gt;&gt;&gt; print success1.shape</span>
+<span class="sd">    (1000L, 50L)</span>
+<span class="sd">    &gt;&gt;&gt; reshaped = reshape(success1).shape</span>
+<span class="sd">    &gt;&gt;&gt; print reshaped.shape</span>
+<span class="sd">    (1000L, 50L)</span>
+<span class="sd">    </span>
+<span class="sd">    Now with 3D input (2 patients)</span>
+<span class="sd">    &gt;&gt;&gt; dummy = np.dstack([success1] * 2)</span>
+<span class="sd">    &gt;&gt;&gt; print dummy.shape</span>
+<span class="sd">    (1000L, 50L, 2L)</span>
+<span class="sd">    &gt;&gt;&gt; reshaped = reshape(dummy).shape</span>
+<span class="sd">    &gt;&gt;&gt; print reshaped.shape</span>
+<span class="sd">    (2000L, 50L)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">electrodes</span> <span class="o">=</span> <span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">times</span> <span class="o">=</span> <span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">trials</span> <span class="o">=</span> <span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">inEEG</span><span class="p">,</span> <span class="p">(</span><span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="c1"># fail case</span>
+        <span class="nb">print</span> <span class="s2">&quot;fail&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">inEEG</span></div>
+
+
+<div class="viewcode-block" id="kdewrap"><a class="viewcode-back" href="../../preprocessing.baddetec.html#preprocessing.baddetec.kdewrap">[docs]</a><span class="k">def</span> <span class="nf">kdewrap</span><span class="p">(</span><span class="n">indata</span><span class="p">,</span> <span class="n">kernel</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;A wrapper for the KDE implementation from the scikit-learn package.</span>
+
+<span class="sd">    Kernel density estimates are a method of estimating the distribution of a dataset non-parametrically.</span>
+<span class="sd">    Basically, without any outside parameters bounding the data, we generate a distribution representing the data from a base kernel function.</span>
+<span class="sd">    For each point, the base kernel function is generated, and the kernel is altered based on the distance between each individual point and every other point.</span>
+<span class="sd">    Combining these kernels creates a fairly accurate density function of the data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    indata : list (data points per timestep)</span>
+<span class="sd">        For a given electrode, a list of all the values for each timestamp</span>
+<span class="sd">    kernel : string</span>
+<span class="sd">        &#39;gaussian&#39;, &#39;tophat&#39;, &#39;epanechnikov&#39;, &#39;exponential&#39;, &#39;linear&#39;, &#39;cosine&#39; Choose which base kernel function to use.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    kde.score_samples(indata[:, np.newaxis]): arraylike (timesteps, 1)</span>
+<span class="sd">        Return an array of the densities for each electrode value and where it lies in the kernel function</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For notes and refernces go to: https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/kernel-probability-density.pdf</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    These are written in doctest format, and should illustrate how to</span>
+<span class="sd">    use the function.</span>
+
+<span class="sd">    &gt;&gt;&gt; inEEG = [0.2, 0.5, 3.6, 2.2, ...]</span>
+<span class="sd">    &gt;&gt;&gt; probdist = kdewrap(inEEG, &#39;gaussian&#39;)</span>
+<span class="sd">    probdist = [...]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">KernelDensity</span><span class="p">(),</span>
+                    <span class="p">{</span><span class="s1">&#39;bandwidth&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)},</span>
+                    <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 20-fold cross-validation</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">indata</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span>
+    <span class="n">kde</span> <span class="o">=</span> <span class="n">KernelDensity</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span> <span class="n">bandwidth</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s2">&quot;bandwidth&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">indata</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">kde</span><span class="o">.</span><span class="n">score_samples</span><span class="p">(</span><span class="n">indata</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="prob_baddetec"><a class="viewcode-back" href="../../preprocessing.baddetec.html#preprocessing.baddetec.prob_baddetec">[docs]</a><span class="k">def</span> <span class="nf">prob_baddetec</span><span class="p">(</span><span class="n">inEEG</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">probfunc</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Detect bad electrodes based on probability</span>
+
+<span class="sd">    Based on whether the joint probability of an electrode&#39;s time values (decided by a probability function passed in</span>
+<span class="sd">    via the parameters) is too different from the other electrodes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    inEEG : numpy array (timesteps, channels, patients)</span>
+<span class="sd">        For a given electrode, a list of all the values for each timestamp</span>
+<span class="sd">    threshold : integer</span>
+<span class="sd">        The number of standard deviations away from the mean joint probability counts an electrode&#39;s probability can be</span>
+<span class="sd">        for it to count as a bad electrode</span>
+<span class="sd">    probfunc : function. In this case takes in data and kernel as arguments</span>
+<span class="sd">        function to make probability distribution</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    inEEG : original data</span>
+<span class="sd">        Return original data because isn&#39;t changed</span>
+<span class="sd">    o : string</span>
+<span class="sd">        output string for basic comprehension of output</span>
+<span class="sd">    badelec: list</span>
+<span class="sd">        List of bad electrodes from list</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Pseudocode located at: https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">electrodes</span> <span class="o">=</span> <span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Start by reshaping data (if necessary)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">shapeEEG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">inEEG</span><span class="p">,</span> <span class="p">(</span><span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">inEEG</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="c1"># fail case</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    
+    <span class="c1"># Then, initialize a probability vector of electrode length</span>
+    <span class="n">probvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">electrodes</span><span class="p">)</span>
+    
+    <span class="c1"># iterate through electrodes and get joint probs</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">electrodes</span><span class="p">):</span>
+        <span class="c1"># get prob distribution</span>
+        <span class="n">probdist</span> <span class="o">=</span> <span class="n">probfunc</span><span class="p">(</span><span class="n">shapeEEG</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">)</span>
+        <span class="c1"># using probdist find joint prob</span>
+        <span class="n">probvec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">probdist</span><span class="p">)</span> 
+    
+    <span class="c1"># normalize probvec</span>
+    <span class="c1"># first calc mean</span>
+    <span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">probvec</span><span class="p">)</span>
+    <span class="c1"># then st, d dev</span>
+    <span class="n">stddev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">probvec</span><span class="p">)</span>
+    <span class="c1"># then figure out which electrodes are bad</span>
+    <span class="n">badelec</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1">#print probvec</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">probvec</span><span class="p">)):</span>
+        <span class="c1">#print i, avg, stddev, (avg - probvec[i]) / stddev</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">avg</span> <span class="o">-</span> <span class="n">probvec</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">stddev</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">:</span>
+            <span class="n">badelec</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            
+    <span class="k">return</span> <span class="n">badelec</span></div>
+
+<div class="viewcode-block" id="good_elec"><a class="viewcode-back" href="../../preprocessing.baddetec.html#preprocessing.baddetec.good_elec">[docs]</a><span class="k">def</span> <span class="nf">good_elec</span><span class="p">(</span><span class="n">inEEG</span><span class="p">,</span> <span class="n">badelec</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Detect bad electrodes based on probability</span>
+
+<span class="sd">    Based on whether the joint probability of an electrode&#39;s time values (decided by a probability function passed in</span>
+<span class="sd">    via the parameters) is too different from the other electrodes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    inEEG : numpy array (timesteps, channels, patients)</span>
+<span class="sd">        For a given electrode, a list of all the values for each timestamp</span>
+<span class="sd">    badelec : list</span>
+<span class="sd">        List of all bad electrode indices in inEEG</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    newEEG: array (timesteps, good channels, patients)</span>
+<span class="sd">        delete all bad electrode columns for the EEG data</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">inEEG</span><span class="p">,</span> <span class="n">badelec</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="detect_zeroed_chans"><a class="viewcode-back" href="../../preprocessing.baddetec.html#preprocessing.baddetec.detect_zeroed_chans">[docs]</a><span class="k">def</span> <span class="nf">detect_zeroed_chans</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">out</span> <span class="o">+=</span>  <span class="s2">&quot;&lt;h4&gt;Detecting Zeroed Channels&lt;/h4&gt;&quot;</span>
+    <span class="n">bad_chans_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;h5&gt; Summary &lt;/h5&gt;&quot;</span>
+    <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Patient&lt;/th&gt;&lt;th&gt;# Zeroed Electrodes&lt;/th&gt;&lt;th&gt;Zeroed Electrodes&lt;/th&gt;&lt;/tr&gt;&quot;</span>
+    <span class="c1"># Finding list of bad channels for each patient</span>
+    <span class="c1"># (list of lists)</span>
+    <span class="k">for</span> <span class="n">patient</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">eeg_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">patient</span><span class="p">]</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">bad_chans_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;tr&gt;&quot;</span>
+        <span class="n">out</span> <span class="o">+=</span>  <span class="s2">&quot;&lt;td&gt;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">patient</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&lt;/td&gt;&quot;</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;td&gt;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;&lt;/td&gt;&quot;</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;td&gt;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&lt;/td&gt;&quot;</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;/tr&gt;&quot;</span>
+        <span class="n">cct</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">d</span><span class="p">[:,</span> <span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">L</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cct</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">L</span><span class="p">]</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">times</span><span class="p">[:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># Numpify the python array</span>
+    <span class="n">bad_chans_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bad_chans_list</span><span class="p">)</span>
+
+    <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;/table&gt;&quot;</span>
+    <span class="k">return</span> <span class="n">bad_chans_list</span><span class="p">,</span> <span class="n">out</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Team Orange Panda.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

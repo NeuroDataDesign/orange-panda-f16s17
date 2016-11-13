@@ -1,3 +1,6 @@
+"""Contains basic signal processing utilities.
+
+"""
 import sys
 import pickle
 from plotly.tools import FigureFactory as FF

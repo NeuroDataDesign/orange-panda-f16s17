@@ -4,14 +4,12 @@ preprocessing package
 Submodules
 ----------
 
-preprocessing.interp module
----------------------------
+.. toctree::
 
-.. automodule:: preprocessing.interp
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
+   preprocessing.baddetec
+   preprocessing.interp
+   preprocessing.noise_reduct
+   preprocessing.preprocessing_scripts
 
 Module contents
 ---------------

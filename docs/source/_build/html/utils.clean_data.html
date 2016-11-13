@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>utils.clean_data module &#8212; EEGPipeline 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="EEGPipeline 0 documentation" href="index.html" />
+    <link rel="up" title="utils package" href="utils.html" />
+    <link rel="next" title="utils.example module" href="utils.example.html" />
+    <link rel="prev" title="utils package" href="utils.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          EEGPipeline</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">preprocessing package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#module-preprocessing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="utils.html">utils package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#module-utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">utils.clean_data module</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="utils.html" title="Previous Chapter: utils package"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; utils package</span>
+    </a>
+  </li>
+  <li>
+    <a href="utils.example.html" title="Next Chapter: utils.example module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">utils.example... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/utils.clean_data.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="module-utils.clean_data">
+<span id="utils-clean-data-module"></span><h1>utils.clean_data module<a class="headerlink" href="#module-utils.clean_data" title="Permalink to this headline">¶</a></h1>
+<p>Contains methods to extract numpy array objects from the h5py object extracted from the S3 bucket.</p>
+<dl class="function">
+<dt id="utils.clean_data.get_eeg_data">
+<code class="descclassname">utils.clean_data.</code><code class="descname">get_eeg_data</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/clean_data.html#get_eeg_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.clean_data.get_eeg_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract an eeg numpy data matrix from the h5py object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : h5py object</p>
+<blockquote>
+<div><p>a h5py object obtained from the <cite>make_h5py_object</cite> function in the get_data module</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>eeg_data</strong> : <code class="docutils literal"><span class="pre">ndarray</span></code></p>
+<blockquote class="last">
+<div><p>A <cite>(t, c)</cite> <code class="docutils literal"><span class="pre">ndarray</span></code> (<cite>t</cite> is the number of timesteps, <cite>c</cite> is the number of channels).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="utils.get_data.html#utils.get_data.get_record" title="utils.get_data.get_record"><code class="xref py py-obj docutils literal"><span class="pre">utils.get_data.get_record</span></code></a>, <a class="reference internal" href="utils.get_data.html#utils.get_data.make_h5py_object" title="utils.get_data.make_h5py_object"><code class="xref py py-obj docutils literal"><span class="pre">utils.get_data.make_h5py_object</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The dataset has 111 channels.</p>
+<p>Timesteps are measured in milliseconds, and values were measured at 500 Hz.</p>
+<p class="rubric">Examples</p>
+<p>These are written in doctest format, and should illustrate how to
+use the function.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">get_data</span> <span class="k">import</span> <span class="n">get_record</span><span class="p">,</span> <span class="n">get_patients</span><span class="p">,</span> <span class="n">make_h5py_object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">get_record</span><span class="p">(</span><span class="n">get_patients</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">make_h5py_object</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eeg_data</span> <span class="o">=</span> <span class="n">get_eeg_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.clean_data.get_electrode_coords">
+<code class="descclassname">utils.clean_data.</code><code class="descname">get_electrode_coords</code><span class="sig-paren">(</span><em>f</em>, <em>coords='euclidian'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/clean_data.html#get_electrode_coords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.clean_data.get_electrode_coords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract times numpy matrix from the h5py object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : h5py object</p>
+<blockquote>
+<div><p>a h5py object obtained from the <cite>make_h5py_object</cite> function in the get_data module</p>
+</div></blockquote>
+<p><strong>coords</strong> : string</p>
+<blockquote>
+<div><p>&#8216;euclidian&#8217; for euclidian coordinates, &#8216;spherical&#8217; for spherical coordinates (not really with a variable radius coordinate).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>electrode_coords</strong> : <code class="docutils literal"><span class="pre">ndarray</span></code></p>
+<blockquote class="last">
+<div><p>A <cite>(t, 3)</cite> <code class="docutils literal"><span class="pre">ndarray</span></code> (<cite>t</cite> is the number of timesteps, columns are <cite>x</cite>, <cite>y</cite>, <cite>z</cite> or <span class="math">theta</span>, <span class="math">phi</span>, <cite>r</cite>).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="utils.get_data.html#utils.get_data.get_record" title="utils.get_data.get_record"><code class="xref py py-obj docutils literal"><span class="pre">utils.get_data.get_record</span></code></a>, <a class="reference internal" href="utils.get_data.html#utils.get_data.make_h5py_object" title="utils.get_data.make_h5py_object"><code class="xref py py-obj docutils literal"><span class="pre">utils.get_data.make_h5py_object</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Spherical has a variable radius parameter.</p>
+<p>Timesteps are measured in milliseconds, and values were measured at 500 Hz.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">get_data</span> <span class="k">import</span> <span class="n">get_record</span><span class="p">,</span> <span class="n">get_patients</span><span class="p">,</span> <span class="n">make_h5py_object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">get_record</span><span class="p">(</span><span class="n">get_patients</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">make_h5py_object</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="n">get_electrode_coords</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="s2">&quot;spherical&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="utils.clean_data.get_times">
+<code class="descclassname">utils.clean_data.</code><code class="descname">get_times</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/clean_data.html#get_times"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utils.clean_data.get_times" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract times numpy matrix from the h5py object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : h5py object</p>
+<blockquote>
+<div><p>a h5py object obtained from the <cite>make_h5py_object</cite> function in the get_data module</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>times</strong> : <code class="docutils literal"><span class="pre">ndarray</span></code></p>
+<blockquote class="last">
+<div><p>A (t, 1) <code class="docutils literal"><span class="pre">ndarray</span></code> (<cite>t</cite> is the number of timesteps).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="utils.get_data.html#utils.get_data.get_record" title="utils.get_data.get_record"><code class="xref py py-obj docutils literal"><span class="pre">utils.get_data.get_record</span></code></a>, <a class="reference internal" href="utils.get_data.html#utils.get_data.make_h5py_object" title="utils.get_data.make_h5py_object"><code class="xref py py-obj docutils literal"><span class="pre">utils.get_data.make_h5py_object</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The dataset has 111 channels.</p>
+<p>Timesteps are measured in milliseconds, and values were measured at 500 Hz.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">get_data</span> <span class="k">import</span> <span class="n">get_record</span><span class="p">,</span> <span class="n">get_patients</span><span class="p">,</span> <span class="n">make_h5py_object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">get_record</span><span class="p">(</span><span class="n">get_patients</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">make_h5py_object</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">times</span> <span class="o">=</span> <span class="n">get_times</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Team Orange Panda.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

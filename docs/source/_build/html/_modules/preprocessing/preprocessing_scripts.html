@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>preprocessing.preprocessing_scripts &#8212; EEGPipeline 0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="EEGPipeline 0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          EEGPipeline</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">preprocessing package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#module-preprocessing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../utils.html">utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <h1>Source code for preprocessing.preprocessing_scripts</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Contains basic signal processing utilities.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">utils.clean_data</span> <span class="k">import</span> <span class="p">(</span><span class="n">get_eeg_data</span><span class="p">,</span>
+                              <span class="n">get_times</span><span class="p">,</span>
+                              <span class="n">get_electrode_coords</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">preprocessing.interp</span> <span class="k">import</span> <span class="n">interpolate</span>
+<span class="kn">from</span> <span class="nn">preprocessing.baddetec</span> <span class="k">import</span> <span class="n">bad_chan_detect</span>
+<span class="kn">from</span> <span class="nn">preprocessing.noise_reduct</span> <span class="k">import</span> <span class="n">reduce_noise</span><span class="p">,</span> <span class="n">eye_artifact</span>
+<span class="kn">from</span> <span class="nn">utils.get_data</span> <span class="k">import</span> <span class="n">make_h5py_object</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<div class="viewcode-block" id="prep_data"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.prep_data">[docs]</a><span class="k">def</span> <span class="nf">prep_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+  <span class="sd">r&quot;&quot;&quot;Router for tokenized pre-processing scripts.</span>
+
+<span class="sd">    Takes a preprocessing token and applies the correct script.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">      A path to the file you are pre-processing.</span>
+<span class="sd">    token : str</span>
+<span class="sd">      Token for your corresponding pre-processing script.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    html</span>
+<span class="sd">      A report for what happened during preprocessing.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Supported tokens:</span>
+
+<span class="sd">    fcp_indi_eeg - token for EEG data from the fcp.</span>
+
+<span class="sd">    pickled_pandas - token for a pickled pandas object, no pre-processing is done, only analysis.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+  <span class="n">f_name</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;pickled_pandas&quot;</span><span class="p">:</span>
+    <span class="k">return</span>
+  <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;fcp_indi_eeg&quot;</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">eeg_prep</span><span class="p">(</span><span class="n">f_name</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="eeg_prep"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.eeg_prep">[docs]</a><span class="k">def</span> <span class="nf">eeg_prep</span><span class="p">(</span><span class="n">f_name</span><span class="p">,</span> <span class="n">ext</span><span class="p">):</span>
+  <span class="n">html</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">make_h5py_object</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="n">ext</span><span class="p">)</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="s2">&quot;&lt;h1&gt; Preprocessing Report for &quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f_name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&lt;/h1&gt;&quot;</span>
+  <span class="c1"># Wrap this patient&#39;s data.</span>
+  <span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">]</span>
+  <span class="c1"># Clean the data</span>
+  <span class="n">clean_data</span><span class="p">,</span> <span class="n">clean_report</span> <span class="o">=</span> <span class="n">clean</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">clean_report</span>
+  <span class="n">eeg_data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="n">clean_data</span>
+  <span class="c1"># simulate a time / channes / trials / patients data frame</span>
+  <span class="n">eeg_data</span> <span class="o">=</span> <span class="n">eeg_data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                              <span class="mi">1</span><span class="p">,</span> <span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+  <span class="n">eeg_data</span><span class="p">,</span> <span class="n">bad_chans</span><span class="p">,</span> <span class="n">bad_report</span> <span class="o">=</span> <span class="n">bad_chan_detect</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span>
+                                          <span class="s2">&quot;KDE&quot;</span><span class="p">,</span>
+                                          <span class="n">threshold</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                          <span class="n">times</span> <span class="o">=</span> <span class="n">times</span><span class="p">,</span>
+                                          <span class="n">ds</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">bad_report</span>
+  <span class="n">pool</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># How many electrodes to interp against?</span>
+  <span class="n">eeg_data</span><span class="p">,</span> <span class="n">int_report</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span>
+                                    <span class="s1">&#39;Inv_GC&#39;</span><span class="p">,</span>
+                                    <span class="n">bad_chans</span><span class="p">,</span>
+                                    <span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
+                                    <span class="n">coords</span> <span class="o">=</span> <span class="n">coords</span><span class="p">,</span>
+                                    <span class="n">npts</span> <span class="o">=</span> <span class="n">pool</span><span class="p">)</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">int_report</span>
+  <span class="n">eeg_data</span><span class="p">,</span> <span class="n">red_report</span> <span class="o">=</span> <span class="n">reduce_noise</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">)</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">red_report</span>
+  <span class="n">eeg_data</span><span class="p">,</span> <span class="n">eye_report</span> <span class="o">=</span> <span class="n">eye_artifact</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span>
+                                      <span class="s1">&#39;ICA&#39;</span><span class="p">,</span>
+                                      <span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
+                                      <span class="n">ds</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                                      <span class="n">n_rm</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">eye_report</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">eeg_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">times</span><span class="p">[:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">cct</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">d</span><span class="p">[:,</span> <span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cct</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+  <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="s1">&#39;.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">html</span></div>
+
+<div class="viewcode-block" id="clean"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.clean">[docs]</a><span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
+  <span class="nb">print</span> <span class="s1">&#39;cleaning data&#39;</span>
+  <span class="c1"># Extract for each patient</span>
+  <span class="n">C</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span>
+      <span class="n">tmp</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="n">tmp</span><span class="p">[</span><span class="s2">&quot;eeg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_eeg_data</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+      <span class="n">tmp</span><span class="p">[</span><span class="s2">&quot;times&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_times</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+      <span class="n">tmp</span><span class="p">[</span><span class="s2">&quot;coords&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_electrode_coords</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s1">&#39;spherical&#39;</span><span class="p">)</span>
+      <span class="n">C</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+  <span class="c1"># Go from python base list to numpy ndarray</span>
+  <span class="n">eeg_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span><span class="n">subject</span><span class="p">[</span><span class="s2">&quot;eeg&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">C</span><span class="p">)</span>
+  <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span><span class="n">subject</span><span class="p">[</span><span class="s2">&quot;times&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">C</span><span class="p">)</span>
+  <span class="n">electrodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span><span class="n">subject</span><span class="p">[</span><span class="s2">&quot;coords&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">C</span><span class="p">)</span>
+
+  <span class="c1"># Make sure the dimensions make sense</span>
+  <span class="k">assert</span> <span class="n">eeg_data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span>
+  <span class="k">assert</span> <span class="n">times</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span>
+  <span class="k">assert</span> <span class="n">electrodes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span>
+
+  <span class="c1"># During first 5 seconds electrode is &#39;reving&#39; up.</span>
+  <span class="n">eeg_data</span> <span class="o">=</span> <span class="n">eeg_data</span><span class="p">[</span><span class="mi">2500</span><span class="p">:]</span>
+  <span class="n">times</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="mi">2500</span><span class="p">:]</span>
+
+  <span class="c1"># Create a report for the cleaning procedure</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;h3&gt;CLEANING DATA&lt;/h3&gt;&quot;</span>
+  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;ul&gt;&quot;</span>
+  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li&gt;Extracted EEG data with &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> \
+          <span class="s2">&quot; channels and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> \
+          <span class="s2">&quot; observations.&lt;/li&gt;&quot;</span>
+  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li&gt;Extracted timing data with &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> \
+          <span class="s2">&quot; timesteps.&lt;/li&gt;&quot;</span>
+  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li&gt;Extracted electrode coordinate data.&lt;/li&gt;&quot;</span>
+  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li&gt;Removed first 5 seconds of data.&lt;/li&gt;&quot;</span>
+  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;/ul&gt;&quot;</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">electrodes</span><span class="p">),</span> <span class="n">out</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Team Orange Panda.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
