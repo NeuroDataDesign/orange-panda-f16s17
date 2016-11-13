@@ -6,7 +6,7 @@ from boto.s3.key import Key
 import h5py
 import plotly.plotly as py
 import plotly.graph_objs as go
-from utils import meda
+from utils import plots
 import set_keys
 import os, sys
 import ast
@@ -35,7 +35,8 @@ def get_s3(req):
             		" file was returned."
     key.get_file(f, cb = callback)
     f.close()
-    prep_data(local_path, req['token'])
+    prep_report = prep_data(local_path, req['token'])
+    save_prep(prep_report, f_name)
     return 'ok !'
 
 def make_meda_html(file_name):
@@ -43,7 +44,7 @@ def make_meda_html(file_name):
     # Load data from file path
     with open(fn, 'rb') as f:
     	df = pickle.load(f)
-    return meda.full_report(df)
+    return plots.full_report(df)
 
 def save_analysis(html_report, patient):
     # Create folder for results if doesn't exist

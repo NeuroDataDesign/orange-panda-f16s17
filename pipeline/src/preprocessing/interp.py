@@ -3,6 +3,40 @@
 """
 import numpy as np
 from math import radians, cos, sin, asin, sqrt
+import pandas as pd
+from utils.plots import plotly_hack, sparklines
+
+
+def interpolate(eeg_data, method, bad_chans, **kwargs):
+    out = ''
+    out += '<h3> Interpolating Bad Channels </h3>'
+    if method == 'Inv_GC':
+        out += '<p> Interpolating with inverse great circle distance weighting on ' + \
+                str(kwargs['npts']) + ' closest neighbors.'
+        for patient in range(eeg_data.shape[3]):
+            r = fit_sphere(kwargs['coords'][:, 2, patient])
+            out += '<p> Fit sphere of radius ' + str(r) + ' to patients head </p>'
+            for trial in range(eeg_data.shape[2]):
+                closest = []
+                bcs = bad_chans[patient][trial]
+                eeg_data_interped, close = gc_invdist_interp(
+                            eeg_data[:, :, trial, patient],
+                            bcs,
+                            kwargs['coords'][:, :, patient],
+                            r,
+                            numpts = kwargs['npts'])
+                eeg_data[:, :, trial, patient] = eeg_data_interped
+                cct = [pd.DataFrame(data=eeg_data[:, x, trial, patient]) for x in bcs]
+                if len(cct) > 0:
+                    df = pd.concat(cct, axis=1)
+                    df.columns = [str(x) for x in bcs]
+                    df.index = map(lambda x: x[0]/1000.0, kwargs['times'][:, :, -1])
+                    closest.append(close)
+                    out = plotly_hack(sparklines(df, title="Interpolations for patient " + str(patient)))
+                else:
+                    out =+ '<p>No bad electrodes to interpolate!</p>'
+        return (eeg_data, closest), out
+
 def fit_sphere(r_values):
     r"""Find the radius of a sphere that best fits a set of 3-d points, given their distance from the origin.
 

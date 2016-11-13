@@ -2,6 +2,24 @@ import numpy as np
 from sklearn.neighbors.kde import KernelDensity
 from sklearn.grid_search import GridSearchCV
 
+def bad_chan_detect(inEEG, method, **kwargs):
+    out = ''
+    out += '<h3> DETECTING BAD CHANNELS </h3>'
+    if method == 'KDE':
+        out += '<p> Detecting bad channels with a Kernel Density Estimator </p>'
+        bad_chan_list = []
+        for patient in range(inEEG.shape[3]):
+            bc_t = []
+            for trial in range(inEEG.shape[2]):
+                bcs = prob_baddetec(inEEG[:, :, patient],
+                            kwargs["threshold"], kdewrap)
+                bc_t.append(bcs)
+                out += "Detected bad channels: " + str(bcs)
+            bad_chan_list.append(bc_t)
+        return bad_chan_list, out
+
+
+
 def reshape(inEEG):
     r"""Reshape the data from the inputted format (timesteps, num channels, num patients) to (time, channels).
 
@@ -141,6 +159,7 @@ def prob_baddetec(inEEG, threshold, probfunc):
     for i in range(0, electrodes):
         # get prob distribution
         probdist = probfunc(shapeEEG[:, i], 'gaussian')
+        print "BadDetect done for " + str(i)
         # using probdist find joint prob
         probvec[i] = np.sum(probdist) 
     
@@ -157,7 +176,7 @@ def prob_baddetec(inEEG, threshold, probfunc):
         if ((avg - probvec[i]) / stddev) >= threshold:
             badelec.append(i)
             
-    return inEEG, str("Returned", len(badelec), "bad electrodes"), badelec
+    return badelec
 
 def good_elec(inEEG, badelec):
     r"""Detect bad electrodes based on probability
