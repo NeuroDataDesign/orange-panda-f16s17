@@ -108,7 +108,7 @@ def kdewrap(indata, kernel):
     """
     grid = GridSearchCV(KernelDensity(),
                     {'bandwidth': np.linspace(0.1, 1.0, 30)},
-                    cv=10) # 20-fold cross-validation
+                    cv=2) # 20-fold cross-validation
     grid.fit(indata[:, None])
     kde = KernelDensity(kernel=kernel, bandwidth=grid.best_params_["bandwidth"]).fit(indata[:, np.newaxis])
     return kde.score_samples(indata[:, np.newaxis])

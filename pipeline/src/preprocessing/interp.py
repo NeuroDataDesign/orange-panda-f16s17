@@ -34,7 +34,7 @@ def interpolate(eeg_data, method, bad_chans, **kwargs):
                     closest.append(close)
                     out = plotly_hack(sparklines(df, title="Interpolations for patient " + str(patient)))
                 else:
-                    out =+ '<p>No bad electrodes to interpolate!</p>'
+                    out += '<p>No bad electrodes to interpolate!</p>'
         return (eeg_data, closest), out
 
 def fit_sphere(r_values):

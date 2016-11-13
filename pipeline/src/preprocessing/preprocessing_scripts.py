@@ -1,15 +1,13 @@
 import os
 import pickle
 from main import (set_args,
-                  clean,
-                  interpolate,
-                  reduce_noise,
-                  acquire_data) 
+                  clean) 
 from utils.clean_data import (get_eeg_data,
                               get_times,
                               get_electrode_coords)
 from preprocessing.interp import interpolate
 from preprocessing.baddetec import bad_chan_detect
+from preprocessing.noise_reduct import reduce_noise
 from utils.get_data import make_h5py_object
 import pandas as pd
 
@@ -35,7 +33,7 @@ def eeg_prep(f_name, ext):
     # simulate a time / channes / trials / patients data frame
     eeg_data = eeg_data.reshape(eeg_data.shape[0], eeg_data.shape[1],
                                 1, eeg_data.shape[2])
-    bad_chans, bad_report = bad_chan_detect(eeg_data[::1000], "KDE", threshold=.5)
+    bad_chans, bad_report = bad_chan_detect(eeg_data[::1000], "KDE", threshold=3)
     html += bad_report
     pool = 10 # How many electrodes to interp against?
     int_data, int_report = interpolate(eeg_data,
@@ -45,7 +43,7 @@ def eeg_prep(f_name, ext):
                                       times = times,
                                       npts = pool)
     html += int_report
-    eeg_data, red_report = reduce_noise(eeg_data)
+    eeg_data, red_report = reduce_noise(eeg_data, 'placeholder')
     html += red_report
     d = eeg_data[:, :, -1]
     t = times[:, :, -1]
