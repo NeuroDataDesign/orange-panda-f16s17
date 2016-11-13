@@ -159,7 +159,7 @@ def cv(df):
 def sparklines(df, title = 'Sparklines '):
     cp = ''
     if len(df.index) > 1000:
-        cp = "(compressed from " + str(len(df.index)) + " timesteps to 1000)"
+        cp = "(compressed to 1000 timesteps)"
         index = np.floor(np.linspace(0, len(df.index) - 1, 1000)).astype(np.int64)
         #new_ind = df.index[index]
         df = df.ix[df.index[index]]
@@ -184,7 +184,7 @@ def heatmap(df):
         logscale = "logscale"
         df = df.apply(np.log, axis=1)
     if len(df.index) > 1000:
-        cp = "(time compressed from " + str(len(df.index)) + " to 1000)"
+        cp = "(compressed to 1000 timesteps)"
         index = np.floor(np.linspace(0, len(df.index) - 1, 1000))
         df = df.ix[index.astype(int)]
     df.index = np.arange(len(df.index))

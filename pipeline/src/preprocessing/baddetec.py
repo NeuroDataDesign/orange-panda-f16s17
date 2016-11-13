@@ -4,11 +4,16 @@ from sklearn.neighbors.kde import KernelDensity
 from sklearn.grid_search import GridSearchCV
 from utils.plots import plotly_hack, sparklines
 
-def bad_chan_detect(eeg_data, method, **kwargs):
+def bad_chan_detect(eeg_data, method, times, **kwargs):
     out = ''
     out += '<h3> DETECTING BAD CHANNELS </h3>'
+    print 'Detecting Zeroed electrodes'
+    zeroed, report = detect_zeroed_chans(eeg_data, times)
+    ind = np.setdiff1d(np.arange(eeg_data.shape[1]), zeroed)
+    eeg_data = eeg_data[:, ind, :, :]
+    out += report
     if method == 'KDE':
-        out += '<p> Detecting bad channels with a Kernel Density Estimator </p>'
+        out += '<h4> Detecting bad channels with a Kernel Density Estimator </h4>'
         bad_chan_list = []
         for p in range(eeg_data.shape[3]):
             print 'Detecting bad chans for patient ' + str(p)
@@ -18,18 +23,18 @@ def bad_chan_detect(eeg_data, method, **kwargs):
                 print eeg_data.shape
                 bcs = prob_baddetec(eeg_data[::kwargs['ds'], :, p],
                             kwargs["threshold"], kdewrap)
-                print eeg_data.shape
+                out += '<p> Detected ' + str(len(bcs)) + ' bad electrodes </p>'
                 bc_t.append(bcs)
                 cct = [pd.DataFrame(data=eeg_data[:, c, t, p]) for c in bcs]
                 if len(cct) > 0:
                     df = pd.concat(cct, axis=1)
                     df.columns = [str(c) for c in bcs]
-                    df.index = map(lambda t: t[0]/1000.0, kwargs['times'][:, :, -1])
+                    df.index = map(lambda t: t[0]/1000.0, times[:, :, -1])
                     out += plotly_hack(sparklines(df, title="Bad Channels for patient " + str(p)))
                 else:
                     out += '<p>No bad channels!</p>'
             bad_chan_list.append(bc_t)
-        return bad_chan_list, out
+        return eeg_data, bad_chan_list, out
 
 
 
@@ -210,3 +215,33 @@ def good_elec(inEEG, badelec):
 
     """
     return np.delete(inEEG, badelec, 1)
+
+def detect_zeroed_chans(eeg_data, times):
+    out = ''
+    out +=  "<h4>Detecting Zeroed Channels</h4>"
+    bad_chans_list = []
+    out += "<h5> Summary </h5>"
+    out += "<table><tr><th>Patient</th><th># Zeroed Electrodes</th><th>Zeroed Electrodes</th></tr>"
+    # Finding list of bad channels for each patient
+    # (list of lists)
+    for patient in range(eeg_data.shape[2]):
+        d = eeg_data[:, :, patient]
+        L = []
+        for i in range(d.shape[1]):
+            if sum(d[:, i]**2) == 0:
+                L.append(i)
+        bad_chans_list.append(L)
+        out += "<tr>"
+        out +=  "<td>" + str(patient) + "</td>"
+        out += "<td>" + str(len(L)) + "</td>"
+        out += "<td>" + str(L) + "</td>"
+        out += "</tr>"
+        cct = [pd.DataFrame(data=d[:, x]) for x in L]
+        df = pd.concat(cct, axis=1)
+        df.columns = [str(x) for x in L]
+        df.index = map(lambda x: x[0]/1000.0, times[:, :, -1])
+    # Numpify the python array
+    bad_chans_list = np.array(bad_chans_list)
+
+    out += "</table>"
+    return bad_chans_list, out

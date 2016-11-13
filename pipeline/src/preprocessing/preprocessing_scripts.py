@@ -31,9 +31,9 @@ def eeg_prep(f_name, ext):
   # simulate a time / channes / trials / patients data frame
   eeg_data = eeg_data.reshape(eeg_data.shape[0], eeg_data.shape[1],
                               1, eeg_data.shape[2])
-  bad_chans, bad_report = bad_chan_detect(eeg_data,
+  eeg_data, bad_chans, bad_report = bad_chan_detect(eeg_data,
                                           "KDE",
-                                          threshold=1,
+                                          threshold=2,
                                           times = times,
                                           ds = 1000)
   html += bad_report
@@ -41,13 +41,17 @@ def eeg_prep(f_name, ext):
   eeg_data, int_report = interpolate(eeg_data,
                                     'Inv_GC',
                                     bad_chans,
+                                    times=times,
                                     coords = coords,
-                                    times = times,
                                     npts = pool)
   html += int_report
   eeg_data, red_report = reduce_noise(eeg_data, 'placeholder')
   html += red_report
-  eeg_data, eye_report = eye_artifact(eeg_data, 'ICA')
+  eeg_data, eye_report = eye_artifact(eeg_data,
+                                      'ICA',
+                                      times=times,
+                                      ds=1000,
+                                      n_rm = 5)
   html += eye_report
   d = eeg_data[:, :, -1]
   t = times[:, :, -1]
@@ -80,6 +84,10 @@ def clean(D):
   assert times.ndim == 3
   assert electrodes.ndim == 3
 
+  # During first 5 seconds electrode is 'reving' up.
+  eeg_data = eeg_data[2500:]
+  times = times[2500:]
+
   # Create a report for the cleaning procedure
   out = ''
   out += "<h3>CLEANING DATA</h3>"
@@ -90,6 +98,7 @@ def clean(D):
   out += "<li>Extracted timing data with " + str(times.shape[0]) + \
           " timesteps.</li>"
   out += "<li>Extracted electrode coordinate data.</li>"
+  out += "<li>Removed first 5 seconds of data.</li>"
   out += "</ul>"
 
   return (eeg_data, times, electrodes), out
