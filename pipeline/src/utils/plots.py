@@ -170,7 +170,7 @@ def sparklines(df, title = 'Sparklines '):
     fig = df.iplot(kind='line',  asFigure=True,
             title=title + cp, subplots=True, xTitle='Row Index', yTitle='Column Index',
             shape=(len(df.columns), 1), shared_xaxes = True, theme='solar')
-    fig.layout.update(height=len(df.columns) * 80)
+    fig.layout.update(height=200 + len(df.columns) * 60)
     return fig
 
 def heatmap(df):

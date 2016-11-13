@@ -1,20 +1,33 @@
 import numpy as np
+import pandas as pd
 from sklearn.neighbors.kde import KernelDensity
 from sklearn.grid_search import GridSearchCV
+from utils.plots import plotly_hack, sparklines
 
-def bad_chan_detect(inEEG, method, **kwargs):
+def bad_chan_detect(eeg_data, method, **kwargs):
     out = ''
     out += '<h3> DETECTING BAD CHANNELS </h3>'
     if method == 'KDE':
         out += '<p> Detecting bad channels with a Kernel Density Estimator </p>'
         bad_chan_list = []
-        for patient in range(inEEG.shape[3]):
+        for p in range(eeg_data.shape[3]):
+            print 'Detecting bad chans for patient ' + str(p)
             bc_t = []
-            for trial in range(inEEG.shape[2]):
-                bcs = prob_baddetec(inEEG[:, :, patient],
+            for t in range(eeg_data.shape[2]):
+                print 'Detecting bad chans for trial ' + str(t)
+                print eeg_data.shape
+                bcs = prob_baddetec(eeg_data[::kwargs['ds'], :, p],
                             kwargs["threshold"], kdewrap)
+                print eeg_data.shape
                 bc_t.append(bcs)
-                out += "Detected bad channels: " + str(bcs)
+                cct = [pd.DataFrame(data=eeg_data[:, c, t, p]) for c in bcs]
+                if len(cct) > 0:
+                    df = pd.concat(cct, axis=1)
+                    df.columns = [str(c) for c in bcs]
+                    df.index = map(lambda t: t[0]/1000.0, kwargs['times'][:, :, -1])
+                    out += plotly_hack(sparklines(df, title="Bad Channels for patient " + str(p)))
+                else:
+                    out += '<p>No bad channels!</p>'
             bad_chan_list.append(bc_t)
         return bad_chan_list, out
 
@@ -159,7 +172,6 @@ def prob_baddetec(inEEG, threshold, probfunc):
     for i in range(0, electrodes):
         # get prob distribution
         probdist = probfunc(shapeEEG[:, i], 'gaussian')
-        print "BadDetect done for " + str(i)
         # using probdist find joint prob
         probvec[i] = np.sum(probdist) 
     
