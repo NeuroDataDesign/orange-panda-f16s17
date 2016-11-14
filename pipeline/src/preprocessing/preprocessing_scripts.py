@@ -42,7 +42,7 @@ def prep_data(file_path, token):
 
   f_name, ext = os.path.splitext(file_path)
   if token == "pickled_pandas":
-    return
+    return '<h1> No preprocessing was done. </h1>'
   if token == "fcp_indi_eeg":
     return eeg_prep(f_name, ext)
 

@@ -30,14 +30,13 @@ def get_s3(req):
     bucket = conn.get_bucket(req['bucket'], validate=False)
     s3path = req['fpath']
     key = Key(bucket, s3path)
-    f = file(local_path, 'wb')
-    def callback(togo, total):
-        print "Got {0: 10d} Bytes out of {1:10d} Bytes".format(togo, total)
-        if togo == total:
-            print "Done! The path of the " + req['name'] + \
-            		" file was returned."
-    key.get_file(f, cb = callback)
-    f.close()
+    with file(local_path, 'wb') as f:
+	    def callback(togo, total):
+		print "Got {0: 10d} Bytes out of {1:10d} Bytes".format(togo, total)
+		if togo == total:
+		    print "Done! The path of the " + req['name'] + \
+				" file was returned."
+	    key.get_file(f, cb = callback)
     prep_report = prep_data(local_path, req['token'])
     save_prep(prep_report, f_name)
     return 'ok !'
