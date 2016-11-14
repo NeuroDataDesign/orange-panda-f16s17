@@ -15,6 +15,7 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import numpy as np
 from collections import Counter
+from scipy import signal
 
 def type_summary(df):
     g = df.columns.to_series().groupby(df.dtypes).groups
@@ -242,6 +243,28 @@ def get_messy_data(df):
     X_missing[np.where(missing_samples)[0], missing_features] = np.inf
     return X_missing
 
+def coherence_plot(df):
+    df = df.ix[::100]
+    currd = df.as_matrix()
+    currd = currd.T
+    coherearr = []
+    for i in range (0, len(currd)):
+        temparr = []
+        for j in range (0, len(currd)):
+            temparr.append(np.mean(
+                    signal.coherence(currd[i], currd[j], 500)[1]
+                ))
+        coherearr.append(temparr)
+    df = pd.DataFrame(data=np.array(coherearr), index=df.columns, columns=df.columns)
+    fig = df.iplot(kind='heatmap',
+        theme='solar', asFigure=True)
+    fig.layout.update(dict(title="Coherence", height=800, width=800))
+    colorscale = [[0, '#0000FF'],[.5, '#FFFFFF'], [1, '#FF0000']]  # custom colorscale
+    fig.data.update( 
+            dict(colorscale=colorscale, showscale = True,
+                colorbar=dict(title="coherence")))
+    return fig
+
 def get_stocks():
     start = datetime.datetime(2010, 10, 10)
     end = datetime.datetime(2016,10,10)
@@ -291,6 +314,8 @@ def full_report(df):
     html += plotly_hack(anomaly(df))
     print "Making anomaly graph..."
     html = wrap_html(html)
+    print "Making coherence plot..."
+    html += plotly_hack(coherence_plot(df))
     return html
 
 def plotly_hack(fig):
