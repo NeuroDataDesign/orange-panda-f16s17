@@ -60,12 +60,14 @@ def eeg_prep(f_name, ext, prep_args):
   # simulate a time / channes / trials / patients data frame
   eeg_data = eeg_data.reshape(eeg_data.shape[0], eeg_data.shape[1],
                               1, eeg_data.shape[2])
-  eeg_data, bad_chans, bad_report = bad_chan_detect(eeg_data,
+  eeg_data, bad_chans, coords, zeroed_chans, bad_report = bad_chan_detect(eeg_data,
                                           prep_args['bad_detect'],
                                           threshold=prep_args['bd_thresh'],
                                           times = times,
+                                          coords=coords,
                                           ds = 1000,
                                           rm_zero = prep_args['rm_zero'])
+  print coords.shape
   html += bad_report
   pool = 10 # How many electrodes to interp against?
   eeg_data, int_report = interpolate(eeg_data,

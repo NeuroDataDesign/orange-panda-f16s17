@@ -15,6 +15,7 @@ def interpolate(eeg_data, method, bad_chans, **kwargs):
       str(kwargs['npts']) + ' closest neighbors.'
     for p in range(eeg_data.shape[3]):
       print 'Interpolating bad chans for patient ' + str(p)
+      print kwargs['coords'].shape
       r = fit_sphere(kwargs['coords'][:, 2, p])
       out += '<p> Fit sphere of radius ' + str(r) + ' to patients head </p>'
       for t in range(eeg_data.shape[2]):
