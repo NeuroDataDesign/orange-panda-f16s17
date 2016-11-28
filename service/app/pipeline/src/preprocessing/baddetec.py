@@ -8,14 +8,15 @@ from sklearn.neighbors.kde import KernelDensity
 from sklearn.grid_search import GridSearchCV
 from utils.plots import plotly_hack, sparklines
 
-def bad_chan_detect(eeg_data, method, times, **kwargs):
+def bad_chan_detect(eeg_data, method, times, rm_zero = 'false', **kwargs):
     out = ''
     out += '<h3> DETECTING BAD CHANNELS </h3>'
-    print 'Detecting Zeroed electrodes'
-    zeroed, report = detect_zeroed_chans(eeg_data, times)
-    ind = np.setdiff1d(np.arange(eeg_data.shape[1]), zeroed)
-    eeg_data = eeg_data[:, ind, :, :]
-    out += report
+    if rm_zero != 'false':
+        print 'Detecting Zeroed electrodes'
+        zeroed, report = detect_zeroed_chans(eeg_data, times)
+        ind = np.setdiff1d(np.arange(eeg_data.shape[1]), zeroed)
+        eeg_data = eeg_data[:, ind, :, :]
+        out += report
     if method == 'KDE':
         out += '<h4> Detecting bad channels with a Kernel Density Estimator </h4>'
         bad_chan_list = []
@@ -176,7 +177,7 @@ def prob_baddetec(inEEG, threshold, probfunc):
     # iterate through electrodes and get joint probs
     for i in range(0, electrodes):
         # get prob distribution
-        probdist = probfunc(shapeEEG[:, i], 'gaussian')
+        probdist = probfunc(inEEG[:, i], 'gaussian')
         # using probdist find joint prob
         probvec[i] = np.sum(probdist) 
     

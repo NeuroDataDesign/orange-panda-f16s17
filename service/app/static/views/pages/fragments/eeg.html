@@ -1,0 +1,31 @@
+<form ng-model = 'arguments' class="col-xl-12 text-center row" action = "" name="form">
+<div class="form-group row text-left">
+  <label class="col-xs-offset-2 col-xs-4 col-form-label">Detect/Remove identically 0 electrodes</label>
+  <div class="col-xs-3">
+	<input class="form-control" type="checkbox" ng-model="arguments.rm_zero" ng-init='false'>
+  </div>
+</div>
+<div class="form-group row text-left">
+  <label class="col-xs-offset-2 col-xs-4 col-form-label">Bad Electrode Detection Parameters</label>
+  <div class="col-xs-3">
+  <label>
+      <input type="radio" ng-model="arguments.bad_detect" value="KDE">
+      Joint Probability
+    </label><br/>
+    <label>
+      <input type="radio" ng-model="arguments.bad_detect" value="kurt">
+      Kurtosis
+    </label><br/>
+    <label>
+      <input type="radio" ng-model="arguments.bad_detect" value="pow">
+      Power Spectrum
+    </label><br/>
+    <label>
+        <input type="number" ng-model="arguments.bd_thresh"
+               min="0" max="100" required>
+        Threshold
+     </label>
+  </div>
+</div>
+<button class = "btn btn-lg btn-orange" data-ng-click="set_args(arguments)">Preprocess Data</button>
+</form>

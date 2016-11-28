@@ -27,14 +27,25 @@ def analyze_data():
         res = web.save_analysis(out, file_name)
         return jsonify(res)
     else:
-	   abort(404)
+     abort(404)
 
 @app.route('/gets3', methods=['GET', 'POST'])
 def get_s3():
-    if request.method == 'POST':
-        return web.get_s3(request.json)
-    else:
-	abort(400)
+  if request.method == 'POST':
+    path = web.get_s3(request.json)
+    return path 
+  else:
+    abort(400)
+
+@app.route('/prep', methods=['GET', 'POST'])
+def preprocess_data():
+  if request.method == 'POST':
+    prep_args = request.json
+    prep_report = web.make_prep_html(prep_args)
+    web.save_prep(prep_report, prep_args['name'])
+    return 'ok!'
+  else:
+    abort(400)
 
 @app.route('/getTable', methods=['GET'])
 def get_table_data():
