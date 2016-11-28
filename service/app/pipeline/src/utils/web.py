@@ -22,9 +22,7 @@ def get_s3(req):
     f_name, extension = os.path.splitext(req['fpath'])
     local_path = 'files/' + req['name'] + extension
     if os.path.isfile(local_path):
-        html = prep_data(local_path, req['token'])
-        save_prep(html, req['name'])
-        return 'ok!'
+        return local_path
     conn = S3Connection(os.environ['AWS_ACCESS_KEY'],
             os.environ['AWS_SECRET_KEY'])
     bucket = conn.get_bucket(req['bucket'], validate=False)
@@ -37,9 +35,7 @@ def get_s3(req):
 		    print "Done! The path of the " + req['name'] + \
 				" file was returned."
 	    key.get_file(f, cb = callback)
-    prep_report = prep_data(local_path, req['token'])
-    save_prep(prep_report, req['name'])
-    return 'ok !'
+    return local_path
 
 def make_meda_html(file_name):
     fn = 'files/' + file_name + '.pkl'
@@ -47,6 +43,10 @@ def make_meda_html(file_name):
     with open(fn, 'rb') as f:
     	df = pickle.load(f)
     return plots.full_report(df)
+
+def make_prep_html(prep_args):
+    return prep_data(prep_args)
+
 
 def save_analysis(html_report, patient):
     # Create folder for results if doesn't exist
@@ -63,7 +63,7 @@ def save_analysis(html_report, patient):
         for file in files:
             ziph.write(os.path.join(root, file))
     ziph.close()
-    return 'ok!'
+    return True
 
 def save_prep(html_report, patient):
     title = '<title> PANDA Pre </title>'

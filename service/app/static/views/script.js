@@ -40,14 +40,34 @@ scotchApp.controller('viewController', function($sce, $http, $scope) {
 
 scotchApp.controller('analyzeController', function($rootScope, $sce, $scope, $http) {
     $scope.message = '';
+    $scope.set_bucket = true
     $scope.got_data = false
-    $scope.get = function() {
+    $scope.args_set = false
+
+    $scope.get = function(data) {
+        $scope.data = data
         $scope.message = 'Trying to get data. This may take some time.';
 		$http.post('/gets3', $scope.data)
+             .success(function(path){
+                $scope.message='Got Data!';
+                $scope.set_bucket = false
+                $scope.got_data = true
+                $scope.args_set = false
+                $scope.data_path = path
+             })
+             .error(function(){$scope.message='Something went wrong.'});
+    }
+    $scope.set_args = function(prep_args) {
+        $scope.message='Preprocessing data... this will take some time!';
+        prep_args['data_path'] = $scope.data_path
+        prep_args['token'] = $scope.data.token
+        prep_args['name'] = $scope.data.name
+        $http.post('/prep', prep_args)
              .success(function(){
-                 $scope.message='Got Data!';
-                 $scope.got_data = true
-
+                $scope.message='Preprocessed Data!';
+                $scope.set_bucket = false
+                $scope.got_data = false
+                $scope.args_set = true
              })
              .error(function(){$scope.message='Something went wrong.'});
     }

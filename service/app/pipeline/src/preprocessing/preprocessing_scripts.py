@@ -13,7 +13,7 @@ from utils.get_data import make_h5py_object
 import pandas as pd
 import numpy as np
 
-def prep_data(file_path, token):
+def prep_data(prep_args):
   r"""Router for tokenized pre-processing scripts.
 
     Takes a preprocessing token and applies the correct script.
@@ -40,14 +40,14 @@ def prep_data(file_path, token):
 
     """
 
-  f_name, ext = os.path.splitext(file_path)
-  if token == "pickled_pandas":
+  f_name, ext = os.path.splitext(prep_args['data_path'])
+  if prep_args['token'] == "pickled_pandas":
     return '<h1> No preprocessing was done. </h1>'
-  if token == "fcp_indi_eeg":
-    return eeg_prep(f_name, ext)
+  if prep_args['token'] == "fcp_indi_eeg":
+    return eeg_prep(f_name, ext, prep_args)
 
 
-def eeg_prep(f_name, ext):
+def eeg_prep(f_name, ext, prep_args):
   html = ''
   d = make_h5py_object(f_name + ext)
   html += "<h1> Preprocessing Report for " + os.path.basename(f_name) + "</h1>"
@@ -61,10 +61,11 @@ def eeg_prep(f_name, ext):
   eeg_data = eeg_data.reshape(eeg_data.shape[0], eeg_data.shape[1],
                               1, eeg_data.shape[2])
   eeg_data, bad_chans, bad_report = bad_chan_detect(eeg_data,
-                                          "KDE",
-                                          threshold=2,
+                                          prep_args['bad_detect'],
+                                          threshold=prep_args['bd_thresh'],
                                           times = times,
-                                          ds = 1000)
+                                          ds = 1000,
+                                          rm_zero = prep_args['rm_zero'])
   html += bad_report
   pool = 10 # How many electrodes to interp against?
   eeg_data, int_report = interpolate(eeg_data,
