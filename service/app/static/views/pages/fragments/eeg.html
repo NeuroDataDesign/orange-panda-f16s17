@@ -9,7 +9,7 @@
   <label class="col-xs-offset-2 col-xs-4 col-form-label">Bad Electrode Detection Parameters</label>
   <div class="col-xs-3">
   <label>
-      <input type="radio" ng-model="arguments.bad_detect" value="KDE">
+      <input type="radio" ng-model="arguments.bad_detect" value="prob">
       Joint Probability
     </label><br/>
     <label>
@@ -22,7 +22,7 @@
     </label><br/>
     <label>
         <input type="number" ng-model="arguments.bd_thresh"
-               min="0" max="100" required>
+               min="0" max="9999" step=.0000001 required>
         Threshold
      </label>
   </div>
