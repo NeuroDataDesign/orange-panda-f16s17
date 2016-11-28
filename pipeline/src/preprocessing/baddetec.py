@@ -3,6 +3,7 @@
 """
 import numpy as np
 import pandas as pd
+from scipy.stats import kurtosis
 from sklearn.neighbors.kde import KernelDensity
 from sklearn.grid_search import GridSearchCV
 from utils.plots import plotly_hack, sparklines
@@ -167,11 +168,7 @@ def prob_baddetec(inEEG, threshold, probfunc):
     electrodes = inEEG.shape[1]
     
     # Start by reshaping data (if necessary)
-    if len(inEEG.shape) == 3:
-        shapeEEG = np.reshape(inEEG, (inEEG.shape[0] * inEEG.shape[2], inEEG.shape[1]))
-    elif len(inEEG.shape) != 1 and len(inEEG.shape) != 2:
-        # fail case
-        return -1
+    inEEG = reshape(inEEG)
     
     # Then, initialize a probability vector of electrode length
     probvec = np.zeros(electrodes)
@@ -196,6 +193,109 @@ def prob_baddetec(inEEG, threshold, probfunc):
         if ((avg - probvec[i]) / stddev) >= threshold:
             badelec.append(i)
             
+    return badelec
+
+def kurt_baddetec(inEEG, threshold):
+    r"""Detect bad electrodes based on kurtosis
+
+    Based on the kurtosis of EEG voltage over time, find channels which have produced large outliers.
+
+    Parameters
+    ----------
+    inEEG : numpy array (timesteps, channels, patients)
+        For a given electrode, a list of all the values for each timestamp
+    threshold : integer
+        The number of standard deviations away from the mean joint probability counts an electrode's probability can be
+        for it to count as a bad electrode
+
+    Returns
+    -------
+    inEEG : original data
+        Return original data because isn't changed
+    o : string
+        output string for basic comprehension of output
+    badelec: list
+        List of bad electrodes from list
+
+    Notes
+    -----
+    Pseudocode located at: https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf
+
+    """
+    electrodes = inEEG.shape[1]
+    
+    # Start by reshaping data (if necessary)
+    inEEG = reshape(inEEG)
+    
+    # Then, initialize a probability vector of electrode length
+    kurtvec = np.zeros(electrodes)
+    
+    # iterate through electrodes and get kurtoses
+    for i in range(0, electrodes):
+        # add kurtosis to the vector
+        kurtvec[i] = kurtosis(inEEG[:, i])        
+    
+    # normalize kurtvec
+    # first calc mean
+    avg = np.mean(kurtvec)
+    # then std dev
+    stddev = np.std(kurtvec)
+    # then figure out which electrodes are bad
+    badelec = []
+    #print probvec
+    for i in range(0, len(kurtvec)):
+        #print i, avg, stddev, (avg - kurtvec[i]) / stddev
+        if ((avg - kurtvec[i]) / stddev) >= threshold:
+            badelec.append(i)
+            
+    return badelec
+
+def spec_baddetec(inEEG, posthresh, negthresh):
+    r"""Detect bad electrodes based on spectral analysis
+
+    Based on the frequency spectrums 
+
+    Parameters
+    ----------
+    inEEG : numpy array (timesteps, channels, patients)
+        For a given electrode, a list of all the values for each timestamp
+    posthresh : integer
+        The amount above the mean average power spectrum an electrode's frequency can go
+    negthresh : integer
+        The amount below the mean average power spectrum an electrode's frequency can go
+
+    Returns
+    -------
+    inEEG : original data
+        Return original data because isn't changed
+    o : string
+        output string for basic comprehension of output
+    badelec: list
+        List of bad electrodes from list
+
+    Notes
+    -----
+    Pseudocode located at: https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf
+
+    """
+    electrodes = inEEG.shape[1]
+    
+    # Start by reshaping data (if necessary)
+    inEEG = reshape(inEEG)
+    
+    # initialize badelec as an empty array
+    badelec = []
+    
+    # iterate through electrodes and get spectral densities
+    for i in range(0, electrodes):
+        # get frequency spectrum for electrode
+        sp = np.fft.fft(inEEG[:, i]).real
+        sp = sp - np.mean(sp)
+        for power in sp:
+            if power > posthresh or power < negthresh:
+                badelec.append(i)
+                break
+        
     return badelec
 
 def good_elec(inEEG, badelec):
