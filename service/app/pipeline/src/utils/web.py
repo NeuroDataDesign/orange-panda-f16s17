@@ -16,7 +16,7 @@ import ast
 import zipfile
 from preprocessing.preprocessing_scripts import prep_data
 
-RESULTS='app/static/results/'
+RESULTS='static/results/'
 
 def get_s3(req):
     f_name, extension = os.path.splitext(req['fpath'])
@@ -38,7 +38,7 @@ def get_s3(req):
 				" file was returned."
 	    key.get_file(f, cb = callback)
     prep_report = prep_data(local_path, req['token'])
-    save_prep(prep_report, f_name)
+    save_prep(prep_report, req['name'])
     return 'ok !'
 
 def make_meda_html(file_name):
@@ -54,6 +54,7 @@ def save_analysis(html_report, patient):
     res_path = RESULTS + patient + '/'
     if not os.path.exists(res_path):
         os.makedirs(res_path)
+        print 'MADE NEW DIRECTORY', res_path
     with open(res_path + "post_report.html", 'w') as f:
         f.write(html_report)
     ziph = zipfile.ZipFile(res_path + '../' + patient + '.zip',
@@ -72,6 +73,7 @@ def save_prep(html_report, patient):
     res_path = RESULTS + patient + '/'
     if not os.path.exists(res_path):
         os.makedirs(res_path)
+        print 'MADE NEW DIRECTORY', res_path
     with open(res_path + "prep_report.html", 'w') as f:
         f.write(html_report)
     return True
@@ -79,9 +81,9 @@ def save_prep(html_report, patient):
 def _make_res(name):
     res = {
     'f_name': name,
-            'prep_report': '/results/' + name + '/prep_report.html',
-            'post_report': '/results/' + name + '/post_report.html',
-            'zip': 'results/' + name + '.zip'
+            'prep_report': '/static/results/' + name + '/prep_report.html',
+            'post_report': '/static/results/' + name + '/post_report.html',
+            'zip': '/static/results/' + name + '.zip'
         }
     return res
 

@@ -19,7 +19,7 @@
 import sphinx_bootstrap_theme
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../pipeline/src'))
+sys.path.insert(0, os.path.abspath('../../service/app/pipeline/src'))
 
 # -- General configuration ------------------------------------------------
 
@@ -171,7 +171,7 @@ html_theme_options = {
     #
     # Options are nothing (default) or the name of a valid theme
     # such as "amelia" or "cosmo".
-    'bootswatch_theme': "sandstone",
+    'bootswatch_theme': "cosmo",
 
     # Choose Bootstrap version.
     # Values: "3" (default) or "2" (in quotes)

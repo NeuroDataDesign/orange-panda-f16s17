@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/sandstone/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/cosmo/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -142,7 +142,7 @@
 <span class="kn">import</span> <span class="nn">zipfile</span>
 <span class="kn">from</span> <span class="nn">preprocessing.preprocessing_scripts</span> <span class="k">import</span> <span class="n">prep_data</span>
 
-<span class="n">RESULTS</span><span class="o">=</span><span class="s1">&#39;app/static/results/&#39;</span>
+<span class="n">RESULTS</span><span class="o">=</span><span class="s1">&#39;static/results/&#39;</span>
 
 <div class="viewcode-block" id="get_s3"><a class="viewcode-back" href="../../utils.web.html#utils.web.get_s3">[docs]</a><span class="k">def</span> <span class="nf">get_s3</span><span class="p">(</span><span class="n">req</span><span class="p">):</span>
     <span class="n">f_name</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">req</span><span class="p">[</span><span class="s1">&#39;fpath&#39;</span><span class="p">])</span>
@@ -156,16 +156,15 @@
     <span class="n">bucket</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="n">req</span><span class="p">[</span><span class="s1">&#39;bucket&#39;</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">s3path</span> <span class="o">=</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;fpath&#39;</span><span class="p">]</span>
     <span class="n">key</span> <span class="o">=</span> <span class="n">Key</span><span class="p">(</span><span class="n">bucket</span><span class="p">,</span> <span class="n">s3path</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">file</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">togo</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
-        <span class="nb">print</span> <span class="s2">&quot;Got </span><span class="si">{0: 10d}</span><span class="s2"> Bytes out of </span><span class="si">{1:10d}</span><span class="s2"> Bytes&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">togo</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">togo</span> <span class="o">==</span> <span class="n">total</span><span class="p">:</span>
-            <span class="nb">print</span> <span class="s2">&quot;Done! The path of the &quot;</span> <span class="o">+</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> \
-            		<span class="s2">&quot; file was returned.&quot;</span>
-    <span class="n">key</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">callback</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">file</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+	    <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">togo</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+		<span class="nb">print</span> <span class="s2">&quot;Got </span><span class="si">{0: 10d}</span><span class="s2"> Bytes out of </span><span class="si">{1:10d}</span><span class="s2"> Bytes&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">togo</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">togo</span> <span class="o">==</span> <span class="n">total</span><span class="p">:</span>
+		    <span class="nb">print</span> <span class="s2">&quot;Done! The path of the &quot;</span> <span class="o">+</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> \
+				<span class="s2">&quot; file was returned.&quot;</span>
+	    <span class="n">key</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">callback</span><span class="p">)</span>
     <span class="n">prep_report</span> <span class="o">=</span> <span class="n">prep_data</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
-    <span class="n">save_prep</span><span class="p">(</span><span class="n">prep_report</span><span class="p">,</span> <span class="n">f_name</span><span class="p">)</span>
+    <span class="n">save_prep</span><span class="p">(</span><span class="n">prep_report</span><span class="p">,</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
     <span class="k">return</span> <span class="s1">&#39;ok !&#39;</span></div>
 
 <div class="viewcode-block" id="make_meda_html"><a class="viewcode-back" href="../../utils.web.html#utils.web.make_meda_html">[docs]</a><span class="k">def</span> <span class="nf">make_meda_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
@@ -181,6 +180,7 @@
     <span class="n">res_path</span> <span class="o">=</span> <span class="n">RESULTS</span> <span class="o">+</span> <span class="n">patient</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">res_path</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">res_path</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s1">&#39;MADE NEW DIRECTORY&#39;</span><span class="p">,</span> <span class="n">res_path</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">res_path</span> <span class="o">+</span> <span class="s2">&quot;post_report.html&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html_report</span><span class="p">)</span>
     <span class="n">ziph</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">res_path</span> <span class="o">+</span> <span class="s1">&#39;../&#39;</span> <span class="o">+</span> <span class="n">patient</span> <span class="o">+</span> <span class="s1">&#39;.zip&#39;</span><span class="p">,</span>
@@ -199,6 +199,7 @@
     <span class="n">res_path</span> <span class="o">=</span> <span class="n">RESULTS</span> <span class="o">+</span> <span class="n">patient</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">res_path</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">res_path</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s1">&#39;MADE NEW DIRECTORY&#39;</span><span class="p">,</span> <span class="n">res_path</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">res_path</span> <span class="o">+</span> <span class="s2">&quot;prep_report.html&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html_report</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">True</span></div>
@@ -206,9 +207,9 @@
 <span class="k">def</span> <span class="nf">_make_res</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;f_name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
-            <span class="s1">&#39;prep_report&#39;</span><span class="p">:</span> <span class="s1">&#39;/results/&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;/prep_report.html&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;post_report&#39;</span><span class="p">:</span> <span class="s1">&#39;/results/&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;/post_report.html&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;zip&#39;</span><span class="p">:</span> <span class="s1">&#39;results/&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.zip&#39;</span>
+            <span class="s1">&#39;prep_report&#39;</span><span class="p">:</span> <span class="s1">&#39;/static/results/&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;/prep_report.html&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;post_report&#39;</span><span class="p">:</span> <span class="s1">&#39;/static/results/&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;/post_report.html&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;zip&#39;</span><span class="p">:</span> <span class="s1">&#39;/static/results/&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.zip&#39;</span>
         <span class="p">}</span>
     <span class="k">return</span> <span class="n">res</span>
 

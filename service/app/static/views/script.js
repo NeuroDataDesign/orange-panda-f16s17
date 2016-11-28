@@ -7,19 +7,19 @@ scotchApp.config(function($routeProvider) {
 
         // route for the home page
         .when('/', {
-            templateUrl : 'views/pages/home.html',
+            templateUrl : 'static/views/pages/home.html',
             controller  : 'mainController'
         })
 
         // route for the about page
         .when('/view', {
-            templateUrl : 'views/pages/view.html',
+            templateUrl : 'static/views/pages/view.html',
             controller  : 'viewController'
         })
 
         // route for the contact page
         .when('/analyze', {
-            templateUrl : 'views/pages/analyze.html',
+            templateUrl : 'static/views/pages/analyze.html',
             controller  : 'analyzeController'
         });
 });
@@ -32,7 +32,6 @@ scotchApp.controller('mainController', function($scope) {
 
 scotchApp.controller('viewController', function($sce, $http, $scope) {
     $scope.message = 'View some analyses here!';
-	$scope.show_report = false
 	$http.get('/getTable')
          .success(function(res){
             $scope.f_name_list = res
