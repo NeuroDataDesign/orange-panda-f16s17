@@ -46,6 +46,7 @@ scotchApp.controller('analyzeController', function($rootScope, $sce, $scope, $ht
 
     $scope.get = function(data) {
         $scope.data = data
+        $scope.arguments = {}
         $scope.message = 'Trying to get data. This may take some time.';
 		$http.post('/gets3', $scope.data)
              .success(function(path){
