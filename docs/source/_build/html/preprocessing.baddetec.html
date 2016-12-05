@@ -5,17 +5,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>preprocessing.baddetec module &#8212; EEGPipeline 0 documentation</title>
+    <title>preprocessing.baddetec module &#8212; EEGPipeline 1 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.6/cosmo/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/darkly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0',
+        VERSION:     '1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="EEGPipeline 0 documentation" href="index.html" />
+    <link rel="top" title="EEGPipeline 1 documentation" href="index.html" />
     <link rel="up" title="preprocessing package" href="preprocessing.html" />
     <link rel="next" title="preprocessing.interp module" href="preprocessing.interp.html" />
     <link rel="prev" title="preprocessing package" href="preprocessing.html" />
@@ -53,7 +53,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           EEGPipeline</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -114,12 +114,6 @@
             
             
             
-              <li class="hidden-sm">
-<div id="sourcelink">
-  <a href="_sources/preprocessing.baddetec.txt"
-     rel="nofollow">Source</a>
-</div></li>
-            
           </ul>
 
           
@@ -145,65 +139,20 @@
 <p>Contains basic signal processing utilities.</p>
 <dl class="function">
 <dt id="preprocessing.baddetec.bad_chan_detect">
-<code class="descclassname">preprocessing.baddetec.</code><code class="descname">bad_chan_detect</code><span class="sig-paren">(</span><em>eeg_data</em>, <em>method</em>, <em>times</em>, <em>coords</em>, <em>rm_zero=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#bad_chan_detect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.bad_chan_detect" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">bad_chan_detect</code><span class="sig-paren">(</span><em>T</em>, <em>A</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#bad_chan_detect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.bad_chan_detect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes the data and applies the proper bad channel detection method.</p>
 <p>Wrapper for bad channel detection methods, so there is one unified way to call them all.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>eeg_data</strong> : ndarray</p>
-<blockquote>
-<div><p>(n,c,t,p) dimensional array, n = number of timesteps, c = number of channels
-t = number of trials, p = number of patients.</p>
-</div></blockquote>
-<p><strong>method</strong> : string</p>
-<blockquote>
-<div><p>string corresponding to which bad channel detection method to be used.
-Available methods are in the &#8216;notes&#8217; section of this docstring.</p>
-</div></blockquote>
-<p><strong>times</strong> : ndarray</p>
-<blockquote>
-<div><p>A (n x 1) array of the time values of each index of <cite>eeg_data</cite>. For
-example, <cite>[.002, .004, ...]</cite> for eeg data sampled at 500Hz.</p>
-</div></blockquote>
-<p><strong>coords</strong> : ndarray</p>
-<blockquote>
-<div><p>(c, 3, p) array of the coordinates of the c electrodes. Measured spherical
-coordinates rather than cartesian. (<span class="math">theta</span>, <span class="math">rho</span>, r) rather than
-(x,y,z).</p>
-</div></blockquote>
-<p><strong>rm_zero</strong> : boolean</p>
-<blockquote>
-<div><p>True if identically zero (zero on every timestep) electrodes should be
-removed before bad electrode detection functions are run.</p>
-</div></blockquote>
-<p><strong>**kwargs</strong> : dictionary</p>
-<blockquote>
-<div><p>Additional arguments specific to the bad electrode detection method used.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>T</strong> : eeg_panda_format dictionary (<a class="reference external" href="https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md">https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md</a>)</p>
+<p><strong>A</strong> : global arguments set in config.txt</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>eeg_data</strong> : ndarray</p>
-<blockquote>
-<div><p>The eeg_data variable that was input with some changes.
-This can differ, for example, if you chose to remove the zeroed out electrodes.</p>
-</div></blockquote>
-<p><strong>bad_chan_list</strong> : list of list of lists</p>
-<blockquote>
-<div><p>Top level list is per patient, 2nd level list is per trial, and 3rd
-level list contains bad electrodes.
-For example, bad_chan_list[3][4] contains the bad electrodes for
-patient 4 on trial 5. (0-indexed arrays).</p>
-</div></blockquote>
-<p><strong>coords</strong> : ndarray</p>
-<blockquote>
-<div><p>The coordinate array which was input, minus any bad channels which were
-detected and removed.</p>
-</div></blockquote>
-<p><strong>out</strong> : string</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>T</strong> : eeg_panda_format dictionary (<a class="reference external" href="https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md">https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md</a>)</p>
 <blockquote class="last">
-<div><p>HTML string detailing a report of the bad channel detection process.</p>
+<div><p>Returns data with metadata added. Zeroed electrodes will be removed if <cite>rm_zero</cite> was <cite>True</cite> in config.txt.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -222,7 +171,7 @@ detected and removed.</p>
 
 <dl class="function">
 <dt id="preprocessing.baddetec.detect_zeroed_chans">
-<code class="descclassname">preprocessing.baddetec.</code><code class="descname">detect_zeroed_chans</code><span class="sig-paren">(</span><em>eeg_data</em>, <em>times</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#detect_zeroed_chans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.detect_zeroed_chans" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">detect_zeroed_chans</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#detect_zeroed_chans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.detect_zeroed_chans" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">

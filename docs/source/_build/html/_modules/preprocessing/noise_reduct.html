@@ -5,17 +5,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>preprocessing.noise_reduct &#8212; EEGPipeline 0 documentation</title>
+    <title>preprocessing.noise_reduct &#8212; EEGPipeline 1 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/cosmo/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/darkly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0',
+        VERSION:     '1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="EEGPipeline 0 documentation" href="../../index.html" />
+    <link rel="top" title="EEGPipeline 1 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -51,7 +51,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           EEGPipeline</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -101,8 +101,6 @@
             
             
             
-              <li class="hidden-sm"></li>
-            
           </ul>
 
           
@@ -132,65 +130,71 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">utils.plots</span> <span class="k">import</span> <span class="n">plotly_hack</span><span class="p">,</span> <span class="n">sparklines</span><span class="p">,</span> <span class="n">correlation</span>
-<div class="viewcode-block" id="reduce_noise"><a class="viewcode-back" href="../../preprocessing.noise_reduct.html#preprocessing.noise_reduct.reduce_noise">[docs]</a><span class="k">def</span> <span class="nf">reduce_noise</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-  <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span> <span class="c1"># for Minimum Viable Product</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="n">out</span> <span class="o">+=</span>  <span class="s2">&quot;&lt;h3&gt;REDUCING NOISE&lt;/h3&gt;&quot;</span>
-    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]):</span>
-      <span class="nb">print</span> <span class="s1">&#39;Noise reduction for patient &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-      <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
-        <span class="nb">print</span> <span class="s1">&#39;Noise reduction for trial &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;h4&gt;Actions for patient &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/h4&gt;&#39;</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;ul&gt;&#39;</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li&gt;Highpass filtered at .1 Hz threshold.&lt;/li&gt;&quot;</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li&gt;Bandstop filtered at harmonics of 60Hz.&lt;/li&gt;&quot;</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/ul&gt;&#39;</span>
-        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-          <span class="n">eeg_data</span><span class="p">[:,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">butter_highpass_filter</span><span class="p">(</span>
-            <span class="n">eeg_data</span><span class="p">[:,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">],</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-          <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">60</span><span class="p">):</span>
-            <span class="n">eeg_data</span><span class="p">[:,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">butter_bandstop_filter</span><span class="p">(</span>
-              <span class="n">eeg_data</span><span class="p">[:,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">],</span> <span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">5</span><span class="p">],</span> <span class="mi">500</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">eeg_data</span><span class="p">,</span> <span class="n">out</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">eeg_data</span><span class="p">,</span> <span class="s1">&#39;&lt;h3&gt; Nothing happened &lt;/h3&gt;&#39;</span></div>
+<span class="kn">import</span> <span class="nn">preprocessing.prep_plots</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">preprocessing.messages</span> <span class="k">as</span> <span class="nn">messages</span>
 
-<div class="viewcode-block" id="eye_artifact"><a class="viewcode-back" href="../../preprocessing.noise_reduct.html#preprocessing.noise_reduct.eye_artifact">[docs]</a><span class="k">def</span> <span class="nf">eye_artifact</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-  <span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-  <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;ICA&#39;</span><span class="p">:</span>
-    <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;h3&gt;DETECTING AND REMOVING ARTIFACTS&lt;/h3&gt;&#39;</span>
-    <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;p&gt; Running FastICA to discover independent components.&#39;</span>
-    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]):</span>
-      <span class="nb">print</span> <span class="s1">&#39;Eye artifact reduction for patient &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-      <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
-        <span class="nb">print</span> <span class="s1">&#39;Eye artifact reduction for trial &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-        <span class="n">ica</span> <span class="o">=</span> <span class="n">FastICA</span><span class="p">()</span>
-        <span class="n">ica</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">[::</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ds&#39;</span><span class="p">],</span> <span class="p">:,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
-        <span class="n">ica_ind_component</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
-        <span class="n">components</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">components_</span>
-        <span class="n">comps_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">components</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;h5&gt; Correlation matrix of the independent components &lt;/h5&gt;&#39;</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="n">plotly_hack</span><span class="p">(</span><span class="n">correlation</span><span class="p">(</span><span class="n">comps_df</span><span class="p">))</span>
-        <span class="n">correl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">comps_df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">())</span>
-        <span class="n">sum_correl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">correl</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;h5&gt; Sums of row-wise correlations (for &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;n_rm&#39;</span><span class="p">])</span> <span class="o">+</span> \
-        <span class="s1">&#39; independent components with the lowest correlation): &lt;/h5&gt;&#39;</span>
-        <span class="n">inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">sum_correl</span><span class="p">)[:</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;n_rm&#39;</span><span class="p">]]</span>
-        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;ol&gt;&#39;</span>
-        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;n_rm&#39;</span><span class="p">]):</span>
-          <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;li&gt;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sum_correl</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;&lt;/li&gt;&#39;</span> 
-        <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/ol&gt;&#39;</span>
-        <span class="n">ica</span><span class="o">.</span><span class="n">mixing_</span><span class="p">[:,</span> <span class="n">inds</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">eeg_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">ica_ind_component</span><span class="p">)</span>
-        <span class="n">cct</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">eeg_data</span><span class="p">[:,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cct</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-          <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cct</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-          <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
-          <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;times&#39;</span><span class="p">][:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-          <span class="n">out</span> <span class="o">+=</span> <span class="s1">&#39;&lt;h5&gt; Sparklines of data with low &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;n_rm&#39;</span><span class="p">])</span> <span class="o">+</span> \
-          <span class="s1">&#39; independent components removed &lt;/h5&gt;&#39;</span>
-          <span class="n">out</span> <span class="o">+=</span> <span class="n">plotly_hack</span><span class="p">(</span><span class="n">sparklines</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sparklines&quot;</span><span class="p">))</span>
-  <span class="k">return</span> <span class="n">eeg_data</span><span class="p">,</span> <span class="n">out</span></div>
+<div class="viewcode-block" id="reduce_noise"><a class="viewcode-back" href="../../preprocessing.noise_reduct.html#preprocessing.noise_reduct.reduce_noise">[docs]</a><span class="k">def</span> <span class="nf">reduce_noise</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+  <span class="sd">r&quot;&quot;&quot;Reduce noise of the EEG data.</span>
+
+<span class="sd">  Reduces noise based on method in the arguments.</span>
+<span class="sd">  </span>
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  T : eeg_panda_format dictionary (https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md)</span>
+<span class="sd">  A : global arguments set in config.txt</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  T : eeg_panda_format dictionary (https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md)</span>
+<span class="sd">    Returns the same data with noise reduced.</span>
+
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  methods available:</span>
+<span class="sd">  .. &#39;placeholder&#39; - general band pass and high pass filtering.</span>
+<span class="sd">  .. &#39;RPCA&#39; - noise reduction with Robust PCA</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="s1">&#39;red_noise&#39;</span><span class="p">][</span><span class="s1">&#39;method&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">:</span> <span class="c1"># for Minimum Viable Product</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">][</span><span class="s1">&#39;n_chans&#39;</span><span class="p">]):</span>
+          <span class="n">T</span><span class="p">[</span><span class="s1">&#39;eeg&#39;</span><span class="p">][:,</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">butter_highpass_filter</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;eeg&#39;</span><span class="p">][:,</span> <span class="n">c</span><span class="p">],</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">60</span><span class="p">):</span>
+            <span class="n">T</span><span class="p">[</span><span class="s1">&#39;eeg&#39;</span><span class="p">][:,</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">butter_bandstop_filter</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;eeg&#39;</span><span class="p">][:,</span> <span class="n">c</span><span class="p">],</span> <span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">5</span><span class="p">],</span> <span class="mi">500</span><span class="p">)</span>
+  <span class="n">T</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">][</span><span class="s1">&#39;red_noise_method&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="s1">&#39;red_noise&#39;</span><span class="p">][</span><span class="s1">&#39;method&#39;</span><span class="p">]</span>
+  <span class="n">T</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;red_noise_message&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">red_noise</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">T</span></div>
+
+<div class="viewcode-block" id="eye_artifact"><a class="viewcode-back" href="../../preprocessing.noise_reduct.html#preprocessing.noise_reduct.eye_artifact">[docs]</a><span class="k">def</span> <span class="nf">eye_artifact</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+  <span class="sd">r&quot;&quot;&quot;Detect eye artifacts.</span>
+
+<span class="sd">  Detect and remove artifacts from the EEG data..</span>
+<span class="sd">  </span>
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  T : eeg_panda_format dictionary (https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md)</span>
+<span class="sd">  A : global arguments set in config.txt</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  T : eeg_panda_format dictionary (https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md)</span>
+<span class="sd">    Returns the same data with eye artifacts removed. (Not yet, will be implemented soon.)</span>
+
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  methods available:</span>
+<span class="sd">  .. &#39;ICA&#39; - detect eye artifacts with FastICA.</span>
+<span class="sd">  </span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="s1">&#39;eye_artifact&#39;</span><span class="p">][</span><span class="s1">&#39;method&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ICA&#39;</span><span class="p">:</span>
+    <span class="n">ica</span> <span class="o">=</span> <span class="n">FastICA</span><span class="p">()</span>
+    <span class="n">ica</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;eeg&#39;</span><span class="p">][::</span><span class="n">A</span><span class="p">[</span><span class="s1">&#39;eye_artifact&#39;</span><span class="p">][</span><span class="s1">&#39;ds&#39;</span><span class="p">]])</span>
+    <span class="n">ica_ind_component</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;eeg&#39;</span><span class="p">])</span>
+    <span class="n">components</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">components_</span>
+  <span class="n">T</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">][</span><span class="s1">&#39;eye_artifact_method&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="s1">&#39;eye_artifact&#39;</span><span class="p">][</span><span class="s1">&#39;method&#39;</span><span class="p">]</span>
+  <span class="n">T</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;eye_artifact_message&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">eye_artifact</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">T</span></div>
 </pre></div>
 
     </div>

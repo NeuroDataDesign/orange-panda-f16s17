@@ -22,15 +22,20 @@ def prep_data(prep_args_web, prep_args_loc):
 
     Parameters
     ----------
-    file_path : str
-      A path to the file you are pre-processing.
-    token : str
-      Token for your corresponding pre-processing script.
+    prep_args_web : dict
+      A dictionary of arguments from user input into the 'get data' form on
+      the webservice. This will include a token, a file name, a file path, and a
+      s3 bucket name.
+
+    prep_args_loc : dict
+      A dictionary of arguments to the pipeline preprocessing. These are the
+      hard-coded options of the pipeline which we have determined to produce the 
+      best results.
 
     Returns
     -------
     html
-      A report for what happened during preprocessing.
+      A HTML report for what happened during preprocessing.
 
     Notes
     -----
@@ -38,7 +43,7 @@ def prep_data(prep_args_web, prep_args_loc):
 
     fcp_indi_eeg - token for EEG data from the fcp.
 
-    pickled_pandas - token for a pickled pandas object, no pre-processing is done, only analysis.
+    eeg_panda_format - token for the eeg_panda data format.
 
     """
 
@@ -46,51 +51,116 @@ def prep_data(prep_args_web, prep_args_loc):
   if prep_args_web['token'] == "pickled_pandas":
     return '<h1> No preprocessing was done. </h1>'
   if prep_args_web['token'] == "fcp_indi_eeg":
-    return eeg_prep(f_name, ext, prep_args_web, prep_args_loc)
+    d = make_h5py_object(f_name + ext)
+    # Wrap this patient (patient 0, trial 0).
+    D = []
+    P = []
+    T1 = {'raw': d}
+    P.append(T1)
+    D.append(P)
+    D = apply_over(D, clean, prep_args_loc)
+    D = eeg_prep(D, prep_args_loc)
+    with open(f_name + '.pkl', 'wb') as f:
+      pickle.dump(D, f)
+    return D[0][0]['report']['full_report']
+  if prep_args_web['token'] == "eeg_panda_format":
+    D = pickle.load(open(f_name + ext))
+    D = apply_over(D, set_meta, prep_args_loc)
+    D = eeg_prep(D, prep_args_loc)
+    with open(f_name + '.pkl', 'wb') as f:
+      pickle.dump(D, f)
+    return D[0][0]['report']['full_report']
 
-
-def eeg_prep(f_name, ext, prep_args_web, prep_args_loc):
-  A = prep_args_loc
-  d = make_h5py_object(f_name + ext)
-  # Wrap this patient (patient 0, trial 0).
-  D = []
-  P = []
-  T1 = {'raw': d}
-  P.append(T1)
-  D.append(P)
-  # Clean the data
-  D = clean(D)
+def eeg_prep(D, A):
   D = apply_over(D, bad_chan_detect, A)
   D = apply_over(D, interpolate, A)
   D = apply_over(D, reduce_noise, A)
   D = apply_over(D, eye_artifact, A)
   D = apply_over(D, html_out, A)
-  with open(f_name + '.pkl', 'wb') as f:
-    pickle.dump(D, f)
-  return D[0][0]['report']['full_report']
-
-def clean(D):
-  print 'cleaning data'
-  # Extract for each patient
-  for P in D:
-    for T in P:
-      T["eeg"] = get_eeg_data(T["raw"])
-      T["times"] = get_times(T["raw"])
-      T["coords"] = get_electrode_coords(T["raw"], 'spherical')
-      T["meta"] = {
-        'n_chans' : T["eeg"].shape[1],
-        'n_obs' : T["times"].shape[0],
-        'freq_times' : 500,
-        'freq_unit' : 'second',
-        'coord_unit' : 'spherical'
-      }
-      T["report"] = {}
-      T["report"]["clean_message"] = messages.clean(T["meta"])
-      T.pop("raw") 
-  print D
   return D
 
+def clean(T, A):
+  r"""Cleans data examples from the Nicolas' data set.
+
+  This is for demo purposes only, when we have more example
+  formats this will be abstracted to a tokenized function.
+
+  Parameters
+  ----------
+  T : eeg panda data format.
+    A dictionary conforming to the PANDA data format.
+
+  A : dict
+    A dictionary of arguments to the pipeline preprocessing. These are the
+    hard-coded options of the pipeline which we have determined to produce the 
+    best results.
+
+  Returns
+  -------
+  T : eeg panda data format.
+    the same data after it has been through preprocessing.
+
+  """
+  # Extract for each patient
+  T["eeg"] = get_eeg_data(T["raw"])
+  T["times"] = get_times(T["raw"])
+  T["coords"] = get_electrode_coords(T["raw"], 'spherical')
+  T = set_meta(T, A)
+  T.pop("raw") 
+  return T
+
+def set_meta(T, A):
+  r"""Set the data's metadata.
+
+  Parameters
+  ----------
+  T : eeg panda data format.
+    A dictionary conforming to the PANDA data format.
+
+  A : dict
+    A dictionary of arguments to the pipeline preprocessing. These are the
+    hard-coded options of the pipeline which we have determined to produce the 
+    best results.
+
+  Returns
+  -------
+  T : eeg panda data format.
+    T['meta'] is now filled out.
+
+  """
+  T["meta"] = {
+    'n_chans' : T["eeg"].shape[1],
+    'n_obs' : T["times"].shape[0],
+    'freq_times' : 500,
+    'freq_unit' : 'second',
+    'coord_unit' : 'spherical'
+  }
+  T["report"] = {}
+  T["report"]["clean_message"] = messages.clean(T["meta"])
+  return T
+
 def html_out(T, A):
+  r"""Generate the full html out report
+
+  Compile all the preprocessing messages into a nice report.
+
+  Parameters
+  ----------
+  T : eeg panda data format.
+    A dictionary conforming to the PANDA data format.
+
+  A : dict
+    A dictionary of arguments to the pipeline preprocessing. These are the
+    hard-coded options of the pipeline which we have determined to produce the 
+    best results.
+
+  Returns
+  -------
+  html
+    A HTML report for what happened during preprocessing.
+
+  """
+
   html = "<h1> Preprocessing Report </h1>"
   html += T['report']['clean_message']
   html += T['report']['bad_chans_message']

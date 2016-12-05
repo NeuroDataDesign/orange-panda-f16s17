@@ -8,7 +8,7 @@
   },
   'interp': {
     'method' : 'Inv_GC',
-    'npts' : 10
+    'npts' : 5
   },
   'red_noise' : {
     'method' : 'placeholder'
