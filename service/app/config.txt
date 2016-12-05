@@ -1,0 +1,20 @@
+{
+  'bad_detec': {
+    'rm_zero' : True,
+    'method' : 'prob',
+    'ds' : 1000,
+    'threshold_1' : 2,
+    'threshold_2' : -2
+  },
+  'interp': {
+    'method' : 'Inv_GC',
+    'npts' : 10
+  },
+  'red_noise' : {
+    'method' : 'placeholder'
+  },
+  'eye_artifact' : {
+    'method' : 'ICA',
+    'ds' : 1000
+  }
+}

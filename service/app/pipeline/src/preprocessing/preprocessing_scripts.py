@@ -15,7 +15,7 @@ import numpy as np
 import preprocessing.messages as messages
 from utils.misc import apply_over
 
-def prep_data(prep_args):
+def prep_data(prep_args_web, prep_args_loc):
   r"""Router for tokenized pre-processing scripts.
 
     Takes a preprocessing token and applies the correct script.
@@ -42,14 +42,15 @@ def prep_data(prep_args):
 
     """
 
-  f_name, ext = os.path.splitext(prep_args['data_path'])
-  if prep_args['token'] == "pickled_pandas":
+  f_name, ext = os.path.splitext(prep_args_web['data_path'])
+  if prep_args_web['token'] == "pickled_pandas":
     return '<h1> No preprocessing was done. </h1>'
-  if prep_args['token'] == "fcp_indi_eeg":
-    return eeg_prep(f_name, ext, prep_args)
+  if prep_args_web['token'] == "fcp_indi_eeg":
+    return eeg_prep(f_name, ext, prep_args_web, prep_args_loc)
 
 
-def eeg_prep(f_name, ext, prep_args):
+def eeg_prep(f_name, ext, prep_args_web, prep_args_loc):
+  A = prep_args_loc
   d = make_h5py_object(f_name + ext)
   # Wrap this patient (patient 0, trial 0).
   D = []
@@ -59,25 +60,6 @@ def eeg_prep(f_name, ext, prep_args):
   D.append(P)
   # Clean the data
   D = clean(D)
-  A = {'bad_detec': {
-        'rm_zero' : True,
-        'method' : 'prob',
-        'ds' : 1000,
-        'threshold_1' : 2,
-        'threshold_2' : -2
-        },
-        'interp': {
-          'method' : 'Inv_GC',
-          'npts' : 10
-        },
-        'red_noise' : {
-          'method' : 'placeholder'
-        },
-        'eye_artifact' : {
-          'method' : 'ICA',
-          'ds' : 1000
-        }
-      }
   D = apply_over(D, bad_chan_detect, A)
   D = apply_over(D, interpolate, A)
   D = apply_over(D, reduce_noise, A)

@@ -51,8 +51,8 @@ def make_meda_html(file_name):
   df.index = map(lambda x: x[0]/1000.0, t)
   return plots.full_report(df)
 
-def make_prep_html(prep_args):
-  return prep_data(prep_args)
+def make_prep_html(prep_args_web, prep_args_loc):
+  return prep_data(prep_args_web, prep_args_loc)
 
 
 def save_analysis(html_report, patient):
