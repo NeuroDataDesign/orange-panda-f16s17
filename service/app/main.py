@@ -1,6 +1,7 @@
 from flask import Flask, send_file
 import os
 import sys
+
 lib_path = os.path.abspath(os.path.join('pipeline', 'src'))
 sys.path.append(lib_path)
 from flask import (Flask,
@@ -40,9 +41,10 @@ def get_s3():
 @app.route('/prep', methods=['GET', 'POST'])
 def preprocess_data():
   if request.method == 'POST':
-    prep_args = request.json
-    prep_report = web.make_prep_html(prep_args)
-    web.save_prep(prep_report, prep_args['name'])
+    prep_args_web = request.json
+    prep_args_loc = eval(open("config.txt").read())
+    prep_report = web.make_prep_html(prep_args_web, prep_args_loc)
+    web.save_prep(prep_report, prep_args_web['name'])
     return 'ok!'
   else:
     abort(400)
@@ -56,4 +58,4 @@ def main():
     return send_file('./static/index.html')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True, port=80)
+  app.run(host='0.0.0.0', debug=True, port=80)

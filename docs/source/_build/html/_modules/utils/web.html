@@ -148,9 +148,7 @@
     <span class="n">f_name</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">req</span><span class="p">[</span><span class="s1">&#39;fpath&#39;</span><span class="p">])</span>
     <span class="n">local_path</span> <span class="o">=</span> <span class="s1">&#39;files/&#39;</span> <span class="o">+</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">extension</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">local_path</span><span class="p">):</span>
-        <span class="n">html</span> <span class="o">=</span> <span class="n">prep_data</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
-        <span class="n">save_prep</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="s1">&#39;ok!&#39;</span>
+        <span class="k">return</span> <span class="n">local_path</span>
     <span class="n">conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;AWS_ACCESS_KEY&#39;</span><span class="p">],</span>
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;AWS_SECRET_KEY&#39;</span><span class="p">])</span>
     <span class="n">bucket</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="n">req</span><span class="p">[</span><span class="s1">&#39;bucket&#39;</span><span class="p">],</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -163,9 +161,7 @@
 		    <span class="nb">print</span> <span class="s2">&quot;Done! The path of the &quot;</span> <span class="o">+</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> \
 				<span class="s2">&quot; file was returned.&quot;</span>
 	    <span class="n">key</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">callback</span><span class="p">)</span>
-    <span class="n">prep_report</span> <span class="o">=</span> <span class="n">prep_data</span><span class="p">(</span><span class="n">local_path</span><span class="p">,</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
-    <span class="n">save_prep</span><span class="p">(</span><span class="n">prep_report</span><span class="p">,</span> <span class="n">req</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="s1">&#39;ok !&#39;</span></div>
+    <span class="k">return</span> <span class="n">local_path</span></div>
 
 <div class="viewcode-block" id="make_meda_html"><a class="viewcode-back" href="../../utils.web.html#utils.web.make_meda_html">[docs]</a><span class="k">def</span> <span class="nf">make_meda_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;files/&#39;</span> <span class="o">+</span> <span class="n">file_name</span> <span class="o">+</span> <span class="s1">&#39;.pkl&#39;</span>
@@ -173,6 +169,10 @@
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     	<span class="n">df</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">plots</span><span class="o">.</span><span class="n">full_report</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="make_prep_html"><a class="viewcode-back" href="../../utils.web.html#utils.web.make_prep_html">[docs]</a><span class="k">def</span> <span class="nf">make_prep_html</span><span class="p">(</span><span class="n">prep_args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">prep_data</span><span class="p">(</span><span class="n">prep_args</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="save_analysis"><a class="viewcode-back" href="../../utils.web.html#utils.web.save_analysis">[docs]</a><span class="k">def</span> <span class="nf">save_analysis</span><span class="p">(</span><span class="n">html_report</span><span class="p">,</span> <span class="n">patient</span><span class="p">):</span>
     <span class="c1"># Create folder for results if doesn&#39;t exist</span>
@@ -189,7 +189,7 @@
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
             <span class="n">ziph</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
     <span class="n">ziph</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">return</span> <span class="s1">&#39;ok!&#39;</span></div>
+    <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="save_prep"><a class="viewcode-back" href="../../utils.web.html#utils.web.save_prep">[docs]</a><span class="k">def</span> <span class="nf">save_prep</span><span class="p">(</span><span class="n">html_report</span><span class="p">,</span> <span class="n">patient</span><span class="p">):</span>
     <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;&lt;title&gt; PANDA Pre &lt;/title&gt;&#39;</span>

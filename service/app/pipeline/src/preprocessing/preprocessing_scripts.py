@@ -12,8 +12,10 @@ from preprocessing.noise_reduct import reduce_noise, eye_artifact
 from utils.get_data import make_h5py_object
 import pandas as pd
 import numpy as np
+import preprocessing.messages as messages
+from utils.misc import apply_over
 
-def prep_data(prep_args):
+def prep_data(prep_args_web, prep_args_loc):
   r"""Router for tokenized pre-processing scripts.
 
     Takes a preprocessing token and applies the correct script.
@@ -40,97 +42,62 @@ def prep_data(prep_args):
 
     """
 
-  f_name, ext = os.path.splitext(prep_args['data_path'])
-  if prep_args['token'] == "pickled_pandas":
+  f_name, ext = os.path.splitext(prep_args_web['data_path'])
+  if prep_args_web['token'] == "pickled_pandas":
     return '<h1> No preprocessing was done. </h1>'
-  if prep_args['token'] == "fcp_indi_eeg":
-    return eeg_prep(f_name, ext, prep_args)
+  if prep_args_web['token'] == "fcp_indi_eeg":
+    return eeg_prep(f_name, ext, prep_args_web, prep_args_loc)
 
 
-def eeg_prep(f_name, ext, prep_args):
-  html = ''
+def eeg_prep(f_name, ext, prep_args_web, prep_args_loc):
+  A = prep_args_loc
   d = make_h5py_object(f_name + ext)
-  html += "<h1> Preprocessing Report for " + os.path.basename(f_name) + "</h1>"
-  # Wrap this patient's data.
-  D = [d]
+  # Wrap this patient (patient 0, trial 0).
+  D = []
+  P = []
+  T1 = {'raw': d}
+  P.append(T1)
+  D.append(P)
   # Clean the data
-  clean_data, clean_report = clean(D)
-  html += clean_report
-  eeg_data, times, coords = clean_data
-  # simulate a time / channes / trials / patients data frame
-  eeg_data = eeg_data.reshape(eeg_data.shape[0], eeg_data.shape[1],
-                              1, eeg_data.shape[2])
-  eeg_data, bad_chans, coords, zeroed_chans, bad_report = bad_chan_detect(eeg_data,
-                                          prep_args['bad_detect'],
-                                          threshold=prep_args['bd_thresh'],
-                                          times = times,
-                                          coords=coords,
-                                          ds = 1000,
-                                          rm_zero = prep_args['rm_zero'])
-  print coords.shape
-  html += bad_report
-  pool = 10 # How many electrodes to interp against?
-  eeg_data, int_report = interpolate(eeg_data,
-                                    'Inv_GC',
-                                    bad_chans,
-                                    times=times,
-                                    coords = coords,
-                                    npts = pool)
-  html += int_report
-  eeg_data, red_report = reduce_noise(eeg_data, 'placeholder')
-  html += red_report
-  eeg_data, eye_report = eye_artifact(eeg_data,
-                                      'ICA',
-                                      times=times,
-                                      ds=1000,
-                                      n_rm = 5)
-  html += eye_report
-  d = eeg_data[:, :, -1]
-  t = times[:, :, -1]
-  cct = [pd.DataFrame(data=d[:, x]) for x in range(d.shape[1])]
-  df = pd.concat(cct, axis=1)
-  df.columns = [str(x) for x in range(d.shape[1])]
-  df.index = map(lambda x: x[0]/1000.0, t)
+  D = clean(D)
+  D = apply_over(D, bad_chan_detect, A)
+  D = apply_over(D, interpolate, A)
+  D = apply_over(D, reduce_noise, A)
+  D = apply_over(D, eye_artifact, A)
+  D = apply_over(D, html_out, A)
   with open(f_name + '.pkl', 'wb') as f:
-    pickle.dump(df, f)
-  return html
+    pickle.dump(D, f)
+  return D[0][0]['report']['full_report']
 
 def clean(D):
   print 'cleaning data'
   # Extract for each patient
-  C = []
-  for d in D:
-      tmp = {}
-      tmp["eeg"] = get_eeg_data(d)
-      tmp["times"] = get_times(d)
-      tmp["coords"] = get_electrode_coords(d, 'spherical')
-      C.append(tmp)
+  for P in D:
+    for T in P:
+      T["eeg"] = get_eeg_data(T["raw"])
+      T["times"] = get_times(T["raw"])
+      T["coords"] = get_electrode_coords(T["raw"], 'spherical')
+      T["meta"] = {
+        'n_chans' : T["eeg"].shape[1],
+        'n_obs' : T["times"].shape[0],
+        'freq_times' : 500,
+        'freq_unit' : 'second',
+        'coord_unit' : 'spherical'
+      }
+      T["report"] = {}
+      T["report"]["clean_message"] = messages.clean(T["meta"])
+      T.pop("raw") 
+  print D
+  return D
 
-  # Go from python base list to numpy ndarray
-  eeg_data = np.dstack(subject["eeg"] for subject in C)
-  times = np.dstack(subject["times"] for subject in C)
-  electrodes = np.dstack(subject["coords"] for subject in C)
-
-  # Make sure the dimensions make sense
-  assert eeg_data.ndim == 3
-  assert times.ndim == 3
-  assert electrodes.ndim == 3
-
-  # During first 5 seconds electrode is 'reving' up.
-  eeg_data = eeg_data[2500:]
-  times = times[2500:]
-
-  # Create a report for the cleaning procedure
-  out = ''
-  out += "<h3>CLEANING DATA</h3>"
-  out += "<ul>"
-  out += "<li>Extracted EEG data with " + str(eeg_data.shape[1]) + \
-          " channels and " + str(eeg_data.shape[0]) + \
-          " observations.</li>"
-  out += "<li>Extracted timing data with " + str(times.shape[0]) + \
-          " timesteps.</li>"
-  out += "<li>Extracted electrode coordinate data.</li>"
-  out += "<li>Removed first 5 seconds of data.</li>"
-  out += "</ul>"
-
-  return (eeg_data, times, electrodes), out
+def html_out(T, A):
+  html = "<h1> Preprocessing Report </h1>"
+  html += T['report']['clean_message']
+  html += T['report']['bad_chans_message']
+  html += T['report']['bad_chans_plot']
+  html += T['report']['interp_message']
+  html += T['report']['interp_plot']
+  html += T['report']['red_noise_message']
+  html += T['report']['eye_artifact_message']
+  T['report']['full_report'] = html
+  return T

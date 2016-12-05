@@ -145,8 +145,80 @@
 <p>Contains basic signal processing utilities.</p>
 <dl class="function">
 <dt id="preprocessing.baddetec.bad_chan_detect">
-<code class="descclassname">preprocessing.baddetec.</code><code class="descname">bad_chan_detect</code><span class="sig-paren">(</span><em>eeg_data</em>, <em>method</em>, <em>times</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#bad_chan_detect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.bad_chan_detect" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">bad_chan_detect</code><span class="sig-paren">(</span><em>eeg_data</em>, <em>method</em>, <em>times</em>, <em>coords</em>, <em>rm_zero=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#bad_chan_detect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.bad_chan_detect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes the data and applies the proper bad channel detection method.</p>
+<p>Wrapper for bad channel detection methods, so there is one unified way to call them all.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>eeg_data</strong> : ndarray</p>
+<blockquote>
+<div><p>(n,c,t,p) dimensional array, n = number of timesteps, c = number of channels
+t = number of trials, p = number of patients.</p>
+</div></blockquote>
+<p><strong>method</strong> : string</p>
+<blockquote>
+<div><p>string corresponding to which bad channel detection method to be used.
+Available methods are in the &#8216;notes&#8217; section of this docstring.</p>
+</div></blockquote>
+<p><strong>times</strong> : ndarray</p>
+<blockquote>
+<div><p>A (n x 1) array of the time values of each index of <cite>eeg_data</cite>. For
+example, <cite>[.002, .004, ...]</cite> for eeg data sampled at 500Hz.</p>
+</div></blockquote>
+<p><strong>coords</strong> : ndarray</p>
+<blockquote>
+<div><p>(c, 3, p) array of the coordinates of the c electrodes. Measured spherical
+coordinates rather than cartesian. (<span class="math">theta</span>, <span class="math">rho</span>, r) rather than
+(x,y,z).</p>
+</div></blockquote>
+<p><strong>rm_zero</strong> : boolean</p>
+<blockquote>
+<div><p>True if identically zero (zero on every timestep) electrodes should be
+removed before bad electrode detection functions are run.</p>
+</div></blockquote>
+<p><strong>**kwargs</strong> : dictionary</p>
+<blockquote>
+<div><p>Additional arguments specific to the bad electrode detection method used.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>eeg_data</strong> : ndarray</p>
+<blockquote>
+<div><p>The eeg_data variable that was input with some changes.
+This can differ, for example, if you chose to remove the zeroed out electrodes.</p>
+</div></blockquote>
+<p><strong>bad_chan_list</strong> : list of list of lists</p>
+<blockquote>
+<div><p>Top level list is per patient, 2nd level list is per trial, and 3rd
+level list contains bad electrodes.
+For example, bad_chan_list[3][4] contains the bad electrodes for
+patient 4 on trial 5. (0-indexed arrays).</p>
+</div></blockquote>
+<p><strong>coords</strong> : ndarray</p>
+<blockquote>
+<div><p>The coordinate array which was input, minus any bad channels which were
+detected and removed.</p>
+</div></blockquote>
+<p><strong>out</strong> : string</p>
+<blockquote class="last">
+<div><p>HTML string detailing a report of the bad channel detection process.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#preprocessing.baddetec.prob_baddetec" title="preprocessing.baddetec.prob_baddetec"><code class="xref py py-obj docutils literal"><span class="pre">prob_baddetec</span></code></a>, <a class="reference internal" href="#preprocessing.baddetec.kurt_baddetec" title="preprocessing.baddetec.kurt_baddetec"><code class="xref py py-obj docutils literal"><span class="pre">kurt_baddetec</span></code></a>, <a class="reference internal" href="#preprocessing.baddetec.spec_baddetec" title="preprocessing.baddetec.spec_baddetec"><code class="xref py py-obj docutils literal"><span class="pre">spec_baddetec</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>methods available:
+.. &#8216;prob&#8217; for probability denity based on KDE
+.. &#8216;kurt&#8217; for kurtosis based
+.. &#8216;pow&#8217; for power spectrum based</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="preprocessing.baddetec.detect_zeroed_chans">
@@ -223,6 +295,46 @@ use the function.</p>
 <span class="go">probdist = [...]</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="function">
+<dt id="preprocessing.baddetec.kurt_baddetec">
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">kurt_baddetec</code><span class="sig-paren">(</span><em>inEEG</em>, <em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#kurt_baddetec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.kurt_baddetec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect bad electrodes based on kurtosis</p>
+<p>Based on the kurtosis of EEG voltage over time, find channels which have produced large outliers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : numpy array (timesteps, channels, patients)</p>
+<blockquote>
+<div><p>For a given electrode, a list of all the values for each timestamp</p>
+</div></blockquote>
+<p><strong>threshold</strong> : integer</p>
+<blockquote>
+<div><p>The number of standard deviations away from the mean joint probability counts an electrode&#8217;s probability can be
+for it to count as a bad electrode</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : original data</p>
+<blockquote>
+<div><p>Return original data because isn&#8217;t changed</p>
+</div></blockquote>
+<p><strong>o</strong> : string</p>
+<blockquote>
+<div><p>output string for basic comprehension of output</p>
+</div></blockquote>
+<p>badelec: list</p>
+<blockquote class="last">
+<div><p>List of bad electrodes from list</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Pseudocode located at: <a class="reference external" href="https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf">https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf</a></p>
 </dd></dl>
 
 <dl class="function">
@@ -315,6 +427,49 @@ use the function.</p>
 &gt;&gt;&gt; reshaped = reshape(dummy).shape
 &gt;&gt;&gt; print reshaped.shape
 (2000L, 50L)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preprocessing.baddetec.spec_baddetec">
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">spec_baddetec</code><span class="sig-paren">(</span><em>inEEG</em>, <em>posthresh</em>, <em>negthresh</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#spec_baddetec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.spec_baddetec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect bad electrodes based on spectral analysis</p>
+<p>Based on the frequency spectrums</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : numpy array (timesteps, channels, patients)</p>
+<blockquote>
+<div><p>For a given electrode, a list of all the values for each timestamp</p>
+</div></blockquote>
+<p><strong>posthresh</strong> : integer</p>
+<blockquote>
+<div><p>The amount above the mean average power spectrum an electrode&#8217;s frequency can go</p>
+</div></blockquote>
+<p><strong>negthresh</strong> : integer</p>
+<blockquote>
+<div><p>The amount below the mean average power spectrum an electrode&#8217;s frequency can go</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : original data</p>
+<blockquote>
+<div><p>Return original data because isn&#8217;t changed</p>
+</div></blockquote>
+<p><strong>o</strong> : string</p>
+<blockquote>
+<div><p>output string for basic comprehension of output</p>
+</div></blockquote>
+<p>badelec: list</p>
+<blockquote class="last">
+<div><p>List of bad electrodes from list</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Pseudocode located at: <a class="reference external" href="https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf">https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf</a></p>
 </dd></dl>
 
 </div>
