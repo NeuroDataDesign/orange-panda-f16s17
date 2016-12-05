@@ -5,17 +5,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>preprocessing.preprocessing_scripts &#8212; EEGPipeline 0 documentation</title>
+    <title>preprocessing.preprocessing_scripts &#8212; EEGPipeline 1 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/cosmo/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/darkly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0',
+        VERSION:     '1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="EEGPipeline 0 documentation" href="../../index.html" />
+    <link rel="top" title="EEGPipeline 1 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -51,7 +51,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           EEGPipeline</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.0.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -101,8 +101,6 @@
             
             
             
-              <li class="hidden-sm"></li>
-            
           </ul>
 
           
@@ -138,23 +136,30 @@
 <span class="kn">from</span> <span class="nn">utils.get_data</span> <span class="k">import</span> <span class="n">make_h5py_object</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">preprocessing.messages</span> <span class="k">as</span> <span class="nn">messages</span>
+<span class="kn">from</span> <span class="nn">utils.misc</span> <span class="k">import</span> <span class="n">apply_over</span>
 
-<div class="viewcode-block" id="prep_data"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.prep_data">[docs]</a><span class="k">def</span> <span class="nf">prep_data</span><span class="p">(</span><span class="n">prep_args</span><span class="p">):</span>
+<div class="viewcode-block" id="prep_data"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.prep_data">[docs]</a><span class="k">def</span> <span class="nf">prep_data</span><span class="p">(</span><span class="n">prep_args_web</span><span class="p">,</span> <span class="n">prep_args_loc</span><span class="p">):</span>
   <span class="sd">r&quot;&quot;&quot;Router for tokenized pre-processing scripts.</span>
 
 <span class="sd">    Takes a preprocessing token and applies the correct script.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    file_path : str</span>
-<span class="sd">      A path to the file you are pre-processing.</span>
-<span class="sd">    token : str</span>
-<span class="sd">      Token for your corresponding pre-processing script.</span>
+<span class="sd">    prep_args_web : dict</span>
+<span class="sd">      A dictionary of arguments from user input into the &#39;get data&#39; form on</span>
+<span class="sd">      the webservice. This will include a token, a file name, a file path, and a</span>
+<span class="sd">      s3 bucket name.</span>
+
+<span class="sd">    prep_args_loc : dict</span>
+<span class="sd">      A dictionary of arguments to the pipeline preprocessing. These are the</span>
+<span class="sd">      hard-coded options of the pipeline which we have determined to produce the </span>
+<span class="sd">      best results.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    html</span>
-<span class="sd">      A report for what happened during preprocessing.</span>
+<span class="sd">      A HTML report for what happened during preprocessing.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -162,104 +167,134 @@
 
 <span class="sd">    fcp_indi_eeg - token for EEG data from the fcp.</span>
 
-<span class="sd">    pickled_pandas - token for a pickled pandas object, no pre-processing is done, only analysis.</span>
+<span class="sd">    eeg_panda_format - token for the eeg_panda data format.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-  <span class="n">f_name</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">prep_args</span><span class="p">[</span><span class="s1">&#39;data_path&#39;</span><span class="p">])</span>
-  <span class="k">if</span> <span class="n">prep_args</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pickled_pandas&quot;</span><span class="p">:</span>
+  <span class="n">f_name</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">prep_args_web</span><span class="p">[</span><span class="s1">&#39;data_path&#39;</span><span class="p">])</span>
+  <span class="k">if</span> <span class="n">prep_args_web</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pickled_pandas&quot;</span><span class="p">:</span>
     <span class="k">return</span> <span class="s1">&#39;&lt;h1&gt; No preprocessing was done. &lt;/h1&gt;&#39;</span>
-  <span class="k">if</span> <span class="n">prep_args</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;fcp_indi_eeg&quot;</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">eeg_prep</span><span class="p">(</span><span class="n">f_name</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="n">prep_args</span><span class="p">)</span></div>
+  <span class="k">if</span> <span class="n">prep_args_web</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;fcp_indi_eeg&quot;</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">make_h5py_object</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="n">ext</span><span class="p">)</span>
+    <span class="c1"># Wrap this patient (patient 0, trial 0).</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">T1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="n">d</span><span class="p">}</span>
+    <span class="n">P</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">T1</span><span class="p">)</span>
+    <span class="n">D</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">apply_over</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">clean</span><span class="p">,</span> <span class="n">prep_args_loc</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">eeg_prep</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">prep_args_loc</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="s1">&#39;.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;full_report&#39;</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">prep_args_web</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;eeg_panda_format&quot;</span><span class="p">:</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="n">ext</span><span class="p">))</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">apply_over</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">set_meta</span><span class="p">,</span> <span class="n">prep_args_loc</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">eeg_prep</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">prep_args_loc</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="s1">&#39;.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;full_report&#39;</span><span class="p">]</span></div>
 
+<div class="viewcode-block" id="eeg_prep"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.eeg_prep">[docs]</a><span class="k">def</span> <span class="nf">eeg_prep</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+  <span class="n">D</span> <span class="o">=</span> <span class="n">apply_over</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">bad_chan_detect</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+  <span class="n">D</span> <span class="o">=</span> <span class="n">apply_over</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">interpolate</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+  <span class="n">D</span> <span class="o">=</span> <span class="n">apply_over</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">reduce_noise</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+  <span class="n">D</span> <span class="o">=</span> <span class="n">apply_over</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">eye_artifact</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+  <span class="n">D</span> <span class="o">=</span> <span class="n">apply_over</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">html_out</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">D</span></div>
 
-<div class="viewcode-block" id="eeg_prep"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.eeg_prep">[docs]</a><span class="k">def</span> <span class="nf">eeg_prep</span><span class="p">(</span><span class="n">f_name</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="n">prep_args</span><span class="p">):</span>
-  <span class="n">html</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-  <span class="n">d</span> <span class="o">=</span> <span class="n">make_h5py_object</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="n">ext</span><span class="p">)</span>
-  <span class="n">html</span> <span class="o">+=</span> <span class="s2">&quot;&lt;h1&gt; Preprocessing Report for &quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f_name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&lt;/h1&gt;&quot;</span>
-  <span class="c1"># Wrap this patient&#39;s data.</span>
-  <span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">]</span>
-  <span class="c1"># Clean the data</span>
-  <span class="n">clean_data</span><span class="p">,</span> <span class="n">clean_report</span> <span class="o">=</span> <span class="n">clean</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
-  <span class="n">html</span> <span class="o">+=</span> <span class="n">clean_report</span>
-  <span class="n">eeg_data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="n">clean_data</span>
-  <span class="c1"># simulate a time / channes / trials / patients data frame</span>
-  <span class="n">eeg_data</span> <span class="o">=</span> <span class="n">eeg_data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                              <span class="mi">1</span><span class="p">,</span> <span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-  <span class="n">eeg_data</span><span class="p">,</span> <span class="n">bad_chans</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">zeroed_chans</span><span class="p">,</span> <span class="n">bad_report</span> <span class="o">=</span> <span class="n">bad_chan_detect</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span>
-                                          <span class="n">prep_args</span><span class="p">[</span><span class="s1">&#39;bad_detect&#39;</span><span class="p">],</span>
-                                          <span class="n">threshold</span><span class="o">=</span><span class="n">prep_args</span><span class="p">[</span><span class="s1">&#39;bd_thresh&#39;</span><span class="p">],</span>
-                                          <span class="n">times</span> <span class="o">=</span> <span class="n">times</span><span class="p">,</span>
-                                          <span class="n">coords</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
-                                          <span class="n">ds</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
-                                          <span class="n">rm_zero</span> <span class="o">=</span> <span class="n">prep_args</span><span class="p">[</span><span class="s1">&#39;rm_zero&#39;</span><span class="p">])</span>
-  <span class="nb">print</span> <span class="n">coords</span><span class="o">.</span><span class="n">shape</span>
-  <span class="n">html</span> <span class="o">+=</span> <span class="n">bad_report</span>
-  <span class="n">pool</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># How many electrodes to interp against?</span>
-  <span class="n">eeg_data</span><span class="p">,</span> <span class="n">int_report</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span>
-                                    <span class="s1">&#39;Inv_GC&#39;</span><span class="p">,</span>
-                                    <span class="n">bad_chans</span><span class="p">,</span>
-                                    <span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
-                                    <span class="n">coords</span> <span class="o">=</span> <span class="n">coords</span><span class="p">,</span>
-                                    <span class="n">npts</span> <span class="o">=</span> <span class="n">pool</span><span class="p">)</span>
-  <span class="n">html</span> <span class="o">+=</span> <span class="n">int_report</span>
-  <span class="n">eeg_data</span><span class="p">,</span> <span class="n">red_report</span> <span class="o">=</span> <span class="n">reduce_noise</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">)</span>
-  <span class="n">html</span> <span class="o">+=</span> <span class="n">red_report</span>
-  <span class="n">eeg_data</span><span class="p">,</span> <span class="n">eye_report</span> <span class="o">=</span> <span class="n">eye_artifact</span><span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span>
-                                      <span class="s1">&#39;ICA&#39;</span><span class="p">,</span>
-                                      <span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
-                                      <span class="n">ds</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-                                      <span class="n">n_rm</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-  <span class="n">html</span> <span class="o">+=</span> <span class="n">eye_report</span>
-  <span class="n">d</span> <span class="o">=</span> <span class="n">eeg_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-  <span class="n">t</span> <span class="o">=</span> <span class="n">times</span><span class="p">[:,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-  <span class="n">cct</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">d</span><span class="p">[:,</span> <span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
-  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cct</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-  <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
-  <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f_name</span> <span class="o">+</span> <span class="s1">&#39;.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">html</span></div>
+<div class="viewcode-block" id="clean"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.clean">[docs]</a><span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+  <span class="sd">r&quot;&quot;&quot;Cleans data examples from the Nicolas&#39; data set.</span>
 
-<div class="viewcode-block" id="clean"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.clean">[docs]</a><span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
-  <span class="nb">print</span> <span class="s1">&#39;cleaning data&#39;</span>
+<span class="sd">  This is for demo purposes only, when we have more example</span>
+<span class="sd">  formats this will be abstracted to a tokenized function.</span>
+
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  T : eeg panda data format.</span>
+<span class="sd">    A dictionary conforming to the PANDA data format.</span>
+
+<span class="sd">  A : dict</span>
+<span class="sd">    A dictionary of arguments to the pipeline preprocessing. These are the</span>
+<span class="sd">    hard-coded options of the pipeline which we have determined to produce the </span>
+<span class="sd">    best results.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  T : eeg panda data format.</span>
+<span class="sd">    the same data after it has been through preprocessing.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
   <span class="c1"># Extract for each patient</span>
-  <span class="n">C</span> <span class="o">=</span> <span class="p">[]</span>
-  <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span>
-      <span class="n">tmp</span> <span class="o">=</span> <span class="p">{}</span>
-      <span class="n">tmp</span><span class="p">[</span><span class="s2">&quot;eeg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_eeg_data</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-      <span class="n">tmp</span><span class="p">[</span><span class="s2">&quot;times&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_times</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-      <span class="n">tmp</span><span class="p">[</span><span class="s2">&quot;coords&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_electrode_coords</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s1">&#39;spherical&#39;</span><span class="p">)</span>
-      <span class="n">C</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+  <span class="n">T</span><span class="p">[</span><span class="s2">&quot;eeg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_eeg_data</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s2">&quot;raw&quot;</span><span class="p">])</span>
+  <span class="n">T</span><span class="p">[</span><span class="s2">&quot;times&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_times</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s2">&quot;raw&quot;</span><span class="p">])</span>
+  <span class="n">T</span><span class="p">[</span><span class="s2">&quot;coords&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_electrode_coords</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s2">&quot;raw&quot;</span><span class="p">],</span> <span class="s1">&#39;spherical&#39;</span><span class="p">)</span>
+  <span class="n">T</span> <span class="o">=</span> <span class="n">set_meta</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+  <span class="n">T</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;raw&quot;</span><span class="p">)</span> 
+  <span class="k">return</span> <span class="n">T</span></div>
 
-  <span class="c1"># Go from python base list to numpy ndarray</span>
-  <span class="n">eeg_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span><span class="n">subject</span><span class="p">[</span><span class="s2">&quot;eeg&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">C</span><span class="p">)</span>
-  <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span><span class="n">subject</span><span class="p">[</span><span class="s2">&quot;times&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">C</span><span class="p">)</span>
-  <span class="n">electrodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span><span class="n">subject</span><span class="p">[</span><span class="s2">&quot;coords&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">C</span><span class="p">)</span>
+<div class="viewcode-block" id="set_meta"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.set_meta">[docs]</a><span class="k">def</span> <span class="nf">set_meta</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+  <span class="sd">r&quot;&quot;&quot;Set the data&#39;s metadata.</span>
 
-  <span class="c1"># Make sure the dimensions make sense</span>
-  <span class="k">assert</span> <span class="n">eeg_data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span>
-  <span class="k">assert</span> <span class="n">times</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span>
-  <span class="k">assert</span> <span class="n">electrodes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  T : eeg panda data format.</span>
+<span class="sd">    A dictionary conforming to the PANDA data format.</span>
 
-  <span class="c1"># During first 5 seconds electrode is &#39;reving&#39; up.</span>
-  <span class="n">eeg_data</span> <span class="o">=</span> <span class="n">eeg_data</span><span class="p">[</span><span class="mi">2500</span><span class="p">:]</span>
-  <span class="n">times</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="mi">2500</span><span class="p">:]</span>
+<span class="sd">  A : dict</span>
+<span class="sd">    A dictionary of arguments to the pipeline preprocessing. These are the</span>
+<span class="sd">    hard-coded options of the pipeline which we have determined to produce the </span>
+<span class="sd">    best results.</span>
 
-  <span class="c1"># Create a report for the cleaning procedure</span>
-  <span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;h3&gt;CLEANING DATA&lt;/h3&gt;&quot;</span>
-  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;ul&gt;&quot;</span>
-  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li&gt;Extracted EEG data with &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> \
-          <span class="s2">&quot; channels and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">eeg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> \
-          <span class="s2">&quot; observations.&lt;/li&gt;&quot;</span>
-  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li&gt;Extracted timing data with &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> \
-          <span class="s2">&quot; timesteps.&lt;/li&gt;&quot;</span>
-  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li&gt;Extracted electrode coordinate data.&lt;/li&gt;&quot;</span>
-  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;li&gt;Removed first 5 seconds of data.&lt;/li&gt;&quot;</span>
-  <span class="n">out</span> <span class="o">+=</span> <span class="s2">&quot;&lt;/ul&gt;&quot;</span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  T : eeg panda data format.</span>
+<span class="sd">    T[&#39;meta&#39;] is now filled out.</span>
 
-  <span class="k">return</span> <span class="p">(</span><span class="n">eeg_data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">electrodes</span><span class="p">),</span> <span class="n">out</span></div>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">T</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_chans&#39;</span> <span class="p">:</span> <span class="n">T</span><span class="p">[</span><span class="s2">&quot;eeg&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="s1">&#39;n_obs&#39;</span> <span class="p">:</span> <span class="n">T</span><span class="p">[</span><span class="s2">&quot;times&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;freq_times&#39;</span> <span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="s1">&#39;freq_unit&#39;</span> <span class="p">:</span> <span class="s1">&#39;second&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;coord_unit&#39;</span> <span class="p">:</span> <span class="s1">&#39;spherical&#39;</span>
+  <span class="p">}</span>
+  <span class="n">T</span><span class="p">[</span><span class="s2">&quot;report&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">T</span><span class="p">[</span><span class="s2">&quot;report&quot;</span><span class="p">][</span><span class="s2">&quot;clean_message&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">T</span></div>
+
+<div class="viewcode-block" id="html_out"><a class="viewcode-back" href="../../preprocessing.preprocessing_scripts.html#preprocessing.preprocessing_scripts.html_out">[docs]</a><span class="k">def</span> <span class="nf">html_out</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+  <span class="sd">r&quot;&quot;&quot;Generate the full html out report</span>
+
+<span class="sd">  Compile all the preprocessing messages into a nice report.</span>
+
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  T : eeg panda data format.</span>
+<span class="sd">    A dictionary conforming to the PANDA data format.</span>
+
+<span class="sd">  A : dict</span>
+<span class="sd">    A dictionary of arguments to the pipeline preprocessing. These are the</span>
+<span class="sd">    hard-coded options of the pipeline which we have determined to produce the </span>
+<span class="sd">    best results.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  html</span>
+<span class="sd">    A HTML report for what happened during preprocessing.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&lt;h1&gt; Preprocessing Report &lt;/h1&gt;&quot;</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">T</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;clean_message&#39;</span><span class="p">]</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">T</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;bad_chans_message&#39;</span><span class="p">]</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">T</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;bad_chans_plot&#39;</span><span class="p">]</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">T</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;interp_message&#39;</span><span class="p">]</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">T</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;interp_plot&#39;</span><span class="p">]</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">T</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;red_noise_message&#39;</span><span class="p">]</span>
+  <span class="n">html</span> <span class="o">+=</span> <span class="n">T</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;eye_artifact_message&#39;</span><span class="p">]</span>
+  <span class="n">T</span><span class="p">[</span><span class="s1">&#39;report&#39;</span><span class="p">][</span><span class="s1">&#39;full_report&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">html</span>
+  <span class="k">return</span> <span class="n">T</span></div>
 </pre></div>
 
     </div>

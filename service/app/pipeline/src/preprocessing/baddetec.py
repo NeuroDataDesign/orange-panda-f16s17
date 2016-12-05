@@ -16,40 +16,13 @@ def bad_chan_detect(T, A):
 
   Parameters
   ----------
-  eeg_data : ndarray
-    (n,c,t,p) dimensional array, n = number of timesteps, c = number of channels
-    t = number of trials, p = number of patients.
-  method : string
-    string corresponding to which bad channel detection method to be used.
-    Available methods are in the 'notes' section of this docstring.
-  times : ndarray
-    A (n x 1) array of the time values of each index of `eeg_data`. For
-    example, `[.002, .004, ...]` for eeg data sampled at 500Hz.
-  coords : ndarray
-    (c, 3, p) array of the coordinates of the c electrodes. Measured spherical
-    coordinates rather than cartesian. (:math:`theta`, :math:`rho`, r) rather than
-    (x,y,z).
-  rm_zero : boolean
-    True if identically zero (zero on every timestep) electrodes should be
-    removed before bad electrode detection functions are run.
-  **kwargs : dictionary
-    Additional arguments specific to the bad electrode detection method used.
+  T : eeg_panda_format dictionary (https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md)
+  A : global arguments set in config.txt
 
   Returns
   -------
-  eeg_data : ndarray
-    The eeg_data variable that was input with some changes.
-    This can differ, for example, if you chose to remove the zeroed out electrodes.
-  bad_chan_list : list of list of lists
-    Top level list is per patient, 2nd level list is per trial, and 3rd
-    level list contains bad electrodes.
-    For example, bad_chan_list[3][4] contains the bad electrodes for
-    patient 4 on trial 5. (0-indexed arrays).
-  coords : ndarray
-    The coordinate array which was input, minus any bad channels which were
-    detected and removed.
-  out : string
-    HTML string detailing a report of the bad channel detection process.
+  T : eeg_panda_format dictionary (https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md)
+    Returns data with metadata added. Zeroed electrodes will be removed if `rm_zero` was `True` in config.txt.
 
   See Also
   --------

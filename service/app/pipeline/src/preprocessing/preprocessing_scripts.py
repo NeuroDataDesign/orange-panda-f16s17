@@ -43,7 +43,7 @@ def prep_data(prep_args_web, prep_args_loc):
 
     fcp_indi_eeg - token for EEG data from the fcp.
 
-    pickled_pandas - token for a pickled pandas object, no pre-processing is done, only analysis.
+    eeg_panda_format - token for the eeg_panda data format.
 
     """
 
@@ -87,26 +87,18 @@ def clean(T, A):
 
   Parameters
   ----------
-  D : dictionary of the PANDA data format.
+  T : eeg panda data format.
     A dictionary conforming to the PANDA data format.
 
-  prep_args_loc : dict
+  A : dict
     A dictionary of arguments to the pipeline preprocessing. These are the
     hard-coded options of the pipeline which we have determined to produce the 
     best results.
 
   Returns
   -------
-  html
-    A HTML report for what happened during preprocessing.
-
-  Notes
-  -----
-  Supported tokens:
-
-  fcp_indi_eeg - token for EEG data from the fcp.
-
-  pickled_pandas - token for a pickled pandas object, no pre-processing is done, only analysis.
+  T : eeg panda data format.
+    the same data after it has been through preprocessing.
 
   """
   # Extract for each patient
@@ -118,6 +110,24 @@ def clean(T, A):
   return T
 
 def set_meta(T, A):
+  r"""Set the data's metadata.
+
+  Parameters
+  ----------
+  T : eeg panda data format.
+    A dictionary conforming to the PANDA data format.
+
+  A : dict
+    A dictionary of arguments to the pipeline preprocessing. These are the
+    hard-coded options of the pipeline which we have determined to produce the 
+    best results.
+
+  Returns
+  -------
+  T : eeg panda data format.
+    T['meta'] is now filled out.
+
+  """
   T["meta"] = {
     'n_chans' : T["eeg"].shape[1],
     'n_obs' : T["times"].shape[0],
@@ -130,6 +140,27 @@ def set_meta(T, A):
   return T
 
 def html_out(T, A):
+  r"""Generate the full html out report
+
+  Compile all the preprocessing messages into a nice report.
+
+  Parameters
+  ----------
+  T : eeg panda data format.
+    A dictionary conforming to the PANDA data format.
+
+  A : dict
+    A dictionary of arguments to the pipeline preprocessing. These are the
+    hard-coded options of the pipeline which we have determined to produce the 
+    best results.
+
+  Returns
+  -------
+  html
+    A HTML report for what happened during preprocessing.
+
+  """
+
   html = "<h1> Preprocessing Report </h1>"
   html += T['report']['clean_message']
   html += T['report']['bad_chans_message']

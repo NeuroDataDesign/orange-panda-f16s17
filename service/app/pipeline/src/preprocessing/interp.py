@@ -10,6 +10,30 @@ import preprocessing.messages as messages
 
 
 def interpolate(T, A):
+  r"""Interpolate bad electrodes based on spectral analysis
+
+  Will interpolate channels listed in T['meta']['bad_chans']
+  
+  Parameters
+  ----------
+  T : eeg_panda_format dictionary (https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md)
+  A : global arguments set in config.txt
+
+  Returns
+  -------
+  T : eeg_panda_format dictionary (https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md)
+    Returns data with metadata added and bad channels interpolated.
+
+  See Also
+  --------
+  fit_sphere, haversine, gc_invdist_interp
+
+  Notes
+  -----
+  methods available:
+  .. 'Inv_GC' inverse distance weighting based on great circle distance.
+
+  """
   if A['interp']['method'] == 'Inv_GC':
     r = fit_sphere(T['coords'][:, 2])
     T['meta']['interp_npts'] = A['interp']['npts']
