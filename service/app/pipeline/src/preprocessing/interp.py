@@ -5,39 +5,27 @@ import numpy as np
 from math import radians, cos, sin, asin, sqrt
 import pandas as pd
 from utils.plots import plotly_hack, sparklines
+import preprocessing.prep_plots as plt
+import preprocessing.messages as messages
 
 
-def interpolate(eeg_data, method, bad_chans, **kwargs):
-  out = ''
-  out += '<h3> INTERPOLATING BAD CHANNELS </h3>'
-  if method == 'Inv_GC':
-    out += '<p> Interpolating with inverse great circle distance weighting on ' + \
-      str(kwargs['npts']) + ' closest neighbors.'
-    for p in range(eeg_data.shape[3]):
-      print 'Interpolating bad chans for patient ' + str(p)
-      print kwargs['coords'].shape
-      r = fit_sphere(kwargs['coords'][:, 2, p])
-      out += '<p> Fit sphere of radius ' + str(r) + ' to patients head </p>'
-      for t in range(eeg_data.shape[2]):
-        print 'Interpolating bad chans for trial ' + str(t)
-        bcs = bad_chans[p][t]
-        print bcs
-        eeg_data_interped, close = gc_invdist_interp(
-                    eeg_data[:, :, t, p],
-                    bcs,
-                    kwargs['coords'][:, :, p],
-                    r,
-                    numpts = kwargs['npts'])
-        eeg_data[:, :, t, p] = eeg_data_interped
-        cct = [pd.DataFrame(data=eeg_data[:, c, t, p]) for c in bcs]
-        if len(cct) > 0:
-          df = pd.concat(cct, axis=1)
-          df.columns = [str(c) for c in bcs]
-          df.index = map(lambda t: t[0]/1000.0, kwargs['times'][:, :, -1])
-          out += plotly_hack(sparklines(df, title="Interpolations for patient " + str(p)))
-        else:
-          out += '<p>No bad electrodes to interpolate!</p>'
-    return eeg_data, out
+def interpolate(T, A):
+  if A['interp']['method'] == 'Inv_GC':
+    r = fit_sphere(T['coords'][:, 2])
+    T['meta']['interp_npts'] = A['interp']['npts']
+    eeg_data_interped, close = gc_invdist_interp(
+                                T['eeg'],
+                                T['meta']['bad_chans'],
+                                T['coords'],
+                                r,
+                                A['interp']['npts'])
+    T['eeg'] = eeg_data_interped
+    T['meta']['interp_close'] = close
+    T['report']['interp_plot'] = plt.interp_electrodes(T)
+  T['meta']['interp_method'] = A['interp']['method']
+  T['report']['interp_message'] = messages.interp(T["meta"])
+  T['report']['interp_plot'] = plt.interp_electrodes(T)
+  return T
 
 def fit_sphere(r_values):
   r"""Find the radius of a sphere that best fits a set of 3-d points, given their distance from the origin.
