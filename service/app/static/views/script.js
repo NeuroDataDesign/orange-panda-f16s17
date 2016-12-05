@@ -21,6 +21,11 @@ scotchApp.config(function($routeProvider) {
         .when('/analyze', {
             templateUrl : 'static/views/pages/analyze.html',
             controller  : 'analyzeController'
+        })
+
+        .when('/flow', {
+            templateUrl : 'static/views/pages/flow.html',
+            controller  : 'flowController'
         });
 });
 
