@@ -1,6 +1,17 @@
 # EEG PANDA
 ## A pipeline for automated EEG data analysis.
 
+We are currently live at http://cortex.jhu.edy:8011
+
+Run a development server:
+  * Git clone
+  * go to the 'service' directory
+  * run ./setup_docker.sh (you must have docker installed)
+  * good to go! the web service will be at http://localhost:8888
+  
+Run a production server:
+  * follow the instructions on our dockerhub page (https://hub.docker.com/r/rymarr/eeg_panda_image/)
+
 ## Current functionality:
 
 ### EEG Data Preprocessing:
