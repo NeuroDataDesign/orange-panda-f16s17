@@ -34,9 +34,13 @@ We are currently live at http://cortex.jhu.edu:8011
   3. Go to the 'service' directory.
   4. Create a file named `set_keys.py`, with the following contents:
   ```
+  
   import os
+  
   os.environ['AWS_ACCESS_KEY']='.........'
+  
   os.environ['AWS_SECRET_KEY']='.........'
+  
   ```
   5. run ./setup_docker.sh (you must have [docker](https://docs.docker.com/engine/installation/) installed)
   6. The web service will be at http://127.0.0.1:8888. 
