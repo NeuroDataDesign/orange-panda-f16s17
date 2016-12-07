@@ -1,8 +1,7 @@
-# EEG PANDA
-## A pipeline for automated EEG data analysis.
+# EEG PANDA - A pipeline for automated EEG data analysis.
 We are currently live at http://cortex.jhu.edu:8011
 
-###  *How to build and run the production environment*
+##  *How to build and run the production environment*
 #### Standing up the webservice
 1. Install Docker on your machine (https://docs.docker.com/engine/installation/)
 2. Pull the official EEG PANDA Docker image with the command `docker pull rymarr/eeg_panda_image`.
@@ -28,7 +27,7 @@ We are currently live at http://cortex.jhu.edu:8011
 6. Click 'Analyze Data', and wait for a success message.
 7. Go to the 'Explore Analyses' tab, and click the links in the table to view the results. 'Prep Report' contains the preprocessing report, 'Post Report' contains the postprocessing report, and 'zip file' contains a zip file of both of these.
 
-###  *How to build and run the production environment*
+##  *How to build and run the production environment*
 #### Run a development server:
   1. Slack message @rmarren1 for Amazon Keys, or make an issue and tag @rmarren1.
   2. `git clone https://github.com/NeuroDataDesign/orange-panda`
