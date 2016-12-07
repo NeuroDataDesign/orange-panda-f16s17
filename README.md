@@ -27,7 +27,7 @@ We are currently live at http://cortex.jhu.edu:8011
 6. Click 'Analyze Data', and wait for a success message.
 7. Go to the 'Explore Analyses' tab, and click the links in the table to view the results. 'Prep Report' contains the preprocessing report, 'Post Report' contains the postprocessing report, and 'zip file' contains a zip file of both of these.
 
-##  *How to build and run the production environment*
+##  *How to build and run the development environment*
 #### Run a development server:
   1. Slack message @rmarren1 for Amazon Keys, or make an issue and tag @rmarren1.
   2. `git clone https://github.com/NeuroDataDesign/orange-panda`
