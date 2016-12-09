@@ -1,5 +1,5 @@
 # EEG PANDA - A pipeline for automated EEG data analysis.
-We are currently live at http://cortex.jhu.edu:8011
+We are currently live at http://54.88.116.242/
 
 ##  *How to build and run the production environment*
 #### Standing up the webservice
