@@ -1,0 +1,4 @@
+- Bad electrode detection (joint probability, kurtosis, spectral)
+- Great circle distance interpolation
+- Robust PCA
+- ICA
