@@ -1,0 +1,19 @@
+Kurtosis Based Detection
+patient1_0
+Actual Badchans
+[4, 12, 29, 53, 61, 64, 65, 68, 95, 106]
+Live Electrode Only Results:
+Threshold 3
+[8]
+Threshold 2.75
+[8]
+Threshold 2.5
+[2, 8, 26]
+Threshold 2.25
+[2, 8, 26]
+Threshold 2
+[2, 8, 10, 26]
+Threshold 1.75
+[2, 8, 9, 10, 16, 26]
+Threshold 1.5
+[2, 3, 5, 8, 9, 10, 11, 16, 26, 29, 35, 48, 88]
