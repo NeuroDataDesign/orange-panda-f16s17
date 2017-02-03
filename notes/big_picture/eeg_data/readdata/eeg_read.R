@@ -35,10 +35,23 @@ converteeg <- function(inputpath) {
         install.packages("h5");
         library(h5);
     }
+    require(devtools)
+    #devtools::install_github("neurodata/meda")
+    require(meda)
+    require(ggplot2)
+
     file <- h5file(inputpath, "r");
+    outFile <- "output.html"
+    
     resultdata <- file["result/chanlocs"];
     timeseries <- data.matrix(data.frame(file["result/times"][], file["result/data"][]));
-    colnames(timeseries) <- c("Time", colnames(timeseries)[2:112]);
-    return(timeseries);
+    #colnames(timeseries) <- c("Time", colnames(timeseries)[2:112]);
+    #return(timeseries);
+    sample_dat <- timeseries[1:1000, 1:3]
+    
+    print(dim(timeseries))
+    print(str(sample_dat))
+    
+    meda::genHTML(sample_dat, outFile)
     
 }
