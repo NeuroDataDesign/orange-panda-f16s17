@@ -19,9 +19,12 @@
 3. Look for bad electodes- Go through each trial **MANUALLY** to see consistent poor data across trials (ie ridiculous noise or really small data recognition amongst others. Looks different)
 4. ICA for blinking artifact filtering -> companalysis.mat
 	1. Plot the components
-	2. Identify blinks and remove it
+	2. Identify blinks and remove it (usually first component)
+	3. Again **manual** decision making of component to remove
 5. Visually inspect each trial for eye movement and gross muscle movement
 	1. Eye electrodes only inspected
 	2. Look for square waves for lateral eye movement or high freq. high amplitude spikes for muscle movement
-6. Look at all electrodes for random spikes indicating other movement (remove trials) -> data_clean.mat
+	3. **Remove entire trial**
+	4. **Manual inspection**
+6. Look at all electrodes **manually** for random spikes indicating other movement (remove trials) -> data_clean.mat
 7. Sort trials
