@@ -1,0 +1,19 @@
+Spectral Based Detection
+patient1_0
+Actual Badchans
+[4, 12, 29, 53, 61, 64, 65, 68, 95, 106]
+Live Electrode Only Results:
+Threshold 3
+[5]
+Threshold 2.75
+[5, 11, 89, 105]
+Threshold 2.5
+[5, 11, 89, 105]
+Threshold 2.25
+[5, 11, 36, 89, 105]
+Threshold 2
+[5, 11, 36, 57, 89, 105]
+Threshold 1.75
+[2, 3, 5, 11, 36, 57, 67, 89, 94, 105]
+Threshold 1.5
+[2, 3, 5, 11, 36, 57, 61, 67, 89, 94, 105]

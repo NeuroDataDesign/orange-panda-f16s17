@@ -1,0 +1,19 @@
+Kurtosis Based Detection
+test
+Actual Badchans
+[]
+All Electrode Results:
+Threshold 3
+[]
+Threshold 2.75
+[]
+Threshold 2.5
+[]
+Threshold 2.25
+[]
+Threshold 2
+[]
+Threshold 1.75
+[]
+Threshold 1.5
+[]
