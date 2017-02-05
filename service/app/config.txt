@@ -11,7 +11,8 @@
     'npts' : 5
   },
   'red_noise' : {
-    'method' : 'placeholder'
+    'method' : 'placeholder',
+    'ds' : 1000
   },
   'eye_artifact' : {
     'method' : 'ICA',
