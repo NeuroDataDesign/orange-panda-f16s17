@@ -115,24 +115,24 @@ run_scripts2 <- function() {
     run_meda("full_A00051826_02",start_elec=80,end_elec=111,
              start_time=0,end_time=0)
     ### Paradigm 3
-    run_meda("full_A00051826_03",start_elec=0,end_elec=40,
-             start_time=0,end_time=0)
-    run_meda("full_A00051826_03",start_elec=40,end_elec=80,
-             start_time=0,end_time=0)
-    run_meda("full_A00051826_03",start_elec=80,end_elec=111,
-             start_time=0,end_time=0)
+#    run_meda("full_A00051826_03",start_elec=0,end_elec=40,
+#             start_time=0,end_time=0)
+#    run_meda("full_A00051826_03",start_elec=40,end_elec=80,
+#             start_time=0,end_time=0)
+#    run_meda("full_A00051826_03",start_elec=80,end_elec=111,
+#             start_time=0,end_time=0)
     ### Paradigm 4
-    run_meda("full_A00051826_04",start_elec=0,end_elec=40,
-             start_time=0,end_time=0)
-    run_meda("full_A00051826_04",start_elec=40,end_elec=80,
-             start_time=0,end_time=0)
-    run_meda("full_A00051826_04",start_elec=80,end_elec=111,
-             start_time=0,end_time=0)
-    ### Paradigm 5
-    run_meda("full_A00051826_02",start_elec=0,end_elec=40,
-             start_time=0,end_time=0)
-    run_meda("full_A00051826_02",start_elec=40,end_elec=80,
-             start_time=0,end_time=0)
-    run_meda("full_A00051826_02",start_elec=80,end_elec=111,
-             start_time=0,end_time=0)    
+#    run_meda("full_A00051826_04",start_elec=0,end_elec=40,
+#             start_time=0,end_time=0)
+#    run_meda("full_A00051826_04",start_elec=40,end_elec=80,
+#             start_time=0,end_time=0)
+#    run_meda("full_A00051826_04",start_elec=80,end_elec=111,
+#             start_time=0,end_time=0)
+#    ### Paradigm 5
+#    run_meda("full_A00051826_02",start_elec=0,end_elec=40,
+#             start_time=0,end_time=0)
+#    run_meda("full_A00051826_02",start_elec=40,end_elec=80,
+#             start_time=0,end_time=0)
+#    run_meda("full_A00051826_02",start_elec=80,end_elec=111,
+#             start_time=0,end_time=0)    
 }
