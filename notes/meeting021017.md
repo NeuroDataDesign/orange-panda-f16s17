@@ -8,16 +8,15 @@
 
 To do: try to download data (via AWS or website)
 
-Nitins question: Resting data set – looked at correlation between different electrodes, pair clustering as well. Why is it not recorded to auto bad chans?
+## Nitin's question: Resting data set – looked at correlation between different electrodes, pair clustering as well. Why is it not recorded to auto bad chans?
 Clean electrodes are much thinner
 Nicholas will take a look at the electrodes. But it is also “subjective impression”
 There’s an extra data set: the “impedence” of each electrode.
 -Electrodes with high impedence were given a fluid to be lowered.
 
 To do: IMP for impedence (check for in AWS), check out Electrical Impedence Tomography
-________________________________________________________________________
 
-Ryan’s Question: Why do we use interpolation?
+## Ryan’s Question: Why do we use interpolation?
 -Nicholas used spherical splines – is this better than inverse distance weighting? If so, why? Because benchmarking did not show significant difference.
 -he thinks interpolation methods are going to be very similar.
 -the skulls are covered very well. But there are subjects with only 32 electrodes.
