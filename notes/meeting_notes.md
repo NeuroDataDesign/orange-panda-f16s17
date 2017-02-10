@@ -2,7 +2,7 @@
 ## Data Setting
 We take two subjects from the original data set. Each scan is partitioned into 10 equal length time segments. Each of these segments is a 'trial'.
 
-We compute discriminibility with the subject id as the label, 20 trials, and various metrics. Rather than computing discriminibility once on all 20 trials, we will 'leave one out' and compute discriminibility all 20 subsets of 19 trials, do get a pseudo-distribution.
+We compute discriminibility with the subject id as the label, 20 trials, and various metrics. Rather than computing discriminibility once on all 20 trials, we will 'leave one out' and compute discriminibility all 20 subsets of 19 trials, to get a pseudo-distribution.
 
 ### Raw Data
 ![image](plots/raw.png)
