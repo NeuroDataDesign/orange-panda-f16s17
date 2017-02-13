@@ -7,6 +7,7 @@
 - Fixation target appeared in center of screen between trials approx. 1 second
 - 512 trials per patient
 - approx. 75-80 patients total
+- 47 channels!
 
 ### Bad trials:
 - High noise (muscle movement)
