@@ -5,7 +5,7 @@ patient0_0
 Actual Badchans
 [48, 54, 56, 57, 64, 83, 97, 105, 111]
 All Electrode Results:
-Threshold 3
+Threshold 3-
 [0, 7, 13, 19, 23, 30]
 Threshold 2.75
 [0, 7, 13, 19, 23, 30]

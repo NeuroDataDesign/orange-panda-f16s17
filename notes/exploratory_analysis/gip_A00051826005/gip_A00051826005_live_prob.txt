@@ -1,0 +1,9 @@
+Prob Based Detection
+gip_A00051826005
+Actual Badchans
+[0, 52, 37, 47, 95]
+Live Electrode Only Results:
+Threshold 2
+[44, 45, 66, 87, 93, 104]
+Threshold 3
+[66]

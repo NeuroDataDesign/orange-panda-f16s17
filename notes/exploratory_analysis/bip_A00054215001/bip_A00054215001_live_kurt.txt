@@ -1,0 +1,9 @@
+Kurtosis Based Detection
+bip_A00054215001
+Actual Badchans
+[1, 37, 32, 8, 104, 105, 54, 14, 110, 19, 20, 72, 9, 24, 26, 102, 30]
+Live Electrode Only Results:
+Threshold 2
+[4, 13, 19, 50, 61, 62, 66, 73]
+Threshold 3
+[13, 19, 66]

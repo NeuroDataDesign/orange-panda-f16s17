@@ -1,0 +1,9 @@
+Kurtosis Based Detection
+gip_A00054417001
+Actual Badchans
+[14, 60, 45, 53, 83, 101, 105]
+Live Electrode Only Results:
+Threshold 2
+[1, 9]
+Threshold 3
+[]
