@@ -1,9 +1,0 @@
-## [Paper 3: In Search of Biomarkers in Psychiatry:EEG-Based Measures of Brain Function](http://onlinelibrary.wiley.com/doi/10.1002/ajmg.b.32208/epdf)
-### Publishing Date: September 12, 2013
-#### Member: Nitin Kumar
-
-### Summary:
-This paper isn't an experiment, but rather a discussion of the potential of BCI in psychiatry, specifically via EEGs. EEG and signal processing development have made EEG significantly more relevant in the field through independent component analysis and better hardware. ICA (as we read in the book) allows for identification of functionally different brain signals and can isolate different causes of different effects in the brain. It allows for finding different locations of causes of these signals as well. BCI's improvement in these 2 areas can allow identification of specific biomarkers related to specific psychiatric conditions that can allow for more connections between pathological data and psyciatric illness/emotions.
-
-### Scope of BCI:
-Shows doors opened in the emotional and mental illness range of BCI (in contrast to my other 2 papers, slightly optimistic). Basically, via ICA and improved spatial clarity via EEG, BCI testing is easier, more portable, and less expensive, and can be done on a large scale on many patients. It shows that there is demand in the community for isolating these biomarkers as well. While it's out of our scope to use these tools to our advantage in testing patients, it also hints using old fMRI and EEG data in conjunction with ICA, new potential biomarker isolations are possible, which means there is potentially data out there our project could use.
