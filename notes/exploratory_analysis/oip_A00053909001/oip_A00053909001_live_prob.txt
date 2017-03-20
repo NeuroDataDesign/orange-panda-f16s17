@@ -1,0 +1,9 @@
+Prob Based Detection
+oip_A00053909001
+Actual Badchans
+[94, 1, 62, 100, 69, 96, 72, 9, 106, 13, 110, 18, 19, 23, 7, 57, 102, 51, 105, 30]
+Live Electrode Only Results:
+Threshold 2
+[8, 12, 13, 14, 18, 19, 41]
+Threshold 3
+[]

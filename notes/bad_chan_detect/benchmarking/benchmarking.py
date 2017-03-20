@@ -201,19 +201,41 @@ times = np.linspace(0, 1, numvals)
 sin = np.sin(2 * np.pi * times)
 testpatient = np.column_stack([sin] * 50)
 # Patient 0 data
-D = h5py.File("full_A00051826_01.mat", 'r')
-patient0 = D["result"]["data"][:, :]
-patient0_0 = patient0[:patient0.shape[0]/2, :]
-patient0_1 = patient0[patient0.shape[0]/2:, :]
-# Patient 1 data
-D1 = h5py.File("test.mat", 'r')
-patient1 = D1["result"]["data"][:, :]
-patient1_0 = patient1[:patient1.shape[0]/2, :]
-patient1_1 = patient1[patient1.shape[0]/2:, :]
-# Final data list
-all_dat = [testpatient, patient0_0, patient0_1, patient1_0, patient1_1]
-# Titles for each data set
-titles = ["test", "patient0_0", "patient0_1", "patient1_0", "patient1_1"]
+# D = h5py.File("full_A00051826_01.mat", 'r')
+# patient0 = D["result"]["data"][:, :]
+# patient0_0 = patient0[:patient0.shape[0]/2, :]
+# patient0_1 = patient0[patient0.shape[0]/2:, :]
+# # Patient 1 data
+# D1 = h5py.File("test.mat", 'r')
+# patient1 = D1["result"]["data"][:, :]
+# patient1_0 = patient1[:patient1.shape[0]/2, :]
+# patient1_1 = patient1[patient1.shape[0]/2:, :]
+# # Final data list
+# all_dat = [testpatient, patient0_0, patient0_1, patient1_0, patient1_1]
+# # Titles for each data set
+titles1 = ["bip_A00053375001",
+    "gip_A00051826005",
+    "gip_A00051955001",
+    "gip_A00053440001",
+    "gp_A00051826001",
+    "gp_A00051886001",
+    "oip_A00053398_part2001",
+    "gip_A00054417001",
+    "bip_A00054215001"]
+
+# titles2 = ["gip_A00054207001",
+#     "gp_A00054039001",
+#     "gp_A00054023001",
+#     "gp_A00053990001",
+#     "oip_A00053909001",
+#     "gp_A00053597001",
+#     "oip_A00053480001",
+#     "gip_A00053460001"]
+
+for title in titles:
+    D = h5py.File("data/", 'r')
+
+
 
 # Get detected bad channels
 badchans = D["result"]["auto_badchans"][:]
@@ -232,7 +254,7 @@ dead_list = [[], patient0_dead, patient0_dead, patient1_dead,  patient1_dead]
 bad_list = [[], patient0_bad, patient0_bad, patient1_bad,  patient1_bad]
 
 # list of thresholds to test
-thresholds = [3, 2.75, 2.5, 2.25, 2, 1.75, 1.5]
+thresholds = [2, 3]
 #badchans = live_reindex(dead_elec, badchans)
 
 ##### Kurtosis Based Detection
@@ -240,7 +262,7 @@ thresholds = [3, 2.75, 2.5, 2.25, 2, 1.75, 1.5]
 test_dat = [testpatient]
 print titles[0]
 
-"""
+
 for i in range(len(all_dat)):
     qual_plot(all_dat[i], titles[i])
  
@@ -266,22 +288,9 @@ for i in range(len(all_dat)):
         f.write(str(live_result[j]) + '\n') 
     f.close()
 
-    file_name = str(titles[i] + "_kurt.txt")
-    f = open(file_name, 'w')
-    f.write("Kurtosis Based Detection\n")
-    f.write(titles[i] + "\n")
-    f.write("Actual Badchans\n")
-    f.write(str(badchans) + '\n')
-    f.write("All Electrode Results:\n")
-    result = kurt_baddetec(data, thresholds)
-    for j in range(len(thresholds)):
-        f.write("Threshold " + str(thresholds[j]) + '\n')
-        f.write(str(result[j]) + '\n') 
-    f.close()
-
 print "Kurtosis finished!"
 
-
+"""
 for i in range(len(all_dat)):
     data = all_dat[i]
     dead_elec = dead_list[i]
@@ -332,23 +341,10 @@ for i in range(len(all_dat)):
     f.write(str(live_badchans) + '\n')
     f.write("Live Electrode Only Results:\n")
     live = np.delete(data, dead_elec, axis=1)
-    live_result = prob_baddetec(live, thresholds, kdewrap)
+    live_result = prob_baddetec(live, thresholds, kdewrap_simp)
     for j in range(len(thresholds)):
         f.write("Threshold " + str(thresholds[j]) + '\n')
         f.write(str(live_result[j]) + '\n') 
-    f.close()
-
-    file_name = str(titles[i] + "_prob.txt")
-    f = open(file_name, 'w')
-    f.write("Spectral Based Detection\n")
-    f.write(titles[i] + "\n")
-    f.write("Actual Badchans\n")
-    f.write(str(badchans) + '\n')
-    f.write("All Electrode Results:\n")
-    result = prob_baddetec(data, thresholds, kdewrap)
-    for j in range(len(thresholds)):
-        f.write("Threshold " + str(thresholds[j]) + '\n')
-        f.write(str(result[j]) + '\n') 
     f.close()
 
 print "Prob finished!"
