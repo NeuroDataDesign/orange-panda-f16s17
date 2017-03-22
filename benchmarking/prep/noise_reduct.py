@@ -19,17 +19,15 @@ def pca_denoise(d, params):
     return P_k.dot(d - m) + m
 
 def rpca(d):
-    return pca(pcp(d, maxiter=5, verbose=True, svd_method="randomized")[0])
+    return pca(pcp(d, maxiter=3, verbose=True, svd_method="randomized")[0])
 
-def full_pca(d, theta):
-    k = theta['k']
+def full_pca(d, k):
     m = np.mean(d, axis=1).reshape(-1, 1)
     U = pca(d)
     P_k = U[:, :k].dot(U[:, :k].T)
     return P_k.dot(d - m) + m
 
-def full_rpca(d, theta):
-    k = theta['k']
+def full_rpca(d, k):
     m = np.mean(d, axis=1).reshape(-1, 1)
     U = rpca(d)
     P_k = U[:, :k].dot(U[:, :k].T)
@@ -37,6 +35,9 @@ def full_rpca(d, theta):
     
 def identity(d, theta):
     return d
+
+def nan_to_num(d, theta):
+    return np.nan_to_num(d)
 
 def SURE(t, X):
     x_gt = np.abs(X) > t
@@ -47,11 +48,23 @@ def SURE(t, X):
     card = np.sum(np.logical_not(x_gt))
     return n + S -2 * card
 
+def SURE_SHRINK_FAST(X):
+    n = X.shape[0]
+    X_sort = np.sort(X)
+    csX = np.cumsum(X_sort)
+    R = np.arange(n)
+    L = map(lambda t: n - 2 * t + csX[t] + (n - t) * X_sort[t]**2, R)
+    min_thresh = X_sort[np.argmin(L)]
+    absX = np.abs(X)
+    X[absX < min_thresh] = 0
+    X[X > min_thresh] = X[X > min_thresh] - min_thresh
+    X[X < -min_thresh] = X[X < -min_thresh] + min_thresh
+    return X
+
 def SURE_SHRINK(X):
-    p = Pool(12) 
     bound =np.log(2* X.shape[0])
     X_small = X[X < bound]
-    L = p.map(lambda x: SURE(x, X), X_small)
+    L = map(lambda x: SURE(x, X), X_small)
     min_thresh = X_small[np.argmin(L)]
     #min_thresh = bound
     absX = np.abs(X)
@@ -69,14 +82,15 @@ def SURE_SHRINK(X):
 
 def SURE_SHRINK_DENOISE(f, wave):
     true_coefs = pywt.wavedec(f, wave, level=None)
-    den_coefs = [SURE_SHRINK(coef) for coef in true_coefs[1:]]
+    den_coefs = [SURE_SHRINK_FAST(coef) for coef in true_coefs[1:]]
     den_coefs.insert(0, true_coefs[0])
     f_denoised = pywt.waverec(den_coefs, wave)
     return f_denoised
 
 def wavelet_sureshrink(d, wave):
     if d.shape[1] % 2 == 1:
-        d = d[:, 1:]
-    for i in range(d.shape[0]):
-        d[i, :] = SURE_SHRINK_DENOISE(d[i, :], wave)
-    return d
+        d = d[:, :-1]
+    par = Pool(10)
+    print '.'
+    return np.vstack(par.map(lambda i: SURE_SHRINK_DENOISE(d[i, :], wave),
+                  range(d.shape[0])))

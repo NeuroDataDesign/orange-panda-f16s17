@@ -33,17 +33,19 @@ def single_bench(data, labels, params, metric, transform, prep):
 
 def disc_all(factory, labels, transforms, metrics, names):
     discs = []
-    for i in range(len(transforms)):
+    D = factory()
+    D = [d for d in D]
+    par = Pool(12)
+    derivitives = apply_all(D, transforms, par.map)
+    for i in range(len(derivitives)):
         print names[i]
-        D = factory()
-        p = Pool(8)
-        D = apply_all(D, [transforms[i]], p.map)
         disc = discriminibility(
-                    D,
+                    derivitives[i],
                     labels,
                     metrics[i]
                 )
         discs.append(disc)
+        print disc
     return discs
 
 

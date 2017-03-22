@@ -25,7 +25,6 @@ with open(JOB_FILE, 'r') as f:
 	job['prep'] = eval(job['prep'])
 	job['params'] = eval(job['params'])
 
-print job['params']['wave']
 DATASET_PATH = 'datasets/' + job['dataset']
 
 factory, labels = ab.utils.data_generator_factory(DATASET_PATH)
@@ -33,7 +32,7 @@ factory, labels = ab.utils.data_generator_factory(DATASET_PATH)
 ab.utils.print_info(DATASET_PATH)
 
 results = []
-for param in job['params']['wave']:
+for param in job['params']:
 	nfg = ab.utils.nested_generator_factory_factory(factory,
 							job['prep'],
 							param)

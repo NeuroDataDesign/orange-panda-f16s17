@@ -18,15 +18,20 @@ def participant_info(dataset):
     return participants 
 
 def apply_all(D, functs, map_method):
+    res = []
     for funct in functs[::-1]:
-        D = map_method(funct, D)
-    return D
+        res.append(map_method(funct, D))
+    return res
 
 
 def data_generator_factory(dataset):
     subjects, trials = zip(*participant_info(dataset))
     trials = map(int, trials)
-    labels = np.array([[x[0]] * x[1] for x in zip(subjects, trials)]).flatten()
+    subjects = np.array(subjects)
+    zips = zip(subjects, trials)
+    zips = [[x[0]] * x[1] for x in zips]
+    labels = [item for sublist in zips for item in sublist]
+    print labels
     def data_gen():
         c = -1
         for i, subject in enumerate(subjects):
