@@ -8,14 +8,15 @@ from viz import cross_compare
 
 def haversine(rad, lon1, lat1, lon2, lat2):
     # convert decimal degrees to radians 
-    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    if r = 'degrees':
+        lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
 
     # haversine formula 
     dlon = lon2 - lon1 
     dlat = lat2 - lat1 
     a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
     c = 2 * asin(sqrt(a)) 
-    return c * rad
+    return c
 
 def gc(coords, i, j, r):
     t = coords[i][0]
@@ -26,8 +27,8 @@ def gc(coords, i, j, r):
       'lat1' : p, 'lon2' : t_, 'lat2': p_}
     return haversine(**args)
 
-def neighbors(chan, chan_locs, candidates, k):
-    dist = np.array(map(lambda c: gc(chan_locs, chan, c, 1), candidates))
+def neighbors(chan, chan_locs, candidates, k, r):
+    dist = np.array(map(lambda c: gc(chan_locs, chan, c, r), candidates))
     closest = candidates[np.argsort(dist)[:k]]
     dist = dist[np.argsort(dist)[:k]]
     tot = np.sum(dist)
@@ -39,6 +40,7 @@ def wavelet_coefficient_interp(d, p_local, p_global):
     bad_chans = p_local['bad_chans']
     chan_locs = p_global['chan_locs']
     wave = p_global['wave']
+    r = p_global['loc_unit']
     v = p_global['verbose']
     k = p_global['k']
 
@@ -75,7 +77,7 @@ def wavelet_coefficient_interp(d, p_local, p_global):
                      linewidth = 1, label = 'interp')
             plt.legend()
             plt.show()
-    for i in range(10):#range(len(coefs[0]))[1:]:
+    for i in range(5):#range(len(coefs[0]))[1:]:
         cross_compare([orig_coefs[c] for c in bad_chans],
                       [coefs[c] for c in bad_chans], i)
     return d_int

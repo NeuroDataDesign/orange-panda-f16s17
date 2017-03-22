@@ -17,11 +17,17 @@ def sure(t, X):
 
 def sure_shrink_fast(X):
     n = X.shape[0]
-    X_sort = np.sort(X)
+    g_thresh = np.sqrt(2 * np.log(n))
+    X_via = X[np.abs(X) < g_thresh]
+    X_sort = np.sort(X_via)
     csX = np.cumsum(X_sort)
-    R = np.arange(n)
+    R = np.arange(X_via.shape[0])
     L = map(lambda t: n - 2 * t + csX[t] + (n - t) * X_sort[t]**2, R)
-    min_thresh = X_sort[np.argmin(L)]
+    if len(L) == 0:
+        min_thresh = g_thresh
+    else:
+        min_thresh = X_sort[np.argmin(L)]
+        min_thresh = min(min_thresh, g_thresh)
     absX = np.abs(X)
     X[absX < min_thresh] = 0
     X[X > min_thresh] = X[X > min_thresh] - min_thresh
@@ -35,9 +41,8 @@ def sure_shrink_denoise(f, wave, v):
     den_coefs = list(den_coefs)
     den_coefs.insert(0, true_coefs[0])
     f_denoised = pywt.waverec(den_coefs, wave)
-    #if v:
-    #    for tup in zip(range(len(thresholds)), thresholds):
-    #        print 'Scale:', tup[0], ',', 'Threshold:', tup[1]
+    if v:
+        print 'Thresholds:', thresholds
     return f_denoised
 
 def wavelet_sureshrink(d, p_local, p_global):
@@ -61,6 +66,6 @@ def wavelet_sureshrink(d, p_local, p_global):
     if v:
         den_coefs = [pywt.wavedec(d_den[c, :], wave) for c in range(C)]
 
-        for i in range(10):#range(len(coefs[0]))[1:]:
+        for i in range(3):#range(len(coefs[0]))[1:]:
             cross_compare(coefs, den_coefs, i)
     return d_den
