@@ -4,6 +4,7 @@ import cPickle as pkl
 import glob
 import sys
 import csv
+import dataset_creation as dc
 
 def fast_csv_load(f_path):
     with open(f_path,'r') as dest_f:
@@ -65,7 +66,7 @@ if __name__ == '__main__':
         sys.exit(0)
     num_subjects = len(paths)
     num_trials = [str(len(x)) for x in paths]
-    subjects = make_file_structure(to, num_subjects)
+    subjects = dc.make_file_structure(to, num_subjects)
     move(paths, to)
     participants(to, ['participant_id', 'num_trials'],
                  zip(subjects, num_trials))

@@ -1,10 +1,7 @@
 from math import radians, cos, sin, asin, sqrt
 import pywt
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 import copy
-from viz import cross_compare
 
 def sure(t, X):
     x_gt = np.abs(X) > t
@@ -63,7 +60,13 @@ def wavelet_sureshrink(d, p_local, p_global):
     # Get new coeffs for plot
     if v:
         den_coefs = [pywt.wavedec(d_den[c, :], wave) for c in range(C)]
-
+        from viz import cross_compare
         for i in range(3):#range(len(coefs[0]))[1:]:
             cross_compare(coefs, den_coefs, i)
     return d_den
+
+def pca_singvals(d):
+    m = np.mean(d, axis = 1).reshape(-1, 1)
+    d_cent = d - m
+    U, _, _ = np.linalg.svd(d_cent, full_matrices = False)
+    return U

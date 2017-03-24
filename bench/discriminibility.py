@@ -1,7 +1,5 @@
 import numpy as np
 from utilities import apply_all
-import seaborn as sns
-import matplotlib.pyplot as plt
 import numpy as np
 
 def partial_disc(D, labels, subject, trial1, trial2):
@@ -57,6 +55,8 @@ def disc_all(factory, labels, transforms, metrics, names):
     return discs
 
 def disc_plot(discs, disc_names, exp_names):
+    import seaborn as sns
+    import matplotlib.pyplot as plt
     discs = np.vstack(discs).T
     for disc_method in range(discs.shape[1]):
         plt.plot(discs[:, disc_method], '*', label = disc_names[disc_method])
