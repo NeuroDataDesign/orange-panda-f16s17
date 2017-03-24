@@ -41,15 +41,13 @@ def sure_shrink_denoise(f, wave, v):
     den_coefs = list(den_coefs)
     den_coefs.insert(0, true_coefs[0])
     f_denoised = pywt.waverec(den_coefs, wave)
-    if v:
-        print 'Thresholds:', thresholds
     return f_denoised
 
 def wavelet_sureshrink(d, p_local, p_global):
     C = d.shape[0]
     T = d.shape[1]
-    wave = p_global['wave']
-    v = p_global['verbose']
+    wave = p_global['wave_sure']['wave']
+    v = p_global['wave_sure']['verbose']
     # Make sure even length timesteps
     if T % 2 == 1:
         d = d[:, :-1]

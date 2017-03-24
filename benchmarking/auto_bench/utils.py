@@ -81,7 +81,7 @@ def time_str(unix_time):
 def nested_generator_factory(factory, function, params):
     def nested_generator():
         for item in factory():
-            yield function(item, params)
+            yield function(item, params['p_local'], params['p_global'])
     return nested_generator
 
 def nested_generator_factory_factory(init, functions, params):
