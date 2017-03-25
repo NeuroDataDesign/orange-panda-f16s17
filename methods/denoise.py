@@ -76,10 +76,10 @@ def visu_shrink(X):
 
 def visu_shrink_denoise(f, wave, v):
     true_coefs = pywt.wavedec(f, wave, level=None)
-    res = [visu_shrink(coef) for coef in true_coefs[1:]]
+    res = [visu_shrink(coef) for coef in true_coefs]
     den_coefs, thresholds = zip(*res)
     den_coefs = list(den_coefs)
-    den_coefs.insert(0, true_coefs[0])
+    #den_coefs.insert(0, true_coefs[0])
     f_denoised = pywt.waverec(den_coefs, wave)
     return f_denoised
 
