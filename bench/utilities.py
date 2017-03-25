@@ -4,6 +4,7 @@ import cPickle as pkl
 import os
 from glob import glob as glob
 import dataset_creation as dc
+from pathos.multiprocessing import ProcessingPool as Pool
 
 def data_generator_factory(dataset):
     subjects, trials = zip(*dc.participant_info(dataset))
@@ -27,9 +28,18 @@ def data_generator_factory(dataset):
 
 def ngf(factory, function, params):
     def nested_generator():
-        for item in factory():
-            yield function(item, params['p_local'], params['p_global'])
+        par = Pool(8)
+        def f(x):
+            return function(x, params['p_local'], params['p_global'])
+        for item in par.imap(f, factory()):
+            yield item
     return nested_generator
+
+def tgf(factory1, factory2):
+    def tup_generator():
+        for item in ((a, b) for (a, b) in zip(factory1(), factory2())):
+            yield item
+    return tup_generator
 
 def ngff(init, functions, params):
     nfg = init
@@ -40,5 +50,5 @@ def ngff(init, functions, params):
 def apply_all(D, functs, map_method):
     res = []
     for funct in functs[::-1]:
-        res.append(map_method(funct, D))
+        res.append(map(funct, map_method(lambda d: d, D)))
     return res

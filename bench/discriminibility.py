@@ -1,6 +1,7 @@
 import numpy as np
 from utilities import apply_all
 import numpy as np
+from pathos.multiprocessing import ProcessingPool as Pool
 
 def partial_disc(D, labels, subject, trial1, trial2):
     enum = np.arange(D.shape[0])
@@ -42,7 +43,8 @@ def disc_all(factory, labels, transforms, metrics, names):
     discs = []
     D = factory()
     D = [d for d in D]
-    derivitives = apply_all(D, transforms, map)
+    par = Pool(8) 
+    derivitives = apply_all(D, transforms, par.imap)
     for i in range(len(derivitives)):
         print names[i]
         disc = discriminibility(

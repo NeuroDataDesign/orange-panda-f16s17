@@ -24,7 +24,7 @@ def sure_shrink_fast(X):
         min_thresh = g_thresh
     else:
         min_thresh = X_sort[np.argmin(L)]
-        min_thresh = min(min_thresh, g_thresh)
+        min_thresh = max(min_thresh, g_thresh)
     absX = np.abs(X)
     X[absX < min_thresh] = 0
     X[X > min_thresh] = X[X > min_thresh] - min_thresh
