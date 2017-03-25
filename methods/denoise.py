@@ -15,7 +15,7 @@ def sure(t, X):
 def sure_shrink_fast(X):
     n = X.shape[0]
     g_thresh = np.sqrt(2 * np.log(n))
-    X_via = X[np.abs(X) < g_thresh]
+    X_via = X[np.abs(X) <= g_thresh]
     X_sort = np.sort(X_via)
     csX = np.cumsum(X_sort)
     R = np.arange(X_via.shape[0])
@@ -24,7 +24,6 @@ def sure_shrink_fast(X):
         min_thresh = g_thresh
     else:
         min_thresh = X_sort[np.argmin(L)]
-        min_thresh = max(min_thresh, g_thresh)
     absX = np.abs(X)
     X[absX < min_thresh] = 0
     X[X > min_thresh] = X[X > min_thresh] - min_thresh
