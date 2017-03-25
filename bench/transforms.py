@@ -37,4 +37,4 @@ def pca_singvals(d):
     return U
 
 def rpca_singvals(d):
-    return pca(pcp(d, maxiter=5, verbose=True, svd_method='randomized')[0])
+    return pca_singvals(pcp(d, maxiter=5, verbose=True, svd_method='randomized')[0])
