@@ -64,6 +64,49 @@ def wavelet_sureshrink(d, p_local, p_global):
             cross_compare(coefs, den_coefs, i)
     return d_den
 
+def visu_shrink(X):
+    n = X.shape[0]
+    g_thresh = np.sqrt(2 * np.log(n))
+    min_thresh = g_thresh
+    absX = np.abs(X)
+    X[absX < min_thresh] = 0
+    X[X > min_thresh] = X[X > min_thresh] - min_thresh
+    X[X < -min_thresh] = X[X < -min_thresh] + min_thresh
+    return (X, min_thresh)
+
+def visu_shrink_denoise(f, wave, v):
+    true_coefs = pywt.wavedec(f, wave, level=None)
+    res = [visu_shrink(coef) for coef in true_coefs[1:]]
+    den_coefs, thresholds = zip(*res)
+    den_coefs = list(den_coefs)
+    den_coefs.insert(0, true_coefs[0])
+    f_denoised = pywt.waverec(den_coefs, wave)
+    return f_denoised
+
+def wavelet_visushrink(d, p_local, p_global):
+    C = d.shape[0]
+    T = d.shape[1]
+    wave = p_global['wave_visu']['wave']
+    v = p_global['wave_visu']['verbose']
+    # Make sure even length timesteps
+    if T % 2 == 1:
+        d = d[:, :-1]
+
+    # Get original coeffs for plot
+    if v:
+        coefs = [pywt.wavedec(d[c, :], wave) for c in range(C)]
+
+    # Denoise each channel
+    d_den = np.vstack(map(lambda i: visu_shrink_denoise(d[i, :], wave, v),
+                  range(d.shape[0])))
+
+    # Get new coeffs for plot
+    if v:
+        den_coefs = [pywt.wavedec(d_den[c, :], wave) for c in range(C)]
+        from viz import cross_compare
+        for i in range(3):#range(len(coefs[0]))[1:]:
+            cross_compare(coefs, den_coefs, i)
+    return d_den
 def pca_denoise(D, p_local, p_global):
     d, s_vals = D
     k = p_global['pca_den']['k']
