@@ -65,8 +65,9 @@ def wavelet_sureshrink(d, p_local, p_global):
             cross_compare(coefs, den_coefs, i)
     return d_den
 
-def pca_singvals(d):
-    m = np.mean(d, axis = 1).reshape(-1, 1)
-    d_cent = d - m
-    U, _, _ = np.linalg.svd(d_cent, full_matrices = False)
-    return U
+def pca_denoise(D, p_local, p_global):
+    d, s_vals = D
+    k = p_global['pca_den']['k']
+    U_k = s_vals[:, :k]
+    P_k = U_k.dot(U_k.T)
+    return P_k.dot(d - np.mean(d, axis=1).reshape(-1, 1))
