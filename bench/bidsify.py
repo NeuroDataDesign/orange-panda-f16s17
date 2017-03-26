@@ -21,8 +21,9 @@ def raw_paths(path):
     for sub in subjs:
         all_paths = glob.glob(sub + '/EEG/raw/csv_format/*')
         filtered_paths = filter(lambda x: '_events' not in x, all_paths)
+        filtered_paths.sort()
         file_paths.append(filtered_paths)
-    return file_paths 
+    return file_paths
 
 def preprocessed_paths(path):
     subjs = glob.glob(path + '/*')
@@ -31,8 +32,9 @@ def preprocessed_paths(path):
         all_paths = glob.glob(sub + '/EEG/preprocessed/csv_format/*')
         filt = lambda x: '_interpolated' not in x and '_events' not in x
         filtered_paths = filter(filt, all_paths)
+        filtered_paths.sort()
         file_paths.append(filtered_paths)
-    return file_paths 
+    return file_paths
 
 def move(paths, path2):
     for sub_number, subject in enumerate(paths, start=1):
@@ -41,12 +43,22 @@ def move(paths, path2):
         for trial_number, path in enumerate(subject, start=1):
             d = fast_csv_load(path)
             print 'Converting file at', path
-
             fmt = (bids_base, 'eeg', sub_id, trial_number) 
             f_path = '%s/%s/%s_trial-%02d.pkl' % fmt
             print 'Saving converted at', f_path
             with open(f_path, 'wb') as f:
                 pkl.dump(d, f, protocol = pkl.HIGHEST_PROTOCOL)
+
+def preprocessed_paths_bc(path):
+    subjs = glob.glob(path + '/*')
+    file_paths = []
+    for sub in subjs:
+        all_paths = glob.glob(sub + '/EEG/prep_bc/csv_format/*')
+        filt = lambda x: '_interpolated' in x and '_events' not in x
+        filtered_paths = filter(filt, all_paths)
+        filtered_paths.sort() 
+        file_paths.append(filtered_paths)
+    return file_paths
 
 def participants(path, heads, rows):
     with open(path + '/participants.tsv', 'w') as f:
@@ -61,6 +73,8 @@ if __name__ == '__main__':
         paths = raw_paths(frm)
     elif command == 'bids_interpolated':
         paths = preprocessed_paths(frm)
+    elif command == 'bids_interpolated_bc':
+        paths = preprocessed_paths_bc(frm)
     if paths is None:
         print 'Did not work, bad command'
         sys.exit(0)
