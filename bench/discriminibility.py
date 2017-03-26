@@ -59,10 +59,13 @@ def disc_all(factory, labels, transforms, metrics, names):
 def disc_plot(discs, disc_names, exp_names):
     import seaborn as sns
     import matplotlib.pyplot as plt
-    discs = np.vstack(discs).T
+    discs = np.vstack(discs)
+    print discs
     for disc_method in range(discs.shape[1]):
         plt.plot(discs[:, disc_method], '*', label = disc_names[disc_method])
     plt.xticks(range(len(exp_names)), exp_names)
-    plt.legend()
+    plt.legend(loc = 'center right', bbox_to_anchor = (1.2, 1))
     plt.tight_layout()
+    ax = plt.gca()
+    ax.margins(0.05)
     return plt.gcf()
