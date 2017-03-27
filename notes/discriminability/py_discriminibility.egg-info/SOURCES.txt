@@ -1,5 +1,0 @@
-setup.py
-py_discriminibility.egg-info/PKG-INFO
-py_discriminibility.egg-info/SOURCES.txt
-py_discriminibility.egg-info/dependency_links.txt
-py_discriminibility.egg-info/top_level.txt

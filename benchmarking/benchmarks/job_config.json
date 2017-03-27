@@ -1,0 +1,6 @@
+{
+	"dataset": "bids_raw",
+	"prep": "[prep.noise_reduct.full_rpca]",
+	"params": "[1, 3, 5, 10]",
+        "job_name": "rpca"
+}
