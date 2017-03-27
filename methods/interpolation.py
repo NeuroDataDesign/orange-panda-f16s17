@@ -28,7 +28,6 @@ def haversine(rad, lon1, lat1, lon2, lat2):
 def gc(coords, i, j, r):
     t, p, r = cart2sph(coords[i][0], coords[i][1], coords[i][2])
     t_, p_, r_ = cart2sph(coords[j][0], coords[j][1], coords[j][2])
-    print t, p, r
     args = {'rad' : r, 'lon1' : t,
       'lat1' : p, 'lon2' : t_, 'lat2': p_}
     return haversine(**args)
@@ -63,15 +62,16 @@ def wavelet_coefficient_interp(d, p_local, p_global):
         if v:
             print 'bad chan =', bc, ',', 'closest =', neigh, ',',
             print 'distances =', dist, 'num levels =', num_levels
-        for i in range(num_levels):
+        for i in range(num_levels)[1:]:
             coefs[bc][i] = np.sum([coefs[n][i] * dist[p]/tot for p, n in enumerate(neigh)], axis=0)
     d_int = np.vstack([pywt.waverec(c, wave) for c in coefs])
 
     # Plotting
     if v:
+        import matplotlib.pyplot as plt
         timesteps = np.arange(T)* 1./500
         for c in bad_chans:
-            _, neigh, _ = neighbors(c, chan_locs, np.setdiff1d(np.arange(C), bad_chans), k)
+            _, neigh, _ = neighbors(c, chan_locs, np.setdiff1d(np.arange(C), bad_chans), k, r)
             # Plot the original bad electrode
             plt.plot(timesteps, d[c, :], color='blue',
                      linewidth = 1, label = 'bad ' + str(c))
@@ -86,10 +86,6 @@ def wavelet_coefficient_interp(d, p_local, p_global):
                      linewidth = 1, label = 'interp')
             plt.legend()
             plt.show()
-	    for i in range(5):#range(len(coefs[0]))[1:]
-		from bench.viz import cross_compare
-		cross_compare([orig_coefs[c] for c in bad_chans],
-			      [coefs[c] for c in bad_chans], i)
     return d_int
 
 def ssi_wrapper(d, p_local, p_global):
