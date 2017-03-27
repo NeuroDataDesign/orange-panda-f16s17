@@ -1,14 +1,11 @@
 from math import radians, cos, sin, asin, sqrt
 import pywt
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 import copy
-from viz import cross_compare
 
 def haversine(rad, lon1, lat1, lon2, lat2):
     # convert decimal degrees to radians 
-    if r = 'degrees':
+    if rad == 'degrees':
         lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
 
     # haversine formula 
@@ -35,9 +32,13 @@ def neighbors(chan, chan_locs, candidates, k, r):
     return dist, closest, tot
 
 def wavelet_coefficient_interp(d, p_local, p_global):
+    d, bad_chans = d
+    bad_chans = np.array(bad_chans, dtype=np.uint8).flatten()
+    if bad_chans.size == 0:
+        return d
+    print bad_chans.shape
     C = d.shape[0]
     T = d.shape[1]
-    bad_chans = p_local['bad_chans']
     chan_locs = p_global['chan_locs']
     wave = p_global['wave']
     r = p_global['loc_unit']
@@ -49,7 +50,7 @@ def wavelet_coefficient_interp(d, p_local, p_global):
     orig_coefs = copy.deepcopy(coefs)
     candidates = np.setdiff1d(range(C), bad_chans)
     for bc in bad_chans:
-        dist, neigh, tot = neighbors(bc, chan_locs, candidates, k)
+        dist, neigh, tot = neighbors(bc, chan_locs, candidates, k, r)
         num_levels = len(coefs[bc])
         if v:
             print 'bad chan =', bc, ',', 'closest =', neigh, ',',
@@ -77,7 +78,8 @@ def wavelet_coefficient_interp(d, p_local, p_global):
                      linewidth = 1, label = 'interp')
             plt.legend()
             plt.show()
-    for i in range(5):#range(len(coefs[0]))[1:]:
-        cross_compare([orig_coefs[c] for c in bad_chans],
-                      [coefs[c] for c in bad_chans], i)
+	    for i in range(5):#range(len(coefs[0]))[1:]
+		from bench.viz import cross_compare
+		cross_compare([orig_coefs[c] for c in bad_chans],
+			      [coefs[c] for c in bad_chans], i)
     return d_int
