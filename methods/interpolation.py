@@ -83,3 +83,43 @@ def wavelet_coefficient_interp(d, p_local, p_global):
 		cross_compare([orig_coefs[c] for c in bad_chans],
 			      [coefs[c] for c in bad_chans], i)
     return d_int
+
+def ssi_wrapper(D, p_local, p_global):
+    coords = p_global['chan_locs']
+    bad_chans = p_global['bad_chans']
+    s_val = p_global['s']
+    return intp(D, coords, bad_chans, s = s_val) 
+
+def intp(D, coords, rm_idx, s=1000):
+    old = D[rm_idx, :]
+    samp_idx = np.setdiff1d(np.arange(D.shape[0]), rm_idx)
+    sample = D[samp_idx]
+    F = []
+    for i in range(sample.shape[1]):
+        F_i = ssi(sample[:, i],
+                  coords[samp_idx],
+                  s = s)
+        F.append(F_i)
+    pred = []
+    for idx in rm_idx:
+        itp = []
+        for i, f in enumerate(F):
+            if f is None:
+                itp.append(D[idx, i])
+            else:
+                itp.append(f(coords[idx, 0],
+                          coords[idx, 1])[0][0])
+        pred.append(np.array(itp))
+    D[rm_idx] = np.array(pred)
+    return D
+
+
+def ssi(E, P, s):
+    try:
+        F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
+                                    E, s=s)
+    except:
+        F = None
+    return F    
+
+
