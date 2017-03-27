@@ -8,7 +8,7 @@ from viz import cross_compare
 
 def haversine(rad, lon1, lat1, lon2, lat2):
     # convert decimal degrees to radians 
-    if r = 'degrees':
+    if r == 'degrees':
         lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
 
     # haversine formula 
