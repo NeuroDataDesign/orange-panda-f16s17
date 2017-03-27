@@ -2,6 +2,16 @@ from math import radians, cos, sin, asin, sqrt
 import pywt
 import numpy as np
 import copy
+from scipy.interpolate import SmoothSphereBivariateSpline
+
+import math as m
+
+def cart2sph(x,y,z):
+    XsqPlusYsq = x**2 + y**2
+    r = m.sqrt(XsqPlusYsq + z**2)               # r
+    elev = m.atan2(z,m.sqrt(XsqPlusYsq)) + np.pi / 2     # theta
+    az = m.atan2(y,x) + np.pi                           # phi
+    return elev, az, r
 
 def haversine(rad, lon1, lat1, lon2, lat2):
     # convert decimal degrees to radians 
@@ -16,10 +26,9 @@ def haversine(rad, lon1, lat1, lon2, lat2):
     return c
 
 def gc(coords, i, j, r):
-    t = coords[i][0]
-    t_ = coords[j][0]
-    p = coords[i][1]
-    p_ = coords[j][1]
+    t, p, r = cart2sph(coords[i][0], coords[i][1], coords[i][2])
+    t_, p_, r_ = cart2sph(coords[j][0], coords[j][1], coords[j][2])
+    print t, p, r
     args = {'rad' : r, 'lon1' : t,
       'lat1' : p, 'lon2' : t_, 'lat2': p_}
     return haversine(**args)
@@ -36,7 +45,6 @@ def wavelet_coefficient_interp(d, p_local, p_global):
     bad_chans = np.array(bad_chans, dtype=np.uint8).flatten()
     if bad_chans.size == 0:
         return d
-    print bad_chans.shape
     C = d.shape[0]
     T = d.shape[1]
     chan_locs = p_global['chan_locs']
@@ -55,7 +63,7 @@ def wavelet_coefficient_interp(d, p_local, p_global):
         if v:
             print 'bad chan =', bc, ',', 'closest =', neigh, ',',
             print 'distances =', dist, 'num levels =', num_levels
-        for i in range(num_levels)[1:]:
+        for i in range(num_levels):
             coefs[bc][i] = np.sum([coefs[n][i] * dist[p]/tot for p, n in enumerate(neigh)], axis=0)
     d_int = np.vstack([pywt.waverec(c, wave) for c in coefs])
 
@@ -84,11 +92,17 @@ def wavelet_coefficient_interp(d, p_local, p_global):
 			      [coefs[c] for c in bad_chans], i)
     return d_int
 
-def ssi_wrapper(D, p_local, p_global):
+def ssi_wrapper(d, p_local, p_global):
+    d, bad_chans = d
+    print '.'
+    bad_chans = np.array(bad_chans, dtype=np.uint8).flatten()
+    if bad_chans.size == 0:
+        return d
     coords = p_global['chan_locs']
-    bad_chans = p_global['bad_chans']
+    coords = map(lambda x: cart2sph(*x), zip(coords[:, 0], coords[:, 1], coords[:, 2]))
+    coords = np.vstack(coords)
     s_val = p_global['s']
-    return intp(D, coords, bad_chans, s = s_val) 
+    return intp(d, coords, bad_chans, s = s_val) 
 
 def intp(D, coords, rm_idx, s=1000):
     old = D[rm_idx, :]
@@ -115,11 +129,15 @@ def intp(D, coords, rm_idx, s=1000):
 
 
 def ssi(E, P, s):
-    try:
-        F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
+    s_orig = s
+    F = None
+    while F is None:
+        try:
+            F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
                                     E, s=s)
-    except:
-        F = None
+        except:
+            F = None
+            s = s ** 2
     return F    
 
 
