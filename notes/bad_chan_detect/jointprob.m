@@ -86,7 +86,6 @@ else
 		% COMPUTE THE DENSITY FUNCTION
 		% ----------------------------
 		[ dataProba sortbox ] = realproba( signal(rc, :), discret );
-        disp(dataProba)
         
 		% compute all entropy
 		% -------------------
@@ -97,6 +96,8 @@ else
 		end;
 	end;
 
+    disp(jp)
+    disp(std(jp,0,2))
 	% normalize the last dimension
 	% ----------------------------	
 	if normalize
