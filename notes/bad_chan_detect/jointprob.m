@@ -70,6 +70,7 @@ if nargin < 5
 	discret = 1000;
 end;	
 
+
 if size(signal,2) == 1 % transpose if necessary
 	signal = signal';
 end;
