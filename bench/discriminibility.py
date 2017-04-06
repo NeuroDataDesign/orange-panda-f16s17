@@ -39,12 +39,9 @@ def discriminibility(data, labels, metric):
                     partials.append(p)
     return np.mean(partials)
 
-def disc_all(factory, labels, transforms, metrics, names):
+def disc_all(D, labels, transforms, metrics, names):
     discs = []
-    D = factory()
-    D = [d for d in D]
-    par = Pool(8) 
-    derivitives = apply_all(D, transforms, par.imap)
+    derivitives = apply_all(D, transforms, map)
     for i in range(len(derivitives)):
         print names[i]
         disc = discriminibility(

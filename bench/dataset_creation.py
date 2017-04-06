@@ -34,7 +34,9 @@ def fake_dataset(set_name, t, s):
                                  subj_name,
                                  'eeg',
                                  subj_name + '_trial-%02d.pkl' % (j))
-            ra = np.random.normal(0, 1, (27, 50000))
+            ra = np.random.normal(0, 1, (128, 20000))
+            ra2 = np.sin(2 * np.pi * np.linspace(0, 10, 20000) * np.random.random() * 4)
+            ra = ra + ra2
             pkl.dump(ra, open(trial, 'wb'), pkl.HIGHEST_PROTOCOL)
         subj_names.append(subj_name)
     num_trials = map(str, [t] * s)

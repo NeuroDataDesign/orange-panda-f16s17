@@ -70,6 +70,7 @@ if nargin < 5
 	discret = 1000;
 end;	
 
+
 if size(signal,2) == 1 % transpose if necessary
 	signal = signal';
 end;
@@ -86,7 +87,6 @@ else
 		% COMPUTE THE DENSITY FUNCTION
 		% ----------------------------
 		[ dataProba sortbox ] = realproba( signal(rc, :), discret );
-        disp(dataProba)
         
 		% compute all entropy
 		% -------------------
@@ -97,6 +97,8 @@ else
 		end;
 	end;
 
+    disp(jp)
+    disp(std(jp,0,2))
 	% normalize the last dimension
 	% ----------------------------	
 	if normalize
