@@ -34,10 +34,7 @@ def get_patient(filename):
 
 # define function to segregate data into separate trials
 def trials(l, n):
-    print l.shape[0]
-    print l.shape[1]
     num = len(l)/n
-    print num * n
     l = l[:(num * n),:]
     ret_arr = np.reshape(l, (n, len(l)/n, l.shape[1]))
     ret_arr = np.rollaxis(ret_arr, 2)
