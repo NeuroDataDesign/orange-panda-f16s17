@@ -9,31 +9,32 @@ EOG_CHANS = np.array([48, 49, 56, 63, 68,
                       73, 81, 88, 94, 99,
                       107, 113, 119, 125,
                       125, 126, 127, 128]) - 1 # 0 indexed
-def eog_split(D, p_local, p_global):
+def eog_split(D):
     ind = np.arange(D.shape[0])
     non_eog = np.setdiff1d(ind, EOG_CHANS)
     return (D[non_eog, :], D[EOG_CHANS])
 
 def eog_regress(D, p_local, p_global):
-    Y, N = D
+    Y, N = eog_split(D)
     m_Y = np.mean(Y, axis = 1).reshape(-1, 1)
     Y = Y - m_Y
     m_N = np.mean(N, axis = 1).reshape(-1, 1)
     N = N - m_N
     gamma = .9
-    return Y - ((Y.dot(N.T)).dot(gamma * np.linalg.pinv(N.dot(N.T)))).dot(N)
+    return (Y - ((Y.dot(N.T)).dot(gamma * np.linalg.pinv(N.dot(N.T)))).dot(N), p_local)
+
 
 def highpass(D, p_local, p_global):
-    order = p_global['order']
-    Fs = p_global['Fs']
-    cutoff = p_global['cutoff']
-    return np.vstack(butter_highpass_filter(D[i, :], cutoff, Fs, order) for i in range(D.shape[0]))
+    order = p_global['hpf']['order']
+    Fs = p_global['hpf']['Fs']
+    cutoff = p_global['hpf']['cutoff']
+    return (np.vstack(butter_highpass_filter(D[i, :], cutoff, Fs, order) for i in range(D.shape[0])), p_local)
 
 def bandstop(D, p_local, p_global):
-    order = p_global['order']
-    Fs = p_global['Fs']
-    cutoff = p_global['cutoff']
-    return np.vstack(butter_bandstop_filter(D[i, :], cutoff, Fs, order) for i in range(D.shape[0]))
+    order = p_global['bsf']['order']
+    Fs = p_global['bsf']['Fs']
+    cutoff = p_global['bsf']['cutoff']
+    return (np.vstack(butter_bandstop_filter(D[i, :], cutoff, Fs, order) for i in range(D.shape[0])), p_local)
 
 def sure(t, X):
     x_gt = np.abs(X) > t
@@ -148,7 +149,9 @@ def pca_denoise(D, p_local, p_global):
     return P_k.dot(d - np.mean(d, axis=1).reshape(-1, 1))
 
 def rpca_denoise(D, p_local, p_global):
-    M = p_global['max_iter']
-    v = p_global['verbose']
-    method = p_global['pca_method']
-    return pcp(D, maxiter=M, verbose=v, svd_method=method)[0]
+    M = p_global['rpca']['max_iter']
+    v = p_global['rpca']['verbose']
+    method = p_global['rpca']['pca_method']
+    delta = p_global['rpca']['delta']
+    mu = p_global['rpca']['mu']
+    return (pcp(D, mu = mu, delta = delta, maxiter=M, verbose=v, svd_method=method)[0], p_local)

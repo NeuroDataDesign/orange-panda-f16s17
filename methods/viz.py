@@ -20,6 +20,32 @@ def dist_plot(C, level, label, kde = False):
     L = np.nan_to_num(np.sqrt(np.abs(L)) * np.sign(L))
     sns.distplot(L.flatten(), kde = kde, label = label)
 
+def visualize_matrix(D, p_local, p_global):
+    plt.figure()
+    sns.heatmap(D[:, ::D.shape[1]/10000], xticklabels = 1000, yticklabels=D.shape[0] / 4,
+                vmin = p_local['min'], vmax = p_local['max'])
+    plt.xlabel('Time compressed to 10,000 timesteps')
+    plt.ylabel('Channel')
+    plt.title('Step ' + str(p_local['step']) + ' heatmap')
+    plt.savefig(p_local['fig_path'] + 'heat' + str(p_local['step']))
+    plt.clf()
+    plt.close()
+    sns.heatmap(np.log(np.abs(D[:, ::D.shape[1]/10000])),
+                xticklabels = 1000, yticklabels=D.shape[0] / 4,
+                vmin = np.log(np.abs(p_local['min'])), vmax = np.log(np.abs(p_local['max'])))
+    plt.xlabel('Time compressed to 10,000 timesteps')
+    plt.ylabel('Channel')
+    plt.title('Step ' + str(p_local['step']) + ' heatmap, log magnitude')
+    plt.savefig(p_local['fig_path'] + 'heatlog' + str(p_local['step']))
+    plt.clf()
+    plt.close()
+    #sparklines_bare(D[:, ::D.shape[1]/10000], 'Sparklines 10000 timesteps', p_local, False)
+    #plt.xlabel('Time compressed to 10,000 timesteps')
+    #plt.ylabel('Channel')
+    #plt.savefig(p_local['fig_path'] + 'spark' + str(p_local['step']), dpi=200)
+    #plt.clf()
+    return (D, p_local)
+    
 def cross_compare(reg, den, level):
     C_res = [np.array(x[0]) - np.array(x[1]) for x in zip(reg, den)]
     title = 'Raw'
@@ -43,7 +69,35 @@ def cross_compare(reg, den, level):
     plt.legend()
     plt.show()
 
-def sparklines(r, d, den, title):
+def sparklines_bare(d, title, params, nb):
+    sns.set_style('whitegrid')
+    C = d.shape[0]
+    T = d.shape[1]
+    first = plt.subplot(C, 1, 1)
+    plt.plot(d[0, :])
+    plt.title(title)
+    plt.setp(first.get_xticklabels(), visible=False)
+    plt.setp(first.get_yticklabels(), visible=False)
+    plt.ylabel('1')
+    for i in range(1, C):
+        axes = plt.subplot(C, 1, i + 1, sharex = first)
+        plt.plot(d[i, :])
+        plt.ylim([params['min'], params['max']])
+        plt.setp(axes.get_xticklabels(), visible=False)
+        plt.setp(axes.get_yticklabels(), visible=False)
+        plt.ylabel(str(i + 1))
+    plt.tight_layout()
+    plt.xlim([0,T])
+    plt.subplots_adjust(top = 1, bottom = 0)
+    if nb:
+        plt.show()
+        return plt.gcf()
+    fig = plt.gcf()
+    fig.set_size_inches(5, .3 * C)
+    plt.tight_layout()
+    return plt.gcf()
+
+def sparklines(r, d, den, title, nb):
     import seaborn as sns
     sns.set_style('whitegrid')
 
@@ -70,6 +124,9 @@ def sparklines(r, d, den, title):
     plt.tight_layout()
     plt.xlim([0,T])
     plt.subplots_adjust(top = 1, bottom = 0)
+    if nb:
+        plt.show()
+        return plt.gcf()
     return plt.gcf()
 
 def chan_errs(real, noisy, den, title):
