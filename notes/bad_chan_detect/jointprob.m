@@ -81,7 +81,6 @@ jp  = zeros(nbchan,sweeps);
 if exist('oldjp') & ~isempty( oldjp ) % speed up the computation
 	jp = oldjp;
 else
-    disp(nbchan)
 	for rc = 1:nbchan
 
 		% COMPUTE THE DENSITY FUNCTION
@@ -96,9 +95,7 @@ else
 			     % - sum( datatmp .* log( datatmp ) ); would be the entropy
 		end;
 	end;
-
-    disp(jp)
-    disp(std(jp,0,2))
+    
 	% normalize the last dimension
 	% ----------------------------	
 	if normalize
@@ -109,7 +106,7 @@ else
         end;
         try, 
             switch ndims( signal )
-             case 2,	jp = (jp-mean(tmpjp)) / std(tmpjp);
+             case 2,	jp = (jp-mean(tmpjp)) / std(tmpjp); disp(mean(tmpjp)); disp(std(tmpjp));
              case 3,	jp = (jp-mean(tmpjp,2)*ones(1,size(jp,2)))./ ...
                   (std(tmpjp,0,2)*ones(1,size(jp,2)));
             end;
