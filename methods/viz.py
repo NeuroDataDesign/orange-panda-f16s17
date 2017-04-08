@@ -20,6 +20,19 @@ def dist_plot(C, level, label, kde = False):
     L = np.nan_to_num(np.sqrt(np.abs(L)) * np.sign(L))
     sns.distplot(L.flatten(), kde = kde, label = label)
 
+def bad_chan_plot(statistics, p_local, measure):
+    plt.figure()
+    sns.distplot(statistics, kde=False)
+    plt.axvline(x=0, label=r"$\mu$", color='b')
+    plt.axvline(x=-3, label=r"$\pm 3\sigma$", color='r')
+    plt.axvline(x=3, label=r"$\pm 3\sigma$", color='r')
+    plt.legend(bbox_to_anchor = (1.14, 1))
+    plt.savefig(p_local['fig_path'] + measure + ' bad_chans')
+    plt.clf()
+    plt.cla()
+    plt.close()
+
+
 def visualize_matrix(D, p_local, p_global):
     plt.figure()
     sns.heatmap(D[:, ::D.shape[1]/10000], xticklabels = 1000, yticklabels=D.shape[0] / 4,
@@ -29,15 +42,16 @@ def visualize_matrix(D, p_local, p_global):
     plt.title('Step ' + str(p_local['step']) + ' heatmap')
     plt.savefig(p_local['fig_path'] + 'heat' + str(p_local['step']))
     plt.clf()
+    plt.cla()
     plt.close()
     sns.heatmap(np.log(np.abs(D[:, ::D.shape[1]/10000])),
-                xticklabels = 1000, yticklabels=D.shape[0] / 4,
-                vmin = np.log(np.abs(p_local['min'])), vmax = np.log(np.abs(p_local['max'])))
+                xticklabels = 1000, yticklabels=D.shape[0] / 4)
     plt.xlabel('Time compressed to 10,000 timesteps')
     plt.ylabel('Channel')
     plt.title('Step ' + str(p_local['step']) + ' heatmap, log magnitude')
     plt.savefig(p_local['fig_path'] + 'heatlog' + str(p_local['step']))
     plt.clf()
+    plt.cla()
     plt.close()
     #sparklines_bare(D[:, ::D.shape[1]/10000], 'Sparklines 10000 timesteps', p_local, False)
     #plt.xlabel('Time compressed to 10,000 timesteps')

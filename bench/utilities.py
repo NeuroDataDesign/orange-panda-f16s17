@@ -23,9 +23,14 @@ def data_generator_factory(dataset):
     def data_gen():
         c = -1
         for i, subject in enumerate(subjects):
+            try:
+                sub_path = 'figs/' + subject 
+                os.makedirs(sub_path)
+            except:
+                print 'Already exists figure folder for ', subject
             for trial in range(1, trials[i] + 1):
                 trial = '%s_trial-%02d' % (subject, int(trial))
-                fig_path = 'figs/' + trial + '/'
+                fig_path = 'figs/' + subject + '/' + trial + '/'
                 try:
                     os.makedirs(fig_path)
                 except:

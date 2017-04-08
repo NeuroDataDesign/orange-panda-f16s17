@@ -5,6 +5,7 @@ import bench.utilities as ut
 import bench.discriminibility as disc
 import methods.denoise as den
 import methods.viz as viz
+import methods.bad_chans as bad_chans
 import os
 from pathos.multiprocessing import ProcessingPool as Pool
 import numpy as np
@@ -29,6 +30,14 @@ params = {
 		    'pca_method': 'randomized',
 		    'delta': 1e-5,
 		    'mu': .75
+		},
+		'bad_detec': {
+		    'thresh': 3,
+		    'measure': ['prob', 'kurtosis'],
+		    'normalize': 0,
+		    'discret': 1000,
+		    'verbose': False,
+		    'trim': .1
 		}
 	}
 }
@@ -45,12 +54,17 @@ def round(D, f, pars):
 	return (D, step_discs)
 
 def setup(D, p_local, p_global):
+	D = D - np.mean(D, axis = 1).reshape(-1, 1)
 	p_local['max'] = np.max(D)
 	p_local['min'] = np.min(D)
 	return (D, p_local)
 
 #fs = [setup, den.highpass, den.bandstop, den.eog_regress, den.rpca_denoise]
-fs = [setup, den.rpca_denoise]
+fs = [setup,
+      den.highpass,
+      den.bandstop,
+      den.eog_regress,
+      bad_chans.bad_detec]
 
 D = [d for d in factory()]
 
