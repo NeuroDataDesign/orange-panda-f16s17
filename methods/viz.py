@@ -32,7 +32,7 @@ def visualize_matrix(D, p_local, p_global):
     plt.close()
     sns.heatmap(np.log(np.abs(D[:, ::D.shape[1]/10000])),
                 xticklabels = 1000, yticklabels=D.shape[0] / 4,
-                vmin = np.log(np.abs(p_local['min'])), vmax = np.log(np.abs(p_local['max'])))
+                vmin = -4, vmax = 4)
     plt.xlabel('Time compressed to 10,000 timesteps')
     plt.ylabel('Channel')
     plt.title('Step ' + str(p_local['step']) + ' heatmap, log magnitude')
