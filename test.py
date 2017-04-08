@@ -1,4 +1,6 @@
 # coding: utf-8
+import matplotlib as mpl
+mpl.use('Agg')
 import bench.dataset_creation as dc
 import bench.disc_set as d_set
 import bench.utilities as ut
@@ -11,7 +13,7 @@ from pathos.multiprocessing import ProcessingPool as Pool
 import numpy as np
 
 os.chdir('../data')
-factory, labels = ut.data_generator_factory('fake_data')
+factory, labels = ut.data_generator_factory('bids_raw_demo')
 params = {
 	'p_global': {
 	     'hpf': {
@@ -43,12 +45,17 @@ params = {
 }
 level_discs = []
 
+par = Pool(10)
+
 def my_disc(D):
 	return disc.disc_all(D, labels, d_set.TRANSFORMS,
 		                 d_set.METRICS, d_set.NAMES)
 
 def round(D, f, pars):
-	D = [f(d[0], d[1], pars) for d in D]
+        print 'Started round'
+	D = par.imap(lambda d: f(d[0], d[1], pars), D)
+        D = [d for d in D]
+        print 'Finished round, calculating discriminibility'
 	step_discs = my_disc([d[0] for d in D])
 	D = [viz.visualize_matrix(d[0], d[1], pars) for d in D]
 	return (D, step_discs)
@@ -59,12 +66,17 @@ def setup(D, p_local, p_global):
 	p_local['min'] = np.min(D)
 	return (D, p_local)
 
+<<<<<<< HEAD
 #fs = [setup, den.highpass, den.bandstop, den.eog_regress, den.rpca_denoise]
 fs = [setup,
       den.highpass,
       den.bandstop,
       den.eog_regress,
       bad_chans.bad_detec]
+=======
+fs = [setup, den.highpass, den.bandstop, den.eog_regress, den.rpca_denoise]
+#fs = [setup, den.rpca_denoise]
+>>>>>>> d7ba18da714090b5446d2254e672b0d356536564
 
 D = [d for d in factory()]
 
@@ -74,5 +86,7 @@ for f in fs:
 	for d in D:
 		d[1]['step'] = d[1]['step'] + 1
 
-print level_discs
+with open('results.pkl', 'w') as f:
+    import cPickle as pkl
+    pkl.dump(level_discs, f)
 

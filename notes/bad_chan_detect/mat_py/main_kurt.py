@@ -13,14 +13,14 @@ eng = matlab.engine.start_matlab()
 
 # List all patient names
 patient_names = [
-#   "gp_A00051826001",
-#   "bip_A00053375001",
-#   "gip_A00051955001",
-#   "gip_A00053440001",
-#   "gip_A00054417001",
-#   "bip_A00054215001",
-#   "gip_A00054207001",
-    "gp_A00054039001"
+   "gp_A00051826001",
+   "bip_A00053375001",
+   "gip_A00051955001",
+   "gip_A00053440001",
+   "gip_A00054417001",
+   "bip_A00054215001",
+   "gip_A00054207001",
+#   "gp_A00054039001"
 ]
 
 incorrect_patients = []
@@ -28,7 +28,7 @@ incorrect_elec_patients = []
 
 for name in patient_names:
     out = StringIO.StringIO()
-    outfile = open("/home/nitin/hopkins/neurodata/nicolas/analysis/" + name + ".txt", "w")
+    outfile = open("/home/nitin/hopkins/neurodata/nicolas/analysis/" + name + "_kurt.txt", "w")
     
     py_jp = []
     py_rej = []
@@ -48,25 +48,30 @@ for name in patient_names:
         mat_kurt = np.asarray(mat_kurt)
         mat_rej = np.asarray(mat_rej)
         print "MATLAB Local Done"
-        py_kurt, py_rej = kurt_baddetec(test_dat[0], [3])
+        py_kurt, py_rej = kurt_baddetec(test_dat, [3])
+        print py_kurt.shape
         print "Python Local Done"
         diff_kurt = abs(py_kurt - mat_kurt)
-        test_glob_dat = np.reshape(test_dat[0], (test_dat[0].shape[0], test_dat[0].shape[1] * test_dat[0].shape[2]))
+        test_glob_dat = np.reshape(test_dat, (test_dat.shape[0], test_dat.shape[1] * test_dat.shape[2]))
         out = StringIO.StringIO()
-        mat_glob_kurt, mat_glob_rej = eng.rejkurt(to_matlab_comp(test_glob_dat, eng), 1, [], 3, nargout = 2)
+        mat_glob_kurt, mat_glob_rej = eng.rejkurt(to_matlab_comp(test_glob_dat, eng), 3, [], 3, nargout = 2)
         print "MATLAB Global Done"
         mat_glob_kurt = np.asarray(mat_glob_kurt)
         mat_glob_rej = np.asarray(mat_glob_rej)
-        py_glob_kurt, py_glob_rej = kurt_baddetec(test_glob_dat, [1])
-        np.savez("/home/nitin/hopkins/neurodata/nicolas/numpy/" + name, py_kurt=py_kurt, py_rej=py_rej, mat_kurt=mat_kurt, mat_rej=mat_rej, py_glob_kurt=py_glob_kurt, py_glob_rej=py_glob_rej, mat_glob_kurt=mat_glob_kurt, mat_glob_rej=mat_glob_rej)
+        py_glob_kurt, py_glob_rej = kurt_baddetec(test_glob_dat, [3])
+        np.savez("/home/nitin/hopkins/neurodata/nicolas/numpy/" + name + "_kurt.npz", py_kurt=py_kurt, py_rej=py_rej, mat_kurt=mat_kurt, mat_rej=mat_rej, py_glob_kurt=py_glob_kurt, py_glob_rej=py_glob_rej, mat_glob_kurt=mat_glob_kurt, mat_glob_rej=mat_glob_rej)
         print "File saved!"
     else:
         print "Grabbing from saved!"
         load_dat = np.load("/home/nitin/hopkins/neurodata/nicolas/numpy/" + name + "_kurt.npz")
-        py_jp = load_dat['py_jp']
+        py_kurt = load_dat['py_kurt']
         py_rej = load_dat['py_rej']
-        mat_jp = load_dat['mat_jp']
+        mat_kurt = load_dat['mat_kurt']
         mat_rej = load_dat['mat_rej']
+        py_glob_kurt = load_dat['py_glob_kurt']
+        py_glob_rej = load_dat['py_glob_rej']
+        mat_glob_kurt = load_dat['mat_glob_kurt']
+        mat_glob_rej = load_dat['mat_glob_rej']
         diff_kurt = abs(py_kurt - mat_kurt)
     # See results
     diff_kurt = abs(py_kurt - mat_kurt)
@@ -76,8 +81,8 @@ for name in patient_names:
     outfile.write("Mean Python" + str(np.mean(abs(py_kurt))) + "\n")
     outfile.write("Mean MATLAB" + str(np.mean(abs(mat_kurt))) + "\n")
     outfile.write("Same bad elecs" + str(np.array_equal(py_rej[0], np.asarray(mat_rej))) + "\n")
-    outfile.write(mat_rej.any())
-    outfile.write(np.where(np.any(py_rej[0], axis = 1)))
+    outfile.write("Any MATLAB Bad Trials:" + str(mat_rej.any()) + "\n")
+    outfile.write("Any Python Bad Trials" + str(np.where(np.any(py_rej[0], axis = 1))) + "\n")
     bad_elecs = np.where(np.any(py_rej[0], axis = 1))
     outfile.write("Global Kurtoses within .1?:" + str(np.isclose(py_glob_kurt, mat_glob_kurt, atol=.1).all()) + "\n")
     outfile.write("Rejected electrodes the same?:" + str(np.array_equal(py_glob_rej[0], mat_glob_rej)) + "\n")

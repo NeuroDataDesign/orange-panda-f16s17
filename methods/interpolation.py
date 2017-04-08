@@ -90,6 +90,7 @@ def wavelet_coefficient_interp(d, p_local, p_global):
 
 def ssi_wrapper(d, p_local, p_global):
     d, bad_chans = d
+    d = d - np.mean(d, axis=1).reshape(-1, 1)
     print '.'
     bad_chans = np.array(bad_chans, dtype=np.uint8).flatten()
     if bad_chans.size == 0:

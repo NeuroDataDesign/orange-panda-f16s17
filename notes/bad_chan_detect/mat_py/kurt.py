@@ -1,14 +1,8 @@
 import numpy as np
 from scipy.stats import kurtosis
 from scipy.stats import skew
-# import plotly.plotly as py
-# from plotly.offline import download_plotlyjs, init_notebook_mode, iplot, plot
-# from plotly.tools import FigureFactory as FF
-# init_notebook_mode()
 import scipy.io
 import matplotlib.pyplot as plt
-# import matlab.engine
-# eng = matlab.engine.start_matlab()
 import os
 import StringIO
 
@@ -27,6 +21,11 @@ def kurt_baddetec(inEEG, thresh):
     electrodes = inEEG.shape[0]
     trials = inEEG.shape[1]
     timepnts = inEEG.shape[2]
+    print "Electrodes:", electrodes
+    print "Trials:", trials
+    print "Timepnts:", timepnts
+
+    # eng = matlab.engine.start_matlab()
     # Then, initialize a probability vector of electrode length
     kurtvec = np.zeros((electrodes, trials))
     # iterate through electrodes and get kurtoses
