@@ -61,7 +61,7 @@ def disc_plot(discs, disc_names, exp_names):
     for disc_method in range(discs.shape[1]):
         plt.plot(discs[:, disc_method], '*', label = disc_names[disc_method])
     plt.xticks(range(len(exp_names)), exp_names)
-    plt.legend(loc = 'center right', bbox_to_anchor = (1.2, 1))
+    plt.legend(bbox_to_anchor = (1, 1))
     plt.tight_layout()
     ax = plt.gca()
     ax.margins(0.05)

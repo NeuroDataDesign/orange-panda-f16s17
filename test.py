@@ -1,92 +1,143 @@
 # coding: utf-8
 import matplotlib as mpl
+# For Cortex Matplotlib
 mpl.use('Agg')
+
+# bae
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Import benchmarking things
 import bench.dataset_creation as dc
-import bench.disc_set as d_set
 import bench.utilities as ut
 import bench.discriminibility as disc
+import bench.disc_set as d_set
+
+# Import actual methods
 import methods.denoise as den
-import methods.viz as viz
 import methods.bad_chans as bad_chans
+import methods.viz as viz
+import methods.interpolation as inter
+
+# Import operating system utilities
 import os
 from pathos.multiprocessing import ProcessingPool as Pool
-import numpy as np
+import cPickle as pkl
 
+# Make the current working directory the one with the data
 os.chdir('../data')
-factory, labels = ut.data_generator_factory('bids_raw_demo')
-params = {
-	'p_global': {
-	     'hpf': {
-	         'order': 4,
-	         'Fs': 500,
-	         'cutoff': .1
-	     },
-	     'bsf': {
-	         'order': 4,
-	         'Fs': 500,
-	         'cutoff': [59, 61]
-	     },
-		'rpca': {
-		    'max_iter': 15,
-		    'verbose': True,
-		    'pca_method': 'randomized',
-		    'delta': 1e-5,
-		    'mu': .75
-		},
-		'bad_detec': {
-		    'thresh': 3,
-		    'measure': ['prob', 'kurtosis'],
-		    'normalize': 0,
-		    'discret': 1000,
-		    'verbose': False,
-		    'trim': .1
-		}
-	}
-}
-level_discs = []
 
-par = Pool(10)
+# True if plot
+PLOT = True
 
+# Get a factory which will generate the data (from disc)
+factory, labels = ut.data_generator_factory('fake_data')
+
+# Disc
 def my_disc(D):
 	return disc.disc_all(D, labels, d_set.TRANSFORMS,
-		                 d_set.METRICS, d_set.NAMES)
+						 d_set.METRICS, d_set.NAMES)
 
+# Define a round function
 def round(D, f, pars):
-        print 'Started round'
+	# A multiprocessor
+	par = Pool(2)
+	print
+	print
+	print 'Applying', f.__name__
+
 	D = par.imap(lambda d: f(d[0], d[1], pars), D)
-        D = [d for d in D]
-        print 'Finished round, calculating discriminibility'
+	D = [d for d in D]
 	step_discs = my_disc([d[0] for d in D])
-	D = [viz.visualize_matrix(d[0], d[1], pars) for d in D]
+	if PLOT:
+		D = [viz.visualize_matrix(d[0], d[1], pars) for d in D]
 	return (D, step_discs)
 
+
+# Mean center and record max and min value in matrix (for plotting)
 def setup(D, p_local, p_global):
 	D = D - np.mean(D, axis = 1).reshape(-1, 1)
 	p_local['max'] = np.max(D)
 	p_local['min'] = np.min(D)
 	return (D, p_local)
 
-<<<<<<< HEAD
-#fs = [setup, den.highpass, den.bandstop, den.eog_regress, den.rpca_denoise]
+# Set pipeline structure (order of functions applied)
 fs = [setup,
-      den.highpass,
-      den.bandstop,
-      den.eog_regress,
-      bad_chans.bad_detec]
-=======
-fs = [setup, den.highpass, den.bandstop, den.eog_regress, den.rpca_denoise]
-#fs = [setup, den.rpca_denoise]
->>>>>>> d7ba18da714090b5446d2254e672b0d356536564
+	  bad_chans.bad_detec,
+	  inter.ssi_wrapper,
+	  den.highpass,
+	  den.bandstop,
+	  den.eog_regress,
+	  den.rpca_denoise]
 
+# Get channel locations
+with open('chan_locs.pkl', 'r') as f:
+	chan_locs = pkl.load(f)
+
+# Set pipeline parameters
+params = {
+	'p_global': {
+		 'hpf': {
+			 'order': 4,
+			 'Fs': 500,
+			 'cutoff': .1
+		 },
+		 'bsf': {
+			 'order': 4,
+			 'Fs': 500,
+			 'cutoff': [59, 61]
+		 },
+		'rpca': {
+			'max_iter': 15,
+			'verbose': True,
+			'pca_method': 'randomized',
+			'delta': 1e-7,
+			'mu': None
+		},
+		'bad_detec': {
+			'thresh': 2,
+			'measure': ['prob', 'kurtosis'],
+			'normalize': 0,
+			'discret': 1000,
+			'verbose': PLOT,
+			'trim': .1
+		},
+		'inter': {
+		    'chan_locs': chan_locs,
+		    's': 10
+		}
+	}
+}
+
+# Unpack the generator to get a 'data array'
+# This is actually a list of functions which returns a data
 D = [d for d in factory()]
 
+# Keep track of discriminibility as we take steps in the pipeline
+level_discs = []
+
+# Apply each function and get the discriminibility.
 for f in fs:
+	for d in D:
+		d[1]['function_name'] = f.__name__
+
 	D, step_disc = round(D, f, params['p_global'])
 	level_discs.append(step_disc)
+
+	# Increase the step variable in the metadata
 	for d in D:
 		d[1]['step'] = d[1]['step'] + 1
 
+
+f_names = map(lambda x: x.__name__, fs)
+
+# Save disc plot
+disc.disc_plot(level_discs, d_set.NAMES, f_names)
+plt.savefig('figs/level_discs.png')
+
+# Save the results
 with open('results.pkl', 'w') as f:
-    import cPickle as pkl
-    pkl.dump(level_discs, f)
+	import cPickle as pkl
+	pkl.dump(level_discs, f)
+	print 'Saved at results.pkl'
 

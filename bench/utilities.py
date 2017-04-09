@@ -39,7 +39,8 @@ def data_generator_factory(dataset):
                 pkl_path = '%s/%s/eeg/%s.pkl' % (dataset, subject, trial)
                 p_local = {
                     'fig_path': fig_path,
-                    'step': 0
+                    'step': 0,
+                    'function_name': 'Raw'
                 }
                 yield (load_data(pkl_path), p_local)
 

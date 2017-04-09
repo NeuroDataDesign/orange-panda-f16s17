@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from scipy.stats import norm, kurtosis
 import seaborn as sns
 from viz import bad_chan_plot
-
-
+import sys
+import traceback
 
 def bad_detec(D, p_local, p_global):
     all_bcs = []
@@ -18,11 +18,16 @@ def bad_detec(D, p_local, p_global):
         thresh = p_global['bad_detec']['thresh']
         chans = np.arange(D.shape[0])
         bad_chans = chans[np.logical_or(statistics < -thresh, statistics > thresh)]
-        bad_chan_plot(statistics, p_local, meas)
-        all_bcs.append(bad_chans)
-    all_bcs = np.hstack(all_bcs)
-    p_local.update({'bad_chans': all_bcs})
-    D[p_local['bad_chans'], :] = 0
+        bad_chan_plot(statistics, p_local, meas, thresh)
+        if p_global['bad_detec']['verbose']:
+            all_bcs.append(bad_chans)
+    if len(all_bcs) > 0:
+        all_bcs = np.hstack(all_bcs)
+        p_local.update({'bad_chans': all_bcs})
+        D[p_local['bad_chans'], :] = 0
+    else:
+        all_bcs = None
+        p_local.update({'bad_chans': all_bcs})
     return (D, p_local)
 
 def gaussian_normalize(samples):

@@ -88,18 +88,16 @@ def wavelet_coefficient_interp(d, p_local, p_global):
             plt.show()
     return d_int
 
-def ssi_wrapper(d, p_local, p_global):
-    d, bad_chans = d
-    d = d - np.mean(d, axis=1).reshape(-1, 1)
-    print '.'
-    bad_chans = np.array(bad_chans, dtype=np.uint8).flatten()
-    if bad_chans.size == 0:
-        return d
-    coords = p_global['chan_locs']
+def ssi_wrapper(D, p_local, p_global):
+    bad_chans = p_local['bad_chans']
+    if bad_chans is None:
+        return (D, p_local)
+    coords = p_global['inter']['chan_locs']
     coords = map(lambda x: cart2sph(*x), zip(coords[:, 0], coords[:, 1], coords[:, 2]))
     coords = np.vstack(coords)
-    s_val = p_global['s']
-    return intp(d, coords, bad_chans, s = s_val) 
+    s_val = p_global['inter']['s']
+    D = intp(D, coords, bad_chans, s = s_val)
+    return (D, p_local) 
 
 def intp(D, coords, rm_idx, s=1000):
     old = D[rm_idx, :]
@@ -132,9 +130,11 @@ def ssi(E, P, s):
         try:
             F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
                                     E, s=s)
+            if np.random.random() < .001:
+                print 's = ', s
         except:
             F = None
-            s = s ** 2
+            s = s * 2
     return F    
 
 
