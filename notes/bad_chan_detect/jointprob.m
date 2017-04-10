@@ -51,7 +51,7 @@
 % along with this program; if not, write to the Free Software
 % Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-function [jp, rej] = jointprob( signal, threshold, oldjp, normalize, discret );
+function [actualjp, jp, rej] = jointprob( signal, threshold, oldjp, normalize, discret );
 
 if nargin < 1
 	help jointprob;
@@ -77,7 +77,7 @@ end;
 
 [nbchan pnts sweeps] = size(signal);
 jp  = zeros(nbchan,sweeps);
-
+actualjp = zeros(nbchan,sweeps)
 if exist('oldjp') & ~isempty( oldjp ) % speed up the computation
 	jp = oldjp;
 else
@@ -91,28 +91,29 @@ else
 		% -------------------
 		for index=1:sweeps
 			datatmp = dataProba((index-1)*pnts+1:index*pnts);
+            actualjp = datatmp
 			jp(rc, index) = - sum( log( datatmp ) ); 
 			     % - sum( datatmp .* log( datatmp ) ); would be the entropy
 		end;
 	end;
     
-	% normalize the last dimension
-	% ----------------------------	
-	if normalize
-        tmpjp = jp;
-        if normalize == 2,
-            tmpjp = sort(jp);
-            tmpjp = tmpjp(round(length(tmpjp)*0.1):end-round(length(tmpjp)*0.1));
-        end;
-        try, 
-            switch ndims( signal )
-             case 2,	jp = (jp-mean(tmpjp)) / std(tmpjp); disp(mean(tmpjp)); disp(std(tmpjp));
-             case 3,	jp = (jp-mean(tmpjp,2)*ones(1,size(jp,2)))./ ...
-                  (std(tmpjp,0,2)*ones(1,size(jp,2)));
-            end;
-        catch, error('Error while normalizing'); end;
-	end;
-end	
+% 	% normalize the last dimension
+% 	% ----------------------------	
+% 	if normalize
+%         tmpjp = jp;
+%         if normalize == 2,
+%             tmpjp = sort(jp);
+%             tmpjp = tmpjp(round(length(tmpjp)*0.1):end-round(length(tmpjp)*0.1));
+%         end;
+%         try, 
+%             switch ndims( signal )
+%              case 2,	jp = (jp-mean(tmpjp)) / std(tmpjp); disp(mean(tmpjp)); disp(std(tmpjp));
+%              case 3,	jp = (jp-mean(tmpjp,2)*ones(1,size(jp,2)))./ ...
+%                   (std(tmpjp,0,2)*ones(1,size(jp,2)));
+%             end;
+%         catch, error('Error while normalizing'); end;
+% 	end;
+% end	
 
 % reject
 % ------	

@@ -56,8 +56,10 @@ def jointprob(S, thresh, oldjp, normalize, discret = 1000):
             jp = np.asarray(jp)
             jp = -np.sum(jp, axis=2)    
         elif S.ndim == 2:
+            print "Swag"
             jp, dist = realproba(S[:,:], discret)
-            jp = -np.sum(jp, axis=1)    
+            jp = -np.sum(np.log(jp), axis=1)
+            print np.mean(jp), np.std(jp)
     # Normalize data
     if normalize:
         tmpjp = jp
@@ -67,8 +69,6 @@ def jointprob(S, thresh, oldjp, normalize, discret = 1000):
             tmpjp = tmpjp[totrim : -totrim]
         if S.ndim == 2:
             jp = (jp - np.mean(tmpjp)) / np.std(tmpjp)
-            print np.mean(tmpjp)
-            print np.std(tmpjp)
         elif S.ndim == 3:
             ones = np.ones(jp.shape)
             mean = np.mean(jp, axis=1, keepdims=True)
