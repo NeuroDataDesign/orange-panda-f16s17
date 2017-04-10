@@ -88,21 +88,21 @@ def wavelet_coefficient_interp(d, p_local, p_global):
             plt.show()
     return d_int
 
-def ssi_wrapper(d, p_local, p_global):
-    d, bad_chans = d
-    print '.'
-    bad_chans = np.array(bad_chans, dtype=np.uint8).flatten()
-    if bad_chans.size == 0:
-        return d
-    coords = p_global['chan_locs']
+def ssi_wrapper(D, p_local, p_global):
+    bad_chans = p_local['bad_chans']
+    if bad_chans is None:
+        return (D, p_local)
+    coords = p_global['inter']['chan_locs']
     coords = map(lambda x: cart2sph(*x), zip(coords[:, 0], coords[:, 1], coords[:, 2]))
     coords = np.vstack(coords)
-    s_val = p_global['s']
-    return intp(d, coords, bad_chans, s = s_val) 
+    s_val = p_global['inter']['s']
+    D = intp(D, coords, bad_chans, p_local['eog_chans'],  s = s_val)
+    return (D, p_local) 
 
-def intp(D, coords, rm_idx, s=1000):
+def intp(D, coords, rm_idx, eog_chans, s=1000):
     old = D[rm_idx, :]
     samp_idx = np.setdiff1d(np.arange(D.shape[0]), rm_idx)
+    samp_idx = np.setdiff1d(samp_idx, eog_chans)
     sample = D[samp_idx]
     F = []
     for i in range(sample.shape[1]):
@@ -127,10 +127,12 @@ def intp(D, coords, rm_idx, s=1000):
 def ssi(E, P, s):
     s_orig = s
     F = None
-    while F is None:
+    while F is None and s:
         try:
             F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
                                     E, s=s)
+            if np.random.random() < .0001:
+                print 's = ', s
         except:
             F = None
             s = s ** 2

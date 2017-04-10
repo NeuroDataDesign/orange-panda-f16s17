@@ -23,9 +23,14 @@ def data_generator_factory(dataset):
     def data_gen():
         c = -1
         for i, subject in enumerate(subjects):
+            try:
+                sub_path = 'figs/' + subject 
+                os.makedirs(sub_path)
+            except:
+                print 'Already exists figure folder for ', subject
             for trial in range(1, trials[i] + 1):
                 trial = '%s_trial-%02d' % (subject, int(trial))
-                fig_path = 'figs/' + trial + '/'
+                fig_path = 'figs/' + subject + '/' + trial + '/'
                 try:
                     os.makedirs(fig_path)
                 except:
@@ -34,7 +39,8 @@ def data_generator_factory(dataset):
                 pkl_path = '%s/%s/eeg/%s.pkl' % (dataset, subject, trial)
                 p_local = {
                     'fig_path': fig_path,
-                    'step': 0
+                    'step': 0,
+                    'function_name': 'Raw'
                 }
                 yield (load_data(pkl_path), p_local)
 
