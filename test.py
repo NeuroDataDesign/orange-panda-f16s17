@@ -29,12 +29,13 @@ os.chdir('../data')
 
 # True if plot
 PLOT = True
+DOWNSAMPLE = 1
 
 # Set our dataset
-DATASET = "bids_raw2"
+DATASET = "bids_raw_demo"
 
 # Num cores
-NCORE = 9
+NCORE = 8
 
 # Get a factory which will generate the data (from disc)
 factory, labels = ut.data_generator_factory(DATASET)
@@ -62,6 +63,7 @@ def round(D, f, pars):
 
 # Mean center and record max and min value in matrix (for plotting)
 def setup(D, p_local, p_global):
+        D = D[:, ::DOWNSAMPLE]
 	D = D - np.mean(D, axis = 1).reshape(-1, 1)
         zero_chans = []
 	p_local['max'] = np.max(D)
@@ -75,9 +77,9 @@ def setup(D, p_local, p_global):
 fs = [setup,
   den.highpass,
   den.bandstop,
-  den.eog_regress,
   bad_chans.bad_detec,
   inter.ssi_wrapper,
+  den.eog_regress,
   den.rpca_denoise]
 
 # Get channel locations
@@ -89,16 +91,16 @@ params = {
 	'p_global': {
 		 'hpf': {
 			 'order': 4,
-			 'Fs': 500,
+			 'Fs': 500 * DOWNSAMPLE,
 			 'cutoff': .1
 		 },
 		 'bsf': {
 			 'order': 4,
-			 'Fs': 500,
+			 'Fs': 500 * DOWNSAMPLE,
 			 'cutoff': [59, 61]
 		 },
 		'rpca': {
-			'max_iter': 250,
+			'max_iter': 10,
 			'verbose': True,
 			'pca_method': 'randomized',
 			'delta': 1e-7,
@@ -114,7 +116,7 @@ params = {
 		},
 		'inter': {
 		    'chan_locs': chan_locs,
-		    's': 2
+		    's': 10
 		}
 	}
 }

@@ -90,7 +90,7 @@ def wavelet_coefficient_interp(d, p_local, p_global):
 
 def ssi_wrapper(D, p_local, p_global):
     bad_chans = p_local['bad_chans']
-    if bad_chans is None:
+    if bad_chans.size == 0:
         return (D, p_local)
     coords = p_global['inter']['chan_locs']
     coords = map(lambda x: cart2sph(*x), zip(coords[:, 0], coords[:, 1], coords[:, 2]))
@@ -127,7 +127,7 @@ def intp(D, coords, rm_idx, eog_chans, s=1000):
 def ssi(E, P, s):
     s_orig = s
     F = None
-    while F is None and s:
+    while F is None and s < 1000:
         try:
             F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
                                     E, s=s)
@@ -135,7 +135,7 @@ def ssi(E, P, s):
                 print 's = ', s
         except:
             F = None
-            s = s ** 2
+            s = s * 2
     return F    
 
 
