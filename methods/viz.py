@@ -36,9 +36,9 @@ def bad_chan_plot(statistics, p_local, measure, thresh):
 def visualize_matrix(D, p_local, p_global):
     plt.figure()
     compress = D.shape[1]/10000
-    sns.heatmap(D[:, ::compress], xticklabels = 1000, yticklabels=D.shape[0] / 4,
-                vmin = p_local['min'], vmax = p_local['max'])
-    plt.xlabel('Time compressed to 10,000 timesteps')
+    sns.heatmap(D[:, ::compress], xticklabels = 1000, yticklabels=D.shape[0] / 4)
+#                vmin = p_local['min'], vmax = p_local['max'])
+    plt.xlabel('Time compressed to 10000 timesteps')
     plt.ylabel('Channel')
     plt.title(p_local['function_name'] + ' heatmap')
     cbar = plt.gca().collections[0].colorbar
@@ -48,15 +48,28 @@ def visualize_matrix(D, p_local, p_global):
     plt.cla()
     plt.close()
     sns.heatmap(np.sign(D[:, ::compress]) * np.sqrt(np.abs(D[:, ::compress])),
-                xticklabels = 1000, yticklabels=D.shape[0] / 4,
-                vmin = np.sign(p_local['min']) * np.sqrt(np.abs(p_local['min'])),
-                vmax = np.sign(p_local['max']) * np.sqrt(np.abs(p_local['max'])))
-    plt.xlabel('Time compressed to 10,000 timesteps')
+                xticklabels = 1000, yticklabels=D.shape[0] / 4)
+                #vmin = np.sign(p_local['min']) * np.sqrt(np.abs(p_local['min'])),
+                #vmax = np.sign(p_local['max']) * np.sqrt(np.abs(p_local['max'])))
+    plt.xlabel('Time compressed to 10000 timesteps')
     plt.ylabel('Channel')
     plt.title(p_local['function_name'] + ' ' + ' heatmap')
     cbar = plt.gca().collections[0].colorbar
     cbar.set_label(r"$sgn(z)\sqrt{\vert z \vert} z$, = mV", labelpad=20, rotation=270)
     plt.savefig(p_local['fig_path'] + 'heatsqrt' + str(p_local['step']))
+    plt.clf()
+    plt.cla()
+    plt.close()
+    sns.heatmap(np.sign(D[:, ::compress]) * np.sqrt(np.sqrt(np.abs(D[:, ::compress]))),
+                xticklabels = 1000, yticklabels=D.shape[0] / 4)
+                #vmin = np.sign(p_local['min']) * np.sqrt(np.abs(p_local['min'])),
+                #vmax = np.sign(p_local['max']) * np.sqrt(np.abs(p_local['max'])))
+    plt.xlabel('Time compressed to 10,000 timesteps')
+    plt.ylabel('Channel')
+    plt.title(p_local['function_name'] + ' ' + ' heatmap')
+    cbar = plt.gca().collections[0].colorbar
+    cbar.set_label(r"$sgn(z)(\vert z \vert)^{\frac{1}{4}} z$, = mV", labelpad=20, rotation=270)
+    plt.savefig(p_local['fig_path'] + 'heatquadrt' + str(p_local['step']))
     plt.clf()
     plt.cla()
     plt.close()

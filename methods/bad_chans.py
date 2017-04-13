@@ -5,18 +5,27 @@ import seaborn as sns
 from viz import bad_chan_plot
 import sys
 import traceback
+from denoise import EOG_CHANS
 
 def bad_detec(D, p_local, p_global):
-    all_bcs = []
+    zero_chans = []
+    for c in range(D.shape[0]):
+        if np.sum(D[c, :]) == 0:
+	    zero_chans.append(c)
+    zero_chans = np.array(zero_chans, dtype=np.uint8)
+    all_bcs = [zero_chans]
     for meas in p_global['bad_detec']['measure']:
+        chans = np.arange(D.shape[0])
+        chans = np.setdiff1d(chans, EOG_CHANS)
+        chans = np.setdiff1d(chans, zero_chans)
         statistics = get_statistic(
                            D,
                            meas,
                            p_global['bad_detec']['trim'],
                            p_global['bad_detec']['discret'],
-                           p_global['bad_detec']['verbose'])
+                           p_global['bad_detec']['verbose'],
+                           chans)
         thresh = p_global['bad_detec']['thresh']
-        chans = np.arange(D.shape[0])
         bad_chans = chans[np.logical_or(statistics < -thresh, statistics > thresh)]
         bad_chan_plot(statistics, p_local, meas, thresh)
         if p_global['bad_detec']['verbose']:
@@ -24,7 +33,7 @@ def bad_detec(D, p_local, p_global):
     if len(all_bcs) > 0:
         all_bcs = np.hstack(all_bcs)
         p_local.update({'bad_chans': all_bcs})
-        D[p_local['bad_chans'], :] = 0
+        D[all_bcs, :] = 0
     else:
         all_bcs = None
         p_local.update({'bad_chans': all_bcs})
@@ -58,14 +67,14 @@ def get_cdf(array, ticks):
     return np.array(map(lambda t: np.mean(array < t), ticks))
 
 
-def get_statistic(D, measure, trim, discret, verbose):
+def get_statistic(D, measure, trim, discret, verbose, chans):
     # get num chans and time
     channels = D.shape[0]
     timepts = D.shape[1]
 
     statistic = []
 
-    for c in range(channels):
+    for c in chans:
         ra = D[c, :]
         if measure == 'prob':
             ra = gaussian_normalize(ra)

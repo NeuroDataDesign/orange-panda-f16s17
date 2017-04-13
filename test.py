@@ -29,9 +29,16 @@ os.chdir('../data')
 
 # True if plot
 PLOT = True
+DOWNSAMPLE = 1
+
+# Set our dataset
+DATASET = "bids_raw_demo"
+
+# Num cores
+NCORE = 8
 
 # Get a factory which will generate the data (from disc)
-factory, labels = ut.data_generator_factory('fake_data')
+factory, labels = ut.data_generator_factory(DATASET)
 
 # Disc
 def my_disc(D):
@@ -41,7 +48,7 @@ def my_disc(D):
 # Define a round function
 def round(D, f, pars):
 	# A multiprocessor
-	par = Pool(2)
+	par = Pool(NCORE)
 	print
 	print
 	print 'Applying', f.__name__
@@ -56,22 +63,27 @@ def round(D, f, pars):
 
 # Mean center and record max and min value in matrix (for plotting)
 def setup(D, p_local, p_global):
+        D = D[:, ::DOWNSAMPLE]
 	D = D - np.mean(D, axis = 1).reshape(-1, 1)
+        zero_chans = []
 	p_local['max'] = np.max(D)
 	p_local['min'] = np.min(D)
+        eeg_chans = np.setdiff1d(np.arange(D.shape[0]), den.EOG_CHANS)
+        p_local['eeg_chans'] = eeg_chans
+        p_local['eog_chans'] = den.EOG_CHANS
 	return (D, p_local)
 
 # Set pipeline structure (order of functions applied)
 fs = [setup,
-	  bad_chans.bad_detec,
-	  inter.ssi_wrapper,
-	  den.highpass,
-	  den.bandstop,
-	  den.eog_regress,
-	  den.rpca_denoise]
+  den.highpass,
+  den.bandstop,
+  bad_chans.bad_detec,
+  inter.ssi_wrapper,
+  den.eog_regress,
+  den.rpca_denoise]
 
 # Get channel locations
-with open('chan_locs.pkl', 'r') as f:
+with open(DATASET + '/chan_locs.pkl', 'r') as f:
 	chan_locs = pkl.load(f)
 
 # Set pipeline parameters
@@ -79,28 +91,28 @@ params = {
 	'p_global': {
 		 'hpf': {
 			 'order': 4,
-			 'Fs': 500,
+			 'Fs': 500 * DOWNSAMPLE,
 			 'cutoff': .1
 		 },
 		 'bsf': {
 			 'order': 4,
-			 'Fs': 500,
+			 'Fs': 500 * DOWNSAMPLE,
 			 'cutoff': [59, 61]
 		 },
 		'rpca': {
-			'max_iter': 15,
+			'max_iter': 10,
 			'verbose': True,
 			'pca_method': 'randomized',
 			'delta': 1e-7,
 			'mu': None
 		},
 		'bad_detec': {
-			'thresh': 2,
+			'thresh': 3,
 			'measure': ['prob', 'kurtosis'],
 			'normalize': 0,
 			'discret': 1000,
 			'verbose': PLOT,
-			'trim': .1
+			'trim': None
 		},
 		'inter': {
 		    'chan_locs': chan_locs,
