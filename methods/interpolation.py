@@ -39,18 +39,21 @@ def neighbors(chan, chan_locs, candidates, k, r):
     tot = np.sum(dist)
     return dist, closest, tot
 
-def wavelet_coefficient_interp(d, p_local, p_global):
-    d, bad_chans = d
-    bad_chans = np.array(bad_chans, dtype=np.uint8).flatten()
+def wavelet_coefficient_interp(D, p_local, p_global):
+    bad_chans = p_local['bad_chans']
     if bad_chans.size == 0:
-        return d
+        return (D, p_local)
+    old = D[bad_chans, :]
+    samp_idx = np.setdiff1d(np.arange(D.shape[0]), bad_chans)
+    samp_idx = np.setdiff1d(bad_chans, eog_chans)
+    sample = D[samp_idx]
     C = d.shape[0]
     T = d.shape[1]
-    chan_locs = p_global['chan_locs']
-    wave = p_global['wave']
-    r = p_global['loc_unit']
-    v = p_global['verbose']
-    k = p_global['k']
+    chan_locs = p_global['inter']['chan_locs']
+    wave = p_global['inter']['wave']
+    r = p_global['inter']['loc_unit']
+    v = p_global['inter']['verbose']
+    k = p_global['inter']['k']
 
     # Transform to wavelet coefficients
     coefs = [pywt.wavedec(d[c, :], wave) for c in range(C)]
@@ -128,9 +131,11 @@ def ssi(E, P, s):
     F = None
     try:
         F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
-	                      		E, s=s)
+	                    		E, s=s)
     except:
         F = None
+    if np.random.random() < .0001:
+        print 'did thing'
     return F    
 
 

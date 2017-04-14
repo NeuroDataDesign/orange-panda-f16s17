@@ -78,7 +78,7 @@ fs = [setup,
   den.highpass,
   den.bandstop,
   bad_chans.bad_detec,
-  inter.ssi_wrapper,
+  inter.wavelet_coefficient_interp,
   den.eog_regress,
   den.rpca_denoise]
 
@@ -116,7 +116,10 @@ params = {
 		},
 		'inter': {
 		    'chan_locs': chan_locs,
-		    's': 1000
+		    'loc_unit': 'radians',
+                    'verbose': False,
+                    'k': 5,
+                    'wave': 'db2'
 		}
 	}
 }
