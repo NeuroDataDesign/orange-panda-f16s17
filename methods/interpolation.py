@@ -125,17 +125,12 @@ def intp(D, coords, rm_idx, eog_chans, s=1000):
 
 
 def ssi(E, P, s):
-    s_orig = s
     F = None
-    while F is None and s < 1000:
-        try:
-            F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
-                                    E, s=s)
-            if np.random.random() < .0001:
-                print 's = ', s
-        except:
-            F = None
-            s = s * 2
+    try:
+        F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
+	                      		E, s=s)
+    except:
+        F = None
     return F    
 
 

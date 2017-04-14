@@ -35,7 +35,7 @@ DOWNSAMPLE = 1
 DATASET = "bids_raw_demo"
 
 # Num cores
-NCORE = 8
+NCORE = 2
 
 # Get a factory which will generate the data (from disc)
 factory, labels = ut.data_generator_factory(DATASET)
@@ -116,7 +116,7 @@ params = {
 		},
 		'inter': {
 		    'chan_locs': chan_locs,
-		    's': 10
+		    's': 1000
 		}
 	}
 }
