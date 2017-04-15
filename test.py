@@ -32,10 +32,10 @@ PLOT = True
 DOWNSAMPLE = 1
 
 # Set our dataset
-DATASET = "bids_raw_demo"
+DATASET = "fake_data"
 
 # Num cores
-NCORE = 2
+NCORE = 4 
 
 # Get a factory which will generate the data (from disc)
 factory, labels = ut.data_generator_factory(DATASET)
@@ -53,7 +53,7 @@ def round(D, f, pars):
 	print
 	print 'Applying', f.__name__
 
-	D = par.imap(lambda d: f(d[0], d[1], pars), D)
+	D = map(lambda d: f(d[0], d[1], pars), D)
 	D = [d for d in D]
 	step_discs = my_disc([d[0] for d in D])
 	if PLOT:
@@ -117,8 +117,8 @@ params = {
 		'inter': {
 		    'chan_locs': chan_locs,
 		    'loc_unit': 'radians',
-                    'verbose': False,
-                    'k': 5,
+                    'verbose': PLOT,
+                    'k': 3,
                     'wave': 'db2'
 		}
 	}
