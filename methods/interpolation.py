@@ -39,23 +39,23 @@ def neighbors(chan, chan_locs, candidates, k, r):
     tot = np.sum(dist)
     return dist, closest, tot
 
-def wavelet_coefficient_interp(d, p_local, p_global):
-    d, bad_chans = d
-    bad_chans = np.array(bad_chans, dtype=np.uint8).flatten()
+def wavelet_coefficient_interp(D, p_local, p_global):
+    bad_chans = p_local['bad_chans']
+    eog_chans = p_local['eog_chans']
     if bad_chans.size == 0:
-        return d
-    C = d.shape[0]
-    T = d.shape[1]
-    chan_locs = p_global['chan_locs']
-    wave = p_global['wave']
-    r = p_global['loc_unit']
-    v = p_global['verbose']
-    k = p_global['k']
+        return (D, p_local)
+    C = D.shape[0]
+    T = D.shape[1]
+    chan_locs = p_global['inter']['chan_locs']
+    wave = p_global['inter']['wave']
+    r = p_global['inter']['loc_unit']
+    v = p_global['inter']['verbose']
+    k = p_global['inter']['k']
 
     # Transform to wavelet coefficients
-    coefs = [pywt.wavedec(d[c, :], wave) for c in range(C)]
-    orig_coefs = copy.deepcopy(coefs)
+    coefs = [pywt.wavedec(D[c, :], wave) for c in range(C)]
     candidates = np.setdiff1d(range(C), bad_chans)
+    candidates = np.setdiff1d(range(C), eog_chans)
     for bc in bad_chans:
         dist, neigh, tot = neighbors(bc, chan_locs, candidates, k, r)
         num_levels = len(coefs[bc])
@@ -64,33 +64,12 @@ def wavelet_coefficient_interp(d, p_local, p_global):
             print 'distances =', dist, 'num levels =', num_levels
         for i in range(num_levels)[1:]:
             coefs[bc][i] = np.sum([coefs[n][i] * dist[p]/tot for p, n in enumerate(neigh)], axis=0)
-    d_int = np.vstack([pywt.waverec(c, wave) for c in coefs])
-
-    # Plotting
-    if v:
-        import matplotlib.pyplot as plt
-        timesteps = np.arange(T)* 1./500
-        for c in bad_chans:
-            _, neigh, _ = neighbors(c, chan_locs, np.setdiff1d(np.arange(C), bad_chans), k, r)
-            # Plot the original bad electrode
-            plt.plot(timesteps, d[c, :], color='blue',
-                     linewidth = 1, label = 'bad ' + str(c))
-
-            # Plot electrodes we interpolate against
-            for n in neigh:
-                plt.plot(timesteps, d_int[n, :], color='red',
-                         linewidth = 1, label = 'neigh ' + str(n))
-
-            # Plot the interpolated electrode
-            plt.plot(timesteps, d_int[c, :], color='green',
-                     linewidth = 1, label = 'interp')
-            plt.legend()
-            plt.show()
-    return d_int
+    D_int = np.vstack([pywt.waverec(c, wave) for c in coefs])
+    return (D_int, p_local)
 
 def ssi_wrapper(D, p_local, p_global):
     bad_chans = p_local['bad_chans']
-    if bad_chans is None:
+    if bad_chans.size == 0:
         return (D, p_local)
     coords = p_global['inter']['chan_locs']
     coords = map(lambda x: cart2sph(*x), zip(coords[:, 0], coords[:, 1], coords[:, 2]))
@@ -125,17 +104,14 @@ def intp(D, coords, rm_idx, eog_chans, s=1000):
 
 
 def ssi(E, P, s):
-    s_orig = s
     F = None
-    while F is None and s:
-        try:
-            F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
-                                    E, s=s)
-            if np.random.random() < .0001:
-                print 's = ', s
-        except:
-            F = None
-            s = s ** 2
+    try:
+        F = SmoothSphereBivariateSpline(P[:, 0], P[:, 1],
+	                    		E, s=s)
+    except:
+        F = None
+    if np.random.random() < .0001:
+        print 'did thing'
     return F    
 
 

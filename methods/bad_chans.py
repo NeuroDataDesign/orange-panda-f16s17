@@ -78,7 +78,7 @@ def get_statistic(D, measure, trim, discret, verbose, chans):
         ra = D[c, :]
         if measure == 'prob':
             ra = gaussian_normalize(ra)
-            if trim is not None:
+            if trim is not trim:
                 #qq_plot(ra, title = 'qq-plot before gaussian trim')
                 ra = gaussian_trim(ra, .1)
                 ra = gaussian_normalize(ra)
