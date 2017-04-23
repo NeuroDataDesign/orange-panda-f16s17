@@ -26,27 +26,29 @@ def create_env():
     """
     Create the definiition in Batch if it hasn't been done yet
     """
-    # Create computer environment
-#   cmd_template = 'aws batch create-compute-environment --cli-input-json file://{}'
-#   def_json = 'env_template.json'
-#   cmd = cmd_template.format(def_json)
-#   out, err = execute_cmd(cmd)
+    # Check computer environment
+    cmd_template = 'aws batch describe-compute-environments  --compute-environments {}'
+    env_name = 'pseudo-orange-panda4'
+    cmd = cmd_template.format(env_name)
+    out, err = execute_cmd(cmd)
+    result = json.loads(out)
+    if len(result['computeEnvironments']) == 0:
+        cmd_template = 'aws batch create-compute-environment --cli-input-json file://{}'
+        def_json = 'env_template.json'
+        cmd = cmd_template.format(def_json)
+        out, err = execute_cmd(cmd)
 
     # Create queue 
-#   cmd_template = 'aws batch check-job-queue --cli-input-json file://{}'
-#   queue_name = 'queue_template.json'
-#   cmd = cmd_template.format(def_json)
-#   out, err = execute_cmd(cmd)
-#   submission = ast.literal_eval(out)
-#   sub_file = submission['jobQueueName']+'_out.json'
-#   with open(sub_file, 'w') as outfile:
-#       json.dump(submission, outfile)
-#   with open(sub_file, 'r') as outfile:
-#       json.load(submission, outfile)
-
-#   cmd_template = 'aws batch create-job-queue --cli-input-json file://{}'
-#   q_json = 'queue_template.json'
-#   cmd = cmd_template.format(q_json)
+    cmd_template = 'aws batch describe-job-queues--job-queues {}'
+    env_name = 'pseudo-job-queue'
+    cmd = cmd_template.format(env_name)
+    out, err = execute_cmd(cmd)
+    result = json.loads(out)
+    if len(result['jobQueues']) == 0:
+        cmd_template = 'aws batch create-job-queue --cli-input-json file://{}'
+        def_json = 'queue_template.json'
+        cmd = cmd_template.format(def_json)
+        out, err = execute_cmd(cmd)
 
     # Create job definition
     cmd_template = 'aws batch register-job-definition --cli-input-json file://{}'
