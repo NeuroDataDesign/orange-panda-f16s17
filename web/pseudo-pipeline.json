@@ -1,0 +1,14 @@
+{
+    "jobDefinitionName": "actual-pseudo-pipeline", 
+    "type": "container", 
+    "containerProperties": {
+        "image": "nkumarcc/pseudo_pipeline", 
+        "vcpus": 2, 
+        "memory": 2000, 
+        "readonlyRootFilesystem": false, 
+        "privileged": false 
+    },
+    "retryStrategy": {
+        "attempts": 2
+    }
+}

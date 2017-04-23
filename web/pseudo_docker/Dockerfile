@@ -8,4 +8,4 @@ COPY ./pseudo.sh /src/
 RUN ["chmod", "+x", "/src/pseudo.sh"]
 RUN mkdir /src/data /src/out
 ENTRYPOINT ["/src/pseudo.sh"]
-CMD ["panda.swerve"]
+CMD ["panda.swerve", "input.txt", "", "out"]

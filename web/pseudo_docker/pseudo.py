@@ -20,8 +20,11 @@ def pipeline(inFile, outFile):
     
 
 def main():
+    print sys.argv
     bucket_name = sys.argv[1]
     data = sys.argv[2]
+    path = sys.argv[3]
+    out_path = sys.argv[4]
     
     # Let's use Amazon S3
     s3 = boto3.resource('s3')
@@ -29,10 +32,17 @@ def main():
     exists = True
 
     # get all items in bucket
-    inFile = '/src/data/' + data
-    outFile = 'out/out_' + data
-    bucket.download_file(obj.key, inFile)
-    pipeline(inFile, '/src/' + outFile)
-    bucket.upload_file('/src/' + outFile, outFile)
+    locInFile = '/src/data/' + data
+    inFile = data
+    if path != "":
+        inFile = path + '/' + data
+    locOutFile = '/src/out/out_' + data
+    outFile = data
+    if out_path != "":
+        outFile = out_path + '/out_' + data
+    print inFile
+    bucket.download_file(inFile, locInFile)
+    pipeline(locInFile, locOutFile)
+    bucket.upload_file(locOutFile, outFile)
 
 if __name__ == "__main__": main()

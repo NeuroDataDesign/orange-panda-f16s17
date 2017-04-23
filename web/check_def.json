@@ -1,0 +1,26 @@
+{
+    "jobDefinitions": [
+        {
+            "status": "INACTIVE", 
+            "jobDefinitionArn": "arn:aws:batch:us-east-1:073388476884:job-definition/actual-pseudo-pipeline:1", 
+            "parameters": {}, 
+            "retryStrategy": {
+                "attempts": 1
+            }, 
+            "containerProperties": {
+                "mountPoints": [], 
+                "image": "nkumarcc/pseudo_pipeline", 
+                "environment": [], 
+                "vcpus": 2, 
+                "command": [], 
+                "volumes": [], 
+                "memory": 2000, 
+                "privileged": false, 
+                "ulimits": []
+            }, 
+            "type": "container", 
+            "jobDefinitionName": "actual-pseudo-pipeline", 
+            "revision": 1
+        }
+    ]
+}

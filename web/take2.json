@@ -1,0 +1,50 @@
+{
+    "jobDefinitionName": "pseudo-orange-pipeline", 
+    "type": "container", 
+    "parameters": {
+        "KeyName": ""
+    }, 
+    "containerProperties": {
+        "image": "nkumarcc/pseudo_pipeline", 
+        "vcpus": 2, 
+        "memory": 2000, 
+        "command": [
+            ""
+        ], 
+        "jobRoleArn": "", 
+        "volumes": [
+            {
+                "host": {
+                    "sourcePath": ""
+                }, 
+                "name": ""
+            }
+        ], 
+        "environment": [
+            {
+                "name": "", 
+                "value": ""
+            }
+        ], 
+        "mountPoints": [
+            {
+                "containerPath": "", 
+                "readOnly": true, 
+                "sourceVolume": ""
+            }
+        ], 
+        "readonlyRootFilesystem": true, 
+        "privileged": false, 
+        "ulimits": [
+            {
+                "hardLimit": 0, 
+                "name": "", 
+                "softLimit": 0
+            }
+        ], 
+        "user": ""
+    }, 
+    "retryStrategy": {
+        "attempts": 2
+    }
+}
