@@ -22,6 +22,6 @@
         "type": "EC2"
     }, 
     "state": "ENABLED", 
-    "computeEnvironmentName": "pseudo-orange-panda4", 
+    "computeEnvironmentName": "pseudo-orange-panda", 
     "type": "MANAGED"
 }
