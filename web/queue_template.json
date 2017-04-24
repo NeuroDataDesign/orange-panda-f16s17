@@ -1,7 +1,7 @@
 {
     "computeEnvironmentOrder": [
         {
-            "computeEnvironment": "arn:aws:batch:us-east-1:073388476884:compute-environment/pseudo-orange-panda", 
+            "computeEnvironment": "pseudo-orange-panda", 
             "order": 1
         }
     ], 

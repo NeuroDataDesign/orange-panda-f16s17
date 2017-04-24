@@ -21,25 +21,45 @@ def execute_cmd(cmd):
         sys.exit("Error  " + str(code) + ": " + err)
     return out, err
 
+def get_id():
+    out, err = execute_cmd('aws iam get-user')
+    result = json.loads(out)['User']['Arn']
+    result_list = result.split(":")
+    return result_list[4]
 
 def create_env():
     """
     Create the definiition in Batch if it hasn't been done yet
     """
+
+    # Create env jsons
+    env = "env_template.json"
+    template = []
+
+    # Open template, set account IDs 
+    with open('{}'.format(env), 'r') as inf:
+        template = json.load(inf)
+    template['serviceRole'] = re.sub('<ACCT_ID>', get_id(), template['serviceRole'])
+    template['computeResources']['instanceRole'] = re.sub('<ACCT_ID>', get_id(), template['computeResources']['instanceRole'])
+
+    # Write template back out
+    with open('env_out.json', 'w') as outfile:
+        json.dump(template, outfile)
+
     # Check computer environment
     cmd_template = 'aws batch describe-compute-environments  --compute-environments {}'
-    env_name = 'pseudo-orange-panda4'
+    env_name = 'pseudo-orange-panda8'
     cmd = cmd_template.format(env_name)
     out, err = execute_cmd(cmd)
     result = json.loads(out)
     if len(result['computeEnvironments']) == 0:
         cmd_template = 'aws batch create-compute-environment --cli-input-json file://{}'
-        def_json = 'env_template.json'
+        def_json = 'env_out.json'
         cmd = cmd_template.format(def_json)
         out, err = execute_cmd(cmd)
 
     # Create queue 
-    cmd_template = 'aws batch describe-job-queues--job-queues {}'
+    cmd_template = 'aws batch describe-job-queues --job-queues {}'
     env_name = 'pseudo-job-queue'
     cmd = cmd_template.format(env_name)
     out, err = execute_cmd(cmd)
