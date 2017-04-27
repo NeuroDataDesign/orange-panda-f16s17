@@ -29,7 +29,7 @@ def get_id():
 
 def create_env():
     """
-    Create the definiition in Batch if it hasn't been done yet
+    Create compute environment, job queue, and job definition if doesn't exist yet.
     """
 
     # Create env jsons
@@ -60,7 +60,7 @@ def create_env():
 
     # Create queue 
     cmd_template = 'aws batch describe-job-queues --job-queues {}'
-    env_name = 'pseudo-job-queue'
+    env_name = 'pseudo-job-queue2'
     cmd = cmd_template.format(env_name)
     out, err = execute_cmd(cmd)
     result = json.loads(out)
@@ -80,22 +80,31 @@ def create_env():
 
     return 0
 
-def submit_jobs(jobs):#, jobdir):
+def crawl_bucket(bucket, path, group=False):
     """
-    Give list of jobs to submit, submits them to AWS Batch
+    Gets subject list for a given S3 bucket and path
     """
-    cmd_template = 'aws batch submit-job --cli-input-json file://{}'
-
-    for job in jobs:
-        cmd = cmd_template.format(job)
-        print("... Submitting job {}...".format(job))
-        out, err = execute_cmd(cmd)
-        submission = ast.literal_eval(out)
-        print("Job Name: {}, Job ID: {}".format(submission['jobName'], submission['jobId']))
-        sub_file = submission['jobName']+'_out.json'
-        with open(sub_file, 'w') as outfile:
-            json.dump(submission, outfile)
-    return 0
+    if group:
+        cmd = 'aws s3 ls s3://{}/{}/graphs/'.format(bucket, path)
+        out, err = mgu().execute_cmd(cmd)
+        atlases = re.findall('PRE (.+)/', out)
+        print("Atlas IDs: " + ", ".join(atlases))
+        return atlases
+    else:
+        cmd = 'aws s3 ls s3://{}/{}/'.format(bucket, path)
+        out, err = mgu().execute_cmd(cmd)
+        subjs = re.findall('PRE sub-(.+)/', out)
+        cmd = 'aws s3 ls s3://{}/{}/sub-{}/'
+        seshs = OrderedDict()
+        for subj in subjs:
+            out, err = mgu().execute_cmd(cmd.format(bucket, path, subj))
+            sesh = re.findall('ses-(.+)/', out)
+            seshs[subj] = sesh if sesh != [] else [None]
+        print("Session IDs: " + ", ".join([subj+'-'+sesh if sesh is not None
+                                           else subj
+                                           for subj in subjs
+                                           for sesh in seshs[subj]]))
+        return seshs
 
 def create_json(name, bucket, path=None, out_path=None, credentials=None,
                 dataset=None, log=False):
@@ -157,3 +166,19 @@ def create_json(name, bucket, path=None, out_path=None, credentials=None,
 
     return jobs
 
+def submit_jobs(jobs):#, jobdir):
+    """
+    Give list of jobs to submit, submits them to AWS Batch
+    """
+    cmd_template = 'aws batch submit-job --cli-input-json file://{}'
+
+    for job in jobs:
+        cmd = cmd_template.format(job)
+        print("... Submitting job {}...".format(job))
+        out, err = execute_cmd(cmd)
+        submission = ast.literal_eval(out)
+        print("Job Name: {}, Job ID: {}".format(submission['jobName'], submission['jobId']))
+        sub_file = submission['jobName']+'_out.json'
+        with open(sub_file, 'w') as outfile:
+            json.dump(submission, outfile)
+    return 0

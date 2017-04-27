@@ -1,1 +1,0 @@
-{"parameters": {}, "jobDefinition": "actual-pseudo-pipeline", "jobQueue": "pseudo-job-queue", "jobName": "job0", "containerOverrides": {"environment": [{"name": "AWS_ACCESS_KEY_ID", "value": "AKIAJI4WO6ULGSFTWNIA"}, {"name": "AWS_SECRET_ACCESS_KEY", "value": "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"}], "command": ["panda.swerve", "input.txt", "inputs", "out"]}, "dependsOn": []}
