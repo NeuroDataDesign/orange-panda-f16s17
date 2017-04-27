@@ -1,0 +1,25 @@
+{
+    "jobName": "<JOBNAME>", 
+    "jobQueue": "pseudo-job-queue2", 
+    "dependsOn": [], 
+    "jobDefinition": "actual-pseudo-pipeline", 
+    "parameters": {},
+    "containerOverrides": {
+        "command": [
+            "<BUCKET>",
+            "<DATASET>",
+            "<PATH>",
+            "<OUT_PATH>"
+        ],
+        "environment": [
+            {
+                "name": "AWS_ACCESS_KEY_ID",
+                "value": "<KEYID>"
+            },
+            {
+                "name": "AWS_SECRET_ACCESS_KEY",
+                "value": "<SECRET>"
+            }
+        ]
+    }
+}
