@@ -20,10 +20,11 @@ diskkey=$!
 bucket='panda-one-subj'
 dataset='bids_raw'
 sub='0001'
-ses='01'
+ses='05'
 env_list='/home/nitin/.aws/cred_env_list'
 
-sudo docker run --env-file $env_list rymarr/panda_pipeline $bucket $dataset $sub $ses 
+#sudo docker run --env-file $env_list rymarr/panda_pipeline $bucket $dataset $sub $ses 
+echo "hello world"
 
 sleep 30
 
