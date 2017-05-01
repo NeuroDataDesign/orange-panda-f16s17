@@ -8,3 +8,5 @@ CRED_PATH=~/.aws/credentials.csv
 
 # run pseudo pipeline
 python test_front.py --bucket $BUCKET --path $IN_PATH --out_path $OUT_PATH --data $DATA --credentials $CRED_PATH 
+# remove all pseudo docker
+rm -rf pseudo_jobs

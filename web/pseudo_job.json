@@ -8,8 +8,8 @@
         "command": [
             "<BUCKET>",
             "<DATASET>",
-            "<SUB>",
-            "<SES>"
+            "<PATH>",
+            "<OUT_PATH>"
         ],
         "environment": [
             {

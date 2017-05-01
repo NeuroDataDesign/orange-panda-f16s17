@@ -42,15 +42,10 @@ def main():
     i = 0
     jobId = []
     # for obj in ["input.txt"]:# s3_bucket.objects.all():
-    create_env()
-    print "job" + str(i)
-    jobs = create_json("job" + str(i), bucket, path, out_path, credentials=credentials, dataset=data, log=False) 
-    submit_jobs(jobs)
-    # jobId.append(response['jobId'])
-    # print("JobID = " + jobId[i])
-    print(jobs)
-    i += 1
-    
+    threads = pseudo_crawl_bucket(bucket, path)
+    print threads
+    jobs = pseudo_create_json("job" + str(i), bucket, threads, "real_jobs", path, out_path, credentials=credentials, log=False) 
+    submit_jobs(jobs, "pseudo_jobs")
     
 if __name__ == "__main__":
     main()

@@ -1,8 +1,8 @@
 {
-    "jobDefinitionName": "actual-pseudo-pipeline", 
+    "jobDefinitionName": "orange-panda-pipeline", 
     "type": "container", 
     "containerProperties": {
-        "image": "nkumarcc/pseudo_pipeline", 
+        "image": "rymarr/panda_pipeline", 
         "vcpus": 2, 
         "memory": 2000, 
         "readonlyRootFilesystem": false, 

@@ -39,7 +39,7 @@ def main():
     locOutFile = '/src/out/out_' + data
     outFile = data
     if out_path != "":
-        outFile = out_path + '/out_' + data
+        outFile = out_path + '/' + data
     print inFile
     bucket.download_file(inFile, locInFile)
     pipeline(locInFile, locOutFile)
