@@ -1,15 +1,13 @@
 {
-    "jobDefinitionName": "pseudo-pipe-2", 
+    "jobDefinitionName": "orange-panda-pipeline", 
     "type": "container", 
-    "parameters": {
-    }, 
     "containerProperties": {
-        "image": "nkumarcc/pseudo_pipeline", 
+        "image": "rymarr/panda_pipeline", 
         "vcpus": 2, 
         "memory": 2000, 
-        "readonlyRootFilesystem": true, 
+        "readonlyRootFilesystem": false, 
         "privileged": false 
-    }, 
+    },
     "retryStrategy": {
         "attempts": 2
     }

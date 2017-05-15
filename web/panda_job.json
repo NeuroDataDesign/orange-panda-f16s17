@@ -1,0 +1,25 @@
+{
+    "jobName": "<JOBNAME>", 
+    "jobQueue": "orange-panda-queue", 
+    "dependsOn": [], 
+    "jobDefinition": "orange-panda-pipeline", 
+    "parameters": {},
+    "containerOverrides": {
+        "command": [
+            "<BUCKET>",
+            "<DATASET>",
+            "<SUB>",
+            "<SES>"
+        ],
+        "environment": [
+            {
+                "name": "AWS_ACCESS_KEY_ID",
+                "value": "<KEYID>"
+            },
+            {
+                "name": "AWS_SECRET_ACCESS_KEY",
+                "value": "<SECRET>"
+            }
+        ]
+    }
+}

@@ -33,47 +33,47 @@ def create_env():
     Create compute environment, job queue, and job definition if doesn't exist yet.
     """
 
-#   # Create env jsons
-#   env = "env_template.json"
-#   template = []
+    # Create env jsons
+    env = "env_template.json"
+    template = []
 
-#   # Open template, set account IDs 
-#   with open('{}'.format(env), 'r') as inf:
-#       template = json.load(inf)
-#   template['serviceRole'] = re.sub('<ACCT_ID>', get_id(), template['serviceRole'])
-#   template['computeResources']['instanceRole'] = re.sub('<ACCT_ID>', get_id(), template['computeResources']['instanceRole'])
+    # Open template, set account IDs 
+    with open('{}'.format(env), 'r') as inf:
+        template = json.load(inf)
+    template['serviceRole'] = re.sub('<ACCT_ID>', get_id(), template['serviceRole'])
+    template['computeResources']['instanceRole'] = re.sub('<ACCT_ID>', get_id(), template['computeResources']['instanceRole'])
 
-#   # Write template back out
-#   with open('env_out.json', 'w') as outfile:
-#       json.dump(template, outfile)
+    # Write template back out
+    with open('env_out.json', 'w') as outfile:
+        json.dump(template, outfile)
 
-#   # Check computer environment
-#   cmd_template = 'aws batch describe-compute-environments  --compute-environments {}'
-#   env_name = 'pseudo-orange-panda8'
-#   cmd = cmd_template.format(env_name)
-#   out, err = execute_cmd(cmd)
-#   result = json.loads(out)
-#   if len(result['computeEnvironments']) == 0:
-#       cmd_template = 'aws batch create-compute-environment --cli-input-json file://{}'
-#       def_json = 'env_out.json'
-#       cmd = cmd_template.format(def_json)
-#       out, err = execute_cmd(cmd)
+    # Check computer environment
+    cmd_template = 'aws batch describe-compute-environments  --compute-environments {}'
+    env_name = 'pseudo-orange-panda8'
+    cmd = cmd_template.format(env_name)
+    out, err = execute_cmd(cmd)
+    result = json.loads(out)
+    if len(result['computeEnvironments']) == 0:
+        cmd_template = 'aws batch create-compute-environment --cli-input-json file://{}'
+        def_json = 'env_out.json'
+        cmd = cmd_template.format(def_json)
+        out, err = execute_cmd(cmd)
 
-#   # Create queue 
-#   cmd_template = 'aws batch describe-job-queues --job-queues {}'
-#   env_name = 'pseudo-job-queue2'
-#   cmd = cmd_template.format(env_name)
-#   out, err = execute_cmd(cmd)
-#   result = json.loads(out)
-#   if len(result['jobQueues']) == 0:
-#       cmd_template = 'aws batch create-job-queue --cli-input-json file://{}'
-#       def_json = 'queue_template.json'
-#       cmd = cmd_template.format(def_json)
-#       out, err = execute_cmd(cmd)
+    # Create queue 
+    cmd_template = 'aws batch describe-job-queues --job-queues {}'
+    env_name = 'pseudo-job-queue2'
+    cmd = cmd_template.format(env_name)
+    out, err = execute_cmd(cmd)
+    result = json.loads(out)
+    if len(result['jobQueues']) == 0:
+        cmd_template = 'aws batch create-job-queue --cli-input-json file://{}'
+        def_json = 'queue_template.json'
+        cmd = cmd_template.format(def_json)
+        out, err = execute_cmd(cmd)
 
     # Create job definition
     cmd_template = 'aws batch register-job-definition --cli-input-json file://{}'
-    def_json = 'panda_def.json'
+    def_json = 'pseudo-pipeline.json'
     cmd = cmd_template.format(def_json)
     out, err = execute_cmd(cmd)
     submission = ast.literal_eval(out)
@@ -92,6 +92,7 @@ def crawl_bucket(bucket, path):
     seshs = OrderedDict()
     for subj in subjs:
         out, err = execute_cmd(cmd.format(bucket, path, subj))
+        print "here"
         sesh = re.findall('ses-(.+)/', out)
         seshs[subj] = sesh if sesh != [] else [None]
     print("Session IDs: " + ", ".join([subj+'-'+sesh if sesh is not None
@@ -160,6 +161,70 @@ def create_json(bucket, threads, jobdir, dataset, credentials=None, log=False):
 
     return jobs
 
+def pseudo_create_json(name, bucket, threads, jobdir, path=None, out_path=None, 
+            credentials=None, log=False):
+    """
+    Takes parameters to make jsons for pseudo pipeline
+    """
+
+    # make jobdirs
+    execute_cmd("mkdir -p {}".format(jobdir))
+    execute_cmd("mkdir -p {}/jobs/".format(jobdir))
+    execute_cmd("mkdir -p {}/ids/".format(jobdir))
+
+    # Set json template filename
+    template = "panda_job.json"
+    seshs = threads 
+
+    # Open template, grab overrides we need to set 
+    with open('{}'.format(template), 'r') as inf:
+        template = json.load(inf)
+    cmd = template['containerOverrides']['command']
+    env = template['containerOverrides']['environment']
+
+    # Put credentials in environment variable override
+    if credentials is not None:
+        cred = [line for line in csv.reader(open(credentials))]
+        env[0]['value'] = [cred[1][idx]
+                           for idx, val in enumerate(cred[0])
+                           if "ID" in val][0]  # Adds public key ID to env
+        env[1]['value'] = [cred[1][idx]
+                           for idx, val in enumerate(cred[0])
+                           if "Secret" in val][0]  # Adds secret key to env
+    else:
+        env = []
+    template['containerOverrides']['environment'] = env
+
+    # make returnable object of different jobs to submit
+    jobs = list()
+    # set bucket
+    cmd[0] = re.sub('(<BUCKET>)', bucket, cmd[0])
+    # set out path
+    cmd[3] = re.sub('(<OUT_PATH>)', out_path, cmd[3])
+
+
+    for subj in seshs.keys():
+        print("... Generating job for sub-{}".format(subj))
+        for sesh in seshs[subj]:
+            job_cmd = deepcopy(cmd)
+            # set path
+            job_cmd[2] = re.sub('(<PATH>)', path + "/sub-" + subj + "/ses-" + sesh + "/eeg", job_cmd[2])
+            data_file = "sub-" + subj + "_ses-" + sesh
+            job_cmd[1] = re.sub('(<DATASET>)', data_file + ".txt", job_cmd[1])
+
+            job_json = deepcopy(template)
+            name = 'panda_sub-{}'.format(subj)
+            if sesh is not None:
+                name = '{}_ses-{}'.format(name, sesh)
+            job_json['jobName'] = name
+            job_json['containerOverrides']['command'] = job_cmd
+            job = os.path.join(jobdir, 'jobs', name+'.json')
+            with open(job, 'w') as outfile:
+                json.dump(job_json, outfile)
+            jobs += [job]
+
+    return jobs
+
 def submit_jobs(jobs, jobdir):
     """
     Give list of jobs to submit, submits them to AWS Batch
@@ -177,42 +242,3 @@ def submit_jobs(jobs, jobdir):
         with open(sub_file, 'w') as outfile:
             json.dump(submission, outfile)
     return 0
-
-def main():
-    # get args
-    parser = ArgumentParser(description="This is a test")
-    parser.add_argument('--bucket', help='The S3 bucket with the input dataset formatted according to the BIDS standard.')
-    parser.add_argument('--credentials', help='AWS formatted csv of credentials.')
-    parser.add_argument('--dataset', help='The data file to upload to the specified S3 bucket')
-    result = parser.parse_args()
-    
-    # convert args to objs
-    bucket = str(result.bucket)
-    credentials = str(result.credentials)
-    dataset = str(result.dataset)
-    
-    # extract credentials
-    credfile = open(credentials, 'rb')
-    reader = csv.reader(credfile)
-    rowcounter = 0
-    for row in reader:
-        if rowcounter == 1:
-            public_access_key = str(row[1])
-            secret_access_key = str(row[2])
-        rowcounter = rowcounter + 1
-
-    # set env vars to current credentials
-    os.environ['AWS_ACCESS_KEY_ID'] = public_access_key
-    os.environ['AWS_SECRET_ACCESS_KEY'] = secret_access_key
-    os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'
-
-    # create job environment
-    create_env()
-    # for obj in ["input.txt"]:# s3_bucket.objects.all():
-    threads = crawl_bucket(bucket, dataset)
-    print threads
-    jobs = create_json(bucket, threads, "to_exec", dataset, credentials=credentials, log=False) 
-    submit_jobs(jobs, "to_exec")
-    
-if __name__ == "__main__":
-    main()
