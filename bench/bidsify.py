@@ -41,10 +41,13 @@ def move(paths, path2):
         sub_id = 'sub-%04d' % sub_number
         bids_base = '%s/%s' % (path2, sub_id)
         for trial_number, path in enumerate(subject, start=1):
+            ses_id = 'ses-%02d' % trial_number
             d = fast_csv_load(path)
             print 'Converting file at', path
-            fmt = (bids_base, 'eeg', sub_id, trial_number) 
-            f_path = '%s/%s/%s_trial-%02d.pkl' % fmt
+            pth = bids_base + '/' + ses_id + '/eeg'
+            os.makedirs(pth)
+            fmt = (pth, sub_id, ses_id) 
+            f_path = '%s/%s_%s.pkl' % fmt
             print 'Saving converted at', f_path
             with open(f_path, 'wb') as f:
                 pkl.dump(d, f, protocol = pkl.HIGHEST_PROTOCOL)
@@ -78,6 +81,7 @@ if __name__ == '__main__':
     if paths is None:
         print 'Did not work, bad command'
         sys.exit(0)
+    print paths
     num_subjects = len(paths)
     num_trials = [str(len(x)) for x in paths]
     subjects = dc.make_file_structure(to, num_subjects)
