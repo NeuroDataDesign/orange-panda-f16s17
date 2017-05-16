@@ -14,7 +14,6 @@ def make_file_structure(set_name, num_subjects):
     for i in range(1, num_subjects + 1):
         subj_name = 'sub-%04d' % (i)
         os.makedirs(set_name + '/' + subj_name)    
-        os.makedirs(set_name + '/' + subj_name + '/eeg/')
         subj_names.append(subj_name)
     return subj_names
 

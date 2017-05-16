@@ -1,6 +1,0 @@
-{
-	"dataset": "bids_raw",
-	"prep": "[prep.noise_reduct.wavelet_sureshrink]",
-	"params": "{ 'wave': ['db2', 'db4', 'db6', 'db8']}",
-        "job_name": "wavelet_denoise"
-}
