@@ -1,0 +1,27 @@
+{
+    "serviceRole": "arn:aws:iam::<ACCT_ID>:role/AWSBatchServiceRole", 
+    "computeResources": {
+        "subnets": [
+            "subnet-ec537db7", 
+            "subnet-18c1a77d", 
+            "subnet-dece2d96", 
+            "subnet-2ad3b416", 
+            "subnet-4ee0d363"
+        ], 
+        "tags": {}, 
+        "desiredvCpus": 3, 
+        "maxvCpus": 4, 
+        "minvCpus": 1, 
+        "instanceTypes": [
+            "m3.large"
+        ], 
+        "securityGroupIds": [
+            "sg-a21ee6dd"
+        ], 
+        "instanceRole": "arn:aws:iam::<ACCT_ID>:instance-profile/ecsInstanceRole", 
+        "type": "EC2"
+    }, 
+    "state": "ENABLED", 
+    "computeEnvironmentName": "orange_panda_env", 
+    "type": "MANAGED"
+}

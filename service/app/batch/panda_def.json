@@ -1,0 +1,14 @@
+{
+    "jobDefinitionName": "orange_panda_pipeline", 
+    "type": "container", 
+    "containerProperties": {
+        "image": "nkumarcc/panda_pipeline", 
+        "vcpus": 2, 
+        "memory": 2000, 
+        "readonlyRootFilesystem": false, 
+        "privileged": false 
+    },
+    "retryStrategy": {
+        "attempts": 2
+    }
+}
