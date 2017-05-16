@@ -13,7 +13,7 @@ bids_raw/
     ├── ses-02
     │   └── eeg
     │       └── sub-0001_ses-02.pkl
-    └── ses-3
+    └── ses-03
         └── eeg
             └── sub-0001_ses-3.pkl
 
