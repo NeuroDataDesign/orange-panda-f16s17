@@ -3,7 +3,7 @@
     "type": "container", 
     "containerProperties": {
         "image": "nkumarcc/panda_pipeline", 
-        "vcpus": 1, 
+        "vcpus": 3, 
         "memory": 2000, 
         "readonlyRootFilesystem": false, 
         "privileged": false 

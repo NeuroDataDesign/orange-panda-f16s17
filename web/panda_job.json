@@ -1,6 +1,6 @@
 {
     "jobName": "<JOBNAME>", 
-    "jobQueue": "panda_queue", 
+    "jobQueue": "panda_queue_large", 
     "dependsOn": [], 
     "jobDefinition": "orange_panda_pipeline", 
     "parameters": {},

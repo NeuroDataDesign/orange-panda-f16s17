@@ -53,7 +53,7 @@ def create_env():
 
     # Check computer environment
     cmd_template = 'aws batch describe-compute-environments  --compute-environments {}'
-    env_name = 'orange_panda_env'
+    env_name = 'orange_panda_env2'
     cmd = cmd_template.format(env_name)
     out, err = execute_cmd(cmd)
     result = json.loads(out)
@@ -66,7 +66,7 @@ def create_env():
 
     # Create queue 
     cmd_template = 'aws batch describe-job-queues --job-queues {}'
-    queue_name = 'panda_queue'
+    queue_name = 'panda_queue_large'
     cmd = cmd_template.format(queue_name)
     out, err = execute_cmd(cmd)
     result = json.loads(out)
@@ -93,11 +93,12 @@ def crawl_bucket(bucket, path):
     Gets subject list for a given S3 bucket and path
     """
 
-    cmd = 'aws s3 ls s3://{}/data/{}/'.format(bucket, path)
+    cmd = 'aws --no-sign-request s3 ls s3://{}/data/{}/'.format(bucket, path)
     out, err = execute_cmd(cmd)
     subjs = re.findall('PRE sub-(.+)/', out)
-    cmd = 'aws s3 ls s3://{}/data/{}/sub-{}/'
+    cmd = 'aws --no-sign-request s3 ls s3://{}/data/{}/sub-{}/'
     seshs = OrderedDict()
+    print subjs
     for subj in subjs:
         out, err = execute_cmd(cmd.format(bucket, path, subj))
         sesh = re.findall('ses-(.+)/', out)
@@ -218,8 +219,10 @@ def main():
 
     # create job environment
     create_env()
+    print "Swag"
     # for obj in ["input.txt"]:# s3_bucket.objects.all():
     threads = crawl_bucket(bucket, dataset)
+    print "Threads"
     print threads
     jobs = create_json(bucket, threads, "to_exec", dataset, credentials=credentials, log=False) 
     submit_jobs(jobs, "to_exec")

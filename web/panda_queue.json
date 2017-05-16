@@ -1,11 +1,11 @@
 {
     "computeEnvironmentOrder": [
         {
-            "computeEnvironment": "orange_panda_env", 
+            "computeEnvironment": "orange_panda_env2", 
             "order": 1
         }
     ], 
     "priority": 2, 
     "state": "ENABLED", 
-    "jobQueueName": "panda_queue"
+    "jobQueueName": "panda_queue_large"
 }

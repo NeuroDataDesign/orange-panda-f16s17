@@ -1,6 +1,7 @@
 from flask import Flask, send_file
 import os
 import sys
+import json
 
 lib_path = os.path.abspath(os.path.join('pipeline', 'src'))
 sys.path.append(lib_path)
@@ -23,12 +24,13 @@ def allowed_file(filename):
 
 @app.route('/gets3', methods=['GET', 'POST'])
 def get_s3():
+  data = json.loads(request.data.decode())
   if request.method == 'POST':
     print 'executing thing'
-    cmd = 'python batch/test_front.py --bucket %s --dataset %s --credentials %s --subject %s --session %s'
-    cmd = cmd % ('neurodatadesign-test', 'small_test_set', '${HOME}/.aws/credentials.csv', '0001', '02')
+    cmd = 'python batch/create_job.py --bucket %s --dataset %s --credentials %s'
+    cmd = cmd % (data['bucket'], data['fpath'], '${HOME}/.aws/credentials.csv')
     ut().execute_cmd(cmd)
-    return 'did the thing'
+    return 'Data submitted'
   else:
     abort(400)
 

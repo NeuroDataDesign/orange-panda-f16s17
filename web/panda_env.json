@@ -13,7 +13,7 @@
         "maxvCpus": 4, 
         "minvCpus": 1, 
         "instanceTypes": [
-            "m3.medium"
+            "m3.xlarge"
         ], 
         "securityGroupIds": [
             "sg-a21ee6dd"
@@ -22,6 +22,6 @@
         "type": "EC2"
     }, 
     "state": "ENABLED", 
-    "computeEnvironmentName": "orange_panda_env", 
+    "computeEnvironmentName": "orange_panda_env2", 
     "type": "MANAGED"
 }
