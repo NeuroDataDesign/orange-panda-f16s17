@@ -1,0 +1,6 @@
+data/
+panda/utils/set_keys.py
+*.pyc
+*.swp
+*.swo
+credentials.csv
