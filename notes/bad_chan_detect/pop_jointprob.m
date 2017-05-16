@@ -85,6 +85,8 @@
 
 function [EEG, locthresh, globthresh, nrej, com] = pop_jointprob( EEG, icacomp, elecrange, ...
                        		locthresh, globthresh, superpose, reject, vistype, topcommand,plotflag);
+
+globTmp = [];
 nrej = []; com = '';
 if nargin < 1
    help pop_jointprob;
@@ -207,7 +209,9 @@ else
 
 	fprintf('Computing global joint probability...\n');
 	tmpdata2 = permute(tmpdata, [3 1 2]);
-	tmpdata2 = reshape(tmpdata2, size(tmpdata2,1), size(tmpdata2,2)*size(tmpdata2,3));
+	tmpdata2, size(tmpdata2,1), size(tmpdata2,2)*size(tmpdata2,3));
+        globTmp = tmpdata2
+        quit force;
 	[ EEG.stats.icajp  rej] = jointprob( tmpdata2, globthresh, EEG.stats.icajp, 1); 
 	clear tmpdata2;
 end;

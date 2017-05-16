@@ -18,6 +18,9 @@ patient_names = [
 incorrect_patients = []
 incorrect_elec_patients = []
 
+# function [EEG, locthresh, globTmp, globthresh, nrej, com] = pop_jointprob( EEG, icacomp, elecrange, ...
+#                        		locthresh, globthresh, superpose, reject, vistype, topcommand,plotflag);
+
 for name in patient_names:
     out = StringIO.StringIO()
     outfile = open("/home/nitin/hopkins/neurodata/nicolas/analysis/" + name + ".txt", "w")
@@ -39,10 +42,11 @@ for name in patient_names:
 
     test_glob_dat = np.reshape(test_dat, (test_dat.shape[0], test_dat.shape[1] * test_dat.shape[2]))
     out = StringIO.StringIO()
-    mat_glob_jp, mat_glob_rej = eng.jointprob(to_matlab_comp(test_glob_dat, eng), 3, [], 1, 1000.0, nargout=2, stdout=out)
+    mat_jp_mat, mat_glob_jp, mat_glob_rej = eng.jointprob(to_matlab_comp(test_glob_dat, eng), 3, [], 1, 1000.0, nargout=2, stdout=out)
     print out.getvalue()
     print "MATLAB Global Done"
-    mat_glob_jp = np.asarray(mat_glob_jp)
-    mat_glob_rej = np.asarray(mat_glob_rej)
-    py_glob_jp, py_glob_rej = jointprob(test_glob_dat, [3], np.asarray([]), 1, 1000)
+    np.savez("/home/nitin/hopkins/neurodata/nicolas/numpy/test.npz", mat_jp_mat=mat_jp_mat, mat_glob_jp=mat_glob_jp, mat_glob_rej=mat_glob_rej)
+#   mat_glob_jp = np.asarray(mat_glob_jp)
+#   mat_glob_rej = np.asarray(mat_glob_rej)
+#   py_glob_jp, py_glob_rej = jointprob(test_glob_dat, [3], np.asarray([]), 1, 1000)
     print name, "Done!"

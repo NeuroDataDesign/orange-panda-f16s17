@@ -113,7 +113,7 @@ else
 %             end;
 %         catch, error('Error while normalizing'); end;
 % 	end;
-% end	
+end;
 
 % reject
 % ------	

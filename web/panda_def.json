@@ -1,9 +1,9 @@
 {
-    "jobDefinitionName": "orange-panda-pipeline", 
+    "jobDefinitionName": "orange_panda_pipeline", 
     "type": "container", 
     "containerProperties": {
-        "image": "rymarr/panda_pipeline", 
-        "vcpus": 2, 
+        "image": "nkumarcc/panda_pipeline", 
+        "vcpus": 1, 
         "memory": 2000, 
         "readonlyRootFilesystem": false, 
         "privileged": false 

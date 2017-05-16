@@ -1,5 +1,5 @@
 {
-    "serviceRole": "arn:aws:iam::<ACCT_ID>:role/service-role/AWSBatchServiceRole", 
+    "serviceRole": "arn:aws:iam::<ACCT_ID>:role/AWSBatchServiceRole", 
     "computeResources": {
         "subnets": [
             "subnet-ec537db7", 
@@ -9,19 +9,19 @@
             "subnet-4ee0d363"
         ], 
         "tags": {}, 
-        "desiredvCpus": 16, 
+        "desiredvCpus": 3, 
+        "maxvCpus": 4, 
         "minvCpus": 1, 
         "instanceTypes": [
-            "optimal"
+            "m3.medium"
         ], 
         "securityGroupIds": [
             "sg-a21ee6dd"
         ], 
         "instanceRole": "arn:aws:iam::<ACCT_ID>:instance-profile/ecsInstanceRole", 
-        "maxvCpus": 256, 
         "type": "EC2"
     }, 
     "state": "ENABLED", 
-    "computeEnvironmentName": "pseudo-orange-panda8", 
+    "computeEnvironmentName": "orange_panda_env", 
     "type": "MANAGED"
 }

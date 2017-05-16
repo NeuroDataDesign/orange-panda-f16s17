@@ -29,6 +29,7 @@ def pop_jointprob(inEEG, elecrange, locthresh, globthresh):
 # norm = choose normalization: 0 = none, 1 = normalize entropy, 2 = 20% trim
 # thresh = threshold
 def jointprob(S, thresh, oldjp, normalize, discret = 1000):
+    acutaljp = []
     # get num chans and trials and time
     channels = 0
     trials = 0
@@ -54,6 +55,7 @@ def jointprob(S, thresh, oldjp, normalize, discret = 1000):
                 tmp, dist = realproba(S[c,:,:], discret)
                 jp.append(np.log(tmp))
             jp = np.asarray(jp)
+            actualjp = jp
             jp = -np.sum(jp, axis=2)    
         elif S.ndim == 2:
             print "Swag"
@@ -78,7 +80,7 @@ def jointprob(S, thresh, oldjp, normalize, discret = 1000):
     rej = []
     for i in thresh:
         rej.append(abs(jp) > i)
-    return jp, np.asarray(rej)
+    return actualjp, jp, np.asarray(rej)
 
 # Histogram binning implementation
 # D = T x N, D = data Trials, Number of timepts
