@@ -14,7 +14,6 @@ Clone the `orange-panda` repo and from the root directory, `cd` into the `docker
 ```
 User Name,Access Key Id,Secret Access Key
 "name",access-key-id,secret-access-key
-
 ```
 where `access-key-id` and `secret-access-key` are replaced with your S3 access key and secret access key respectively.
 
