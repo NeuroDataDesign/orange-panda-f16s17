@@ -1,7 +1,10 @@
-# EEG PANDA - A pipeline for automated EEG data analysis.
-We are currently live at http://54.88.116.242/
+# EEG PANDA - Automated EEG data analysis.
+We are currently live at
 
-##  *How to build and run the production environment*
+##  *How to build and run the pipeline container*
+We offer a docker image which runs the numerical software of our pipeline. The workflow is as follows:
+![image](
+
 #### Standing up the webservice
 1. Install Docker on your machine (https://docs.docker.com/engine/installation/)
 2. Pull the official EEG PANDA Docker image with the command `docker pull rymarr/eeg_panda_image`.
