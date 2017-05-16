@@ -3,24 +3,19 @@ Data input into this pipeline should be in a [BIDS](http://bids.neuroimaging.io/
 Specifically, the format should be as follows:
 
 ```
-.
+bids_raw/
 ├── chan_locs.pkl
 ├── participants.tsv
-├── sub-0001
-│   └── eeg
-│       ├── sub-0001_trial-01.pkl
-│       ├── sub-0001_trial-02.pkl
-│       └── sub-0001_trial-03.pkl
-├── sub-0002
-│   └── eeg
-│       ├── sub-0002_trial-01.pkl
-│       ├── sub-0002_trial-02.pkl
-│       └── sub-0002_trial-03.pkl
-└── sub-0003
-    └── eeg
-        ├── sub-0003_trial-01.pkl
-        ├── sub-0003_trial-02.pkl
-        └── sub-0003_trial-03.pkl
+└── sub-0001
+    ├── ses-01
+    │   └── eeg
+    │       └── sub-0001_ses-01.pkl
+    ├── ses-02
+    │   └── eeg
+    │       └── sub-0001_ses-02.pkl
+    └── ses-3
+        └── eeg
+            └── sub-0001_ses-3.pkl
 
 
 ```
