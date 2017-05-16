@@ -1,4 +1,5 @@
 # EEG PANDA - Automated EEG data analysis.
+A summary schematic of what this service offers can be found [here](https://www.lucidchart.com/documents/view/ca99b646-c76a-42ef-8083-cacf3ada2c43).
 We are currently live at
 
 ##  *How to build and run the pipeline container*
