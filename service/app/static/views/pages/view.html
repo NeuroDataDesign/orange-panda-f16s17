@@ -1,23 +1,10 @@
 <div class="jumbotron text-center">
 <h1>Explore Data</h1>
 <div class="container">
-<table class="table">
-  <thead>
-    <tr>
-      <th>File Name</th>
-      <th>Preprocessing</th>
-      <th>Analysis</th>
-      <th>Zip of Analysis Files</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="n in f_name_list">
-      <td scope="row">{{n.f_name}}</td>
-      <td><a ng-href="{{n.prep_report}}" target="_blank">Prep Report</a></td>
-      <td><a ng-href="{{n.post_report}}" target="_blank">Post Report</a></td>
-      <td><a target = "_blank" ng-href="{{n.zip}}">zip file</td>
-	</tr>
-  </tbody>
-</table>
+<iframe src="http://neurodatadesign-test.s3-website-us-east-1.amazonaws.com/" frameBorder="0" height="640px" width="100%">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</body>
+</html>
 </div>
 </div>

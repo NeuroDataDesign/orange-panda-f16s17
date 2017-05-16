@@ -1,0 +1,21 @@
+{
+    "serviceRole": "arn:aws:iam::868464062368:role/service-role/AWSBatchServiceRole", 
+    "computeResources": {
+        "subnets": ["subnet-f104b4a8"], 
+        "tags": {}, 
+        "desiredvCpus": 16, 
+        "minvCpus": 1, 
+        "instanceTypes": [
+            "m3"
+        ], 
+        "securityGroupIds": [
+            "sg-ff04ab9b"
+        ], 
+        "instanceRole": "arn:aws:iam::868464062368:instance-profile/ecsInstanceRole", 
+        "maxvCpus": 256, 
+        "type": "EC2"
+    }, 
+    "state": "ENABLED", 
+    "computeEnvironmentName": "pseudo-orange-panda6", 
+    "type": "MANAGED"
+}
