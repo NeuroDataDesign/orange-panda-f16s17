@@ -6,22 +6,16 @@
   </div>
 </div>
 <div class="form-group row">
-  <label class="col-xs-offset-2 col-xs-4 col-form-label">File Path</label>
+  <label class="col-xs-offset-2 col-xs-4 col-form-label">Input BIDS directory in S3</label>
   <div class="col-xs-3">
-	<input class="form-control" type="text" ng-model="data.fpath" ng-init='data.fpath="test.mat"'>
+	<input class="form-control" type="text" ng-model="data.fpath" ng-init='data.fpath="neurodatadesign-test"'>
   </div>
 </div>
 <div class="form-group row">
-  <label class="col-xs-offset-2 col-xs-4 col-form-label">Name for Data</label>
+  <label class="col-xs-offset-2 col-xs-4 col-form-label">Output BIDS directory in S3</label>
   <div class="col-xs-3">
-	<input class="form-control" type="text" ng-model="data.name" ng-init='data.name="my_eeg_data"'>
+  <input class="form-control" type="text" ng-model="data.fpath" ng-init='data.fpath="small_test_set"'>
   </div>
 </div>
-<div class="form-group row">
-  <label class="col-xs-offset-2 col-xs-4 col-form-label">Formatting Token<a href='https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md' target='_blank' class='fa fa-question-circle'></a></label>
-  <div class="col-xs-3">
-	<input class="form-control" type="text" ng-model="data.token" ng-init='data.token="fcp_indi_eeg"'>
-  </div>
-</div>
-<button class="btn btn-lg btn-orange" data-ng-click="get(data)">Get Data</button>
+<button class="btn btn-lg btn-orange" data-ng-click="get(data)">Run Pre-Processing</button>
 </form>
