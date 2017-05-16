@@ -1,6 +1,6 @@
 # EEG PANDA - Automated EEG data analysis.
 A summary schematic of what this service offers can be found [here](https://www.lucidchart.com/documents/view/ca99b646-c76a-42ef-8083-cacf3ada2c43).
-We are currently live at
+We are currently live at http://ec2-54-205-199-24.compute-1.amazonaws.com/#/flow
 
 ##  *How to build and run the pipeline container*
 We offer a docker image which runs the numerical software of our pipeline. The workflow is as follows:
