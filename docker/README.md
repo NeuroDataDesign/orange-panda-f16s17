@@ -1,4 +1,4 @@
-#docker -- dockerized panda
+# docker -- dockerized panda
 
 ##  *How to build and run the pipeline container*
 We offer a docker image which runs the numerical software of our pipeline. The workflow is as follows:
