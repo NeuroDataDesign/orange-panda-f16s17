@@ -16,6 +16,8 @@ docker -- a Dockerfile to build a docker image which runs our pipeline taking da
 
 docs -- documentation generated from docstrings in the panda code (**these docs are not up to date, you can ignore then**)
 
+method_mds -- detailed scientific notebooks explaining each pipeline step, complete with numerical simulations on contrived data and before-and-after results on EEG data
+
 notes -- various markdowns and jupyter notebooks used as scratch work when brainstorming for and creating this pipeline
 
 panda -- contains all of the signal processing algorithms used in the pipeline, our default pipeline configuration, and a script to run our pipeline with the default configuration (can be modified to run with any configuration if desired, and adding your own algorithms as steps is possible, drop an issue if you have trouble doing this).
