@@ -1,4 +1,10 @@
 # EEG PANDA - Automated EEG data analysis.
+
+
+### About this project
+We (rmarren1, nkumarcc) are undergraduate computer science students at Johns Hopkins University.
+The goal of this project is to create a web-service which will allow any scientist or researcher to find, process, and analyze large EEG datasets without the need to install any software, develop learning algorithms, or purchase expensive high performance computing hardware.
+
 A summary schematic of what this service offers can be found [here](https://www.lucidchart.com/documents/view/ca99b646-c76a-42ef-8083-cacf3ada2c43).
 
 Our service is not currently live, drop an issue if want to play around with a demo
@@ -6,6 +12,8 @@ Our service is not currently live, drop an issue if want to play around with a d
 A slideshow presentation of this work can be found [here](https://docs.google.com/presentation/d/1HAwHF6ujEo9bjGjO5hyxkfl_mLDAdqxLPfy7qIrNXcg/edit?usp=sharing)
 
 Our pipeline is pip installable! run `pip install ndd-panda` to get the latest version. This will include all of the code in the panda folder, and some scripts to run the entire pipeline based on our default pipeline configuration.
+
+Please drop an issue for any questions you may have with the pipeline, or if you would like help using it for your own data.
 
 ### Summary of folders
 Inside of each folder will be a readme with more details on the code or service in that folder. Following is a short description of each.
@@ -29,8 +37,3 @@ web -- methods to deploy in parallel on batch
 ## Current functionality:
 
 In our [schematic](https://www.lucidchart.com/documents/view/ca99b646-c76a-42ef-8083-cacf3ada2c43), an overview of the pipeline is shown. Each box in this overview is a link, which will direct you to a detailed scientific notebook detailing the step.
-
-
-### About this project
-We (rmarren1, nkumarcc) are undergraduate computer science students at Johns Hopkins University.
-The goal of this project is to create a web-service which will allow any scientist or researcher to find, process, and analyze large EEG datasets without the need to install any software, develop learning algorithms, or purchase expensive high performance computing hardware.
