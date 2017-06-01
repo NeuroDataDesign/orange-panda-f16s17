@@ -26,7 +26,7 @@ import panda.methods.viz as viz
 
 # Import pipeline specific utilities
 import panda.utils.bids_s3 as bids_s3
-from panda.utils import executr_cmd
+from panda.utils.system import execute_cmd
 
 # Import params (dependent on chan_locs)
 from panda.default_config import params
@@ -164,9 +164,5 @@ if __name__ == "__main__":
         _, buck, dset, sub, ses, cred = sys.argv
     else: 
         _, buck, dset, sub, ses = sys.argv
-    try:
-        main(buck, dset, sub, ses, cred)
-    except Exception as e:
-        logging.error(traceback.format_exc())
-        shutil.rmtree('temp')
+    main(buck, dset, sub, ses, cred)
     shutil.rmtree('temp')

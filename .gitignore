@@ -8,3 +8,4 @@
 service/app/static/results/
 service/set_keys.py
 bench/set_keys.py
+*.egg-info

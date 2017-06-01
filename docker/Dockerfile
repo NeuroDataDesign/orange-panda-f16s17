@@ -10,7 +10,7 @@ RUN easy_install pip
 RUN apt-get install -y pkg-config zip python-vtk
 RUN apt-get install -y python-tk
 RUN pip install cython numpy wget sklearn awscli boto3 pyvtk pywavelets seaborn
-RUN pip install --upgrade ndd-panda
+RUN pip install ndd-panda==1.13
 
 # Some matplotlib bug with fonts on this base image
 RUN rm -rf ~/.cache/matplotlib
