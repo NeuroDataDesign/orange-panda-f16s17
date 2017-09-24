@@ -7,17 +7,15 @@ import traceback
 import copy
 
 def bad_detec(D, p_local, p_global):
-    print "Test"
     D = np.copy(D)
     zero_chans = []
     for c in range(D.shape[0]):
         if np.sum(D[c, :]) == 0:
 	    zero_chans.append(c)
     zero_chans = np.array(zero_chans, dtype=np.uint8)
-    print zero_chans
+    print 'Channels which are zero', zero_chans
     all_bcs = [zero_chans]
     for meas in p_global['bad_detec']['measure']:
-        print "Here"
         chans = np.arange(D.shape[0])
         chans = np.setdiff1d(chans, p_global['eog_chans'])
         chans = np.setdiff1d(chans, zero_chans)
@@ -30,9 +28,8 @@ def bad_detec(D, p_local, p_global):
                            chans)
         thresh = p_global['bad_detec']['thresh']
         bad_chans = chans[np.logical_or(statistics < -thresh, statistics > thresh)]
+        print 'Channels determined bad by', meas, ':', bad_chans
         all_bcs.append(bad_chans)
-        if p_global['bad_detec']['verbose']:
-            bad_chan_plot(statistics, p_local, meas, thresh)
     if len(all_bcs) > 0:
         all_bcs = np.hstack(all_bcs)
         p_local.update({'bad_chans': all_bcs})
@@ -40,7 +37,9 @@ def bad_detec(D, p_local, p_global):
     else:
         all_bcs = None
         p_local.update({'bad_chans': all_bcs})
+    print 'All channels removed', all_bcs
     return (D, p_local)
+
 
 def gaussian_normalize(samples):
     mu = np.mean(samples)
@@ -81,24 +80,20 @@ def get_statistic(D, measure, trim, discret, verbose, chans):
         ra = D[c, :]
         if measure == 'prob':
             ra = gaussian_normalize(ra)
-            if trim is not trim:
-                #qq_plot(ra, title = 'qq-plot before gaussian trim')
-                ra = gaussian_trim(ra, .1)
-                ra = gaussian_normalize(ra)
-                #qq_plot(ra, title = 'qq-plot after gaussian trim')
             M = np.max(ra)
             m = np.min(ra)
             ticks = np.linspace(0, 1, discret) * (M - m) + m 
             true_cdf = np.array(map(lambda x: norm.cdf(x), ticks))
             sample_cdf = get_cdf(ra, ticks)
-            #plt.plot(ticks, true_cdf, 'r.', label='true')
-            #plt.plot(ticks, sample_cdf, 'b.', label='sample')
-            #plt.legend()
-            #plt.title('Sample CDF compared to normal')
-            #plt.show()
             statistic.append(np.max(true_cdf - sample_cdf))
         elif measure == 'kurtosis':
             statistic.append(kurtosis(ra))
+        elif measure == 'std':
+            statistic.append(np.std(ra))
+        elif measure == 'spread':
+            statistic.append(np.max(ra) - np.min(ra))
+        elif measure == 'max':
+            statistic.append(np.max(np.abs(ra)))
     muS = np.mean(statistic)
     sigS = np.sqrt(np.var(statistic))
     normalized_statistic = (statistic - muS) / sigS
