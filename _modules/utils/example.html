@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>utils.example &#8212; EEGPipeline 1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/darkly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="EEGPipeline 1 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          EEGPipeline</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">preprocessing package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#module-preprocessing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../utils.html">utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <h1>Source code for utils.example</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;This is just an example to show how to properly document things!</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="foo"><a class="viewcode-back" href="../../utils.example.html#utils.example.foo">[docs]</a><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">,</span> <span class="n">long_var_name</span><span class="o">=</span><span class="s1">&#39;hi&#39;</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;A one-line summary that does not use variable names or the</span>
+<span class="sd">    function name.</span>
+
+<span class="sd">    Several sentences providing an extended description. Refer to</span>
+<span class="sd">    variables using back-ticks, e.g. `var`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    var1 : array_like</span>
+<span class="sd">        Array_like means all those objects -- lists, nested lists, etc. --</span>
+<span class="sd">        that can be converted to an array.  We can also refer to</span>
+<span class="sd">        variables like `var1`.</span>
+<span class="sd">    var2 : int</span>
+<span class="sd">        The type above can either refer to an actual Python type</span>
+<span class="sd">        (e.g. ``int``), or describe the type of the variable in more</span>
+<span class="sd">        detail, e.g. ``(N,) ndarray`` or ``array_like``.</span>
+<span class="sd">    long_var_name : {&#39;hi&#39;, &#39;ho&#39;}, optional</span>
+<span class="sd">        Choices in brackets, default first when optional.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    type</span>
+<span class="sd">        Explanation of anonymous return value of type ``type``.</span>
+<span class="sd">    describe : type</span>
+<span class="sd">        Explanation of return value named `describe`.</span>
+<span class="sd">    out : type</span>
+<span class="sd">        Explanation of `out`.</span>
+
+<span class="sd">    Other Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    only_seldom_used_keywords : type</span>
+<span class="sd">        Explanation</span>
+<span class="sd">    common_parameters_listed_above : type</span>
+<span class="sd">        Explanation</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    BadException</span>
+<span class="sd">        Because you shouldn&#39;t have done that.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    otherfunc : relationship (optional)</span>
+<span class="sd">    newfunc : Relationship (optional), which could be fairly long, in which</span>
+<span class="sd">              case the line wraps here.</span>
+<span class="sd">    thirdfunc, fourthfunc, fifthfunc</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Notes about the implementation algorithm (if needed).</span>
+
+<span class="sd">    This can have multiple paragraphs.</span>
+
+<span class="sd">    You may include some math:</span>
+
+<span class="sd">    .. math:: X(e^{j\omega } ) = x(n)e^{ - j\omega n}</span>
+
+<span class="sd">    And even use a greek symbol like :math:`omega` inline.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Cite the relevant literature, e.g. [1]_.  You may also cite these</span>
+<span class="sd">    references in the notes section above.</span>
+
+<span class="sd">    .. [1] O. McNoleg, &quot;The integration of GIS, remote sensing,</span>
+<span class="sd">       expert systems and adaptive co-kriging for environmental habitat</span>
+<span class="sd">       modelling of the Highland Haggis using object-oriented, fuzzy-logic</span>
+<span class="sd">       and neural-network techniques,&quot; Computers &amp; Geosciences, vol. 22,</span>
+<span class="sd">       pp. 585-588, 1996.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    These are written in doctest format, and should illustrate how to</span>
+<span class="sd">    use the function.</span>
+
+<span class="sd">    &gt;&gt;&gt; a = [1, 2, 3]</span>
+<span class="sd">    &gt;&gt;&gt; print [x + 3 for x in a]</span>
+<span class="sd">    [4, 5, 6]</span>
+<span class="sd">    &gt;&gt;&gt; print &quot;a\n\nb&quot;</span>
+<span class="sd">    a</span>
+<span class="sd">    b</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Team Orange Panda.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

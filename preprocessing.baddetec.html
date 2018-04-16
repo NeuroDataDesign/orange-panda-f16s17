@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>preprocessing.baddetec module &#8212; EEGPipeline 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/darkly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="EEGPipeline 1 documentation" href="index.html" />
+    <link rel="up" title="preprocessing package" href="preprocessing.html" />
+    <link rel="next" title="preprocessing.interp module" href="preprocessing.interp.html" />
+    <link rel="prev" title="preprocessing package" href="preprocessing.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          EEGPipeline</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="preprocessing.html">preprocessing package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="preprocessing.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#module-preprocessing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#module-utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">preprocessing.baddetec module</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="preprocessing.html" title="Previous Chapter: preprocessing package"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; preprocessing...</span>
+    </a>
+  </li>
+  <li>
+    <a href="preprocessing.interp.html" title="Next Chapter: preprocessing.interp module"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">preprocessing... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="module-preprocessing.baddetec">
+<span id="preprocessing-baddetec-module"></span><h1>preprocessing.baddetec module<a class="headerlink" href="#module-preprocessing.baddetec" title="Permalink to this headline">¶</a></h1>
+<p>Contains basic signal processing utilities.</p>
+<dl class="function">
+<dt id="preprocessing.baddetec.bad_chan_detect">
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">bad_chan_detect</code><span class="sig-paren">(</span><em>T</em>, <em>A</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#bad_chan_detect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.bad_chan_detect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes the data and applies the proper bad channel detection method.</p>
+<p>Wrapper for bad channel detection methods, so there is one unified way to call them all.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>T</strong> : eeg_panda_format dictionary (<a class="reference external" href="https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md">https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md</a>)</p>
+<p><strong>A</strong> : global arguments set in config.txt</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>T</strong> : eeg_panda_format dictionary (<a class="reference external" href="https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md">https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/PANDA_data_format.md</a>)</p>
+<blockquote class="last">
+<div><p>Returns data with metadata added. Zeroed electrodes will be removed if <cite>rm_zero</cite> was <cite>True</cite> in config.txt.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#preprocessing.baddetec.prob_baddetec" title="preprocessing.baddetec.prob_baddetec"><code class="xref py py-obj docutils literal"><span class="pre">prob_baddetec</span></code></a>, <a class="reference internal" href="#preprocessing.baddetec.kurt_baddetec" title="preprocessing.baddetec.kurt_baddetec"><code class="xref py py-obj docutils literal"><span class="pre">kurt_baddetec</span></code></a>, <a class="reference internal" href="#preprocessing.baddetec.spec_baddetec" title="preprocessing.baddetec.spec_baddetec"><code class="xref py py-obj docutils literal"><span class="pre">spec_baddetec</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>methods available:
+.. &#8216;prob&#8217; for probability denity based on KDE
+.. &#8216;kurt&#8217; for kurtosis based
+.. &#8216;pow&#8217; for power spectrum based</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preprocessing.baddetec.detect_zeroed_chans">
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">detect_zeroed_chans</code><span class="sig-paren">(</span><em>T</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#detect_zeroed_chans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.detect_zeroed_chans" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="preprocessing.baddetec.good_elec">
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">good_elec</code><span class="sig-paren">(</span><em>inEEG</em>, <em>badelec</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#good_elec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.good_elec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect bad electrodes based on probability</p>
+<p>Based on whether the joint probability of an electrode&#8217;s time values (decided by a probability function passed in
+via the parameters) is too different from the other electrodes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : numpy array (timesteps, channels, patients)</p>
+<blockquote>
+<div><p>For a given electrode, a list of all the values for each timestamp</p>
+</div></blockquote>
+<p><strong>badelec</strong> : list</p>
+<blockquote>
+<div><p>List of all bad electrode indices in inEEG</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">newEEG: array (timesteps, good channels, patients)</p>
+<blockquote class="last">
+<div><p>delete all bad electrode columns for the EEG data</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="preprocessing.baddetec.kdewrap">
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">kdewrap</code><span class="sig-paren">(</span><em>indata</em>, <em>kernel</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#kdewrap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.kdewrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for the KDE implementation from the scikit-learn package.</p>
+<p>Kernel density estimates are a method of estimating the distribution of a dataset non-parametrically.
+Basically, without any outside parameters bounding the data, we generate a distribution representing the data from a base kernel function.
+For each point, the base kernel function is generated, and the kernel is altered based on the distance between each individual point and every other point.
+Combining these kernels creates a fairly accurate density function of the data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>indata</strong> : list (data points per timestep)</p>
+<blockquote>
+<div><p>For a given electrode, a list of all the values for each timestamp</p>
+</div></blockquote>
+<p><strong>kernel</strong> : string</p>
+<blockquote>
+<div><p>&#8216;gaussian&#8217;, &#8216;tophat&#8217;, &#8216;epanechnikov&#8217;, &#8216;exponential&#8217;, &#8216;linear&#8217;, &#8216;cosine&#8217; Choose which base kernel function to use.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">kde.score_samples(indata[:, np.newaxis]): arraylike (timesteps, 1)</p>
+<blockquote class="last">
+<div><p>Return an array of the densities for each electrode value and where it lies in the kernel function</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>For notes and refernces go to: <a class="reference external" href="https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/kernel-probability-density.pdf">https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/kernel-probability-density.pdf</a></p>
+<p class="rubric">Examples</p>
+<p>These are written in doctest format, and should illustrate how to
+use the function.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inEEG</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">probdist</span> <span class="o">=</span> <span class="n">kdewrap</span><span class="p">(</span><span class="n">inEEG</span><span class="p">,</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">)</span>
+<span class="go">probdist = [...]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="preprocessing.baddetec.kurt_baddetec">
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">kurt_baddetec</code><span class="sig-paren">(</span><em>inEEG</em>, <em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#kurt_baddetec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.kurt_baddetec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect bad electrodes based on kurtosis</p>
+<p>Based on the kurtosis of EEG voltage over time, find channels which have produced large outliers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : numpy array (timesteps, channels, patients)</p>
+<blockquote>
+<div><p>For a given electrode, a list of all the values for each timestamp</p>
+</div></blockquote>
+<p><strong>threshold</strong> : integer</p>
+<blockquote>
+<div><p>The number of standard deviations away from the mean joint probability counts an electrode&#8217;s probability can be
+for it to count as a bad electrode</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : original data</p>
+<blockquote>
+<div><p>Return original data because isn&#8217;t changed</p>
+</div></blockquote>
+<p><strong>o</strong> : string</p>
+<blockquote>
+<div><p>output string for basic comprehension of output</p>
+</div></blockquote>
+<p>badelec: list</p>
+<blockquote class="last">
+<div><p>List of bad electrodes from list</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Pseudocode located at: <a class="reference external" href="https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf">https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preprocessing.baddetec.prob_baddetec">
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">prob_baddetec</code><span class="sig-paren">(</span><em>inEEG</em>, <em>threshold</em>, <em>probfunc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#prob_baddetec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.prob_baddetec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect bad electrodes based on probability</p>
+<p>Based on whether the joint probability of an electrode&#8217;s time values (decided by a probability function passed in
+via the parameters) is too different from the other electrodes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : numpy array (timesteps, channels, patients)</p>
+<blockquote>
+<div><p>For a given electrode, a list of all the values for each timestamp</p>
+</div></blockquote>
+<p><strong>threshold</strong> : integer</p>
+<blockquote>
+<div><p>The number of standard deviations away from the mean joint probability counts an electrode&#8217;s probability can be
+for it to count as a bad electrode</p>
+</div></blockquote>
+<p><strong>probfunc</strong> : function. In this case takes in data and kernel as arguments</p>
+<blockquote>
+<div><p>function to make probability distribution</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : original data</p>
+<blockquote>
+<div><p>Return original data because isn&#8217;t changed</p>
+</div></blockquote>
+<p><strong>o</strong> : string</p>
+<blockquote>
+<div><p>output string for basic comprehension of output</p>
+</div></blockquote>
+<p>badelec: list</p>
+<blockquote class="last">
+<div><p>List of bad electrodes from list</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Pseudocode located at: <a class="reference external" href="https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf">https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preprocessing.baddetec.reshape">
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">reshape</code><span class="sig-paren">(</span><em>inEEG</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#reshape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.reshape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reshape the data from the inputted format (timesteps, num channels, num patients) to (time, channels).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : array_like (3d or 2d)</p>
+<blockquote>
+<div><p>Paradigm data characterized by: (timesteps, num channels, num patients). If data previously transformed into (time, channels), also accept and don&#8217;t alter.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">inEEG: array_like(2d)</p>
+<blockquote>
+<div><p>(time, channels)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>DimensionException</strong></p>
+<blockquote class="last">
+<div><p>Input is not 2d or 3d, not interpretable</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>These are written in doctest format, and should illustrate how to
+use the function.</p>
+<p>First with a 2D array input (preformatted)
+&gt;&gt;&gt; success1 = np.column_stack([sin] * 50)
+&gt;&gt;&gt; print success1.shape
+(1000L, 50L)
+&gt;&gt;&gt; reshaped = reshape(success1).shape
+&gt;&gt;&gt; print reshaped.shape
+(1000L, 50L)</p>
+<p>Now with 3D input (2 patients)
+&gt;&gt;&gt; dummy = np.dstack([success1] * 2)
+&gt;&gt;&gt; print dummy.shape
+(1000L, 50L, 2L)
+&gt;&gt;&gt; reshaped = reshape(dummy).shape
+&gt;&gt;&gt; print reshaped.shape
+(2000L, 50L)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preprocessing.baddetec.spec_baddetec">
+<code class="descclassname">preprocessing.baddetec.</code><code class="descname">spec_baddetec</code><span class="sig-paren">(</span><em>inEEG</em>, <em>posthresh</em>, <em>negthresh</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing/baddetec.html#spec_baddetec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#preprocessing.baddetec.spec_baddetec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect bad electrodes based on spectral analysis</p>
+<p>Based on the frequency spectrums</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : numpy array (timesteps, channels, patients)</p>
+<blockquote>
+<div><p>For a given electrode, a list of all the values for each timestamp</p>
+</div></blockquote>
+<p><strong>posthresh</strong> : integer</p>
+<blockquote>
+<div><p>The amount above the mean average power spectrum an electrode&#8217;s frequency can go</p>
+</div></blockquote>
+<p><strong>negthresh</strong> : integer</p>
+<blockquote>
+<div><p>The amount below the mean average power spectrum an electrode&#8217;s frequency can go</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>inEEG</strong> : original data</p>
+<blockquote>
+<div><p>Return original data because isn&#8217;t changed</p>
+</div></blockquote>
+<p><strong>o</strong> : string</p>
+<blockquote>
+<div><p>output string for basic comprehension of output</p>
+</div></blockquote>
+<p>badelec: list</p>
+<blockquote class="last">
+<div><p>List of bad electrodes from list</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Pseudocode located at: <a class="reference external" href="https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf">https://github.com/NeuroDataDesign/orange-panda/blob/master/notes/bad_chan_detect/baddetec/bad-electrode-detection.pdf</a></p>
+</dd></dl>
+
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Team Orange Panda.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

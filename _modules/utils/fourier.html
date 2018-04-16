@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>utils.fourier &#8212; EEGPipeline 1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/darkly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="top" title="EEGPipeline 1 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          EEGPipeline</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">preprocessing package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#module-preprocessing">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../utils.html">utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html#module-utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <h1>Source code for utils.fourier</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Contains basic signal processing utilities.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="k">import</span> <span class="n">butter</span><span class="p">,</span> <span class="n">lfilter</span><span class="p">,</span> <span class="n">freqz</span>
+
+<span class="k">def</span> <span class="nf">_butter_lowpass</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">nyq</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Fs</span>
+    <span class="n">normal_cutoff</span> <span class="o">=</span> <span class="n">cutoff</span> <span class="o">/</span> <span class="n">nyq</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">normal_cutoff</span><span class="p">,</span>
+                    <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+
+<div class="viewcode-block" id="butter_lowpass_filter"><a class="viewcode-back" href="../../utils.fourier.html#utils.fourier.butter_lowpass_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_lowpass_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Constructs a lowpass filter at given cutoff</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : numpy array </span>
+<span class="sd">        a `t` by 1 numpy array representing a discretely sampled time-series signal with `t` timesteps.</span>
+
+<span class="sd">    cutoff : float</span>
+<span class="sd">        the upper bound frequency let through the filter.</span>
+<span class="sd">    Fs : float</span>
+<span class="sd">        the sampling frequency of the signal</span>
+<span class="sd">    order : int</span>
+<span class="sd">        the order of the filter</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    filtered_signal : numpy matrix</span>
+<span class="sd">        the filtered signal</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    butter_highpass_filter :</span>
+<span class="sd">    butter_bandpass_filter :</span>
+<span class="sd">    butter_bandstop_filter :</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Relies on scipy.signal</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; T = 10 # Signal lasts 10 seconds</span>
+<span class="sd">    &gt;&gt;&gt; Fs = 40 # We sample the signal at 40 Hz</span>
+<span class="sd">    &gt;&gt;&gt; w1 = .1</span>
+<span class="sd">    &gt;&gt;&gt; w2 = 1</span>
+<span class="sd">    &gt;&gt;&gt; w3 = 4</span>
+<span class="sd">    &gt;&gt;&gt; sample_points = np.linspace(0, T, T * Fs)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w1 = np.sin(w1 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w2 = np.sin(w2 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w3 = np.sin(w3 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; signal = sines_w1 + sines_w2 + sines_w3</span>
+<span class="sd">    &gt;&gt;&gt; new_signal = butter_lowpass_filter(signal, 2, Fs, 5)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">_butter_lowpass</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="n">filtered_signal</span> <span class="o">=</span> <span class="n">lfilter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered_signal</span></div>
+
+
+<span class="k">def</span> <span class="nf">_butter_highpass</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">nyq</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Fs</span>
+    <span class="n">normal_cutoff</span> <span class="o">=</span> <span class="n">cutoff</span> <span class="o">/</span> <span class="n">nyq</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">normal_cutoff</span><span class="p">,</span>
+                <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+
+<div class="viewcode-block" id="butter_highpass_filter"><a class="viewcode-back" href="../../utils.fourier.html#utils.fourier.butter_highpass_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_highpass_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Constructs a highpass filter at given cutoff</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : ``ndarray`` </span>
+<span class="sd">        a `(t, 1)` ``ndarray`` representing a discretely sampled time-series signal with `t` timesteps.</span>
+
+<span class="sd">    cutoff : float</span>
+<span class="sd">        the upper bound frequency let through the filter.</span>
+<span class="sd">    Fs : float</span>
+<span class="sd">        the sampling frequency of the signal</span>
+<span class="sd">    order : int</span>
+<span class="sd">        the order of the filter</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    filtered_signal : numpy matrix</span>
+<span class="sd">        the filtered signal</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    butter_highpass_filter :</span>
+<span class="sd">    butter_bandpass_filter :</span>
+<span class="sd">    butter_bandstop_filter :</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Relies on scipy.signal</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; T = 10 # Signal lasts 10 seconds</span>
+<span class="sd">    &gt;&gt;&gt; Fs = 40 # We sample the signal at 40 Hz</span>
+<span class="sd">    &gt;&gt;&gt; w1 = .1</span>
+<span class="sd">    &gt;&gt;&gt; w2 = 1</span>
+<span class="sd">    &gt;&gt;&gt; w3 = 4</span>
+<span class="sd">    &gt;&gt;&gt; sample_points = np.linspace(0, T, T * Fs)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w1 = np.sin(w1 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w2 = np.sin(w2 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w3 = np.sin(w3 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; signal = sines_w1 + sines_w2 + sines_w3</span>
+<span class="sd">    &gt;&gt;&gt; new_signal = butter_highpass_filter(signal, 2, Fs, 5)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">_butter_highpass</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="n">filtered_signal</span> <span class="o">=</span> <span class="n">lfilter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered_signal</span></div>
+
+<span class="k">def</span> <span class="nf">_butter_bandpass</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">nyq</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Fs</span>
+    <span class="n">lowcut</span> <span class="o">=</span> <span class="n">cutoff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">nyq</span>
+    <span class="n">highcut</span> <span class="o">=</span> <span class="n">cutoff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">nyq</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="p">[</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">],</span>
+                <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;bandpass&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+
+<div class="viewcode-block" id="butter_bandpass_filter"><a class="viewcode-back" href="../../utils.fourier.html#utils.fourier.butter_bandpass_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_bandpass_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Constructs a bandpass filter at given cutoff range</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : ``ndarray`` </span>
+<span class="sd">        a `(t, 1)` ``ndarray`` representing a discretely sampled time-series signal with `t` timesteps.</span>
+
+<span class="sd">    cutoff : [float, float]</span>
+<span class="sd">        the [lower, upper] bound frequency let through the filter.</span>
+<span class="sd">    Fs : float</span>
+<span class="sd">        the sampling frequency of the signal</span>
+<span class="sd">    order : int</span>
+<span class="sd">        the order of the filter</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    filtered_signal : numpy matrix</span>
+<span class="sd">        the filtered signal</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    butter_highpass_filter :</span>
+<span class="sd">    butter_bandpass_filter :</span>
+<span class="sd">    butter_bandstop_filter :</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Relies on scipy.signal</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; T = 10 # Signal lasts 10 seconds</span>
+<span class="sd">    &gt;&gt;&gt; Fs = 40 # We sample the signal at 40 Hz</span>
+<span class="sd">    &gt;&gt;&gt; w1 = .1</span>
+<span class="sd">    &gt;&gt;&gt; w2 = 1</span>
+<span class="sd">    &gt;&gt;&gt; w3 = 4</span>
+<span class="sd">    &gt;&gt;&gt; sample_points = np.linspace(0, T, T * Fs)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w1 = np.sin(w1 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w2 = np.sin(w2 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w3 = np.sin(w3 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; signal = sines_w1 + sines_w2 + sines_w3</span>
+<span class="sd">    &gt;&gt;&gt; new_signal = butter_bandpass_filter(signal, [.6, 2], Fs, 5)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">_butter_bandpass</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="n">filtered_signal</span> <span class="o">=</span> <span class="n">lfilter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered_signal</span></div>
+
+<span class="k">def</span> <span class="nf">_butter_bandstop</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">nyq</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Fs</span>
+    <span class="n">lowcut</span> <span class="o">=</span> <span class="n">cutoff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">nyq</span>
+    <span class="n">highcut</span> <span class="o">=</span> <span class="n">cutoff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">nyq</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="p">[</span><span class="n">lowcut</span><span class="p">,</span> <span class="n">highcut</span><span class="p">],</span>
+                <span class="n">btype</span><span class="o">=</span><span class="s1">&#39;bandstop&#39;</span><span class="p">,</span> <span class="n">analog</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+
+<div class="viewcode-block" id="butter_bandstop_filter"><a class="viewcode-back" href="../../utils.fourier.html#utils.fourier.butter_bandstop_filter">[docs]</a><span class="k">def</span> <span class="nf">butter_bandstop_filter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Constructs a bandstop filter at given cutoff</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : ``ndarray`` </span>
+<span class="sd">        a `(t, 1)` ``ndarray`` representing a discretely sampled time-series signal with `t` timesteps.</span>
+
+<span class="sd">    cutoff : [float, float]</span>
+<span class="sd">        the [lower, upper] bound frequency let stop with the filter.</span>
+<span class="sd">    Fs : float</span>
+<span class="sd">        the sampling frequency of the signal</span>
+<span class="sd">    order : int</span>
+<span class="sd">        the order of the filter</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    filtered_signal : numpy matrix</span>
+<span class="sd">        the filtered signal</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    butter_highpass_filter :</span>
+<span class="sd">    butter_bandpass_filter :</span>
+<span class="sd">    butter_bandstop_filter :</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Relies on scipy.signal</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; T = 10 # Signal lasts 10 seconds</span>
+<span class="sd">    &gt;&gt;&gt; Fs = 40 # We sample the signal at 40 Hz</span>
+<span class="sd">    &gt;&gt;&gt; w1 = .1</span>
+<span class="sd">    &gt;&gt;&gt; w2 = 1</span>
+<span class="sd">    &gt;&gt;&gt; w3 = 4</span>
+<span class="sd">    &gt;&gt;&gt; sample_points = np.linspace(0, T, T * Fs)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w1 = np.sin(w1 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w2 = np.sin(w2 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; sines_w3 = np.sin(w3 * 2 * np.pi * sample_points)</span>
+<span class="sd">    &gt;&gt;&gt; signal = sines_w1 + sines_w2 + sines_w3</span>
+<span class="sd">    &gt;&gt;&gt; new_signal = butter_bandstop_filter(signal, 2, Fs, 5)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">_butter_bandstop</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">Fs</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="n">filtered_signal</span> <span class="o">=</span> <span class="n">lfilter</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filtered_signal</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Team Orange Panda.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
